@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Preconnect to critical origins — reduces TTFB for fonts, images, Cloudinary -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://res.cloudinary.com" />
+
+    <!-- Preload display font (prevents invisible text during load) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;900&display=swap" />
+
+    <!-- Preload Hero Image -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop" fetchpriority="high" />
+
+    <!-- Default meta (overridden per-page by react-helmet-async) -->
+    <title>Mints Global | Digital Marketing, Software Development & Cyber Security</title>
+    <meta name="description" content="Dubai-based premium digital agency. ROI-driven Marketing, Enterprise Software, and Military-Grade Cyber Security for global brands." />
+
+    <!-- Favicon (create these files in /public) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0d1a0f" />
+
+    <!-- Open Graph fallback (per-page tags override these) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mintsglobal.ae/" />
+    <meta property="og:title" content="Mints Global | Premium Digital Agency" />
+    <meta property="og:description" content="Dubai-based premium digital agency bridging Middle Eastern and European markets." />
+    <meta property="og:image" content="https://mintsglobal.ae/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter fallback -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mintsglobal" />
+
+    <!-- Robots default -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

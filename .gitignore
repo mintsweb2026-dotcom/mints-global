@@ -1,0 +1,23 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Build tools & scripts
+fix.js
+fix.ts
+generate_pages.ts
+create_pages.sh
+update_pages.js
+fetch.ts
+scripts/fix.js
+scripts/fix.ts
+scripts/generate_pages.ts
+scripts/create_pages.sh
+scripts/update_pages.js
+scripts/fetch.ts
+scripts/fix_16_pages.js

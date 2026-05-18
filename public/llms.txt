@@ -1,0 +1,62 @@
+# Mints Global
+
+> Mints Global is a premium digital agency headquartered in Dubai, UAE, operating globally. We deliver ROI-driven Digital Marketing, enterprise-grade Software Development, and military-grade Cyber Security to brands across the Middle East, Europe, North America, Asia-Pacific, and worldwide. Founded in 2020. 250+ projects delivered across 20+ countries. 98% client retention.
+
+- Website: https://mintsglobal.ae
+- Email: info@mintsglobal.ae
+- WhatsApp: +971 502943916
+- Languages: English · Arabic · German
+- Currencies: AED · USD · EUR · GBP
+- Time Zone: GMT+4 (Dubai) — overlaps with both European and Asian business hours
+
+## What We Do
+
+Mints Global operates across three divisions — Digital Marketing, Software Development, and Cyber Security — serving startups, SMEs, and enterprise clients on every continent. Our dual-market position in Dubai gives us a unique bridge between Middle Eastern business culture and Western compliance standards (GDPR, ISO 27001, NIS2, PCI-DSS).
+
+## Services
+
+### Digital Marketing
+Full-service digital marketing — organic, paid, social, brand, video, and visual content — for brands targeting any global market.
+- [SEO Optimization](https://mintsglobal.ae/digital-marketing/seo)
+- [Performance Marketing](https://mintsglobal.ae/digital-marketing/performance-marketing)
+- [Social Media Marketing](https://mintsglobal.ae/digital-marketing/smm)
+- [Brand Strategy](https://mintsglobal.ae/digital-marketing/branding)
+- [Video Production](https://mintsglobal.ae/digital-marketing/video-production)
+- [Photography & Graphics](https://mintsglobal.ae/digital-marketing/photography-graphics)
+
+### Software Development
+Custom web applications, mobile apps, enterprise platforms, and e-commerce solutions built to international standards.
+- [Web Applications](https://mintsglobal.ae/software-development/web-apps)
+- [Mobile Applications](https://mintsglobal.ae/software-development/mobile-apps)
+- [Website Development](https://mintsglobal.ae/software-development/website-development)
+- [ERP Solutions](https://mintsglobal.ae/software-development/erp-solutions)
+- [CRM Development](https://mintsglobal.ae/software-development/crm-development)
+- [E-Commerce](https://mintsglobal.ae/software-development/ecommerce)
+
+### Cyber Security
+Offensive testing, incident response, compliance advisory, managed detection, cloud security, and OT/IoT protection — globally delivered.
+- [Offensive Security](https://mintsglobal.ae/cyber-security/offensive-security)
+- [Incident Response](https://mintsglobal.ae/cyber-security/incident-response)
+- [Managed Advisory / vCISO](https://mintsglobal.ae/cyber-security/managed-advisory)
+- [Compliance & GRC](https://mintsglobal.ae/cyber-security/compliance-grc)
+- [Cloud Security](https://mintsglobal.ae/cyber-security/cloud-security)
+- [OT / IoT Security](https://mintsglobal.ae/cyber-security/ot-iot-security)
+
+### Regional Focus Pages
+- [Software Development for Europe](https://mintsglobal.ae/europe-services/software-development)
+- [Digital Marketing for Europe](https://mintsglobal.ae/europe-services/digital-marketing)
+- [Cyber Security for Europe](https://mintsglobal.ae/europe-services/cyber-security)
+
+## Company
+
+- [About Mints Global](https://mintsglobal.ae/about)
+- [Portfolio](https://mintsglobal.ae/work)
+- [Blog & Insights](https://mintsglobal.ae/blog)
+- [Contact](https://mintsglobal.ae/contact)
+- [Privacy Policy](https://mintsglobal.ae/privacy-policy)
+- [Terms of Service](https://mintsglobal.ae/terms-of-service)
+
+## Full Documentation
+
+Complete service descriptions, global delivery model, all FAQs, compliance frameworks, pricing context, and AI usage guidelines:
+[llms-full.txt](https://mintsglobal.ae/llms-full.txt)

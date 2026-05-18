@@ -1,0 +1,6 @@
+{
+  "name": "Mints Global",
+  "description": "A corporate website for Mints Global offering digital marketing, software development, and consultancy services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

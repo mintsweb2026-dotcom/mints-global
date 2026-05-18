@@ -1,0 +1,284 @@
+import { useState, useEffect } from 'react';
+import { ArrowUpRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/SEO';
+import { JsonLd } from '../components/JsonLd';
+import { SEO_DATA } from '../lib/seo-data';
+import { projects, Project } from '../data/projects';
+
+const portfolioSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Mints Global Portfolio",
+  "url": "https://mintsglobal.ae/work",
+  "description": "Selected portfolio of digital marketing, software development, and cyber security projects.",
+  "itemListElement": projects.slice(0, 10).map((p, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "url": `https://mintsglobal.ae/work/${p._id}`,
+    "name": p.title
+  }))
+};
+
+export const getOptimizedUrl = (url: string, width?: number) => {
+  if (!url || !url.includes('res.cloudinary.com')) return url;
+  const parts = url.split('/upload/');
+  if (parts.length !== 2) return url;
+  const optimizations = width ? `f_auto,q_auto,w_${width}` : 'f_auto,q_auto';
+  return `${parts[0]}/upload/${optimizations}/${parts[1]}`;
+};
+
+export const getSrcSet = (url: string, widths: number[]) => {
+  if (!url || !url.includes('res.cloudinary.com')) return undefined;
+  return widths.map(w => `${getOptimizedUrl(url, w)} ${w}w`).join(', ');
+};
+
+function Lightbox({ project, onClose }: { project: Project; onClose: () => void }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  // Combine title image and media urls
+  const allImages = [project.titleImage, ...(project.mediaUrls || [])].filter(Boolean);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowRight') setCurrentIndex(prev => Math.min(prev + 1, allImages.length - 1));
+      if (e.key === 'ArrowLeft') setCurrentIndex(prev => Math.max(prev - 1, 0));
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'auto';
+    };
+  }, [onClose, allImages.length]);
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 px-4"
+      onClick={onClose}
+    >
+      <button 
+        onClick={onClose}
+        className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors p-2 z-[60]"
+      >
+        <X size={32} />
+      </button>
+
+      <div 
+        className="relative w-full max-w-6xl max-h-[85vh] flex items-center justify-center"
+        onClick={e => e.stopPropagation()}
+      >
+        {allImages.length > 1 && currentIndex > 0 && (
+          <button 
+            onClick={() => setCurrentIndex(prev => prev - 1)}
+            className="absolute left-0 md:-left-16 text-white/50 hover:text-white transition-colors p-2"
+          >
+            <ChevronLeft size={48} />
+          </button>
+        )}
+
+        <img 
+          key={currentIndex}
+          src={getOptimizedUrl(allImages[currentIndex], 1200)}
+          srcSet={getSrcSet(allImages[currentIndex], [600, 1200, 1800, 2400])}
+          sizes="100vw"
+          alt={`${project.title} - image ${currentIndex + 1}`}
+          className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+        />
+
+        {allImages.length > 1 && currentIndex < allImages.length - 1 && (
+          <button 
+            onClick={() => setCurrentIndex(prev => prev + 1)}
+            className="absolute right-0 md:-right-16 text-white/50 hover:text-white transition-colors p-2"
+          >
+            <ChevronRight size={48} />
+          </button>
+        )}
+      </div>
+      
+      <div className="absolute bottom-6 left-0 right-0 text-center text-white z-[60]" onClick={e => e.stopPropagation()}>
+        <h3 className="font-display font-black text-2xl uppercase tracking-widest">{project.title}</h3>
+        <p className="text-brand-white-70 text-sm mt-1">{project.category.name}</p>
+        <div className="flex justify-center gap-2 mt-4">
+          {allImages.map((_, idx) => (
+            <button 
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              className={`w-2 h-2 rounded-full transition-all ${idx === currentIndex ? 'bg-olive-500 w-6' : 'bg-white/30 hover:bg-white/60'}`}
+            />
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export function Work() {
+  const [filter, setFilter] = useState('All');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const FILTERS = [
+    'All',
+    'Branding',
+    'Cyber Security',
+    'Designs',
+    'Digital Marketing',
+    'IT Infrastructure',
+    'Product Photography',
+    'SEO & Branding',
+    'Web Development'
+  ];
+  
+  const filteredProjects = projects
+    .filter(p => filter === 'All' || p.category.name.toLowerCase() === filter.toLowerCase())
+    .filter(p => p.title.toLowerCase().includes(searchTerm.toLowerCase()));
+
+  const { i18n } = useTranslation();
+  const lang = (i18n.language as 'en' | 'ar' | 'de') || 'en';
+  const meta = SEO_DATA.portfolio[lang] || SEO_DATA.portfolio.en;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Mints Global Portfolio",
+    "description": "A collection of successful projects and case studies by Mints Global.",
+    "itemListElement": filteredProjects.map((proj, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "CreativeWork",
+        "name": proj.title,
+        "description": proj.description || `${proj.category.name} project: ${proj.title}`,
+        "image": proj.titleImage,
+        "url": `https://mintsglobal.ae/work#${proj._id}`,
+        "genre": proj.category.name,
+        "author": {
+          "@type": "Organization",
+          "name": "Mints Global"
+        }
+      }
+    }))
+  };
+
+  return (
+    <div className="w-full">
+      <SEO 
+        title={meta.title}
+        description={meta.description}
+        keywords={["agency portfolio", "digital marketing case studies", "software development projects", "cyber security work", "Mints Global portfolio"]}
+        canonical="/work"
+      />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
+      </Helmet>
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 pb-10">
+        <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-tight uppercase">
+          OUR <br/><span className="text-olive-500">WORK.</span>
+        </h1>
+        <p className="text-brand-white-70 max-w-2xl text-lg mb-12">
+          Explore our selected portfolio of digital marketing campaigns, secure platforms, and software solutions.
+        </p>
+
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+          <div className="flex flex-wrap gap-2">
+            {FILTERS.map((f) => (
+              <button
+                key={f}
+                onClick={() => setFilter(f)}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${filter === f ? 'bg-olive-500 text-white' : 'bg-transparent border border-white/10 text-brand-white-70 hover:border-olive-500/50 hover:text-white'}`}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+          <div className="relative w-full md:w-64 shrink-0">
+            <input
+              type="text"
+              placeholder="Search projects..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full bg-olive-900 border border-white/10 rounded-full py-3 px-6 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-olive-500 transition-colors"
+            />
+          </div>
+        </div>
+
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+           <AnimatePresence>
+             {filteredProjects.map((proj, idx) => (
+               <motion.div 
+                 layout
+                 initial={{ opacity: 0, scale: 0.9 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 exit={{ opacity: 0, scale: 0.9 }}
+                 transition={{ duration: 0.3 }}
+                 key={proj._id} 
+                 id={proj._id}
+                 className={`group relative ${idx % 3 === 1 ? 'lg:mt-16' : ''} ${idx % 3 === 2 ? 'lg:mt-32' : ''}`}
+               >
+                 <button onClick={() => setSelectedProject(proj)} className="block w-full overflow-hidden rounded-[2rem] aspect-[4/3] bg-olive-900 border border-white/5 mb-6 shadow-lg relative text-left outline-none focus-visible:ring-2 focus-visible:ring-olive-500">
+                   <img 
+                     src={getOptimizedUrl(proj.titleImage, 800)} 
+                     srcSet={getSrcSet(proj.titleImage, [400, 800, 1200])}
+                     sizes="(max-width: 768px) 100vw, 33vw"
+                     alt={`${proj.title} - ${proj.category.name} Portfolio Project by Mints Global`} 
+                     loading="lazy" 
+                     decoding="async"
+                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+                   />
+                   
+                   <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-olive-500 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100 backdrop-blur-md">
+                      <ArrowUpRight size={24} />
+                   </div>
+                 </button>
+                 
+                 <div className="flex flex-col items-start px-2">
+                   <span className="text-olive-500 text-xs font-bold uppercase tracking-widest mb-3 border border-olive-500/30 px-3 py-1 rounded-full">{proj.category.name}</span>
+                   <button onClick={() => setSelectedProject(proj)} className="text-left outline-none focus-visible:ring-2 focus-visible:ring-olive-500 rounded">
+                     <h2 className="font-display font-black text-2xl lg:text-3xl hover:text-olive-500 transition-colors uppercase tracking-tight text-white mb-4">{proj.title}</h2>
+                   </button>
+                 </div>
+
+                 {proj.mediaUrls && proj.mediaUrls.length > 0 && (
+                   <div className="grid grid-cols-3 gap-2 mt-2 px-2">
+                     {proj.mediaUrls.slice(0, 3).map((url, idx) => (
+                       <div key={idx} className="rounded-xl overflow-hidden aspect-square bg-olive-900 border border-white/5">
+                         <img 
+                           src={getOptimizedUrl(url, 400)} 
+                           srcSet={getSrcSet(url, [200, 400, 600])}
+                           sizes="(max-width: 640px) 33vw, 10vw"
+                           alt={`${proj.title} interface screenshot ${idx + 1}`} 
+                           loading="lazy"
+                           decoding="async"
+                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" 
+                         />
+                       </div>
+                     ))}
+                   </div>
+                 )}
+               </motion.div>
+             ))}
+           </AnimatePresence>
+        </motion.div>
+      </section>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <Lightbox 
+            project={selectedProject} 
+            onClose={() => setSelectedProject(null)} 
+          />
+        )}
+      </AnimatePresence>
+      <JsonLd data={portfolioSchema} />
+    </div>
+  );
+}

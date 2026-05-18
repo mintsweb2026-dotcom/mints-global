@@ -1,0 +1,183 @@
+import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
+import { JsonLd } from '../components/JsonLd';
+import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
+import { SEO } from '../components/SEO';
+
+const faqs = [
+  {
+    "q": "Do you build custom CRMs or sell existing ones?",
+    "a": "We do both. For businesses looking for quick deployment, we configure platforms like HubSpot. For companies with highly specific, non-standard processes or data privacy requirements, we build proprietary bespoke CRMs."
+  },
+  {
+    "q": "Can you migrate our data from our old CRM?",
+    "a": "Yes. Data migration—including contacts, deals, notes, and historical communication logs—is a critical part of our onboarding process. We ensure zero data loss."
+  },
+  {
+    "q": "Is the CRM accessible on mobile devices?",
+    "a": "Our custom CRMs are built as responsive web applications or dedicated PWAs, meaning your sales team can access full functionality from their tablets or smartphones in the field."
+  },
+  {
+    "q": "Can the CRM automate my marketing emails?",
+    "a": "Yes. We can integrate powerful marketing automation capabilities to run drip campaigns, triggered emails, and behavioral tracking directly alongside your sales pipelines."
+  }
+];
+
+export function CRMDevelopment() {
+  const serviceSchema = buildServiceSchema({
+    name: "CRM Development",
+    description: "Stop losing leads to bad processes. Let's build a CRM that drives sales.",
+    url: "/software-development/crm-development",
+    serviceType: "Software Development"
+  });
+
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Software Development", url: "/software-development" },
+    { name: "CRM Development", url: "/software-development/crm-development" }
+  ]);
+
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  return (
+    <div className="w-full relative z-10 min-h-screen bg-brand-black">
+      <SEO 
+        title="CRM Development | Mints Global" 
+        description="Manage your sales pipeline, enhance customer retention, and automate marketing. We build custom CRMs and implement elite enterprise platforms tailored to your sales process."
+        keywords={["custom CRM development", "customer relationship management software", "sales automation CRM", "CRM integration services", "enterprise CRM solutions"]}
+      />
+      {/* Hero Section */}
+      <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
+        
+        
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+              Customer Relationships
+            </span>
+          </div>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+            CRM<br/>
+            <span className="text-olive-500">Development.</span>
+          </h1>
+          <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
+            Manage your sales pipeline, enhance customer retention, and automate marketing. We build custom CRMs and implement elite enterprise platforms tailored to your sales process.
+          </p>
+          
+          <div className="flex flex-wrap gap-4">
+             <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
+               Empower Your Sales <ArrowRight size={18} />
+             </Link>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-24 bg-olive-950 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="mb-16">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white">CRM Services</h2>
+            <p className="text-brand-white-70 text-lg max-w-3xl">Centralize your customer data and give your team the tools they need to close deals and build relationships.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+              <CheckCircle2 className="text-olive-500 mb-6" size={32} />
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Salesforce & HubSpot Consulting</h3>
+              <p className="text-brand-white-70 text-sm leading-relaxed">Expert configuration, automation, and onboarding for industry-leading third-party CRM platforms.</p>
+            </div>
+            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+              <CheckCircle2 className="text-olive-500 mb-6" size={32} />
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Custom CRM Builds</h3>
+              <p className="text-brand-white-70 text-sm leading-relaxed">Developing proprietary Customer Relationship Management software specifically tailored to niche industries with unique sales cycles.</p>
+            </div>
+            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+              <CheckCircle2 className="text-olive-500 mb-6" size={32} />
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Sales Pipeline Automation</h3>
+              <p className="text-brand-white-70 text-sm leading-relaxed">Automating lead capturing, assignment, follow-ups, and notifications to ensure no prospect falls through the cracks.</p>
+            </div>
+            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+              <CheckCircle2 className="text-olive-500 mb-6" size={32} />
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Customer Support Portals</h3>
+              <p className="text-brand-white-70 text-sm leading-relaxed">Integrated ticketing systems to track support requests, measure SLA compliance, and boost customer satisfaction.</p>
+            </div>
+            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+              <CheckCircle2 className="text-olive-500 mb-6" size={32} />
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Third-Party Integrations</h3>
+              <p className="text-brand-white-70 text-sm leading-relaxed">Connecting your CRM with your email marketing tools, VoIP phone systems, payment gateways, and ERP.</p>
+            </div>
+            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+              <CheckCircle2 className="text-olive-500 mb-6" size={32} />
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Analytics & Dashboarding</h3>
+              <p className="text-brand-white-70 text-sm leading-relaxed">Custom dashboards that give executives real-time insight into sales performance, forecasting, and team KPIs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-brand-black border-t border-white/5">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <p className="text-brand-white-70 text-lg">Everything you need to know about our CRM services.</p>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div 
+                key={index} 
+                className="bg-brand-black-light border border-white/10 rounded-2xl overflow-hidden"
+              >
+                <button 
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none"
+                >
+                  <span className="font-bold text-lg text-white">{faq.q}</span>
+                  <ChevronDown className={"text-olive-500 transition-transform duration-300 " + (openFaq === index ? 'rotate-180' : '')} size={24} />
+                </button>
+                <div 
+                  className={"px-8 pb-6 text-brand-white-70 leading-relaxed transition-all duration-300 " + (openFaq === index ? 'block' : 'hidden')}
+                >
+                  {faq.a}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="py-24 bg-olive-900 border-t border-white/5 text-center">
+         <div className="max-w-3xl mx-auto px-6 lg:px-8">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+              Ready To Get Started?
+            </h2>
+            <p className="text-brand-white-70 text-lg leading-relaxed mb-10">
+              Stop losing leads to bad processes. Let's build a CRM that drives sales.
+            </p>
+            <Link to="/contact" className="bg-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit mx-auto">
+              Contact Us Today
+            </Link>
+         </div>
+      </section>
+    
+      {/* Related Services */}
+      <section className="py-16 border-t border-white/5 bg-olive-950">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h3 className="font-display text-2xl font-black uppercase mb-8 text-white">Related Services</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link to="/software-development/web-apps" className="text-olive-500 hover:text-white font-bold transition-colors">Web Apps &rarr;</Link>
+            <Link to="/software-development/mobile-apps" className="text-olive-500 hover:text-white font-bold transition-colors">Mobile Apps &rarr;</Link>
+            <Link to="/software-development/website-development" className="text-olive-500 hover:text-white font-bold transition-colors">Website Development &rarr;</Link>
+          </div>
+        </div>
+      </section>
+      
+      <JsonLd data={serviceSchema} />
+      
+      <JsonLd data={breadcrumbSchema} />
+    </div>
+  );
+}

@@ -140,7 +140,7 @@ export function Home() {
         >
           <div className="absolute inset-0 bg-olive-950/80 mix-blend-multiply z-10" />
           <img
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop"
+            src="/hero.webp"
             alt=""
             aria-hidden="true"
             fetchPriority="high"

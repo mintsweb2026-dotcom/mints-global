@@ -42,13 +42,7 @@ export function Contact() {
     resolver: zodResolver(contactSchema),
     mode: 'onChange',
     defaultValues: {
-      name: '',
-      email: '',
-      company: '',
       services: [],
-      timeline: 'ASAP',
-      budget: 'Under AED 10,000',
-      message: '',
     }
   });
 
@@ -136,14 +130,8 @@ export function Contact() {
     }
   };
 
-  const nextStep = () => {
-    setStep((s) => Math.min(s + 1, 3));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-  const prevStep = () => {
-    setStep((s) => Math.max(s - 1, 1));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const nextStep = () => setStep((s) => Math.min(s + 1, 3));
+  const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
   const toggleService = (service: string) => {
     const current = [...selectedServices];
@@ -217,19 +205,10 @@ export function Contact() {
                       key={s} 
                       type="button"
                       onClick={() => {
-                        if (s < step) {
-                          setStep(s);
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }
+                        if (s < step) setStep(s);
                         else if (s > step) {
-                          if (step === 1 && selectedServices.length > 0) {
-                            setStep(s);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                          }
-                          else if (step === 2) {
-                            setStep(s);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                          }
+                          if (step === 1 && selectedServices.length > 0) setStep(s);
+                          else if (step === 2) setStep(s);
                         }
                       }}
                       disabled={s > step && step === 1 && selectedServices.length === 0}

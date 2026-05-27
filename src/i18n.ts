@@ -16,26 +16,26 @@ const resources = {
       hero: {
         badge: "Premium Digital Agency",
         line1: "DIGITAL",
-        line2: "TRANSFORMATION",
-        line3: "EXPERTS",
-        desc: "We create immersive digital ecosystems, architecting scalable software and engineering cyber resilience for ambitious global brands.",
+        line2: "SOLUTIONS",
+        line3: "FOR BUSINESS",
+        desc: "We create immersive digital ecosystems, architecting scalable end-to-end software solutions and engineering cyber resilience for ambitious global brands.",
         startProject: "Start a Project",
         viewWork: "View Our Work"
       },
       marquee: ["Software Development", "Cyber Security", "Digital Marketing", "Brand Strategy", "UX/UI Design", "Performance Marketing", "SEO Optimization", "Web Apps"],
       capabilities: {
         badge: "Expertise Verticals",
-        title: "OUR PRIME CAPABILITIES.",
+        title: "OUR BUSINESS SOLUTIONS.",
         explore: "Explore All Services",
         s1: {
-          title: "Digital Marketing",
+          title: "Grow Your Business with Data-Driven Marketing",
           desc: "Data-driven strategies that amplify your brand resonance and deliver measurable ROI.",
           l1: "SEO & Content Strategy",
           l2: "Performance Marketing",
           l3: "Brand Strategy"
         },
         s2: {
-          title: "Software Development",
+          title: "End-to-End Business Software Solutions",
           desc: "Scalable Web3, mobile, and enterprise applications that drive operational excellence.",
           l1: "Custom Web Apps",
           l2: "Mobile Ecosystems",

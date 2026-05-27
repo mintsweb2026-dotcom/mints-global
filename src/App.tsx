@@ -46,9 +46,12 @@ import { Impressum } from './pages/Impressum';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { NotFound } from './pages/NotFound';
 
+import Analytics from './components/Analytics';
+
 export default function App() {
   return (
     <BrowserRouter>
+      <Analytics />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

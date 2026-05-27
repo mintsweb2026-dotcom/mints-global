@@ -21,7 +21,7 @@ export const posts: BlogPost[] = [
     date: 'Mar 27, 2026',
     readTime: '5 min read',
     author: 'Mints Global | Dubai, UAE | Digital Marketing Insights',
-    image: 'https://res.cloudinary.com/dvzbjweuk/image/upload/v1774614474/projects/lx5fxx06xkxn1ahhwvda.jpg',
+    image: 'https://res.cloudinary.com/dvzbjweuk/image/upload/w_800,f_webp,q_auto/v1774614474/projects/lx5fxx06xkxn1ahhwvda.jpg',
     excerpt: 'The digital landscape in 2026 is no longer a level playing field. it\'s a battlefield. Algorithms shift overnight, consumer attention spans shrink by the quarter, and competition from global brands floods every niche imaginable.',
     content: `
 The digital landscape in 2026 is no longer a level playing field. it's a battlefield. Algorithms shift overnight, consumer attention spans shrink by the quarter, and competition from global brands floods every niche imaginable. If your business is still navigating this terrain without expert guidance, you're not just falling behind you're leaving revenue on the table.
@@ -76,7 +76,7 @@ Mints Global — Premium Digital Agency | Bur Dubai, Dubai, UAE Cyber Security �
     date: 'Apr 14, 2026',
     readTime: '5 min read',
     author: 'Mints Global | Dubai, UAE | Digital Marketing Insights',
-    image: 'https://res.cloudinary.com/dvzbjweuk/image/upload/v1776163825/projects/teneerbueulrdrsycvzh.jpg',
+    image: 'https://res.cloudinary.com/dvzbjweuk/image/upload/w_800,f_webp,q_auto/v1776163825/projects/teneerbueulrdrsycvzh.jpg',
     excerpt: 'In today’s competitive online landscape, choosing the right digital marketing partner can make or break your business growth. The UAE, especially cities like Dubai and Abu Dhabi, is home to hundreds of agencies—but not all deliver real results.',
     content: `
 In today’s competitive online landscape, choosing the right digital marketing partner can make or break your business growth. The UAE, especially cities like Dubai and Abu Dhabi, is home to hundreds of agencies—but not all deliver real results.
@@ -210,7 +210,7 @@ SEO, PPC, content marketing, social media, and analytics tracking.
     date: 'May 4, 2026',
     readTime: '5 min read',
     excerpt: 'In today’s competitive business environment, managing customer relationships effectively is essential for long-term success. Businesses across the UAE are rapidly adopting CRM solutions to streamline operations, improve customer communication, and increase sales performance.',
-    image: '/crm-blog-image.jpg',
+    image: '/crm-blog-image.webp',
     content: `
 In today’s competitive business environment, managing customer relationships effectively is essential for long-term success. Businesses across the UAE are rapidly adopting CRM solutions to streamline operations, improve customer communication, and increase sales performance.
 
@@ -370,7 +370,7 @@ Yes, CRM systems can integrate with accounting software, email platforms, ERP sy
     date: 'May 12, 2026',
     readTime: '5 min read',
     excerpt: 'An exploration of how zero-trust architectures are reshaping the financial sector and why legacy VPNs are becoming obsolete.',
-    image: '/The Future of Zero-Trust Security in Finance.png',
+    image: '/zero-trust-security.webp',
     content: `
 Zero-trust security is no longer just a buzzword—it is a fundamental requirement for financial institutions worldwide. The concept operates on a simple premise: **"Never trust, always verify."**
 
@@ -402,7 +402,7 @@ Transitioning to a zero-trust model requires careful planning and execution, but
     date: 'May 8, 2026',
     readTime: '8 min read',
     excerpt: 'Deep dive into achieving perfect performance scores with modern rendering patterns in Next.js.',
-    image: '/Optimizing Next.js Applications for Core Web Vitals.png',
+    image: '/optimizing-nextjs.webp',
     content: `
 Performance is critical to user experience and SEO. Google's Core Web Vitals provide quantifiable metrics to measure how users experience the speed, responsiveness, and visual stability of a page.
 

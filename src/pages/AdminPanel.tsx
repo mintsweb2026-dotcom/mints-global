@@ -372,7 +372,7 @@ export function AdminPanel() {
 
   useEffect(() => {
     if (user) {
-      if (user.email === "binuarjunanand@gmail.com" || user.email === "anandbhari123@gmail.com") {
+      if (user.email === "binuarjunanand@gmail.com" || user.email === "anandbhari123@gmail.com" || user.email === "shynim90@gmail.com") {
         const bootstrapAdmin = async () => {
           try {
             const adminRef = doc(db, "admins", user.uid);

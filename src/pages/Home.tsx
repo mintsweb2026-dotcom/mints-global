@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import CountUp from 'react-countup';
 import { ArrowRight, ShieldCheck, Zap, LineChart, Globe2, Rocket, Headphones, ChevronLeft, ChevronRight, Calendar, User } from 'lucide-react';
@@ -9,8 +9,8 @@ import { SEO_DATA } from '../lib/seo-data';
 import { JsonLd } from '../components/JsonLd';
 import { AnimatedChars } from '../components/AnimatedChars';
 import { Magnetic } from '../components/Magnetic';
-import { projects } from '../data/projects';
-import { posts } from '../data/posts';
+import { useWorks } from '../hooks/useWorks';
+import { getPosts, BlogPost } from '../data/posts';
 
 const websiteSchema = {
   "@context": "https://schema.org",
@@ -119,8 +119,14 @@ export function Home() {
     setActiveTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
-  const recentProjects = projects.slice(0, 4);
-  const recentPosts = posts.slice(0, 3);
+  const { works } = useWorks();
+  const featuredWorks = works.filter(w => w.featured);
+  const recentProjects = featuredWorks.length > 0 ? featuredWorks : works.slice(0, 4);
+  const [recentPosts, setRecentPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    getPosts().then(fetched => setRecentPosts(fetched.slice(0, 3)));
+  }, []);
 
   return (
     <div className="flex flex-col w-full overflow-x-hidden pt-[116px]">
@@ -350,8 +356,14 @@ export function Home() {
                 <div className="flex flex-col items-start px-2">
                   <span className="text-olive-500 text-xs font-bold uppercase tracking-widest mb-3 border border-olive-500/30 px-3 py-1 rounded-full">{project.category.name}</span>
                   <Link to={`/work/${project._id}`} className="inline-block">
-                    <h3 className="font-display font-black text-3xl md:text-4xl hover:text-olive-500 transition-colors uppercase tracking-tight">{project.title}</h3>
+                    <h3 className="font-display font-black text-3xl md:text-4xl hover:text-olive-500 transition-colors uppercase tracking-tight mb-4">{project.title}</h3>
                   </Link>
+                  {(project.duration || project.kpi) && (
+                    <div className="flex flex-wrap items-center gap-3 w-full text-xs font-medium uppercase tracking-wider text-white">
+                      {project.duration && <span className="bg-white/5 px-2 py-1 rounded-md border border-white/10">⏱ {project.duration}</span>}
+                      {project.kpi && <span className="text-olive-400 bg-olive-500/10 px-2 py-1 rounded-md border border-olive-500/20">🚀 {project.kpi}</span>}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -615,7 +627,7 @@ export function Home() {
                  <Link to={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden">
                    <img 
                      src={post.image} 
-                     alt={post.title} 
+                     alt={post.imageAlt || post.title} 
                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
                      loading="lazy"
                    />

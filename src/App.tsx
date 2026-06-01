@@ -4,6 +4,7 @@
  */
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './lib/AuthContext';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
 import { Contact } from './pages/Contact';
@@ -44,56 +45,60 @@ import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Terms } from './pages/Terms';
 import { Impressum } from './pages/Impressum';
 import { ProjectDetail } from './pages/ProjectDetail';
+import { AdminPanel } from './pages/AdminPanel';
 import { NotFound } from './pages/NotFound';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="services" element={<Services />} />
-          <Route path="digital-marketing" element={<DigitalMarketing />} />
-          <Route path="digital-marketing/seo" element={<SeoOptimization />} />
-          <Route path="digital-marketing/smm" element={<SocialMediaMarketing />} />
-          <Route path="digital-marketing/performance-marketing" element={<PerformanceMarketing />} />
-          <Route path="digital-marketing/branding" element={<BrandStrategy />} />
-          <Route path="digital-marketing/video-production" element={<VideoProduction />} />
-          <Route path="digital-marketing/photography-graphics" element={<PhotographyGraphics />} />
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="services" element={<Services />} />
+            <Route path="digital-marketing" element={<DigitalMarketing />} />
+            <Route path="digital-marketing/seo" element={<SeoOptimization />} />
+            <Route path="digital-marketing/smm" element={<SocialMediaMarketing />} />
+            <Route path="digital-marketing/performance-marketing" element={<PerformanceMarketing />} />
+            <Route path="digital-marketing/branding" element={<BrandStrategy />} />
+            <Route path="digital-marketing/video-production" element={<VideoProduction />} />
+            <Route path="digital-marketing/photography-graphics" element={<PhotographyGraphics />} />
 
-          <Route path="software-development" element={<SoftwareDevelopment />} />
-          <Route path="software-development/web-apps" element={<WebApps />} />
-          <Route path="software-development/mobile-apps" element={<MobileApps />} />
-          <Route path="software-development/website-development" element={<WebsiteDevelopment />} />
-          <Route path="software-development/erp-solutions" element={<ERPSolutions />} />
-          <Route path="software-development/crm-development" element={<CRMDevelopment />} />
-          <Route path="software-development/ecommerce" element={<Ecommerce />} />
+            <Route path="software-development" element={<SoftwareDevelopment />} />
+            <Route path="software-development/web-apps" element={<WebApps />} />
+            <Route path="software-development/mobile-apps" element={<MobileApps />} />
+            <Route path="software-development/website-development" element={<WebsiteDevelopment />} />
+            <Route path="software-development/erp-solutions" element={<ERPSolutions />} />
+            <Route path="software-development/crm-development" element={<CRMDevelopment />} />
+            <Route path="software-development/ecommerce" element={<Ecommerce />} />
 
-          <Route path="cyber-security" element={<CyberSecurity />} />
-          <Route path="cyber-security/offensive-security" element={<OffensiveSecurity />} />
-          <Route path="cyber-security/incident-response" element={<IncidentResponse />} />
-          <Route path="cyber-security/managed-advisory" element={<ManagedAdvisory />} />
-          <Route path="cyber-security/compliance-grc" element={<ComplianceGRC />} />
-          <Route path="cyber-security/cloud-security" element={<CloudSecurity />} />
-          <Route path="cyber-security/ot-iot-security" element={<OTIoTSecurity />} />
+            <Route path="cyber-security" element={<CyberSecurity />} />
+            <Route path="cyber-security/offensive-security" element={<OffensiveSecurity />} />
+            <Route path="cyber-security/incident-response" element={<IncidentResponse />} />
+            <Route path="cyber-security/managed-advisory" element={<ManagedAdvisory />} />
+            <Route path="cyber-security/compliance-grc" element={<ComplianceGRC />} />
+            <Route path="cyber-security/cloud-security" element={<CloudSecurity />} />
+            <Route path="cyber-security/ot-iot-security" element={<OTIoTSecurity />} />
 
-          <Route path="europe-services/software-development" element={<SoftwareDevelopmentEurope />} />
-          <Route path="europe-services/digital-marketing" element={<DigitalMarketingEurope />} />
-          <Route path="europe-services/cyber-security" element={<CyberSecurityEurope />} />
+            <Route path="europe-services/software-development" element={<SoftwareDevelopmentEurope />} />
+            <Route path="europe-services/digital-marketing" element={<DigitalMarketingEurope />} />
+            <Route path="europe-services/cyber-security" element={<CyberSecurityEurope />} />
 
-          <Route path="privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="terms-of-service" element={<Terms />} />
-          <Route path="impressum" element={<Impressum />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="terms-of-service" element={<Terms />} />
+            <Route path="impressum" element={<Impressum />} />
 
-          <Route path="work" element={<Work />} />
-          <Route path="work/:id" element={<ProjectDetail />} />
-          <Route path="blog" element={<Blog />} />
-          <Route path="blog/:slug" element={<BlogPost />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+            <Route path="work" element={<Work />} />
+            <Route path="work/:id" element={<ProjectDetail />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="blog/:slug" element={<BlogPost />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="admin" element={<AdminPanel />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }

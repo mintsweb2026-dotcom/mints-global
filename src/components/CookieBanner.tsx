@@ -2,15 +2,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Shield, ChevronDown, ChevronUp } from 'lucide-react';
 
-const updateGtagConsent = (analytics: boolean, marketing: boolean) => {
-  if (typeof (window as any).gtag === 'function') {
-    (window as any).gtag('consent', 'update', {
-      'analytics_storage': analytics ? 'granted' : 'denied',
-      'ad_storage': marketing ? 'granted' : 'denied'
-    });
-  }
-};
-
 export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
@@ -27,31 +18,21 @@ export function CookieBanner() {
       // Show banner after a slight delay
       const timer = setTimeout(() => setIsVisible(true), 1500);
       return () => clearTimeout(timer);
-    } else {
-      try {
-        const parsed = JSON.parse(consent);
-        updateGtagConsent(!!parsed.analytics, !!parsed.marketing);
-      } catch (e) {
-        // ignore
-      }
     }
   }, []);
 
   const acceptAll = () => {
     localStorage.setItem('cookie-consent', JSON.stringify({ necessary: true, analytics: true, marketing: true, chat: true }));
-    updateGtagConsent(true, true);
     setIsVisible(false);
   };
 
   const acceptNecessary = () => {
     localStorage.setItem('cookie-consent', JSON.stringify({ necessary: true, analytics: false, marketing: false, chat: false }));
-    updateGtagConsent(false, false);
     setIsVisible(false);
   };
 
   const savePreferences = () => {
     localStorage.setItem('cookie-consent', JSON.stringify({ necessary: true, ...preferences }));
-    updateGtagConsent(preferences.analytics, preferences.marketing);
     setIsVisible(false);
   };
 

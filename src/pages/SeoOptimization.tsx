@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { JsonLd } from '../components/JsonLd';
-import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
+import { buildServiceSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
 import { SEO } from '../components/SEO';
 
 export function SeoOptimization() {

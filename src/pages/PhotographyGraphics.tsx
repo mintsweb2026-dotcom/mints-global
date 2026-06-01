@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { JsonLd } from '../components/JsonLd';
 import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
 import { SEO } from '../components/SEO';
+import { ServicesAccordion } from '../components/ServicesAccordion';
 
 const faqs = [
   {
@@ -38,8 +39,6 @@ export function PhotographyGraphics() {
     { name: "Digital Marketing", url: "/digital-marketing" },
     { name: "Photography & Graphics", url: "/digital-marketing/photography-graphics" }
   ]);
-
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
@@ -125,25 +124,7 @@ export function PhotographyGraphics() {
             <p className="text-brand-white-70 text-lg">Everything you need to know about our creative services.</p>
           </div>
           <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div 
-                key={index} 
-                className="bg-brand-black-light border border-white/10 rounded-2xl overflow-hidden"
-              >
-                <button 
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none"
-                >
-                  <span className="font-bold text-lg text-white">{faq.q}</span>
-                  <ChevronDown className={"text-olive-500 transition-transform duration-300 " + (openFaq === index ? 'rotate-180' : '')} size={24} />
-                </button>
-                <div 
-                  className={"px-8 pb-6 text-brand-white-70 leading-relaxed transition-all duration-300 " + (openFaq === index ? 'block' : 'hidden')}
-                >
-                  {faq.a}
-                </div>
-              </div>
-            ))}
+            <ServicesAccordion items={faqs.map(f => ({ title: f.q, content: f.a }))} />
           </div>
         </div>
       </section>
@@ -176,6 +157,7 @@ export function PhotographyGraphics() {
       </section>
       
       <JsonLd data={serviceSchema} />
+      <JsonLd data={buildFaqSchema(faqs)} />
       
       <JsonLd data={breadcrumbSchema} />
     </div>

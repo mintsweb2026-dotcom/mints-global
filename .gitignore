@@ -21,3 +21,6 @@ scripts/create_pages.sh
 scripts/update_pages.js
 scripts/fetch.ts
 scripts/fix_16_pages.js
+
+# Firebase configurations
+firebase-applet-config.json

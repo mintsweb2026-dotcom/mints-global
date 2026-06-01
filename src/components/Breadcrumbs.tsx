@@ -1,8 +1,9 @@
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight, Home } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
-import { posts } from '../data/posts';
+import { getPostBySlug } from '../data/posts';
 
 // Using raw script tag for structured data to avoid react-helmet issues with multiple instances
 const JsonLd = ({ data }: { data: object }) => {
@@ -17,22 +18,34 @@ const JsonLd = ({ data }: { data: object }) => {
 export function Breadcrumbs() {
   const location = useLocation();
   const { t } = useTranslation();
+  const [postTitle, setPostTitle] = useState<string | null>(null);
+
+  const paths = location.pathname.split('/').filter((p) => p !== '');
+
+  useEffect(() => {
+    const fetchTitle = async () => {
+      const blogIdx = paths.indexOf('blog');
+      if (blogIdx !== -1 && blogIdx + 1 < paths.length) {
+        const slug = paths[blogIdx + 1];
+        const post = await getPostBySlug(slug);
+        if (post) {
+          setPostTitle(post.title);
+        }
+      }
+    };
+    fetchTitle();
+  }, [location.pathname]);
 
   // Don't show breadcrumbs on home page
   if (location.pathname === '/') {
     return null;
   }
 
-  const paths = location.pathname.split('/').filter((p) => p !== '');
-
   // Format path segments for display
   const formatPath = (path: string, index: number, allPaths: string[]) => {
     // If we're inside a blog post, use the actual post title instead of slug
-    if (index > 0 && allPaths[index - 1] === 'blog') {
-      const post = posts.find((p) => p.slug === path);
-      if (post) {
-        return post.title;
-      }
+    if (index > 0 && allPaths[index - 1] === 'blog' && postTitle) {
+      return postTitle;
     }
 
     // Check if there's a translation for this specific path
@@ -74,13 +87,13 @@ export function Breadcrumbs() {
         <motion.nav 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center space-x-3 text-base text-brand-white-70 overflow-x-auto whitespace-nowrap pb-1 no-scrollbar" 
+          className="flex items-center space-x-3 text-base text-brand-white-70 pb-1 breadcrumb-nav w-full min-w-0" 
           aria-label="Breadcrumb"
         >
-          <ol className="flex items-center space-x-3">
-            <li>
-              <Link to="/" className="flex items-center hover:text-olive-500 transition-colors">
-                <Home size={18} className="mr-2" />
+          <ol className="flex items-center space-x-2 sm:space-x-3 w-full min-w-0">
+            <li className="flex-shrink-0">
+              <Link to="/" className="flex items-center hover:text-white transition-colors">
+                <Home size={18} className="mr-1 sm:mr-2" />
                 <span className="sr-only">Home</span>
               </Link>
             </li>
@@ -91,14 +104,14 @@ export function Breadcrumbs() {
               const displayName = formatPath(path, index, paths);
               
               return (
-                <li key={path} className="flex items-center space-x-3">
-                  <ChevronRight size={18} className="text-white/20" />
+                <li key={path} className={`flex items-center space-x-2 sm:space-x-3 ${isLast ? 'min-w-0 flex-1' : 'flex-shrink-0'}`}>
+                  <ChevronRight size={18} className="text-white/20 flex-shrink-0" />
                   {isLast ? (
-                    <span className="text-olive-500 font-medium truncate max-w-xs md:max-w-md lg:max-w-lg text-lg" aria-current="page" title={displayName}>
+                    <span className="text-olive-500 font-bold hover:text-olive-400 transition-colors truncate block text-lg" aria-current="page" title={displayName}>
                       {displayName}
                     </span>
                   ) : (
-                    <Link to={routeTo} className="hover:text-olive-500 transition-colors font-medium">
+                    <Link to={routeTo} className="hover:text-white transition-colors font-medium">
                       {displayName}
                     </Link>
                   )}

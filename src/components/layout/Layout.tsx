@@ -12,6 +12,7 @@ import { JsonLd } from '../JsonLd';
 import TawktoChat from '../TawktoChat';
 import { Preloader } from '../Preloader';
 import { SmoothScroll } from '../SmoothScroll';
+import { NewsletterForm } from '../NewsletterForm';
 
 function MobileAccordion({ id, title, links, closeMenu, isOpen, onToggle }: { id: string, title: string, links: {path: string, label: string}[], closeMenu: () => void, isOpen: boolean, onToggle: (id: string | null) => void }) {
   return (
@@ -446,6 +447,9 @@ export function Layout() {
 
       {/* Footer */}
       <footer className="bg-olive-900 border-t border-white/5 pt-16 pb-8 md:pt-24 mt-20">
+         <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-16">
+           <NewsletterForm />
+         </div>
          <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
            
            {/* Column 1: Logo & Intro */}

@@ -1,5 +1,23 @@
 import { motion } from 'motion/react';
 import { SEO } from '../components/SEO';
+import { JsonLd } from '../components/JsonLd';
+import { buildFaqSchema } from '../lib/schema-helpers';
+import { ServicesAccordion } from '../components/ServicesAccordion';
+
+const faqs = [
+  {
+    "q": "What happens if we cancel a project midway?",
+    "a": "Project cancellation terms are explicitly defined in your specific Master Services Agreement (MSA). Generally, you are liable for all billable hours and infrastructure costs incurred up to the exact point of written cancellation."
+  },
+  {
+    "q": "Are NDAs required before discussions?",
+    "a": "We highly encourage mutual Non-Disclosure Agreements. We are happy to sign yours, or we can provide our standard Mutual NDA before any sensitive technical discussions begin."
+  },
+  {
+    "q": "Who handles disputes over delivered code?",
+    "a": "Disputes are handled first through our structured escalation matrix (Project Manager -> Director). We implement rigid User Acceptance Testing (UAT) sign-offs at each milestone to prevent disputes upon final delivery."
+  }
+];
 
 export function Terms() {
   return (
@@ -46,23 +64,13 @@ export function Terms() {
             <h2 className="font-display text-3xl font-black uppercase mb-4 text-white">Legal FAQs</h2>
             <p className="text-brand-white-70 text-lg">Common questions regarding our Terms of Service.</p>
           </div>
-          <div className="space-y-8">
-            
-            <div>
-              <h3 className="font-bold text-xl text-white mb-3">What happens if we cancel a project midway?</h3>
-              <p className="text-brand-white-70 leading-relaxed">Project cancellation terms are explicitly defined in your specific Master Services Agreement (MSA). Generally, you are liable for all billable hours and infrastructure costs incurred up to the exact point of written cancellation.</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-xl text-white mb-3">Are NDAs required before discussions?</h3>
-              <p className="text-brand-white-70 leading-relaxed">We highly encourage mutual Non-Disclosure Agreements. We are happy to sign yours, or we can provide our standard Mutual NDA before any sensitive technical discussions begin.</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-xl text-white mb-3">Who handles disputes over delivered code?</h3>
-              <p className="text-brand-white-70 leading-relaxed">Disputes are handled first through our structured escalation matrix (Project Manager -&gt; Director). We implement rigid User Acceptance Testing (UAT) sign-offs at each milestone to prevent disputes upon final delivery.</p>
-            </div>
+          <div className="space-y-4">
+            <ServicesAccordion items={faqs.map(f => ({ title: f.q, content: f.a }))} />
           </div>
         </div>
       </section>
+      
+      <JsonLd data={buildFaqSchema(faqs)} />
     </div>
   );
 }

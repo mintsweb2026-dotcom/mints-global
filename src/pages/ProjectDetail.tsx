@@ -1,13 +1,19 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
-import { projects } from '../data/projects';
+import { useWorks } from '../hooks/useWorks';
 import { SEO } from '../components/SEO';
 import { JsonLd } from '../components/JsonLd';
 import { getOptimizedUrl, getSrcSet } from './Portfolio';
 
 export function ProjectDetail() {
   const { id } = useParams();
+  const { works: projects, loading } = useWorks();
+  
+  if (loading) {
+    return <div className="w-full min-h-[60vh] flex items-center justify-center pt-32 text-olive-500">Loading...</div>;
+  }
+
   const project = projects.find(p => p._id === id);
 
   if (!project) {

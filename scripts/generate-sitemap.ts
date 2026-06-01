@@ -1,8 +1,17 @@
+import dotenv from 'dotenv';
+// Load environment variables before importing firebase
+dotenv.config({ path: '.env.local' });
+dotenv.config({ path: '.env' });
+
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { posts } from '../src/data/posts';
-import { projects } from '../src/data/projects';
+import { collection, getDocs } from 'firebase/firestore';
+
+// Dynamically import local modules after dotenv has loaded env variables
+const { db } = await import('../src/lib/firebase');
+const { getPosts } = await import('../src/data/posts');
+const { projects: staticProjects } = await import('../src/data/projects');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -44,15 +53,29 @@ const staticRoutes = [
   { url: '/contact', changefreq: 'monthly', priority: 0.8 },
 ];
 
-function generateSitemap() {
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-`;
+async function generateSitemap() {
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+  let dynamicWorks: any[] = [];
+  try {
+    const worksSnapshot = await getDocs(collection(db, 'works'));
+    dynamicWorks = worksSnapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        _id: doc.id,
+        updatedAt: data.updatedAt ? new Date(data.updatedAt.toDate()).toISOString() : new Date().toISOString()
+      };
+    });
+  } catch (err) {
+    console.error('Error fetching dynamic works:', err);
+  }
+
+  const allProjects = [...dynamicWorks, ...staticProjects];
 
   // Determine latest work update
   let workLastMod = '';
-  if (projects && projects.length > 0) {
-    const sortedProjects = [...projects].sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+  if (allProjects && allProjects.length > 0) {
+    const sortedProjects = [...allProjects].sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
     try {
       workLastMod = new Date(sortedProjects[0].updatedAt).toISOString().split('T')[0];
     } catch {}
@@ -74,14 +97,19 @@ function generateSitemap() {
 `;
   });
 
-  // Add dynamic blog posts
+  // Fetch dynamic blog posts
+  const posts = await getPosts();
+
   posts.forEach(post => {
-    // using ISO date if possible
     let lastmod = '';
-    try {
-      lastmod = new Date(post.date).toISOString().split('T')[0];
-    } catch {
-      // ignore
+    if (post.updatedAtIso) {
+      lastmod = post.updatedAtIso.split('T')[0];
+    } else {
+      try {
+        lastmod = new Date(post.date).toISOString().split('T')[0];
+      } catch {
+        lastmod = TODAY;
+      }
     }
     
     xml += `  <url>
@@ -94,7 +122,7 @@ function generateSitemap() {
   });
 
   // Add individual works (even if using anchor links, it signals structured content endpoints)
-  projects.forEach(proj => {
+  allProjects.forEach(proj => {
     let lastmod = '';
     try {
       lastmod = new Date(proj.updatedAt).toISOString().split('T')[0];
@@ -113,7 +141,8 @@ function generateSitemap() {
 
   const outputPath = path.join(__dirname, '../public/sitemap.xml');
   fs.writeFileSync(outputPath, xml, 'utf8');
-  console.log(`✅ Sitemap successfully generated at ${outputPath} with ${staticRoutes.length + posts.length + projects.length} URLs.`);
+  console.log(`✅ Sitemap successfully generated at ${outputPath} with ${staticRoutes.length + posts.length + allProjects.length} URLs.`);
+  process.exit(0);
 }
 
 generateSitemap();

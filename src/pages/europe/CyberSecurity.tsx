@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { SEO } from '../../components/SEO';
+import { ServicesAccordion } from '../../components/ServicesAccordion';
+import { JsonLd } from '../../components/JsonLd';
+import { buildFaqSchema } from '../../lib/schema-helpers';
 
 const faqs = [
   {
@@ -24,7 +27,6 @@ const faqs = [
 ];
 
 export function CyberSecurityEurope() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
@@ -109,25 +111,7 @@ export function CyberSecurityEurope() {
             <p className="text-brand-white-70 text-lg">Everything you need to know about our cyber security services.</p>
           </div>
           <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div 
-                key={index} 
-                className="bg-brand-black-light border border-white/10 rounded-2xl overflow-hidden"
-              >
-                <button 
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none"
-                >
-                  <span className="font-bold text-lg text-white">{faq.q}</span>
-                  <ChevronDown className={"text-olive-500 transition-transform duration-300 " + (openFaq === index ? 'rotate-180' : '')} size={24} />
-                </button>
-                <div 
-                  className={"px-8 pb-6 text-brand-white-70 leading-relaxed transition-all duration-300 " + (openFaq === index ? 'block' : 'hidden')}
-                >
-                  {faq.a}
-                </div>
-              </div>
-            ))}
+            <ServicesAccordion items={faqs.map(f => ({ title: f.q, content: f.a }))} />
           </div>
         </div>
       </section>
@@ -146,6 +130,8 @@ export function CyberSecurityEurope() {
             </Link>
          </div>
       </section>
+      <JsonLd data={buildFaqSchema(faqs)} />
+
     </div>
   );
 }

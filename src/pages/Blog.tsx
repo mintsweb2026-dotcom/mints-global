@@ -8,6 +8,8 @@ import { SEO_DATA } from '../lib/seo-data';
 
 export function Blog() {
   const [query, setQuery] = useState('');
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [availableTags, setAvailableTags] = useState<string[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,9 +23,15 @@ export function Blog() {
     setIsLoading(true);
     getPosts().then((data) => {
       if (isActive) {
-        const filtered = data.filter(p =>
-          query === '' || p.title.toLowerCase().includes(query.toLowerCase()) || p.category.toLowerCase().includes(query.toLowerCase())
-        );
+        const tagsSet = new Set<string>();
+        data.forEach(p => p.tags?.forEach(t => tagsSet.add(t)));
+        setAvailableTags(Array.from(tagsSet).sort());
+
+        const filtered = data.filter(p => {
+          const matchesQuery = query === '' || p.title.toLowerCase().includes(query.toLowerCase()) || p.category.toLowerCase().includes(query.toLowerCase());
+          const matchesTag = !selectedTag || (p.tags && p.tags.includes(selectedTag));
+          return matchesQuery && matchesTag;
+        });
         setFilteredPosts(filtered);
         setCurrentPage(1);
         setIsLoading(false);
@@ -33,7 +41,7 @@ export function Blog() {
     return () => {
       isActive = false;
     };
-  }, [query]);
+  }, [query, selectedTag]);
 
 
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
@@ -71,6 +79,34 @@ export function Blog() {
           </div>
         </div>
 
+        {!isLoading && availableTags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-12">
+            <button
+              onClick={() => setSelectedTag(null)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors border ${
+                selectedTag === null
+                  ? 'bg-olive-500 text-black border-olive-500'
+                  : 'bg-white/5 text-brand-white-70 border-white/10 hover:bg-white/10 hover:text-white'
+              }`}
+            >
+              All
+            </button>
+            {availableTags.map(tag => (
+              <button
+                key={tag}
+                onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors border ${
+                  tag === selectedTag
+                    ? 'bg-olive-500 text-black border-olive-500'
+                    : 'bg-white/5 text-brand-white-70 border-white/10 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        )}
+
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3, 4, 5, 6].map((idx) => (
@@ -103,7 +139,7 @@ export function Blog() {
                  <Link to={`/blog/${post.slug}`} key={post.id} className="group cursor-pointer flex flex-col pt-8 border-t border-white/10">
                    {post.image && (
                      <div className="w-full h-48 sm:h-64 mb-6 overflow-hidden rounded-xl bg-olive-900 border border-white/10 relative">
-                       <img src={post.image} loading="lazy" alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                       <img src={post.image} loading="lazy" alt={post.imageAlt || post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                      </div>
                    )}
                    <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-wider text-brand-white-70 mb-4">
@@ -114,6 +150,20 @@ export function Blog() {
                    <h3 className="text-2xl font-display font-bold mb-8 group-hover:text-olive-500 transition-colors flex-1">
                      {post.title}
                    </h3>
+                   {post.tags && post.tags.length > 0 && (
+                     <div className="flex flex-wrap gap-1.5 mb-6 mt-auto">
+                       {post.tags.slice(0, 3).map(tag => (
+                         <span key={tag} className="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded bg-white/5 text-brand-white-50">
+                           {tag}
+                         </span>
+                       ))}
+                       {post.tags.length > 3 && (
+                         <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded bg-white/5 text-brand-white-50">
+                           +{post.tags.length - 3}
+                         </span>
+                       )}
+                     </div>
+                   )}
                    <div className="flex items-center justify-between text-sm mt-auto pb-4">
                      <span className="text-brand-white-70">{post.date}</span>
                      <ArrowRight className="text-olive-500 group-hover:translate-x-2 transition-transform" size={20} />

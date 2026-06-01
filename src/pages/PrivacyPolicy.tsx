@@ -1,5 +1,23 @@
 import { motion } from 'motion/react';
 import { SEO } from '../components/SEO';
+import { JsonLd } from '../components/JsonLd';
+import { buildFaqSchema } from '../lib/schema-helpers';
+import { ServicesAccordion } from '../components/ServicesAccordion';
+
+const faqs = [
+  {
+    "q": "Is Mints Global GDPR compliant?",
+    "a": "Yes. We strictly adhere to the General Data Protection Regulation (GDPR) standards for all European citizens and apply those robust privacy standards universally across our company operations."
+  },
+  {
+    "q": "Do you sell my data to third parties?",
+    "a": "Absolutely not. Mints Global does not and will never sell your personal data to marketing agencies or third-party data brokers."
+  },
+  {
+    "q": "Where is my data stored?",
+    "a": "We utilize Tier-1 cloud providers (AWS, Azure, GCP). Data residency can be specifically mapped within the EU or UAE data centers depending on your contractual requirements."
+  }
+];
 
 export function PrivacyPolicy() {
   return (
@@ -61,23 +79,13 @@ export function PrivacyPolicy() {
             <h2 className="font-display text-3xl font-black uppercase mb-4 text-white">Legal FAQs</h2>
             <p className="text-brand-white-70 text-lg">Common questions regarding our Privacy Policy.</p>
           </div>
-          <div className="space-y-8">
-            
-            <div>
-              <h3 className="font-bold text-xl text-white mb-3">Is Mints Global GDPR compliant?</h3>
-              <p className="text-brand-white-70 leading-relaxed">Yes. We strictly adhere to the General Data Protection Regulation (GDPR) standards for all European citizens and apply those robust privacy standards universally across our company operations.</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-xl text-white mb-3">Do you sell my data to third parties?</h3>
-              <p className="text-brand-white-70 leading-relaxed">Absolutely not. Mints Global does not and will never sell your personal data to marketing agencies or third-party data brokers.</p>
-            </div>
-            <div>
-              <h3 className="font-bold text-xl text-white mb-3">Where is my data stored?</h3>
-              <p className="text-brand-white-70 leading-relaxed">We utilize Tier-1 cloud providers (AWS, Azure, GCP). Data residency can be specifically mapped within the EU or UAE data centers depending on your contractual requirements.</p>
-            </div>
+          <div className="space-y-4">
+            <ServicesAccordion items={faqs.map(f => ({ title: f.q, content: f.a }))} />
           </div>
         </div>
       </section>
+      
+      <JsonLd data={buildFaqSchema(faqs)} />
     </div>
   );
 }

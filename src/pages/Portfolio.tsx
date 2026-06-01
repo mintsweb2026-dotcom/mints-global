@@ -6,7 +6,8 @@ import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/SEO';
 import { JsonLd } from '../components/JsonLd';
 import { SEO_DATA } from '../lib/seo-data';
-import { projects, Project } from '../data/projects';
+import { projects as staticProjects, Project } from '../data/projects';
+import { useWorks } from '../hooks/useWorks';
 
 const portfolioSchema = {
   "@context": "https://schema.org",
@@ -14,7 +15,7 @@ const portfolioSchema = {
   "name": "Mints Global Portfolio",
   "url": "https://mintsglobal.ae/work",
   "description": "Selected portfolio of digital marketing, software development, and cyber security projects.",
-  "itemListElement": projects.slice(0, 10).map((p, i) => ({
+  "itemListElement": staticProjects.slice(0, 10).map((p, i) => ({
     "@type": "ListItem",
     "position": i + 1,
     "url": `https://mintsglobal.ae/work/${p._id}`,
@@ -120,6 +121,7 @@ function Lightbox({ project, onClose }: { project: Project; onClose: () => void 
 }
 
 export function Work() {
+  const { works: projects, loading } = useWorks();
   const [filter, setFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -243,8 +245,14 @@ export function Work() {
                  <div className="flex flex-col items-start px-2">
                    <span className="text-olive-500 text-xs font-bold uppercase tracking-widest mb-3 border border-olive-500/30 px-3 py-1 rounded-full">{proj.category.name}</span>
                    <button onClick={() => setSelectedProject(proj)} className="text-left outline-none focus-visible:ring-2 focus-visible:ring-olive-500 rounded">
-                     <h2 className="font-display font-black text-2xl lg:text-3xl hover:text-olive-500 transition-colors uppercase tracking-tight text-white mb-4">{proj.title}</h2>
+                     <h2 className="font-display font-black text-[clamp(1.25rem,4vw,1.875rem)] hover:text-olive-500 transition-colors uppercase tracking-tight text-white mb-4 break-words hyphens-auto">{proj.title}</h2>
                    </button>
+                   {(proj.duration || proj.kpi) && (
+                     <div className="flex flex-wrap items-center gap-3 mb-4 w-full text-xs font-medium uppercase tracking-wider text-white">
+                       {proj.duration && <span className="bg-white/5 px-2 py-1 rounded-md border border-white/10">⏱ {proj.duration}</span>}
+                       {proj.kpi && <span className="text-olive-400 bg-olive-500/10 px-2 py-1 rounded-md border border-olive-500/20">🚀 {proj.kpi}</span>}
+                     </div>
+                   )}
                  </div>
 
                  {proj.mediaUrls && proj.mediaUrls.length > 0 && (

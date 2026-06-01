@@ -13,6 +13,10 @@ export interface Project {
   mediaUrls: string[];
   category: Category;
   tags: string[];
+  kpi?: string;
+  duration?: string;
+  featured?: boolean;
+  titleImageAlt?: string;
   createdAt: string;
   updatedAt: string;
   __v: number;

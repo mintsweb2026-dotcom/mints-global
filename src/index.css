@@ -25,6 +25,9 @@
 }
 
 @layer base {
+  html, body {
+    @apply overflow-x-hidden max-w-full;
+  }
   body {
     @apply text-brand-white font-body antialiased;
     background-color: #0d1a0f;

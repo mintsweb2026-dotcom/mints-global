@@ -1,0 +1,91 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() { return request.auth != null; }
+    function isAdmin() { 
+      return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid)); 
+    }
+    
+    function existing() { return resource.data; }
+    function incoming() { return request.resource.data; }
+    function isValidId(id) { return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); }
+
+    // BlogPost validation
+    function isValidBlogPost(data) {
+      let requiredKeys = ['title', 'content', 'authorId', 'createdAt', 'updatedAt'];
+      let optionalKeys = ['excerpt', 'image', 'category', 'seoTitle', 'seoDescription', 'slug', 'views', 'tags'];
+      return data.keys().hasAll(requiredKeys) &&
+             data.keys().hasOnly(requiredKeys.concat(optionalKeys)) &&
+             data.title is string && data.title.size() > 0 && data.title.size() <= 200 &&
+             data.content is string && data.content.size() > 0 && data.content.size() <= 100000 &&
+             data.authorId is string && data.authorId == request.auth.uid &&
+             data.createdAt is timestamp &&
+             data.updatedAt is timestamp &&
+             (data.keys().hasAll(['excerpt']) ? (data.excerpt is string && data.excerpt.size() <= 1000) : true) &&
+             (data.keys().hasAll(['image']) ? (data.image is string || data.image == null) : true) &&
+             (data.keys().hasAll(['category']) ? (data.category is string && data.category.size() <= 50) : true) &&
+             (data.keys().hasAll(['seoTitle']) ? (data.seoTitle is string || data.seoTitle == null) : true) &&
+              (data.keys().hasAll(['seoDescription']) ? (data.seoDescription is string || data.seoDescription == null) : true) &&
+             (data.keys().hasAll(['slug']) ? (data.slug is string && data.slug.size() <= 200) : true) &&
+             (data.keys().hasAll(['views']) ? (data.views is number) : true) &&
+             (data.keys().hasAll(['tags']) ? (data.tags is list) : true);
+    }
+
+    match /drafts/{userId} {
+      allow read, write: if isAdmin() && request.auth.uid == userId;
+    }
+
+    match /subscribers/{subscriberId} {
+      allow read, update, delete: if isAdmin();
+      allow create: if incoming().keys().hasOnly(['email', 'subscribedAt']) &&
+                    incoming().email is string && incoming().email.matches('^[^@]+@[^@]+\\.[^@]+$') &&
+                    incoming().subscribedAt == request.time;
+    }
+
+    match /admins/{userId} {
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
+      allow create: if isSignedIn() && request.auth.uid == userId && request.auth.token.email == 'binuarjunanand@gmail.com';
+      allow write: if false;
+    }
+
+    match /posts/{postId} {
+      // General public can read blogs
+      allow read: if true;
+      
+      allow create: if isAdmin() && 
+                    isValidId(postId) && 
+                    isValidBlogPost(incoming()) && 
+                    incoming().createdAt == request.time && 
+                    incoming().updatedAt == request.time;
+                    
+      allow update: if isAdmin() && 
+                    isValidId(postId) && 
+                    isValidBlogPost(incoming()) && 
+                    incoming().updatedAt == request.time &&
+                    incoming().createdAt == existing().createdAt &&
+                    incoming().authorId == existing().authorId
+                    || (
+                      isValidId(postId) &&
+                      incoming().diff(existing()).affectedKeys().hasOnly(['views']) &&
+                      incoming().views == existing().views + 1
+                    );
+                    
+      allow delete: if isAdmin() && isValidId(postId);
+    }
+    match /works/{workId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /work_categories/{categoryId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /activity_logs/{logId} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

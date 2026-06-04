@@ -82,6 +82,45 @@ const resources = {
         title2: "NEW PROJECT.",
         desc: "Ready to transform your digital presence? We're just a message away.",
         btn: "Work With Us"
+      },
+      about: {
+        title1: "ABOUT ",
+        title2: "US.",
+        desc1: "Mints Global is a premium digital agency headquartered in Dubai, bridging the gap between innovative marketing, scalable software engineering, and defensive cyber security.",
+        desc2: "We partner with global brands across the MENA region and Europe to build digital ecosystems that drive growth and resilience in a constantly evolving technological landscape.",
+        pillarsTitle: "Our Core Pillars",
+        pillars: {
+          p1: { title: "Engineering Excellence", desc: "Writing robust, scalable, and maintainable code." },
+          p2: { title: "Data-Driven Marketing", desc: "Strategies rooted in analytics and measurable outcomes." },
+          p3: { title: "Zero-Trust Security", desc: "Integrating security into every layer of our solutions." },
+          p4: { title: "Global-Local Intelligence", desc: "Cross-border insights combined with strict regional compliance." }
+        },
+        stats: {
+          s1: "Clients Worldwide",
+          s2: "Countries Reached",
+          s3: "Industry Awards",
+          s4: "Client Retention"
+        },
+        team: {
+          badge: "Leadership",
+          title1: "Meet the ",
+          title2: "Experts."
+        },
+        presence: {
+          badge: "Our Presence",
+          title1: "Dubai to ",
+          title2: "Europe.",
+          r1: { title: "🇦🇪 UAE & GCC", desc: "Headquartered in Dubai, we lead Arabic-first strategies, software scaling, and NESA-compliant enterprise solutions." },
+          r2: { title: "🇩🇪 Germany / DACH", desc: "Delivering precision engineering, GDPR/DSGVO compliance, and hyper-targeted B2B digital acquisition across Europe." },
+          r3: { title: "🇬🇧 United Kingdom", desc: "Powering sophisticated English campaigns, enterprise SaaS infrastructure, and highly competitive organic search dominance." }
+        },
+        roles: {
+          ceo: "Chief Executive Officer",
+          cco: "Chief Client Officer",
+          cd: "Creative Director",
+          cto: "Chief Technical Officer",
+          advisor: "Advisor"
+        }
       }
     }
   },
@@ -164,6 +203,45 @@ const resources = {
         title2: "مشروعاً جديداً.",
         desc: "هل أنت مستعد لتحويل تواجدك الرقمي؟ نحن على بعد رسالة واحدة.",
         btn: "اعمل معنا"
+      },
+      about: {
+        title1: "من ",
+        title2: "نحن.",
+        desc1: "مينتس جلوبال هي وكالة رقمية متميزة مقرها دبي، تسد الفجوة بين التسويق المبتكر وهندسة البرمجيات القابلة للتطوير والأمن السيبراني الدفاعي.",
+        desc2: "نحن نشارك العلامات التجارية العالمية في جميع أنحاء منطقة الشرق الأوسط وشمال إفريقيا وأوروبا لبناء أنظمة رقمية تدفع النمو والمرونة في مشهد تكنولوجي دائم التطور.",
+        pillarsTitle: "ركائزنا الأساسية",
+        pillars: {
+          p1: { title: "التميز الهندسي", desc: "كتابة كود قوي وقابل للتطوير والصيانة." },
+          p2: { title: "التسويق القائم على البيانات", desc: "استراتيجيات متجذرة في التحليلات والنتائج القابلة للقياس." },
+          p3: { title: "أمان انعدام الثقة", desc: "دمج الأمان في كل طبقة من حلولنا." },
+          p4: { title: "ذكاء عالمي ومحلي", desc: "رؤى عابرة للحدود مدمجة مع الامتثال الإقليمي الصارم." }
+        },
+        stats: {
+          s1: "عملاء حول العالم",
+          s2: "بلدان تم الوصول إليها",
+          s3: "جوائز الصناعة",
+          s4: "الاحتفاظ بالعملاء"
+        },
+        team: {
+          badge: "القيادة",
+          title1: "التقِ بالـ",
+          title2: "ـخبراء."
+        },
+        presence: {
+          badge: "تواجدنا",
+          title1: "من دبي إلى ",
+          title2: "أوروبا.",
+          r1: { title: "🇦🇪 الإمارات والخليج", desc: "يقع مقرنا الرئيسي في دبي، ونقود الاستراتيجيات المخصصة للعالم العربي، وتوسيع البرمجيات، والحلول المتوافقة مع معايير NESA." },
+          r2: { title: "🇩🇪 ألمانيا / أوروبا", desc: "تقديم هندسة دقيقة، والامتثال للائحة العامة لحماية البيانات (GDPR)، واكتساب العملاء الرقميين للمؤسسات في جميع أنحاء أوروبا." },
+          r3: { title: "🇬🇧 المملكة المتحدة", desc: "دعم الحملات الإنجليزية المعقدة، والبنية التحتية لبرمجيات SaaS للمؤسسات، والسيادة على محركات البحث العضوية." }
+        },
+        roles: {
+          ceo: "الرئيس التنفيذي",
+          cco: "رئيس شؤون العملاء",
+          cd: "المدير الإبداعي",
+          cto: "الرئيس التنفيذي للتكنولوجيا",
+          advisor: "مستشار"
+        }
       }
     }
   },
@@ -246,6 +324,45 @@ const resources = {
         title2: "NEUES PROJEKT.",
         desc: "Bereit, Ihre digitale Präsenz zu transformieren? Wir sind nur eine Nachricht entfernt.",
         btn: "Arbeite mit uns"
+      },
+      about: {
+        title1: "ÜBER ",
+        title2: "UNS.",
+        desc1: "Mints Global ist eine Premium-Digitalagentur mit Hauptsitz in Dubai, die die Lücke zwischen innovativem Marketing, skalierbarer Softwareentwicklung und defensiver Cybersicherheit schließt.",
+        desc2: "Wir arbeiten mit globalen Marken in der MENA-Region und Europa zusammen, um digitale Ökosysteme aufzubauen, die Wachstum und Widerstandsfähigkeit in einer sich ständig weiterentwickelnden technologischen Landschaft fördern.",
+        pillarsTitle: "Unsere Grundpfeiler",
+        pillars: {
+          p1: { title: "Hervorragende Entwicklung", desc: "Schreiben von robustem, skalierbarem und wartbarem Code." },
+          p2: { title: "Datengesteuertes Marketing", desc: "Strategien, die auf Analysen und messbaren Ergebnissen basieren." },
+          p3: { title: "Zero-Trust-Sicherheit", desc: "Integration von Sicherheit in jede Ebene unserer Lösungen." },
+          p4: { title: "Global-Lokale Intelligenz", desc: "Grenzüberschreitende Einblicke kombiniert mit strenger regionaler Compliance." }
+        },
+        stats: {
+          s1: "Kunden Weltweit",
+          s2: "Erreichte Länder",
+          s3: "Branchenpreise",
+          s4: "Kundenbindung"
+        },
+        team: {
+          badge: "Führungsteam",
+          title1: "Lernen Sie die ",
+          title2: "Experten kennen."
+        },
+        presence: {
+          badge: "Unsere Präsenz",
+          title1: "Von Dubai nach ",
+          title2: "Europa.",
+          r1: { title: "🇦🇪 VAE & GCC", desc: "Mit Hauptsitz in Dubai leiten wir arabisch-zentrierte Strategien, Softwareskalierung und NESA-konforme Unternehmenslösungen." },
+          r2: { title: "🇩🇪 Deutschland / DACH", desc: "Präzisionstechnik, DSGVO-Compliance und zielgerichtetes B2B-Digitalmarketing in ganz Europa." },
+          r3: { title: "🇬🇧 Vereinigtes Königreich", desc: "Anspruchsvolle englische Kampagnen, Enterprise-SaaS-Infrastruktur und extrem wettbewerbsfähige organische Suchmaschinenoptimierung." }
+        },
+        roles: {
+          ceo: "Geschäftsführer",
+          cco: "Leiter Kundenbetreuung",
+          cd: "Kreativdirektor",
+          cto: "Technischer Leiter",
+          advisor: "Berater"
+        }
       }
     }
   }

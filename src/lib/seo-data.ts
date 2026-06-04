@@ -30,7 +30,7 @@ export const SEO_DATA = {
     de: { title: 'Über Mints Global | Premium Digitalagentur Dubai', description: 'Erfahren Sie mehr über Mints Global — eine in Dubai ansässige Digitalagentur, die UAE, GCC, Deutschland und Großbritannien betreut.' },
   },
   contact: {
-    en: { title: 'Contact Mints Global | Start Your Digital Project Today', description: 'Get in touch with Mints Global. Contact us for digital marketing, software development, or cyber security projects. UAE: +971 502943916 | info@mintsglobal.ae' },
+    en: { title: 'Contact Mints Global | Start Your Digital Project Today', description: 'Get in touch with Mints Global. Contact us for digital marketing, software development, or cyber security projects. UAE: +971 502943916 | UK: +44 7899727950 | info@mintsglobal.ae' },
     ar: { title: 'تواصل مع مينتس جلوبال | ابدأ مشروعك الرقمي اليوم', description: 'تواصل مع مينتس جلوبال. اتصل بنا لمشاريع التسويق الرقمي أو تطوير البرمجيات أو الأمن السيبراني.' },
     de: { title: 'Kontakt | Starten Sie Ihr digitales Projekt | Mints Global', description: 'Nehmen Sie Kontakt mit Mints Global auf. Wir beraten Sie zu Digital Marketing, Softwareentwicklung und Cybersicherheit. info@mintsglobal.ae' },
   },

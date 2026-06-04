@@ -34,7 +34,7 @@ const localBusinessSchema = {
   "name": "Mints Global",
   "image": "https://mintsglobal.ae/og-image.jpg",
   "url": "https://mintsglobal.ae",
-  "telephone": "+971502943916",
+  "telephone": ["+971502943916", "+447899727950"],
   "email": "info@mintsglobal.ae",
   "priceRange": "AED 15,000+",
   "address": {
@@ -415,7 +415,7 @@ export function Home() {
                 </div>
                 <div className="flex flex-col">
                    <div className="font-display text-5xl md:text-7xl font-black text-white mb-2">
-                     <CountUp end={15} duration={2.5} enableScrollSpy />
+                     <CountUp end={5} duration={2.5} enableScrollSpy />
                    </div>
                    <div className="font-bold text-sm text-brand-white-70 uppercase tracking-wider">Years Experience</div>
                 </div>

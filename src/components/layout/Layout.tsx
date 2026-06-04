@@ -70,7 +70,7 @@ export function Layout() {
     "description": "Premium digital marketing agency, software development, and cyber security consultant serving Dubai, UAE, GCC, UK, and Germany.",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+971-50-294-3916",
+      "telephone": ["+971-50-294-3916", "+44-7899-727950"],
       "contactType": "customer service",
       "email": "info@mintsglobal.ae",
       "areaServed": ["AE", "GB", "DE"],
@@ -533,9 +533,12 @@ export function Layout() {
                      Bur Dubai, Dubai, United Arab Emirates
                    </Link>
                  </li>
-                 <li className="flex items-center gap-4">
-                   <div className="text-olive-500 bg-olive-500/10 p-2 rounded-full"><Phone size={18} /></div>
-                   <a href="https://wa.me/971502943916" className="hover:text-white transition-colors">+971 502943916</a>
+                 <li className="flex items-start gap-4">
+                   <div className="text-olive-500 bg-olive-500/10 p-2 rounded-full mt-1"><Phone size={18} /></div>
+                   <div className="flex flex-col gap-1">
+                     <a href="https://wa.me/971502943916" className="hover:text-white transition-colors">+971 502943916</a>
+                     <a href="https://wa.me/447899727950" className="hover:text-white transition-colors">+44 7899727950</a>
+                   </div>
                  </li>
                  <li className="flex items-center gap-4">
                    <div className="text-olive-500 bg-olive-500/10 p-2 rounded-full"><Mail size={18} /></div>
@@ -563,7 +566,7 @@ export function Layout() {
         target="_blank" 
         rel="noreferrer"
         className={cn(
-          "fixed bottom-24 md:bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform items-center justify-center",
+          "fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform items-center justify-center",
           mobileMenuOpen ? "hidden" : "flex"
         )}
         aria-label="Chat on WhatsApp"
@@ -580,7 +583,7 @@ export function Layout() {
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             onClick={scrollToTop}
             className={cn(
-              "fixed bottom-[130px] md:bottom-24 right-6 z-50 bg-olive-500 text-white p-3 md:p-4 rounded-full shadow-[0_0_15px_rgba(106,171,31,0.5)] border border-olive-400 hover:bg-olive-400 hover:scale-110 transition-all flex items-center justify-center group",
+              "fixed bottom-24 right-6 z-50 bg-olive-500 text-white p-3 md:p-4 rounded-full shadow-[0_0_15px_rgba(106,171,31,0.5)] border border-olive-400 hover:bg-olive-400 hover:scale-110 transition-all flex items-center justify-center group",
               mobileMenuOpen ? "hidden" : "flex"
             )}
             aria-label="Scroll to top"

@@ -33,14 +33,15 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 export function Contact() {
   const [step, setStep] = useState(1);
+  const [submitAttempted, setSubmitAttempted] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { i18n } = useTranslation();
   const lang = (i18n.language as 'en' | 'ar' | 'de') || 'en';
   const meta = SEO_DATA.contact[lang] || SEO_DATA.contact.en;
   
-  const { register, handleSubmit, watch, setValue, formState: { errors, isSubmitting } } = useForm<ContactFormData>({
+  const { register, handleSubmit, watch, setValue, formState: { errors, isSubmitting, touchedFields } } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    mode: 'onChange',
+    mode: 'onTouched',
     defaultValues: {
       services: [],
     }
@@ -131,7 +132,10 @@ export function Contact() {
   };
 
   const nextStep = () => setStep((s) => Math.min(s + 1, 3));
-  const prevStep = () => setStep((s) => Math.max(s - 1, 1));
+  const prevStep = () => {
+    setSubmitAttempted(false);
+    setStep((s) => Math.max(s - 1, 1));
+  };
 
   const toggleService = (service: string) => {
     const current = [...selectedServices];
@@ -177,7 +181,10 @@ export function Contact() {
               </div>
               <div>
                 <h4 className="font-bold mb-1">Call / WhatsApp</h4>
-                <p className="text-brand-white-70">+971 502943916</p>
+                <div className="flex flex-col gap-1 text-brand-white-70">
+                  <a href="https://wa.me/971502943916" className="hover:text-olive-500 transition-colors">+971 502943916</a>
+                  <a href="https://wa.me/447899727950" className="hover:text-olive-500 transition-colors">+44 7899727950</a>
+                </div>
               </div>
             </div>
 
@@ -324,42 +331,52 @@ export function Contact() {
                     exit={{ opacity: 0, x: -20 }}
                     className="flex-1"
                   >
-                    <h3 className="text-2xl font-bold mb-8">Tell us about yourself</h3>
-                    <div className="space-y-5">
-                      <div>
-                        <input 
-                          {...register('name')} 
-                          placeholder="Your Name *" 
-                          className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 text-white ${errors.name ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
-                        />
-                        {errors.name && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.name.message}</p>}
-                      </div>
-                      <div>
-                        <input 
-                          {...register('email')} 
-                          placeholder="Work Email *" 
-                          className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 text-white ${errors.email ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
-                        />
-                        {errors.email && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.email.message}</p>}
-                      </div>
-                      <div>
-                        <input 
-                          {...register('company')} 
-                          placeholder="Company Name (Optional)" 
-                          className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 text-white ${errors.company ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
-                        />
-                        {errors.company && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.company.message}</p>}
-                      </div>
-                      <div>
-                        <textarea 
-                          {...register('message')} 
-                          placeholder="Project Details *" 
-                          rows={4}
-                          className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 resize-none text-white ${errors.message ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
-                        />
-                        {errors.message && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.message.message}</p>}
-                      </div>
-                    </div>
+                    {(() => {
+                      const nameError = errors.name && (touchedFields.name || submitAttempted);
+                      const emailError = errors.email && (touchedFields.email || submitAttempted);
+                      const companyError = errors.company && (touchedFields.company || submitAttempted);
+                      const messageError = errors.message && (touchedFields.message || submitAttempted);
+                      return (
+                        <>
+                          <h3 className="text-2xl font-bold mb-8">Tell us about yourself</h3>
+                          <div className="space-y-5">
+                            <div>
+                              <input 
+                                {...register('name')} 
+                                placeholder="Your Name *" 
+                                className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 text-white ${nameError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
+                              />
+                              {nameError && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.name.message}</p>}
+                            </div>
+                            <div>
+                              <input 
+                                {...register('email')} 
+                                placeholder="Work Email *" 
+                                className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 text-white ${emailError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
+                              />
+                              {emailError && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.email.message}</p>}
+                            </div>
+                            <div>
+                              <input 
+                                {...register('company')} 
+                                placeholder="Company Name (Optional)" 
+                                className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 text-white ${companyError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
+                              />
+                              {companyError && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.company.message}</p>}
+                            </div>
+                            <div>
+                              <textarea 
+                                {...register('message')} 
+                                placeholder="Project Details *" 
+                                rows={4}
+                                className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 resize-none text-white ${messageError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
+                              />
+                              {messageError && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.message.message}</p>}
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })()}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -390,6 +407,7 @@ export function Contact() {
                    <button 
                     type="submit" 
                     disabled={isSubmitting}
+                    onClick={() => setSubmitAttempted(true)}
                     className="bg-olive-500 text-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-black flex items-center gap-2 hover:bg-olive-400 transition-all disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-olive-900 text-base sm:text-lg shadow-lg hover:shadow-olive-500/30 hover:-translate-y-0.5 active:translate-y-0"
                    >
                      {isSubmitting ? (

@@ -24,7 +24,7 @@ export function Impressum() {
 
           <h2 className="text-white mt-8 mb-4">Kontakt</h2>
           <p>
-            Telefon: +971 50 294 3916<br />
+            Telefon: +971 50 294 3916 / +44 7899 727950<br />
             E-Mail: info@mintsglobal.ae
           </p>
 

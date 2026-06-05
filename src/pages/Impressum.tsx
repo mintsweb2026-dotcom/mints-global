@@ -3,8 +3,8 @@ import { SEO } from '../components/SEO';
 export function Impressum() {
   return (
     <div className="bg-brand-black min-h-screen text-white pt-32 xl:pt-40 pb-20">
-      <SEO 
-        title="Impressum | Mints Global" 
+      <SEO
+        title="Impressum | Mints Global"
         description="Impressum und rechtliche Hinweise von Mints Global."
         keywords={["impressum", "legal notice", "Mints Global impressum", "company details", "corporate information"]}
         canonical="/impressum"
@@ -14,7 +14,7 @@ export function Impressum() {
         <h1 className="font-display text-4xl lg:text-5xl font-black uppercase mb-12">Impressum</h1>
         <div className="prose prose-invert prose-lg max-w-none font-body text-brand-white-70">
           <p>Angaben gemäß § 5 TMG</p>
-          
+
           <h2 className="text-white mt-8 mb-4">Mints Global</h2>
           <p>
             Office #315, 3rd Floor, Bank Street Building<br />

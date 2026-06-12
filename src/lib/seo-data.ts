@@ -1,6 +1,6 @@
 export const SEO_DATA = {
   home: {
-    en: { title: 'Mints Global | Premium Digital Agency Dubai', description: 'Dubai-based premium digital agency. ROI-driven marketing, enterprise software, and military-grade cyber security — trusted by global brands across UAE, GCC, UK, and Europe.' },
+    en: { title: 'Best Digital Marketing Agency Dubai | Mints Global', description: 'Mints Global is Dubai\'s best digital marketing agency. We deliver ROI-driven marketing, software & cybersecurity solutions. Get a free consultation today!' },
     ar: { title: 'مينتس جلوبال | وكالة التسويق الرقمي والبرمجيات والأمن السيبراني', description: 'وكالة رقمية عالمية مقرها دبي. خدمات التسويق الرقمي وتطوير البرمجيات والأمن السيبراني لعملاء في الإمارات وأوروبا والعالم.' },
     de: { title: 'Mints Global | Digitalagentur für Marketing, Software & Cybersicherheit', description: 'Globale Digitalagentur mit Sitz in Dubai. Marketing, Softwareentwicklung und Cybersicherheit für Unternehmen in den Emiraten, Europa und weltweit.' },
   },

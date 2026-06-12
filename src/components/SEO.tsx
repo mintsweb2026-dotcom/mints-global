@@ -16,10 +16,15 @@ interface SEOProps {
   };
   noindex?: boolean;
   geoTarget?: boolean;
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
 }
 
-const BASE_URL = 'https://mintsglobal.ae';
-const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
+const BASE_URL = 'https://www.mintsglobal.ae';
+const DEFAULT_OG_IMAGE = `${BASE_URL}/images/og-mintsglobal-1200x630.jpg`;
 
 export function SEO({
   title,
@@ -31,6 +36,11 @@ export function SEO({
   article,
   noindex = false,
   geoTarget = false,
+  ogTitle,
+  ogDescription,
+  twitterTitle,
+  twitterDescription,
+  twitterImage,
 }: SEOProps) {
   const { i18n } = useTranslation();
   const lang = i18n.language; // 'en' | 'ar' | 'de'
@@ -64,8 +74,8 @@ export function SEO({
       <link rel="alternate" hrefLang="x-default" href={`${BASE_URL}${cleanCanonical}`} />
 
       {/* ── Open Graph ── */}
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={ogTitle || fullTitle} />
+      <meta property="og:description" content={ogDescription || description} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:site_name" content="Mints Global" />
       <meta property="og:type" content={ogType} />
@@ -81,9 +91,9 @@ export function SEO({
       {/* ── Twitter / X Card ── */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@mintsglobal" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:title" content={twitterTitle || fullTitle} />
+      <meta name="twitter:description" content={twitterDescription || description} />
+      <meta name="twitter:image" content={twitterImage || ogImage} />
       <meta name="twitter:image:alt" content={`${title || 'Mints Global'} - Mints Global`} />
 
       {/* ── Article-specific ── */}

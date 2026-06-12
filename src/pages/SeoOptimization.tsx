@@ -35,7 +35,7 @@ export function SeoOptimization() {
           <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12 uppercase tracking-tight">
             If your business is not on the first page of Google, it is practically invisible. Mints Global delivers bold, data-backed SEO strategies that position your brand at the top.
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
              <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
                Discuss Your Project <ArrowRight size={18} />
              </Link>
@@ -61,7 +61,7 @@ export function SeoOptimization() {
             </div>
             
             <h3 className="font-display text-3xl font-black uppercase mb-12 text-white">SEO Service Stack</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                   <div key={0} className="bg-brand-black border border-white/5 p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
                      <CheckCircle2 className="text-olive-500 mb-6" size={32} />
                      <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Deep Technical Audits</h3>

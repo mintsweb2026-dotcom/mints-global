@@ -17,10 +17,79 @@ export default defineConfig(({mode}) => {
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
+      // Do not modify — file watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
+    },
+    build: {
+      chunkSizeWarningLimit: 600,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            // Animation library — large
+            if (id.includes('node_modules/motion') || id.includes('node_modules/framer-motion')) {
+              return 'vendor-motion';
+            }
+            // Firebase SDK — very large
+            if (id.includes('node_modules/firebase') || id.includes('node_modules/@firebase')) {
+              return 'vendor-firebase';
+            }
+            // i18n / translations
+            if (id.includes('node_modules/i18next') || id.includes('node_modules/react-i18next') || id.includes('node_modules/i18next-browser-languagedetector')) {
+              return 'vendor-i18n';
+            }
+            // React Router + Remix (routing)
+            if (id.includes('node_modules/react-router') || id.includes('node_modules/@remix-run')) {
+              return 'vendor-router';
+            }
+            // Charts (recharts + dependencies) — only on admin panel
+            if (id.includes('node_modules/recharts') || id.includes('node_modules/d3-') || id.includes('node_modules/victory-')) {
+              return 'vendor-charts';
+            }
+            // Markdown rendering — only on blog posts
+            if (id.includes('node_modules/react-markdown') || id.includes('node_modules/remark') || id.includes('node_modules/unified') || id.includes('node_modules/mdast') || id.includes('node_modules/micromark') || id.includes('node_modules/hast') || id.includes('node_modules/vfile')) {
+              return 'vendor-markdown';
+            }
+            // Form validation — only on /contact
+            if (id.includes('node_modules/zod') || id.includes('node_modules/react-hook-form') || id.includes('node_modules/@hookform')) {
+              return 'vendor-forms';
+            }
+            // EmailJS — only on /contact
+            if (id.includes('node_modules/@emailjs')) {
+              return 'vendor-emailjs';
+            }
+            // Lucide icons
+            if (id.includes('node_modules/lucide-react')) {
+              return 'vendor-icons';
+            }
+            // React Icons (additional icon set)
+            if (id.includes('node_modules/react-icons')) {
+              return 'vendor-react-icons';
+            }
+            // Scroll / animation helpers
+            if (id.includes('node_modules/lenis') || id.includes('node_modules/react-countup') || id.includes('node_modules/countup')) {
+              return 'vendor-scroll';
+            }
+            // React helmet (SEO)
+            if (id.includes('node_modules/react-helmet-async')) {
+              return 'vendor-seo';
+            }
+            // Image compression — admin only
+            if (id.includes('node_modules/browser-image-compression')) {
+              return 'vendor-media';
+            }
+            // Utility libraries (clsx, tailwind-merge, etc.)
+            if (id.includes('node_modules/clsx') || id.includes('node_modules/tailwind-merge') || id.includes('node_modules/class-variance')) {
+              return 'vendor-utils';
+            }
+            // All remaining node_modules
+            if (id.includes('node_modules')) {
+              return 'vendor-misc';
+            }
+          },
+        },
+      },
     },
   };
 });

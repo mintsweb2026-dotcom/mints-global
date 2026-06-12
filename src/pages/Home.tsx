@@ -11,54 +11,194 @@ import { AnimatedChars } from '../components/AnimatedChars';
 import { Magnetic } from '../components/Magnetic';
 import { useWorks } from '../hooks/useWorks';
 import { getPosts, BlogPost } from '../data/posts';
+import { SafeImage } from '../components/SafeImage';
 
-const websiteSchema = {
+const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://mintsglobal.ae/#website",
-  "url": "https://mintsglobal.ae",
+  "@type": "Organization",
   "name": "Mints Global",
-  "description": "Premium digital agency — Digital Marketing, Software Development & Cyber Security",
-  "publisher": { "@id": "https://mintsglobal.ae/#organization" },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": { "@type": "EntryPoint", "urlTemplate": "https://mintsglobal.ae/blog?q={search_term_string}" },
-    "query-input": "required name=search_term_string"
+  "alternateName": "Mints Global Digital Agency",
+  "url": "https://www.mintsglobal.ae/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.mintsglobal.ae/images/mints-global-logo.png",
+    "width": 180,
+    "height": 50
+  },
+  "description": "Mints Global is Dubai's best digital marketing agency offering ROI-driven marketing, enterprise software development, and military-grade cybersecurity solutions for global brands.",
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "Dubai, United Arab Emirates"
+  },
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "United Arab Emirates"
+    },
+    {
+      "@type": "Country",
+      "name": "United Kingdom"
+    },
+    {
+      "@type": "Country",
+      "name": "European Union"
+    }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "areaServed": "AE",
+    "availableLanguage": ["English", "Arabic"]
+  },
+  "sameAs": [
+    "https://twitter.com/mintsglobal",
+    "https://www.linkedin.com/company/mintsglobal",
+    "https://www.facebook.com/mintsglobal",
+    "https://www.instagram.com/mintsglobal"
+  ]
+};
+
+const professionalServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Mints Global — Best Digital Marketing Agency Dubai",
+  "@id": "https://www.mintsglobal.ae/#professionalservice",
+  "url": "https://www.mintsglobal.ae/",
+  "image": "https://www.mintsglobal.ae/images/og-mintsglobal-1200x630.jpg",
+  "description": "Dubai-based premium digital agency bridging Middle Eastern and European markets with ROI-driven marketing, enterprise software, and cybersecurity.",
+  "serviceType": [
+    "Digital Marketing",
+    "Search Engine Optimisation",
+    "Social Media Marketing",
+    "Pay-Per-Click Advertising",
+    "Enterprise Software Development",
+    "Mobile App Development",
+    "Cybersecurity Consulting",
+    "Content Marketing"
+  ],
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Digital Agency Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Digital Marketing Services Dubai",
+          "url": "https://www.mintsglobal.ae/digital-marketing/"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "SEO Services Dubai",
+          "url": "https://www.mintsglobal.ae/seo-services/"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Enterprise Software Development Dubai",
+          "url": "https://www.mintsglobal.ae/software-development/"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Cybersecurity Solutions Dubai",
+          "url": "https://www.mintsglobal.ae/cybersecurity/"
+        }
+      }
+    ]
   }
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://mintsglobal.ae/#localbusiness",
   "name": "Mints Global",
-  "image": "https://mintsglobal.ae/og-image.jpg",
-  "url": "https://mintsglobal.ae",
-  "telephone": ["+971502943916", "+447899727950"],
-  "email": "info@mintsglobal.ae",
-  "priceRange": "AED 15,000+",
+  "image": "https://www.mintsglobal.ae/images/og-mintsglobal-1200x630.jpg",
+  "@id": "https://www.mintsglobal.ae/#localbusiness",
+  "url": "https://www.mintsglobal.ae/",
+  "description": "Best digital marketing agency in Dubai offering SEO, paid ads, social media marketing, software development, and cybersecurity services.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
     "addressLocality": "Bur Dubai",
     "addressRegion": "Dubai",
-    "postalCode": "00000",
     "addressCountry": "AE"
   },
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": 25.2631,
-    "longitude": 55.3024
+    "longitude": 55.3006
   },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
-    "opens": "09:00",
-    "closes": "18:00"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/company/mints-dubai",
-    "https://www.instagram.com/mints.global/"
+  "telephone": "+971502943916",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+971502943916",
+      "contactType": "customer service",
+      "areaServed": "AE",
+      "availableLanguage": ["English", "Arabic"]
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+447899727950",
+      "contactType": "customer service",
+      "areaServed": "GB",
+      "availableLanguage": "English"
+    }
+  ],
+  "email": "info@mintsglobal.ae",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "$$",
+  "currenciesAccepted": "AED, USD, EUR",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer"
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services does Mints Global offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mints Global offers digital marketing, SEO, social media marketing, PPC advertising, enterprise software development, mobile app development, and cybersecurity solutions in Dubai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Mints Global the best digital marketing agency in Dubai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mints Global is a premium Dubai-based digital agency delivering ROI-driven marketing and tech solutions that bridge Middle Eastern and European markets for global brands."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I get started with Mints Global?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can contact Mints Global through the website at mintsglobal.ae to book a free consultation with our Dubai marketing experts."
+      }
+    }
   ]
 };
 
@@ -135,6 +275,12 @@ export function Home() {
         description={meta.description}
         keywords={["digital agency Dubai", "software development company UAE", "cyber security agency", "digital marketing agency", "Mints Global"]}
         canonical="/"
+        ogTitle={lang === 'en' ? "Best Digital Marketing Agency Dubai | Mints Global" : undefined}
+        ogDescription={lang === 'en' ? "Mints Global is Dubai's best digital marketing agency delivering ROI-driven marketing, software & cybersecurity solutions. Get a free consultation today!" : undefined}
+        ogImage={lang === 'en' ? "https://www.mintsglobal.ae/images/og-mintsglobal-1200x630.jpg" : undefined}
+        twitterTitle={lang === 'en' ? "Best Digital Marketing Agency Dubai | Mints Global" : undefined}
+        twitterDescription={lang === 'en' ? "Dubai's best digital marketing agency. ROI-driven marketing, software & cybersecurity for global brands. Book your free consultation now!" : undefined}
+        twitterImage={lang === 'en' ? "https://www.mintsglobal.ae/images/twitter-mintsglobal-1200x628.jpg" : undefined}
       />
       
       {/* Hero Section */}
@@ -145,10 +291,14 @@ export function Home() {
           className="absolute inset-0 z-0 w-full h-full"
         >
           <div className="absolute inset-0 bg-olive-950/80 mix-blend-multiply z-10" />
-          <img
-            src="/hero.webp"
-            alt=""
-            aria-hidden="true"
+          <SafeImage
+            src="https://www.mintsglobal.ae/images/hero-digital-agency-dubai.webp"
+            fallbackSrc="/hero.png"
+            alt="Mints Global team delivering digital marketing solutions in Dubai"
+            width="1440"
+            height="810"
+            loading="eager"
+            decoding="async"
             fetchPriority="high"
             className="absolute inset-0 w-full h-full object-cover opacity-30 z-0 pointer-events-none"
           />
@@ -185,7 +335,8 @@ export function Home() {
               {t('hero.badge')} — Dubai
             </div>
             
-            <h1 className="font-display font-black tracking-tighter mb-10 w-full overflow-visible flex flex-col gap-2 sm:gap-0 leading-none">
+            <h1 className="sr-only">Best Digital Marketing Agency in Dubai</h1>
+            <div className="font-display font-black tracking-tighter mb-10 w-full overflow-visible flex flex-col gap-2 sm:gap-0 leading-none" aria-hidden="true">
               <div className="self-start">
                 <AnimatedChars text={t('hero.line1')} className="text-brand-white text-[clamp(4.5rem,10vw,10rem)] leading-[0.85] tracking-tight" delay={0.3} />
               </div>
@@ -195,7 +346,7 @@ export function Home() {
               <div className="self-start ml-[clamp(32px,8vw,112px)] mt-4">
                 <AnimatedChars text={t('hero.line3')} className="text-[clamp(4.5rem,10vw,10rem)] leading-[0.85] tracking-tight text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.7)]" delay={0.9} />
               </div>
-            </h1>
+            </div>
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -263,57 +414,151 @@ export function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Card 1 */}
-          <div className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative">
+          <div className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between">
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
-             <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-10 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
-               <span className="group-hover:animate-bob inline-block">01</span>
+             <div>
+               <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
+                 <span className="group-hover:animate-bob inline-block">01</span>
+               </div>
+               
+               <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
+                 <SafeImage 
+                   src="https://www.mintsglobal.ae/images/digital-marketing-services-dubai.webp" 
+                   fallbackSrc="/hero.png"
+                   alt="ROI-driven digital marketing services for Dubai and GCC businesses" 
+                   width="800" 
+                   height="600" 
+                   loading="lazy" 
+                   decoding="async"
+                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 />
+               </div>
+
+               <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-white">{t('capabilities.s1.title', {defaultValue: 'Digital Marketing Services That Drive Real ROI'})}</h2>
+               <p className="text-brand-white-70 mb-8 text-sm leading-loose tracking-wide">
+                 {t('capabilities.s1.desc')}
+               </p>
+
+               <div className="space-y-6 mb-10">
+                 <div className="flex gap-4 items-start">
+                   <SafeImage 
+                     src="https://www.mintsglobal.ae/images/seo-services-dubai.webp" fallbackSrc="/favicon-96x96.png" 
+                     alt="SEO services helping Dubai businesses rank on Google search" 
+                     width="800" 
+                     height="600" 
+                     loading="lazy" 
+                     decoding="async"
+                     className="w-16 h-12 object-cover rounded-lg border border-white/10 shrink-0"
+                   />
+                   <div>
+                     <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">SEO & Search Marketing for UAE Businesses</h3>
+                     <h4 className="text-[10px] text-olive-500 font-bold uppercase tracking-widest mt-1">Local SEO for Dubai & GCC Markets</h4>
+                   </div>
+                 </div>
+
+                 <div className="flex gap-4 items-start">
+                   <SafeImage 
+                     src="https://www.mintsglobal.ae/images/social-media-marketing-dubai.webp" fallbackSrc="/favicon-96x96.png" 
+                     alt="Social media marketing and paid advertising campaigns for UAE brands" 
+                     width="800" 
+                     height="600" 
+                     loading="lazy" 
+                     decoding="async"
+                     className="w-16 h-12 object-cover rounded-lg border border-white/10 shrink-0"
+                   />
+                   <div>
+                     <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Social Media Marketing & Paid Advertising</h3>
+                     <h4 className="text-[10px] text-olive-500 font-bold uppercase tracking-widest mt-1">Meta Ads, Google Ads & LinkedIn Campaigns</h4>
+                   </div>
+                 </div>
+
+                 <div className="flex gap-4 items-start">
+                   <div className="w-16 h-12 rounded-lg border border-dashed border-white/10 flex items-center justify-center shrink-0 text-olive-500">✍️</div>
+                   <div>
+                     <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Content Marketing & Brand Storytelling</h3>
+                   </div>
+                 </div>
+               </div>
              </div>
-             <h3 className="text-3xl font-display font-bold mb-6">{t('capabilities.s1.title')}</h3>
-             <p className="text-brand-white-70 mb-10 text-sm leading-loose tracking-wide">
-               {t('capabilities.s1.desc')}
-             </p>
-             <ul className="space-y-4 text-sm font-medium mb-10">
-                <li className="flex gap-3 text-brand-white-90"><ArrowRight size={18} className="text-olive-500 shrink-0" /> {t('capabilities.s1.l1')}</li>
-                <li className="flex gap-3 text-brand-white-90"><ArrowRight size={18} className="text-olive-500 shrink-0" /> {t('capabilities.s1.l2')}</li>
-                <li className="flex gap-3 text-brand-white-90"><ArrowRight size={18} className="text-olive-500 shrink-0" /> {t('capabilities.s1.l3')}</li>
-             </ul>
-             <Link to="/digital-marketing" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
+             <Link to="/digital-marketing" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
           </div>
 
           {/* Card 2 */}
-          <div className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative">
+          <div className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between">
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
-             <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-10 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
-               <span className="group-hover:animate-bob inline-block delay-75">02</span>
+             <div>
+               <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
+                 <span className="group-hover:animate-bob inline-block delay-75">02</span>
+               </div>
+
+               <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
+                 <SafeImage 
+                   src="https://www.mintsglobal.ae/images/software-development-dubai.webp" fallbackSrc="/crm-blog-image.png" 
+                   alt="Enterprise software and mobile app development services in Dubai" 
+                   width="800" 
+                   height="600" 
+                   loading="lazy" 
+                   decoding="async"
+                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 />
+               </div>
+
+               <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-white">{t('capabilities.s2.title', {defaultValue: 'Enterprise Software Development Dubai'})}</h2>
+               <p className="text-brand-white-70 mb-8 text-sm leading-loose tracking-wide">
+                 {t('capabilities.s2.desc')}
+               </p>
+
+               <div className="space-y-6 mb-10">
+                 <div>
+                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Custom Web & Mobile App Development</h3>
+                   <h4 className="text-[10px] text-olive-500 font-bold uppercase tracking-widest mt-1">SaaS Platforms & API Integrations</h4>
+                 </div>
+
+                 <div>
+                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">E-Commerce Solutions for Middle East Markets</h3>
+                 </div>
+               </div>
              </div>
-             <h3 className="text-3xl font-display font-bold mb-6">{t('capabilities.s2.title')}</h3>
-             <p className="text-brand-white-70 mb-10 text-sm leading-loose tracking-wide">
-               {t('capabilities.s2.desc')}
-             </p>
-             <ul className="space-y-4 text-sm font-medium mb-10">
-                <li className="flex gap-3 text-brand-white-90"><ArrowRight size={18} className="text-olive-500 shrink-0" /> {t('capabilities.s2.l1')}</li>
-                <li className="flex gap-3 text-brand-white-90"><ArrowRight size={18} className="text-olive-500 shrink-0" /> {t('capabilities.s2.l2')}</li>
-                <li className="flex gap-3 text-brand-white-90"><ArrowRight size={18} className="text-olive-500 shrink-0" /> {t('capabilities.s2.l3')}</li>
-             </ul>
-             <Link to="/software-development" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
+             <Link to="/software-development" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
           </div>
 
           {/* Card 3 */}
-          <div className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative">
+          <div className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between">
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
-             <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-10 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
-               <span className="group-hover:animate-bob inline-block delay-150">03</span>
+             <div>
+               <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
+                 <span className="group-hover:animate-bob inline-block delay-150">03</span>
+               </div>
+
+               <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
+                 <SafeImage 
+                   src="https://www.mintsglobal.ae/images/cybersecurity-solutions-dubai.webp" fallbackSrc="/zero-trust-security.png" 
+                   alt="Military-grade cybersecurity solutions for global brands based in Dubai" 
+                   width="800" 
+                   height="600" 
+                   loading="lazy" 
+                   decoding="async"
+                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 />
+               </div>
+
+               <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-white">{t('capabilities.s3.title', {defaultValue: 'Cybersecurity Solutions for Global Brands'})}</h2>
+               <p className="text-brand-white-70 mb-8 text-sm leading-loose tracking-wide">
+                 {t('capabilities.s3.desc')}
+               </p>
+
+               <div className="space-y-6 mb-10">
+                 <div>
+                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Military-Grade Cyber Protection Services</h3>
+                   <h4 className="text-[10px] text-olive-500 font-bold uppercase tracking-widest mt-1">Threat Detection & Incident Response</h4>
+                 </div>
+
+                 <div>
+                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Compliance & Data Privacy Consulting</h3>
+                 </div>
+               </div>
              </div>
-             <h3 className="text-3xl font-display font-bold mb-6">{t('capabilities.s3.title')}</h3>
-             <p className="text-brand-white-70 mb-10 text-sm leading-loose tracking-wide">
-               {t('capabilities.s3.desc')}
-             </p>
-             <ul className="space-y-4 text-sm font-medium mb-10">
-                <li className="flex gap-3 text-brand-white-90"><ArrowRight size={18} className="text-olive-500 shrink-0" /> {t('capabilities.s3.l1')}</li>
-                <li className="flex gap-3 text-brand-white-90"><ArrowRight size={18} className="text-olive-500 shrink-0" /> {t('capabilities.s3.l2')}</li>
-                <li className="flex gap-3 text-brand-white-90"><ArrowRight size={18} className="text-olive-500 shrink-0" /> {t('capabilities.s3.l3')}</li>
-             </ul>
-             <Link to="/cyber-security" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
+             <Link to="/cyber-security" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
           </div>
         </div>
       </section>
@@ -383,13 +628,36 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
              <div>
                 <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-6">Who We Are</span>
-                <AnimatedChars text="DRIVING DIGITAL EXCELLENCE" className="font-display text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight mb-8 leading-none" />
-                <p className="text-brand-white-70 text-lg md:text-xl leading-relaxed mb-8">
+                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight mb-8 leading-tight text-white">
+                  Why Mints Global is Dubai's Most Trusted Digital Agency
+                </h2>
+                <p className="text-brand-white-70 text-lg leading-relaxed mb-8">
                   We are a premium digital agency based in Dubai, architecting solutions at the intersection of powerful software, striking design, and robust security.
                 </p>
-                <p className="text-brand-white-70 text-lg leading-relaxed mb-12">
-                  Our multidisciplinary team partners with global enterprises to modernize their operations, captivate their audiences, and secure their digital future across the UAE and Europe.
-                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                    <h3 className="text-base font-bold text-white uppercase tracking-wider mb-2">Bridging Middle Eastern & European Markets</h3>
+                    <p className="text-brand-white-70 text-xs leading-relaxed">We provide cross-border engineering and marketing, adapting international standards to GCC regional regulatory environments.</p>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                    <h3 className="text-base font-bold text-white uppercase tracking-wider mb-2">Results-Driven Strategy With Measurable Outcomes</h3>
+                    <p className="text-brand-white-70 text-xs leading-relaxed">Every line of code and marketing campaign we deploy is optimized for maximum conversion, scalability, and user acquisition.</p>
+                  </div>
+                </div>
+
+                <div className="w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative mb-12">
+                  <SafeImage 
+                    src="https://www.mintsglobal.ae/images/mints-global-team-dubai.webp" fallbackSrc="/hero.png" 
+                    alt="Mints Global digital agency team of marketing and tech experts in Dubai" 
+                    width="900" 
+                    height="600" 
+                    loading="lazy" 
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
                 <Magnetic>
                   <div className="inline-block">
                     <Link to="/about" className="inline-flex items-center gap-3 border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:border-olive-500 hover:text-olive-500 transition-all block">
@@ -697,8 +965,10 @@ export function Home() {
          <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ0cmFuc3BhcmVudCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIvPjwvc3ZnPg==')] pointer-events-none" />
          
          <div className="max-w-5xl mx-auto px-6 text-center relative z-20">
-            <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-none tracking-tighter uppercase">{t('cta.title1')}<br />{t('cta.title2')}</h2>
-            <p className="text-olive-900 text-xl md:text-2xl font-medium mb-12 max-w-3xl mx-auto">{t('cta.desc')}</p>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-none tracking-tighter uppercase">
+              Get a Free Consultation With Our Dubai Marketing Experts
+            </h2>
+            <p className="text-olive-900 text-lg md:text-xl lg:text-2xl font-medium mb-12 max-w-3xl mx-auto">{t('cta.desc')}</p>
             <Magnetic>
               <div className="inline-block">
                 <Link to="/contact" className="inline-flex items-center gap-3 bg-olive-950 text-white px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-black transition-all hover:scale-105 shadow-2xl block">
@@ -709,8 +979,10 @@ export function Home() {
          </div>
       </section>
 
-      <JsonLd data={websiteSchema} />
+      <JsonLd data={organizationSchema} />
+      <JsonLd data={professionalServiceSchema} />
       <JsonLd data={localBusinessSchema} />
+      <JsonLd data={faqSchema} />
     </div>
   );
 }

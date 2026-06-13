@@ -6,6 +6,7 @@ import { SEO } from '../components/SEO';
 import { SEO_DATA } from '../lib/seo-data';
 import { JsonLd } from '../components/JsonLd';
 import { ServicesAccordion } from '../components/ServicesAccordion';
+import { SafeImage } from '../components/SafeImage';
 
 const subServices = [
   { icon: ShieldAlert, name: "Offensive Security", desc: "Rigorous penetration testing, red teaming, and vulnerability assessments to expose critical flaws." },
@@ -17,40 +18,105 @@ const subServices = [
 ];
 
 const faqs = [
-  { q: "What cyber security services do you offer?", a: "We offer offensive security, incident response, NESA & ISO 27001 compliance, cloud security, managed advisory, and OT/IoT security for organisations worldwide." },
-  { q: "Do you work with clients outside the UAE?", a: "Yes — we serve clients in Germany, UK, Saudi Arabia, and globally. Our compliance work covers GDPR, DSGVO, ISO 27001, and NESA." },
-  { q: "How quickly can you respond to a security breach?", a: "Our incident response team can mobilise within 2 hours for UAE clients and within 4 hours for European clients." },
-  { q: "What compliance frameworks do you cover?", a: "NESA (UAE), PDPL (UAE), ISO 27001, GDPR (EU), DSGVO (Germany), PCI-DSS, and SOC 2." }
+  {
+    q: "What cyber security services does Mints Global offer in Dubai?",
+    a: "Mints Global offers a full suite of cyber security services in Dubai including threat detection, network security, penetration testing, cloud security, incident response, and compliance auditing for UAE businesses."
+  },
+  {
+    q: "How can I get a cyber security audit for my Dubai business?",
+    a: "Contact Mints Global for a free cyber security consultation. Our team will assess your current security posture and recommend a tailored protection plan for your business."
+  },
+  {
+    q: "Does Mints Global provide cyber security for SMEs in the UAE?",
+    a: "Yes. Mints Global provides scalable cyber security solutions for SMEs, enterprises, and government entities across Dubai and the wider UAE."
+  },
+  {
+    q: "What is penetration testing and why does my business need it?",
+    a: "Penetration testing simulates real-world cyber attacks on your systems to identify vulnerabilities before malicious hackers do. It is essential for businesses handling sensitive data in Dubai and the UAE."
+  }
 ];
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["ProfessionalService", "LocalBusiness"],
+  "name": "Mints Global",
+  "url": "https://www.mintsglobal.ae/cyber-security/",
+  "logo": "https://www.mintsglobal.ae/images/mints-global-logo.svg",
+  "image": "https://www.mintsglobal.ae/images/hero-cyber-security.webp",
+  "description": "Mints Global provides enterprise-grade Cyber Security services in Dubai including threat detection, network protection, penetration testing, and compliance auditing for UAE businesses.",
+  "telephone": "+971-50-294-3916",
+  "email": "info@mintsglobal.ae",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Office #315, 3rd Floor, Bank Street Building, Bur Dubai",
+    "addressLocality": "Dubai",
+    "addressRegion": "Dubai",
+    "postalCode": "00000",
+    "addressCountry": "AE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "25.2048",
+    "longitude": "55.2708"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/mintsglobal",
+    "https://twitter.com/mintsglobal",
+    "https://www.instagram.com/mintsglobal"
+  ],
+  "priceRange": "$$",
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": "25.2048",
+      "longitude": "55.2708"
+    },
+    "geoRadius": "100000"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Cyber Security Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Threat Detection & Monitoring" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Network Security & Firewall Protection" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Penetration Testing" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cyber Security Compliance Audit" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Incident Response" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud Security" } }
+    ]
+  }
+};
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Cyber Security Services",
+  "name": "Cyber Security Services in Dubai",
+  "provider": {
+    "@type": "Organization",
+    "name": "Mints Global",
+    "url": "https://www.mintsglobal.ae"
+  },
   "serviceType": "Cyber Security",
-  "provider": { "@id": "https://mintsglobal.ae/#organization" },
-  "areaServed": [
-    "United Arab Emirates", "Saudi Arabia", "Germany",
-    "United Kingdom", "United States", "Global"
-  ],
-  "description": "Managed cyber security services. Penetration testing, incident response, NESA & ISO 27001 compliance, cloud security, and OT/IoT protection. UAE, Europe, worldwide.",
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  },
+  "description": "Comprehensive cyber security solutions for businesses in Dubai and the UAE, including network security, penetration testing, threat intelligence, and compliance management.",
+  "url": "https://www.mintsglobal.ae/cyber-security/",
   "offers": {
     "@type": "Offer",
     "availability": "https://schema.org/InStock",
-    "priceSpecification": {
-      "@type": "PriceSpecification",
-      "priceCurrency": "AED",
-      "minPrice": 15000
-    }
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Offensive Security" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Incident Response" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Compliance & GRC" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud Security" } }
-    ]
+    "priceCurrency": "AED",
+    "url": "https://www.mintsglobal.ae/cyber-security/"
   }
 };
 
@@ -77,20 +143,44 @@ export function CyberSecurity() {
         title={meta.title}
         description={meta.description}
         keywords={["cyber security agency Dubai", "Zero Trust implementation", "managed security services", "threat hunting", "offensive testing"]}
-        canonical="/cyber-security"
+        canonical="/cyber-security/"
+        ogImage="https://www.mintsglobal.ae/images/hero-cyber-security.webp"
+        ogTitle={lang === 'en' ? "Cyber Security Services in Dubai | Mints Global" : undefined}
+        ogDescription={lang === 'en' ? "Mints Global delivers enterprise-grade Cyber Security solutions in Dubai — threat detection, network protection & compliance. Get a free security audit today!" : undefined}
+        twitterTitle={lang === 'en' ? "Cyber Security Services in Dubai | Mints Global" : undefined}
+        twitterDescription={lang === 'en' ? "Mints Global delivers enterprise-grade Cyber Security solutions in Dubai — threat detection, network protection & compliance. Get a free security audit today!" : undefined}
+        twitterImage="https://www.mintsglobal.ae/images/hero-cyber-security.webp"
       />
+      <JsonLd data={localBusinessSchema} />
       <JsonLd data={serviceSchema} />
       <JsonLd data={buildFaqSchema(faqs)} />
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
-        <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-6 uppercase leading-tight">
-          CYBER <br/><span className="text-olive-500">SECURITY.</span>
-        </h1>
-        <p className="text-brand-white-70 max-w-2xl text-lg md:text-xl font-medium leading-relaxed mb-10">
-          Military-grade offensive testing, infrastructure fortification, and rapid response to protect your most valuable digital assets.
-        </p>
-        <Link to="/contact" className="inline-flex bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors items-center gap-2">
-          Request an Audit <ArrowRight size={18} />
-        </Link>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-6 uppercase leading-tight">
+              CYBER <br/><span className="text-olive-500">SECURITY.</span>
+            </h1>
+            <p className="text-brand-white-70 max-w-2xl text-lg md:text-xl font-medium leading-relaxed mb-10">
+              Military-grade offensive testing, infrastructure fortification, and rapid response to protect your most valuable digital assets.
+            </p>
+            <Link to="/contact" className="inline-flex bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors items-center gap-2">
+              Request an Audit <ArrowRight size={18} />
+            </Link>
+          </div>
+          <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-square rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
+            <SafeImage
+              src="https://www.mintsglobal.ae/images/hero-cyber-security.webp"
+              fallbackSrc="/zero-trust-security.png"
+              alt="Cyber Security Services in Dubai by Mints Global"
+              title="Enterprise Cyber Security Solutions UAE"
+              width="1280"
+              height="720"
+              loading="lazy"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            />
+          </div>
+        </div>
       </section>
 
       <section className="bg-olive-900 border-y border-white/5 py-24">

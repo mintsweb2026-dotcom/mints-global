@@ -10,12 +10,12 @@ export const SEO_DATA = {
     de: { title: 'Online Marketing Agentur | SEO, PPC, Social Media | Mints Global', description: 'Full-Service Online-Marketing-Agentur. SEO, Performance Marketing, Social Media und Markenstrategie für globale Unternehmen. Emirate, Deutschland und weltweit.' },
   },
   softwareDev: {
-    en: { title: 'Software Development Dubai | Web, Mobile, ERP | Mints Global', description: 'Enterprise software development. Custom web apps, mobile applications, ERP systems, CRM platforms, and e-commerce solutions for scaling businesses worldwide.' },
+    en: { title: 'Custom Software Development Dubai | Mints Global', description: 'Mints Global is a leading software development company in Dubai offering web apps, mobile apps, ERP, CRM, and enterprise solutions.' },
     ar: { title: 'شركة تطوير برمجيات | تطبيقات الويب والجوال وERP | مينتس جلوبال', description: 'تطوير برمجيات مؤسسية. تطبيقات الويب، تطبيقات الجوال، أنظمة ERP، منصات CRM وحلول التجارة الإلكترونية.' },
     de: { title: 'Softwareentwicklung Dubai | Web-Apps, Mobile, ERP | Mints Global', description: 'Enterprise-Softwareentwicklung. Individuelle Web-Apps, Mobile-Anwendungen, ERP-Systeme und CRM-Plattformen für wachsende Unternehmen weltweit.' },
   },
   cyberSecurity: {
-    en: { title: 'Penetration Testing & Cyber Security Dubai | Mints Global', description: 'Managed cyber security services. Penetration testing, incident response, NESA & ISO 27001 compliance, cloud security, and OT/IoT protection. UAE, Europe, worldwide.' },
+    en: { title: 'Cyber Security Services in Dubai | Mints Global', description: 'Mints Global delivers enterprise-grade Cyber Security solutions in Dubai — threat detection, network protection & compliance. Get a free security audit today!' },
     ar: { title: 'خدمات الأمن السيبراني | اختبار الاختراق وامتثال NESA | مينتس جلوبال', description: 'خدمات أمن سيبراني مُدارة. اختبار الاختراق، الاستجابة للحوادث، امتثال NESA وISO 27001، أمن السحابة.' },
     de: { title: 'Cybersicherheit Dienstleistungen | Penetrationstest, ISO 27001 | Mints Global', description: 'Managed Cybersecurity Services. Penetrationstests, Incident Response, DSGVO & ISO 27001 Compliance, Cloud-Sicherheit und OT/IoT-Schutz. Weltweit.' },
   },

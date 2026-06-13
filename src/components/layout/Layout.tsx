@@ -593,7 +593,7 @@ export function Layout() {
         )}
       </AnimatePresence>
 
-      <TawktoChat />
+      <TawktoChat mobileMenuOpen={mobileMenuOpen} />
       <CookieBanner />
       </div>
     </div>

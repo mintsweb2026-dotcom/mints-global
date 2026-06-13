@@ -6,6 +6,7 @@ import { SEO } from '../components/SEO';
 import { SEO_DATA } from '../lib/seo-data';
 import { JsonLd } from '../components/JsonLd';
 import { ServicesAccordion } from '../components/ServicesAccordion';
+import { SafeImage } from '../components/SafeImage';
 
 const subServices = [
   { icon: Code2, name: "Custom Web Apps", desc: "Scalable, high-performance web applications built with modern frontend and backend frameworks." },
@@ -17,40 +18,201 @@ const subServices = [
 ];
 
 const faqs = [
-  { q: "What tech stack do you use?", a: "We primarily build with Next.js, React, Node.js, Python, and scalable databases like PostgreSQL and MongoDB, deployed on AWS or Vercel." },
-  { q: "Do you offer post-launch support and maintenance?", a: "Yes, we provide continuous maintenance, performance monitoring, and update packages via dedicated SLAs." },
-  { q: "Can you rescue an existing legacy codebase?", a: "Absolutely. We conduct deep code audits, identify technical debt, and offer refactoring or gradual migration strategies." },
-  { q: "What is your development methodology?", a: "We embrace Agile methodologies, delivering work in iterative sprints. This ensures transparency, adaptability to changing requirements, and regular stakeholder feedback." },
-  { q: "How do you ensure data security and compliance?", a: "Security is built-in from day one using DevSecOps practices. We follow OWASP standards, encrypt data at rest and in transit, and ensure compliance with GDPR, HIPAA, or regional regulations as needed." }
+  {
+    q: "What software development services does Mints Global offer in Dubai?",
+    a: "Mints Global offers a full range of software development services in Dubai including custom web application development, iOS and Android mobile app development, ERP and CRM solutions, API integrations, cloud-based software, UI/UX design, QA testing, and ongoing maintenance and support."
+  },
+  {
+    q: "How long does it take to develop a custom software solution?",
+    a: "Project timelines vary based on scope and complexity. A typical MVP web application takes 6–12 weeks, while complex ERP or enterprise solutions may take 3–6 months. Mints Global provides a detailed project roadmap before development begins."
+  },
+  {
+    q: "Does Mints Global develop mobile apps for both iOS and Android?",
+    a: "Yes. Mints Global develops mobile applications for both iOS (Apple App Store) and Android (Google Play Store), including cross-platform solutions for businesses in Dubai and across the UAE."
+  },
+  {
+    q: "Can Mints Global integrate custom software with existing business systems?",
+    a: "Absolutely. Mints Global specialises in API integration and third-party software connectivity, ensuring your new solution works seamlessly with your existing CRM, ERP, payment gateways, or other business tools."
+  },
+  {
+    q: "Does Mints Global provide post-launch software support and maintenance?",
+    a: "Yes. Mints Global offers ongoing software maintenance, updates, performance monitoring, and technical support after launch to ensure your application remains secure and up to date."
+  }
 ];
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Software Development Services",
+  "name": "Custom Software Development Services in Dubai",
   "serviceType": "Software Development",
-  "provider": { "@id": "https://mintsglobal.ae/#organization" },
-  "areaServed": [
-    "United Arab Emirates", "Saudi Arabia", "Germany",
-    "United Kingdom", "United States", "Global"
-  ],
-  "description": "Enterprise software development. Custom web apps, mobile applications, ERP systems, CRM platforms, and e-commerce solutions for scaling businesses worldwide.",
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/InStock",
-    "priceSpecification": {
-      "@type": "PriceSpecification",
-      "priceCurrency": "AED",
-      "minPrice": 10000
-    }
+  "description": "Mints Global offers custom software development in Dubai including web applications, mobile apps, ERP, CRM, API integrations, cloud solutions, UI/UX design, and QA testing for businesses across the UAE and UK.",
+  "url": "https://www.mintsglobal.ae/software-development/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Mints Global",
+    "url": "https://www.mintsglobal.ae",
+    "logo": "https://www.mintsglobal.ae/images/mints-global-logo.png",
+    "telephone": "+971502943916",
+    "email": "info@mintsglobal.ae",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+      "addressLocality": "Bur Dubai",
+      "addressRegion": "Dubai",
+      "addressCountry": "AE"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/mintsglobal",
+      "https://twitter.com/mintsglobal"
+    ]
   },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Dubai"
+    },
+    {
+      "@type": "Country",
+      "name": "United Arab Emirates"
+    },
+    {
+      "@type": "Country",
+      "name": "United Kingdom"
+    }
+  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
+    "name": "Software Development Services",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Web Apps" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile Ecosystems" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ERP Solutions" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CRM Development" } }
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Web Application Development",
+          "description": "Custom web app development using modern frameworks for UAE businesses."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mobile App Development",
+          "description": "iOS and Android mobile app development for startups and enterprises in Dubai."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "ERP & CRM Solutions",
+          "description": "Custom ERP and CRM software tailored for UAE business operations."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "API Integration",
+          "description": "Third-party API and system integration services in Dubai."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Cloud-Based Software Solutions",
+          "description": "Cloud software development and deployment for scalable UAE business solutions."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "UI/UX Design",
+          "description": "User experience and interface design for web and mobile applications."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "QA & Software Testing",
+          "description": "Quality assurance and software testing services for enterprise applications."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Software Maintenance & Support",
+          "description": "Ongoing software support, maintenance, and upgrade services in Dubai."
+        }
+      }
+    ]
+  }
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Mints Global",
+  "url": "https://www.mintsglobal.ae",
+  "logo": "https://www.mintsglobal.ae/images/mints-global-logo.png",
+  "description": "Dubai-based premium digital agency offering software development, digital marketing, cybersecurity, branding and IT services.",
+  "telephone": "+971502943916",
+  "email": "info@mintsglobal.ae",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+    "addressLocality": "Bur Dubai",
+    "addressRegion": "Dubai",
+    "addressCountry": "AE"
+  },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+971502943916",
+      "contactType": "customer service",
+      "areaServed": "AE",
+      "availableLanguage": "English"
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+447899727950",
+      "contactType": "customer service",
+      "areaServed": "GB",
+      "availableLanguage": "English"
+    }
+  ]
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Software Development Company in Dubai | Custom Solutions – Mints Global",
+  "url": "https://www.mintsglobal.ae/software-development/",
+  "description": "Mints Global is a leading software development company in Dubai offering custom web apps, mobile apps, ERP, CRM, and enterprise solutions.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Mints Global",
+    "url": "https://www.mintsglobal.ae"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.mintsglobal.ae/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Software Development",
+        "item": "https://www.mintsglobal.ae/software-development/"
+      }
     ]
   }
 };
@@ -78,20 +240,46 @@ export function SoftwareDevelopment() {
         title={meta.title}
         description={meta.description}
         keywords={["software engineering Dubai", "enterprise software development", "scalable web applications", "mobile app ecosystem", "custom software solutions"]}
-        canonical="/software-development"
+        canonical="/software-development/"
+        ogTitle={lang === 'en' ? "Software Development Company in Dubai | Custom Solutions – Mints Global" : undefined}
+        ogDescription={lang === 'en' ? "Custom software, web & mobile apps, ERP and CRM solutions built for UAE businesses. Mints Global — Dubai's trusted tech development partner." : undefined}
+        ogImage="https://www.mintsglobal.ae/images/software-development-dubai-mints-global.jpg"
+        twitterTitle={lang === 'en' ? "Software Development Company in Dubai | Mints Global" : undefined}
+        twitterDescription={lang === 'en' ? "Custom web apps, mobile apps, ERP & enterprise software solutions in Dubai, UAE. Partner with Mints Global." : undefined}
+        twitterImage="https://www.mintsglobal.ae/images/software-development-dubai-mints-global.jpg"
       />
       <JsonLd data={serviceSchema} />
+      <JsonLd data={organizationSchema} />
+      <JsonLd data={webPageSchema} />
       <JsonLd data={buildFaqSchema(faqs)} />
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
-        <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-6 uppercase leading-tight">
-          SOFTWARE <br/><span className="text-olive-500">DEVELOPMENT.</span>
-        </h1>
-        <p className="text-brand-white-70 max-w-2xl text-lg md:text-xl font-medium leading-relaxed mb-10">
-          Scalable, resilient web, mobile, and enterprise applications that drive operational excellence and future-proof your business.
-        </p>
-        <Link to="/contact" className="inline-flex bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors items-center gap-2">
-          Discuss Your Specs <ArrowRight size={18} />
-        </Link>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-6 uppercase leading-tight">
+              SOFTWARE <br/><span className="text-olive-500">DEVELOPMENT.</span>
+            </h1>
+            <p className="text-brand-white-70 max-w-2xl text-lg md:text-xl font-medium leading-relaxed mb-10">
+              Scalable, resilient web, mobile, and enterprise applications that drive operational excellence and future-proof your business.
+            </p>
+            <Link to="/contact" className="inline-flex bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors items-center gap-2">
+              Discuss Your Specs <ArrowRight size={18} />
+            </Link>
+          </div>
+          <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-square rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
+            <SafeImage
+              src="/images/software-development-company-dubai.jpg"
+              fallbackSrc="/crm-blog-image.png"
+              alt="Custom software development services by Mints Global in Dubai, UAE"
+              title="Software Development Company Dubai – Mints Global"
+              width="1920"
+              height="800"
+              loading="eager"
+              decoding="async"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            />
+          </div>
+        </div>
       </section>
 
       <section className="bg-olive-900 border-y border-white/5 py-24">

@@ -226,7 +226,7 @@ export function DigitalMarketing() {
 
   return (
     <div className="w-full">
-      <SEO 
+      <SEO
         title={lang === 'en' ? "Digital Marketing Services in Dubai, UAE | Mints Global" : meta.title}
         description={lang === 'en' ? "Grow your brand with Mints Global Dubai. ROI-driven SEO, PPC, social media, content marketing & email campaigns for UAE and global brands." : meta.description}
         keywords={["digital marketing agency Dubai", "ROI digital marketing", "SEO and performance marketing", "social media strategy", "brand resonance"]}
@@ -243,7 +243,7 @@ export function DigitalMarketing() {
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
         <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-6 uppercase leading-tight">
-          DIGITAL <br/><span className="text-olive-500">MARKETING.</span>
+          DIGITAL <br /><span className="text-olive-500">MARKETING.</span>
         </h1>
         <p className="text-brand-white-70 max-w-2xl text-lg md:text-xl font-medium leading-relaxed mb-10">
           Data-driven strategies that amplify your brand resonance, capture high-intent audiences, and deliver measurable ROI.
@@ -275,45 +275,45 @@ export function DigitalMarketing() {
       {/* Why Us Section */}
       <section className="py-24 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-           <div>
-             <h2 className="font-display text-4xl font-black mb-6 uppercase">Why <span className="text-olive-500">Mints Global?</span></h2>
-             <p className="text-brand-white-70 mb-8 leading-relaxed">
-               We don't just chase clicks; we engineer growth. Our digital marketing strategies are deeply integrated with our technical capabilities, meaning your campaigns benefit from superior tracking, faster landing pages, and AI-driven insights.
-             </p>
-             <ul className="space-y-4">
-               {['Data-First Approach', 'Transparent Reporting Dashboard', 'Cross-Platform Synergy', 'Dedicated Account Managers'].map(item => (
-                 <li key={item} className="flex items-center gap-3 font-bold text-sm uppercase tracking-wide">
-                   <CheckCircle2 className="text-olive-500" size={20} /> {item}
-                 </li>
-               ))}
-             </ul>
-           </div>
-           <div className="bg-olive-900 border border-white/5 rounded-3xl p-10 relative overflow-hidden aspect-square flex items-center justify-center">
-              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-olive-500 via-olive-900 to-olive-950"></div>
-              <div className="relative text-center">
-                <div className="font-display text-4xl md:text-5xl lg:text-7xl font-black text-white mb-2">
-                  <CountUp end={340} duration={2.5} enableScrollSpy />%
-                </div>
-                <div className="font-bold text-olive-500 uppercase tracking-widest text-sm">Average Traffic Increase</div>
+          <div>
+            <h2 className="font-display text-4xl font-black mb-6 uppercase">Why <span className="text-olive-500">Mints Global?</span></h2>
+            <p className="text-brand-white-70 mb-8 leading-relaxed">
+              We don't just chase clicks; we engineer growth. Our digital marketing strategies are deeply integrated with our technical capabilities, meaning your campaigns benefit from superior tracking, faster landing pages, and AI-driven insights.
+            </p>
+            <ul className="space-y-4">
+              {['Data-First Approach', 'Transparent Reporting Dashboard', 'Cross-Platform Synergy', 'Dedicated Account Managers'].map(item => (
+                <li key={item} className="flex items-center gap-3 font-bold text-sm uppercase tracking-wide">
+                  <CheckCircle2 className="text-olive-500" size={20} /> {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="bg-olive-900 border border-white/5 rounded-3xl p-10 relative overflow-hidden aspect-square flex items-center justify-center">
+            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-olive-500 via-olive-900 to-olive-950"></div>
+            <div className="relative text-center">
+              <div className="font-display text-4xl md:text-5xl lg:text-7xl font-black text-white mb-2">
+                <CountUp end={340} duration={2.5} enableScrollSpy />%
               </div>
-           </div>
+              <div className="font-bold text-olive-500 uppercase tracking-widest text-sm">Average Traffic Increase</div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="bg-olive-900 border-t border-white/5 py-24">
-         <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tight">Frequently Asked <span className="text-olive-500">Questions</span></h2>
-            <ServicesAccordion items={faqs.map(f => ({ title: f.q, content: f.a }))} />
-         </div>
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <h2 className="font-display text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tight">Frequently Asked <span className="text-olive-500">Questions</span></h2>
+          <ServicesAccordion items={faqs.map(f => ({ title: f.q, content: f.a }))} />
+        </div>
       </section>
 
       {/* CTA Bottom */}
       <section className="max-w-4xl mx-auto px-6 text-center py-20 md:py-32">
-         <h2 className="font-display text-4xl md:text-5xl font-black mb-8 leading-tight">DOMINATE YOUR<br />DIGITAL LANDSCAPE.</h2>
-         <Link to="/contact" className="inline-flex items-center gap-3 bg-brand-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all hover:scale-105">
-           Get a Proposal <ArrowRight size={20} />
-         </Link>
+        <h2 className="font-display text-4xl md:text-5xl font-black mb-8 leading-tight">DOMINATE YOUR<br />DIGITAL LANDSCAPE.</h2>
+        <Link to="/contact" className="inline-flex items-center gap-3 bg-brand-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all hover:scale-105">
+          Get a Proposal <ArrowRight size={20} />
+        </Link>
       </section>
     </div>
   );

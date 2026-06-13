@@ -67,14 +67,14 @@ export function Breadcrumbs() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mintsglobal.ae" },
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mintsglobal.ae/" },
       ...paths.map((path, index) => {
         const routeTo = `/${paths.slice(0, index + 1).join('/')}`;
         return {
           "@type": "ListItem",
           position: index + 2,
           name: formatPath(path, index, paths),
-          item: `https://mintsglobal.ae${routeTo}`
+          item: `https://www.mintsglobal.ae${routeTo}/`
         };
       })
     ]

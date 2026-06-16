@@ -3,74 +3,170 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { JsonLd } from '../components/JsonLd';
-import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
 import { SEO } from '../components/SEO';
 import { ServicesAccordion } from '../components/ServicesAccordion';
+import { SafeImage } from '../components/SafeImage';
 
 const faqs = [
   {
-    "q": "Do you use templates?",
-    "a": "We specialize in custom design and development. While we can work with premium templates if budget is a strict constraint, our core offering is bespoke website builds tailored entirely to your brand."
+    "q": "What website development services does Mints Global offer?",
+    "a": "Mints Global offers custom website development, WordPress development, Shopify development, eCommerce websites, and corporate website solutions."
   },
   {
-    "q": "Will my website be mobile-friendly?",
-    "a": "Yes. Every website we build adopts a mobile-first responsive design, ensuring it looks and functions perfectly on desktops, tablets, and smartphones."
+    "q": "Do you build SEO-friendly websites?",
+    "a": "Yes, all websites are built with SEO best practices, fast loading speed, mobile responsiveness, and optimized site structure."
   },
   {
-    "q": "Can I update the content myself?",
-    "a": "Absolutely. We integrate intuitive Content Management Systems (CMS) like WordPress or a Headless CMS, allowing you and your team to easily edit text, images, and publish blogs without needing a developer."
-  },
-  {
-    "q": "Is basic SEO included?",
-    "a": "Yes. All our websites are built with technical SEO best practices out of the box — including semantic HTML, optimized meta tags, fast load times, and structured data schema."
+    "q": "Can you redesign an existing website?",
+    "a": "Yes, we provide website redesign services to improve performance, design, user experience, and search engine visibility."
   }
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Website Development Services",
+  "provider": {
+    "@type": "Organization",
+    "name": "Mints Global",
+    "url": "https://www.mintsglobal.ae"
+  },
+  "serviceType": "Website Development",
+  "description": "Professional website development services in Dubai including custom websites, WordPress development, Shopify stores, eCommerce websites and business web solutions.",
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  },
+  "url": "https://www.mintsglobal.ae/software-development/website-development"
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Mints Global",
+  "url": "https://www.mintsglobal.ae",
+  "logo": "https://www.mintsglobal.ae/logo.png",
+  "email": "info@mintsglobal.ae",
+  "telephone": "+971502943916",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bank Street Building, Bur Dubai",
+    "addressLocality": "Dubai",
+    "addressCountry": "AE"
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.mintsglobal.ae"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Software Development",
+      "item": "https://www.mintsglobal.ae/software-development"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Website Development",
+      "item": "https://www.mintsglobal.ae/software-development/website-development"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What website development services does Mints Global offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mints Global offers custom website development, WordPress development, Shopify development, eCommerce websites, and corporate website solutions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you build SEO-friendly websites?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all websites are built with SEO best practices, fast loading speed, mobile responsiveness, and optimized site structure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you redesign an existing website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we provide website redesign services to improve performance, design, user experience, and search engine visibility."
+      }
+    }
+  ]
+};
+
 export function WebsiteDevelopment() {
-  const serviceSchema = buildServiceSchema({
-    name: "Website Development",
-    description: "Your website is your 24/7 salesperson. Let's build one that converts.",
-    url: "/software-development/website-development",
-    serviceType: "Software Development"
-  });
-
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Software Development", url: "/software-development" },
-    { name: "Website Development", url: "/software-development/website-development" }
-  ]);
-
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Website Development | Mints Global" 
-        description="Highly performant, SEO-optimized, and visually stunning corporate websites and landing pages built to convert visitors into leads."
-        keywords={["corporate website development", "B2B web design", "high conversion websites", "fast loading websites", "custom web development Dubai"]}
+        title="Custom Web Design & Development in Dubai , UAE | Mints Global" 
+        rawTitle={true}
+        description="Need a website in Dubai? We build fast, responsive and SEO-friendly websites, WordPress sites and eCommerce solutions for businesses."
+        canonical="/software-development/website-development"
+        ogTitle="Website Development Company Dubai | Custom Web Design & Development UAE"
+        ogDescription="Professional website development services in Dubai. Custom business websites, WordPress, Shopify, eCommerce and SEO-friendly web solutions."
+        ogImage="https://www.mintsglobal.ae/images/website-development-dubai.jpg"
+        twitterTitle="Website Development Company Dubai | Custom Web Design UAE"
+        twitterDescription="Build high-performing websites with Mints Global. Expert WordPress, Shopify, eCommerce and custom website development services in Dubai."
+        twitterImage="https://www.mintsglobal.ae/images/website-development-dubai.jpg"
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
-        
-        
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
-              Digital Presence
-            </span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+                Digital Presence
+              </span>
+            </div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+              Website<br/>
+              <span className="text-olive-500">Development.</span>
+            </h1>
+            <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
+              Highly performant, SEO-optimized, and visually stunning corporate websites and landing pages built to convert visitors into leads.
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+               <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
+                 Upgrade Your Website <ArrowRight size={18} />
+               </Link>
+            </div>
+          </motion.div>
+
+          <div className="relative w-full aspect-[12/8] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
+            <SafeImage
+              src="/images/website-development-dubai.webp"
+              fallbackSrc="/hero.webp"
+              alt="Website Development Company in Dubai Creating Custom Business Websites"
+              title="Custom Website Development Services Dubai"
+              width={1200}
+              height={800}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            />
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
-            Website<br/>
-            <span className="text-olive-500">Development.</span>
-          </h1>
-          <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
-            Highly performant, SEO-optimized, and visually stunning corporate websites and landing pages built to convert visitors into leads.
-          </p>
-          
-          <div className="flex flex-wrap gap-4">
-             <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
-               Upgrade Your Website <ArrowRight size={18} />
-             </Link>
-          </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Services Section */}
@@ -156,9 +252,9 @@ export function WebsiteDevelopment() {
         </div>
       </section>
       
+      <JsonLd data={organizationSchema} />
       <JsonLd data={serviceSchema} />
-      <JsonLd data={buildFaqSchema(faqs)} />
-      
+      <JsonLd data={faqSchema} />
       <JsonLd data={breadcrumbSchema} />
     </div>
   );

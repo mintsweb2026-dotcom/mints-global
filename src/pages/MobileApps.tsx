@@ -3,74 +3,181 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { JsonLd } from '../components/JsonLd';
-import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
 import { SEO } from '../components/SEO';
 import { ServicesAccordion } from '../components/ServicesAccordion';
+import { SafeImage } from '../components/SafeImage';
 
 const faqs = [
   {
-    "q": "Should I choose Native or Cross-Platform?",
-    "a": "If your app requires heavy device-specific hardware integration, complex 3D graphics, or maximum performance, Native is best. If you need a faster time-to-market and lower budget for a standard utility/social app, React Native or Flutter is ideal."
+    "q": "How much does mobile app development cost in Dubai?",
+    "a": "The cost depends on app complexity, features, integrations, and development platform. Custom mobile applications typically vary based on project requirements."
   },
   {
-    "q": "How long does it take to build an app?",
-    "a": "A standard MVP (Minimum Viable Product) typically takes 3 to 4 months. Complex applications with numerous integrations and screens can take 6 months or longer."
+    "q": "Do you develop both iOS and Android apps?",
+    "a": "Yes, we develop native iOS apps, Android apps, and cross-platform mobile applications using modern frameworks."
   },
   {
-    "q": "Will you help upload the app to the stores?",
-    "a": "Yes, App Store and Google Play submission is included in our development process. We handle the provisioning profiles, certificates, and compliance checks."
-  },
-  {
-    "q": "Do you support the app after launch?",
-    "a": "Absolutely. We offer tailored SLA (Service Level Agreement) packages to monitor crashes, update APIs, and fix bugs post-launch."
+    "q": "How long does it take to build a mobile app?",
+    "a": "Most mobile app projects take between 8 and 24 weeks depending on features, integrations and testing requirements."
   }
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Mobile App Development Services",
+  "serviceType": "Mobile Application Development",
+  "provider": {
+    "@type": "Organization",
+    "name": "MINTS Global",
+    "url": "https://www.mintsglobal.ae",
+    "logo": "https://www.mintsglobal.ae/logo.png"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  },
+  "description": "Custom mobile app development services in Dubai including iOS app development, Android app development, cross-platform applications, enterprise mobility solutions and ongoing support.",
+  "url": "https://www.mintsglobal.ae/software-development/mobile-apps",
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  }
+};
+
+const organizationSchema = {
+ "@context": "https://schema.org",
+ "@type": "Organization",
+ "name": "MINTS Global",
+ "url": "https://www.mintsglobal.ae",
+ "logo": "https://www.mintsglobal.ae/logo.png",
+ "email": "info@mintsglobal.ae",
+ "telephone": "+971502943916",
+ "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+   "addressLocality": "Bur Dubai",
+   "addressRegion": "Dubai",
+   "addressCountry": "AE"
+ },
+ "sameAs": [
+   "https://www.linkedin.com/company/mints-global",
+   "https://www.facebook.com/mintsglobal",
+   "https://www.instagram.com/mintsglobal"
+ ]
+};
+
+const breadcrumbSchema = {
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+   {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://www.mintsglobal.ae/"
+   },
+   {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Software Development",
+     "item": "https://www.mintsglobal.ae/software-development"
+   },
+   {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Mobile Apps",
+     "item": "https://www.mintsglobal.ae/software-development/mobile-apps"
+   }
+ ]
+};
+
+const faqSchema = {
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+   {
+     "@type": "Question",
+     "name": "How much does mobile app development cost in Dubai?",
+     "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "The cost depends on app complexity, features, integrations, and development platform. Custom mobile applications typically vary based on project requirements."
+     }
+   },
+   {
+     "@type": "Question",
+     "name": "Do you develop both iOS and Android apps?",
+     "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Yes, we develop native iOS apps, Android apps, and cross-platform mobile applications using modern frameworks."
+     }
+   },
+   {
+     "@type": "Question",
+     "name": "How long does it take to build a mobile app?",
+     "acceptedAnswer": {
+       "@type": "Answer",
+       "text": "Most mobile app projects take between 8 and 24 weeks depending on features, integrations and testing requirements."
+     }
+   }
+ ]
+};
+
 export function MobileApps() {
-  const serviceSchema = buildServiceSchema({
-    name: "Mobile Apps",
-    description: "Your audience is on mobile. Let's give them an app they'll love to use.",
-    url: "/software-development/mobile-apps",
-    serviceType: "Software Development"
-  });
-
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Software Development", url: "/software-development" },
-    { name: "Mobile Apps", url: "/software-development/mobile-apps" }
-  ]);
-
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Mobile App Development | Mints Global" 
-        description="Engaging and high-performing iOS and Android applications. From consumer fintech apps to enterprise mobility solutions, we build mobile experiences that connect."
-        keywords={["mobile app development Dubai", "iOS app development", "Android app developers", "cross-platform app development", "Flutter React Native apps"]}
+        title="Mobile App Developers Dubai UAE | MINTS Global" 
+        rawTitle={true}
+        description="Dubai mobile app development company building custom iOS, Android and cross-platform apps for businesses across the UAE."
+        canonical="/software-development/mobile-apps"
+        ogTitle="Mobile App Development Company Dubai | iOS & Android App Developers UAE"
+        ogDescription="Custom mobile app development services in Dubai. We build scalable iOS, Android and cross-platform applications for startups, enterprises and growing businesses."
+        ogImage="https://www.mintsglobal.ae/images/mobile-app-development-dubai.webp"
+        twitterTitle="Mobile App Development Company Dubai | iOS & Android App Developers UAE"
+        twitterDescription="Custom mobile app development services in Dubai. Build powerful iOS, Android and enterprise mobile applications with MINTS Global."
+        twitterImage="https://www.mintsglobal.ae/images/mobile-app-development-dubai.webp"
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
-        
-        
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
-              Native & Cross-Platform
-            </span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+                Native & Cross-Platform
+              </span>
+            </div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+              Mobile App<br/>
+              <span className="text-olive-500">Development.</span>
+            </h1>
+            <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
+              Engaging and high-performing iOS and Android applications. From consumer fintech apps to enterprise mobility solutions, we build mobile experiences that connect.
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+               <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
+                 Build Your App <ArrowRight size={18} />
+               </Link>
+            </div>
+          </motion.div>
+
+          <div className="relative w-full aspect-[12/7] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
+            <SafeImage
+              src="/images/mobile-app-development-dubai.webp"
+              fallbackSrc="/hero.webp"
+              alt="Mobile App Development Company in Dubai UAE"
+              title="Mobile App Development Dubai"
+              width={1200}
+              height={700}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            />
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
-            Mobile App<br/>
-            <span className="text-olive-500">Development.</span>
-          </h1>
-          <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
-            Engaging and high-performing iOS and Android applications. From consumer fintech apps to enterprise mobility solutions, we build mobile experiences that connect.
-          </p>
-          
-          <div className="flex flex-wrap gap-4">
-             <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
-               Build Your App <ArrowRight size={18} />
-             </Link>
-          </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Services Section */}
@@ -156,9 +263,9 @@ export function MobileApps() {
         </div>
       </section>
       
+      <JsonLd data={organizationSchema} />
       <JsonLd data={serviceSchema} />
-      <JsonLd data={buildFaqSchema(faqs)} />
-      
+      <JsonLd data={faqSchema} />
       <JsonLd data={breadcrumbSchema} />
     </div>
   );

@@ -46,6 +46,7 @@ export function PhotographyGraphics() {
         title="Photography & Graphic Design | Mints Global" 
         description="Elevate your visual presence with professional photography and striking graphic design. We create assets that capture attention and communicate quality."
         keywords={["commercial photography Dubai", "graphic design agency", "creative assets production", "product photography", "visual content creation"]}
+        canonical="/digital-marketing/photography-graphics"
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">

@@ -1,76 +1,196 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { JsonLd } from '../components/JsonLd';
-import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
 import { SEO } from '../components/SEO';
+import { SafeImage } from '../components/SafeImage';
 import { ServicesAccordion } from '../components/ServicesAccordion';
 
 const faqs = [
   {
-    "q": "How long does a branding project take?",
-    "a": "A comprehensive brand identity project typically takes between 4 to 8 weeks, depending on the complexity and the number of deliverables required."
+    "q": "What does professional branding include?",
+    "a": "Professional branding encompasses logo design, brand strategy development, visual identity creation, color palette selection, typography guidelines, and complete brand guidelines documentation."
   },
   {
-    "q": "Will we own the final designs?",
-    "a": "Yes, upon project completion and final payment, you receive full intellectual property rights to all final brand assets and source files."
+    "q": "How long does the branding process take?",
+    "a": "A comprehensive branding project typically takes 4-8 weeks depending on scope, revisions, and complexity. Mints Global customizes timelines based on your specific requirements."
   },
   {
-    "q": "We only need a logo, can you help?",
-    "a": "While we specialize in holistic brand systems, we can execute standalone logo projects for select early-stage businesses. However, we strongly recommend investing in a full identity system."
+    "q": "Why choose Mints Global for branding services?",
+    "a": "Mints Global provides expert branding solutions with a creative team of designers, strategists, and digital specialists. We deliver custom brand identities that reflect your business values and resonate with your target audience."
   },
   {
-    "q": "Do you also implement the brand on our website?",
-    "a": "Absolutely. Our web development and design teams work closely with our branding specialists to seamlessly integrate your new brand identity into your digital platforms."
+    "q": "Do you provide branding services for startups?",
+    "a": "Yes, we specialize in creating strong brand identities for startups and established businesses. Our services are tailored to different budgets and business stages."
   }
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Professional Branding Services",
+  "description": "Expert branding agency offering logo design, brand strategy, visual identity creation and brand guidelines development for businesses in Dubai and UAE",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Mints Global",
+    "image": "https://www.mintsglobal.ae/logo.png",
+    "telephone": "+971502943916",
+    "email": "info@mintsglobal.ae",
+    "url": "https://www.mintsglobal.ae",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+      "addressLocality": "Bur Dubai",
+      "addressRegion": "Dubai",
+      "postalCode": "00000",
+      "addressCountry": "AE"
+    },
+    "priceRange": "$$"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Dubai"
+  },
+  "serviceType": "Branding Services",
+  "hasOfferingDetails": [
+    {
+      "@type": "OfferingDetails",
+      "name": "Logo Design"
+    },
+    {
+      "@type": "OfferingDetails",
+      "name": "Brand Strategy"
+    },
+    {
+      "@type": "OfferingDetails",
+      "name": "Visual Identity Design"
+    },
+    {
+      "@type": "OfferingDetails",
+      "name": "Brand Guidelines"
+    }
+  ],
+  "url": "https://www.mintsglobal.ae/digital-marketing/branding"
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.mintsglobal.ae"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Digital Marketing",
+      "item": "https://www.mintsglobal.ae/digital-marketing"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Branding",
+      "item": "https://www.mintsglobal.ae/digital-marketing/branding"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a
+    }
+  }))
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Mints Global",
+  "url": "https://www.mintsglobal.ae",
+  "logo": "https://www.mintsglobal.ae/logo.png",
+  "description": "Digital marketing agency in Dubai offering branding, SEO, software development, cybersecurity and IT services",
+  "telephone": "+971502943916",
+  "email": "info@mintsglobal.ae",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+    "addressLocality": "Bur Dubai",
+    "addressRegion": "Dubai",
+    "addressCountry": "AE"
+  },
+  "sameAs": [
+    "https://www.facebook.com/mintsglobal",
+    "https://www.instagram.com/mintsglobal",
+    "https://www.linkedin.com/company/mints-global"
+  ]
+};
+
 export function BrandStrategy() {
-  const serviceSchema = buildServiceSchema({
-    name: "Brand Strategy",
-    description: "Your brand is your most valuable asset. Let's make it unforgettable.",
-    url: "/digital-marketing/branding",
-    serviceType: "Digital Marketing"
-  });
-
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Digital Marketing", url: "/digital-marketing" },
-    { name: "Brand Strategy", url: "/digital-marketing/branding" }
-  ]);
-
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Brand Strategy & Design | Mints Global" 
-        description="Your brand is more than a logo. We build compelling brand identities, messaging frameworks, and visual systems that differentiate your business and resonate with your audience."
+        title="Professional Branding Agency Dubai | Mints Global" 
+        description="Expert branding services in Dubai. Logo design, brand strategy & visual identity. Contact Mints Global today."
         keywords={['branding agency dubai', 'brand identity', 'brand strategy uae', 'corporate branding', 'logo design']}
+        canonical="/digital-marketing/branding"
+        ogTitle="Professional Branding Agency Dubai | Logo & Brand Identity Design | Mints Global"
+        ogDescription="Transform your brand identity with Mints Global's expert branding services. Logo design, brand strategy & visual identity creation for UAE businesses."
+        ogImage="https://www.mintsglobal.ae/images/branding-hero.jpg"
+        twitterTitle="Professional Branding Agency Dubai | Logo & Brand Design | Mints Global"
+        twitterDescription="Expert branding services including logo design, brand strategy & visual identity. Transform your brand with Mints Global."
+        twitterImage="https://www.mintsglobal.ae/images/branding-hero.jpg"
+        geoTarget={true}
+        rawTitle={true}
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
-        
-        
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
-              Creative Excellence
-            </span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+                Creative Excellence
+              </span>
+            </div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+              Brand<br/>
+              <span className="text-olive-500">Strategy.</span>
+            </h1>
+            <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
+              Your brand is more than a logo. We build compelling brand identities, messaging frameworks, and visual systems that differentiate your business and resonate with your audience.
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+               <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
+                 Build Your Brand <ArrowRight size={18} />
+               </Link>
+            </div>
+          </motion.div>
+
+          <div className="relative w-full aspect-[12/6] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
+            <SafeImage
+              src="https://www.mintsglobal.ae/images/branding-hero.jpg"
+              fallbackSrc="/hero.png"
+              alt="Professional branding services and logo design process at Mints Global Dubai"
+              title="Branding & Logo Design Services"
+              width="1200"
+              height="600"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            />
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
-            Brand<br/>
-            <span className="text-olive-500">Strategy.</span>
-          </h1>
-          <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
-            Your brand is more than a logo. We build compelling brand identities, messaging frameworks, and visual systems that differentiate your business and resonate with your audience.
-          </p>
-          
-          <div className="flex flex-wrap gap-4">
-             <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
-               Build Your Brand <ArrowRight size={18} />
-             </Link>
-          </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Services Section */}
@@ -157,9 +277,9 @@ export function BrandStrategy() {
       </section>
       
       <JsonLd data={serviceSchema} />
-      <JsonLd data={buildFaqSchema(faqs)} />
-      
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={faqSchema} />
+      <JsonLd data={organizationSchema} />
     </div>
   );
 }

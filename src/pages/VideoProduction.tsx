@@ -46,6 +46,7 @@ export function VideoProduction() {
         title="Video Production | Mints Global" 
         description="Engage your audience with high-quality, cinematic video content. From brand films and commercials to social media shorts, we handle end-to-end production."
         keywords={["video production agency", "corporate video Dubai", "commercial video production", "explainer videos", "high-end video assets"]}
+        canonical="/digital-marketing/video-production"
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">

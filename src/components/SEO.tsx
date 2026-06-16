@@ -21,6 +21,7 @@ interface SEOProps {
   twitterTitle?: string;
   twitterDescription?: string;
   twitterImage?: string;
+  rawTitle?: boolean;
 }
 
 const BASE_URL = 'https://www.mintsglobal.ae';
@@ -41,6 +42,7 @@ export function SEO({
   twitterTitle,
   twitterDescription,
   twitterImage,
+  rawTitle = false,
 }: SEOProps) {
   const { i18n } = useTranslation();
   const lang = i18n.language; // 'en' | 'ar' | 'de'
@@ -51,9 +53,11 @@ export function SEO({
   const langQuery = lang && lang !== 'en' ? `?lang=${lang}` : '';
   const canonicalUrl = `${BASE_URL}${cleanCanonical}${langQuery}`;
 
-  const fullTitle = title?.includes('Mints Global')
+  const fullTitle = rawTitle
     ? title
-    : `${title || 'Mints Global'} | Mints Global`;
+    : (title?.includes('Mints Global')
+        ? title
+        : `${title || 'Mints Global'} | Mints Global`);
 
   return (
     <Helmet>

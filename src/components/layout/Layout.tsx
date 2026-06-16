@@ -562,16 +562,16 @@ export function Layout() {
 
       {/* Floating WhatsApp Button */}
       <a 
-        href="https://wa.me/971502943916" 
+        href="https://wa.me/97502943916?text=Hello%2C%20I%27d%20like%20to%20know%20more"
         target="_blank" 
-        rel="noreferrer"
+        rel="noopener noreferrer"
         className={cn(
-          "fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform items-center justify-center",
-          mobileMenuOpen ? "hidden" : "flex"
+          "whatsapp-float",
+          mobileMenuOpen ? "hidden" : "block"
         )}
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle size={28} />
+        <img src="/whatsapp-icon.svg" alt="WhatsApp" width="56" height="56" />
       </a>
 
       {/* Scroll to Top Button */}

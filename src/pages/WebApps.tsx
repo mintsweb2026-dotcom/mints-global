@@ -3,74 +3,172 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { JsonLd } from '../components/JsonLd';
-import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
 import { SEO } from '../components/SEO';
 import { ServicesAccordion } from '../components/ServicesAccordion';
+import { SafeImage } from '../components/SafeImage';
 
 const faqs = [
   {
-    "q": "What technology stack do you use?",
-    "a": "We primarily utilize the modern MERN stack (MongoDB/PostgreSQL, Express, React/Next.js, Node.js) as well as Python (Django) depending on the project requirements."
+    "q": "What types of web applications does MINTS Global develop?",
+    "a": "We develop SaaS platforms, CRM systems, ERP software, customer portals, enterprise applications, dashboards, and custom business web applications."
   },
   {
-    "q": "Do we own the source code?",
-    "a": "Yes. Once the project is complete and all payments are settled, the intellectual property and full source code are entirely handed over to you."
+    "q": "Do you provide custom web application development in Dubai?",
+    "a": "Yes, MINTS Global provides custom web application development services for startups, SMEs, and enterprises across Dubai and the UAE."
   },
   {
-    "q": "How do you ensure the app is secure?",
-    "a": "We integrate security at every phase (DevSecOps). This includes data encryption, secure authentication (OAuth/JWT), protection against OWASP top 10 vulnerabilities, and regular code reviews."
-  },
-  {
-    "q": "Do you provide hosting and maintenance?",
-    "a": "Yes. We offer managed cloud hosting on AWS/GCP and provide ongoing maintenance retainers to ensure your application remains updated, secure, and performant as it scales."
+    "q": "Which technologies do you use for web application development?",
+    "a": "We use modern technologies such as React, Next.js, Node.js, Laravel, Python, .NET, and cloud-based architectures."
   }
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Web Application Development Services",
+  "serviceType": "Custom Web Application Development",
+  "provider": {
+    "@type": "Organization",
+    "name": "MINTS Global",
+    "url": "https://www.mintsglobal.ae",
+    "logo": "https://www.mintsglobal.ae/logo.png"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United Arab Emirates"
+  },
+  "description": "Custom web application development services including SaaS applications, enterprise software, CRM systems, ERP solutions, and scalable business web platforms.",
+  "url": "https://www.mintsglobal.ae/software-development/web-apps",
+  "category": "Software Development"
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "MINTS Global",
+  "url": "https://www.mintsglobal.ae",
+  "logo": "https://www.mintsglobal.ae/logo.png",
+  "email": "info@mintsglobal.ae",
+  "telephone": "+971502943916",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bank Street Building, Bur Dubai",
+    "addressLocality": "Dubai",
+    "addressCountry": "AE"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/mints-dubai"
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.mintsglobal.ae/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Software Development",
+      "item": "https://www.mintsglobal.ae/software-development"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Web Applications",
+      "item": "https://www.mintsglobal.ae/software-development/web-apps"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What types of web applications does MINTS Global develop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We develop SaaS platforms, CRM systems, ERP software, customer portals, enterprise applications, dashboards, and custom business web applications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide custom web application development in Dubai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, MINTS Global provides custom web application development services for startups, SMEs, and enterprises across Dubai and the UAE."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which technologies do you use for web application development?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We use modern technologies such as React, Next.js, Node.js, Laravel, Python, .NET, and cloud-based architectures."
+      }
+    }
+  ]
+};
+
 export function WebApps() {
-  const serviceSchema = buildServiceSchema({
-    name: "Web Apps",
-    description: "Ready to build software that scales with your ambition? Let's engineer it.",
-    url: "/software-development/web-apps",
-    serviceType: "Software Development"
-  });
-
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Software Development", url: "/software-development" },
-    { name: "Web Apps", url: "/software-development/web-apps" }
-  ]);
-
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Web Application Development | Mints Global" 
-        description="Custom web application development. Your vision deserves more than a template — we engineer high-performance SaaS platforms, portals, and progressive web apps."
+        title="Custom Web Application Development Company in Dubai, UAE" 
+        description="Build scalable, secure web applications with MINTS Global. Web apps, SaaS, CRM & ERP solutions in Dubai, UAE."
         keywords={["custom web app development", "enterprise web applications", "scalable web apps", "SaaS development agency", "React Nextjs development"]}
+        canonical="/software-development/web-apps"
+        ogTitle="Custom Web Application Development Company in Dubai, UAE | MINTS Global"
+        twitterTitle="Custom Web Application Development Company in Dubai, UAE | MINTS Global"
+        rawTitle={true}
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
-        
-        
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
-              Scalable Engineering
-            </span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+                Scalable Engineering
+              </span>
+            </div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+              Web App<br/>
+              <span className="text-olive-500">Engineering.</span>
+            </h1>
+            <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
+              Custom web application development. Your vision deserves more than a template — we engineer high-performance SaaS platforms, portals, and progressive web apps.
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+               <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
+                 Start Your Build <ArrowRight size={18} />
+               </Link>
+            </div>
+          </motion.div>
+
+          <div className="relative w-full aspect-[12/6] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
+            <SafeImage
+              src="/images/web-application-development-services-dubai.webp"
+              fallbackSrc="/hero.png"
+              alt="Custom web application development services in Dubai UAE by MINTS Global"
+              title="Web Application Development Company Dubai"
+              width={1200}
+              height={600}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            />
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
-            Web App<br/>
-            <span className="text-olive-500">Engineering.</span>
-          </h1>
-          <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
-            Custom web application development. Your vision deserves more than a template — we engineer high-performance SaaS platforms, portals, and progressive web apps.
-          </p>
-          
-          <div className="flex flex-wrap gap-4">
-             <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
-               Start Your Build <ArrowRight size={18} />
-             </Link>
-          </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Services Section */}
@@ -116,6 +214,60 @@ export function WebApps() {
         </div>
       </section>
 
+      {/* Team Section */}
+      <section className="py-24 bg-brand-black-light border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+          <div className="flex-1">
+            <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">
+              Our Development Team
+            </span>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+              Engineered for Scalability
+            </h2>
+            <p className="text-brand-white-70 text-lg leading-relaxed mb-8">
+              Our certified software engineers design and develop custom solutions optimized for speed, performance, and cross-platform reliability. From robust database schema designs to modern API integrations, we handle the full development life cycle.
+            </p>
+          </div>
+          <div className="flex-1 relative w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
+            <SafeImage
+              src="/images/web-application-developers-dubai.webp"
+              fallbackSrc="/crm-blog-image.png"
+              alt="Web application developers building scalable business software solutions"
+              title="MINTS Global Software Development Team"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* CRM & ERP Solutions Section */}
+      <section className="py-24 bg-olive-950 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row-reverse items-center justify-between gap-12 lg:gap-16">
+          <div className="flex-1">
+            <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">
+              Enterprise Workflows
+            </span>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+              Bespoke CRM & ERP Integrations
+            </h2>
+            <p className="text-brand-white-70 text-lg leading-relaxed mb-8">
+              Consolidate your customer databases, track pipelines, and automate administrative tasks with proprietary portal software. We specialize in building secure, custom CRM and ERP web systems tailored around your operational processes.
+            </p>
+          </div>
+          <div className="flex-1 relative w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
+            <SafeImage
+              src="/images/crm-erp-web-applications-dubai.webp"
+              fallbackSrc="/hero.png"
+              alt="Custom CRM and ERP web application solutions in Dubai"
+              title="Bespoke CRM & ERP Web Applications"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-24 bg-brand-black border-t border-white/5">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
@@ -156,9 +308,9 @@ export function WebApps() {
         </div>
       </section>
       
+      <JsonLd data={organizationSchema} />
       <JsonLd data={serviceSchema} />
-      <JsonLd data={buildFaqSchema(faqs)} />
-      
+      <JsonLd data={faqSchema} />
       <JsonLd data={breadcrumbSchema} />
     </div>
   );

@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { JsonLd } from '../components/JsonLd';
-import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
+import { buildFaqSchema } from '../lib/schema-helpers';
 import { SEO } from '../components/SEO';
 import { ServicesAccordion } from '../components/ServicesAccordion';
+import { SafeImage } from '../components/SafeImage';
 
 const faqs = [
   {
@@ -26,52 +27,121 @@ const faqs = [
   }
 ];
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Mints Global",
+  "url": "https://www.mintsglobal.ae",
+  "logo": "https://www.mintsglobal.ae/logo.png",
+  "description": "Digital marketing agency specializing in video production",
+  "sameAs": [
+    "https://www.facebook.com/mintsglobal",
+    "https://www.instagram.com/mintsglobal",
+    "https://www.linkedin.com/company/mintsglobal"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Office #315, 3rd Floor, Bank Street Building, Bur Dubai",
+    "addressLocality": "Dubai",
+    "addressCountry": "AE"
+  }
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Professional Video Production",
+  "description": "Video production services including commercial, corporate, product, and social media videos",
+  "provider": {
+    "@type": "Organization",
+    "name": "Mints Global"
+  },
+  "serviceType": "Video Production & Editing",
+  "areaServed": [
+    { "@type": "City", "name": "Dubai" },
+    { "@type": "City", "name": "Abu Dhabi" },
+    { "@type": "Country", "name": "United Arab Emirates" }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.mintsglobal.ae"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Digital Marketing",
+      "item": "https://www.mintsglobal.ae/digital-marketing"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Video Production",
+      "item": "https://www.mintsglobal.ae/digital-marketing/video-production"
+    }
+  ]
+};
+
 export function VideoProduction() {
-  const serviceSchema = buildServiceSchema({
-    name: "Video Production",
-    description: "Words tell, but video sells. Let's capture your story in motion.",
-    url: "/digital-marketing/video-production",
-    serviceType: "Digital Marketing"
-  });
-
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Digital Marketing", url: "/digital-marketing" },
-    { name: "Video Production", url: "/digital-marketing/video-production" }
-  ]);
-
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Video Production | Mints Global" 
-        description="Engage your audience with high-quality, cinematic video content. From brand films and commercials to social media shorts, we handle end-to-end production."
+        title="Professional Video Production Services | Mints Global Dubai" 
+        description="Create stunning video content with Mints Global. Professional video production, editing, and distribution services for brands in Dubai & UAE."
         keywords={["video production agency", "corporate video Dubai", "commercial video production", "explainer videos", "high-end video assets"]}
         canonical="/digital-marketing/video-production"
+        ogImage="https://www.mintsglobal.ae/images/video-production-dubai-hero.webp"
+        twitterImage="https://www.mintsglobal.ae/images/video-production-dubai-hero.webp"
+        geoTarget={true}
+        rawTitle={true}
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
-        
-        
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
-              Cinematic Storytelling
-            </span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+                Cinematic Storytelling
+              </span>
+            </div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+              Video<br/>
+              <span className="text-olive-500">Production.</span>
+            </h1>
+            <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
+              Engage your audience with high-quality, cinematic video content. From brand films and commercials to social media shorts, we handle end-to-end production.
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+               <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
+                 Tell Your Story <ArrowRight size={18} />
+               </Link>
+            </div>
+          </motion.div>
+
+          <div className="relative w-full aspect-[12/6] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
+            <SafeImage
+              src="/images/video-production-dubai-hero.webp"
+              fallbackSrc="/hero.png"
+              alt="Professional video production team filming commercial content in Dubai studio"
+              title="Video Production Services Dubai"
+              width={1200}
+              height={600}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            />
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
-            Video<br/>
-            <span className="text-olive-500">Production.</span>
-          </h1>
-          <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
-            Engage your audience with high-quality, cinematic video content. From brand films and commercials to social media shorts, we handle end-to-end production.
-          </p>
-          
-          <div className="flex flex-wrap gap-4">
-             <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
-               Tell Your Story <ArrowRight size={18} />
-             </Link>
-          </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Services Section */}
@@ -157,9 +227,9 @@ export function VideoProduction() {
         </div>
       </section>
       
+      <JsonLd data={organizationSchema} />
       <JsonLd data={serviceSchema} />
       <JsonLd data={buildFaqSchema(faqs)} />
-      
       <JsonLd data={breadcrumbSchema} />
     </div>
   );

@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { JsonLd } from '../components/JsonLd';
-import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
+import { buildFaqSchema } from '../lib/schema-helpers';
 import { SEO } from '../components/SEO';
 import { ServicesAccordion } from '../components/ServicesAccordion';
+import { SafeImage } from '../components/SafeImage';
 
 const faqs = [
   {
@@ -26,52 +27,157 @@ const faqs = [
   }
 ];
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Photography & Graphic Design Services",
+  "serviceType": "Photography and Graphic Design",
+  "description": "Professional photography and graphic design services in Dubai. Mints Global creates compelling brand visuals, commercial photography, motion graphics, and creative design assets for businesses across the UAE.",
+  "url": "https://www.mintsglobal.ae/digital-marketing/photography-graphics",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Mints Global",
+    "url": "https://www.mintsglobal.ae",
+    "logo": "https://www.mintsglobal.ae/images/mints-global-logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dubai",
+      "addressCountry": "AE"
+    }
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Dubai, UAE"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Photography & Graphic Design Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Photography Dubai" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Photography UAE" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Graphic Design Services Dubai" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Logo & Brand Identity Design" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Graphics Dubai" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Motion Graphics & Visual Content" } }
+    ]
+  }
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Mints Global",
+  "description": "Digital marketing agency in Dubai specialising in SEO, social media marketing, photography, graphic design, and brand strategy.",
+  "url": "https://www.mintsglobal.ae",
+  "logo": "https://www.mintsglobal.ae/images/mints-global-logo.png",
+  "image": "https://www.mintsglobal.ae/images/photography-graphics-services-dubai.jpg",
+  "telephone": "+971 56 245 8299",
+  "email": "info@mintsglobal.ae",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Khalid Bin Al Waleed Rd - near burjuman mall - Bur Dubai - Dubai",
+    "addressLocality": "Dubai",
+    "addressRegion": "Dubai",
+    "postalCode": "122002",
+    "addressCountry": "AE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "25.2048",
+    "longitude": "55.2708"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/mints-dubai",
+    "https://www.instagram.com/mints.global/"
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.mintsglobal.ae/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Digital Marketing",
+      "item": "https://www.mintsglobal.ae/digital-marketing"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Photography & Graphics",
+      "item": "https://www.mintsglobal.ae/digital-marketing/photography-graphics"
+    }
+  ]
+};
+
 export function PhotographyGraphics() {
-  const serviceSchema = buildServiceSchema({
-    name: "Photography & Graphics",
-    description: "First impressions matter. Let's make your visuals impossible to ignore.",
-    url: "/digital-marketing/photography-graphics",
-    serviceType: "Digital Marketing"
-  });
-
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Digital Marketing", url: "/digital-marketing" },
-    { name: "Photography & Graphics", url: "/digital-marketing/photography-graphics" }
-  ]);
-
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Photography & Graphic Design | Mints Global" 
-        description="Elevate your visual presence with professional photography and striking graphic design. We create assets that capture attention and communicate quality."
+        title="Professional Photography & Design Dubai | Mints Global" 
+        description="Mints Global offers photography and graphic design services in Dubai, creating visuals that help businesses stand out online."
         keywords={["commercial photography Dubai", "graphic design agency", "creative assets production", "product photography", "visual content creation"]}
         canonical="/digital-marketing/photography-graphics"
+        ogImage="https://www.mintsglobal.ae/images/photography-graphics-services-dubai.jpg"
+        twitterImage="https://www.mintsglobal.ae/images/photography-graphics-services-dubai.jpg"
+        geoTarget={true}
+        rawTitle={true}
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
-        
-        
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
-              Visual Excellence
-            </span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+                Visual Excellence
+              </span>
+            </div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+              Photography<br/>
+              <span className="text-olive-500">& Graphics.</span>
+            </h1>
+            <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
+              Elevate your visual presence with professional photography and striking graphic design. We create assets that capture attention and communicate quality.
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+               <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
+                 Elevate Your Visuals <ArrowRight size={18} />
+               </Link>
+            </div>
+          </motion.div>
+
+          <div className="relative w-full aspect-[12/6] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+            <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
+            <SafeImage
+              src="/images/photography-graphics-services-dubai.jpg"
+              fallbackSrc="/hero.png"
+              alt="Professional photography and graphic design services in Dubai by Mints Global"
+              title="Photography & Graphic Design Agency Dubai"
+              width={1200}
+              height={600}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            />
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
-            Photography<br/>
-            <span className="text-olive-500">& Graphics.</span>
-          </h1>
-          <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
-            Elevate your visual presence with professional photography and striking graphic design. We create assets that capture attention and communicate quality.
-          </p>
-          
-          <div className="flex flex-wrap gap-4">
-             <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
-               Elevate Your Visuals <ArrowRight size={18} />
-             </Link>
-          </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Services Section */}
@@ -157,9 +263,9 @@ export function PhotographyGraphics() {
         </div>
       </section>
       
+      <JsonLd data={localBusinessSchema} />
       <JsonLd data={serviceSchema} />
       <JsonLd data={buildFaqSchema(faqs)} />
-      
       <JsonLd data={breadcrumbSchema} />
     </div>
   );

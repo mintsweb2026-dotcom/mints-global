@@ -2,8 +2,9 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { JsonLd } from '../components/JsonLd';
-import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
+import { buildFaqSchema } from '../lib/schema-helpers';
 import { SEO } from '../components/SEO';
 import { ServicesAccordion } from '../components/ServicesAccordion';
 
@@ -27,30 +28,97 @@ const faqs = [
 ];
 
 export function ERPSolutions() {
-  const serviceSchema = buildServiceSchema({
-    name: "ERP Solutions",
-    description: "Fragmented systems are costing you time. Let's architect your single source of truth.",
-    url: "/software-development/erp-solutions",
-    serviceType: "Software Development"
-  });
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "ERP Solutions",
+    "description": "Enterprise Resource Planning (ERP) software solutions for business automation and operational efficiency",
+    "provider": {
+      "@type": "Organization",
+      "name": "Mints Global",
+      "url": "https://www.mintsglobal.ae",
+      "logo": "https://www.mintsglobal.ae/logo.png"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Arab Emirates"
+    },
+    "url": "https://www.mintsglobal.ae/software-development/erp-solutions"
+  };
 
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Software Development", url: "/software-development" },
-    { name: "ERP Solutions", url: "/software-development/erp-solutions" }
-  ]);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.mintsglobal.ae"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Software Development",
+        "item": "https://www.mintsglobal.ae/software-development"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "ERP Solutions",
+        "item": "https://www.mintsglobal.ae/software-development/erp-solutions"
+      }
+    ]
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Mints Global - ERP Solutions",
+    "image": "https://www.mintsglobal.ae/logo.png",
+    "description": "Professional ERP software development and implementation services based in Dubai, UAE",
+    "url": "https://www.mintsglobal.ae/software-development/erp-solutions",
+    "telephone": "+971 502943916",
+    "email": "info@mintsglobal.ae",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+      "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
+      "postalCode": "122002",
+      "addressCountry": "AE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "25.2048",
+      "longitude": "55.2708"
+    },
+    "priceRange": "$$$$"
+  };
 
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO
-        title="ERP Solutions | Mints Global"
-        description="Unify your business operations. We customize, integrate, and deploy Enterprise Resource Planning systems to give you total control over your resources, finance, and supply chain."
-        keywords={["ERP development company", "custom ERP solutions", "enterprise resource planning software", "business process automation", "ERP integration"]}
+        title="ERP Solutions Dubai | Mints Global"
+        description="Discover enterprise-grade ERP solutions in Dubai. Custom ERP software development for business automation. Expert implementation, support from Mints Global."
+        canonical="/software-development/erp-solutions"
+        ogTitle="Enterprise Resource Planning (ERP) Solutions | Mints Global Dubai"
+        ogDescription="Transform your business with custom ERP software solutions. Streamline operations, reduce costs, and increase efficiency with Mints Global's enterprise solutions."
+        ogImage="https://www.mintsglobal.ae/images/erp-solutions-og.jpg"
+        twitterTitle="ERP Solutions Dubai | Enterprise Resource Planning by Mints Global"
+        twitterDescription="Custom ERP software solutions for business automation. Streamline operations & increase efficiency with Mints Global's enterprise resource planning services."
+        twitterImage="https://www.mintsglobal.ae/images/erp-solutions-twitter.jpg"
+        rawTitle={true}
+        geoTarget={true}
       />
+      <Helmet>
+        <meta property="og:image:alt" content="ERP Solutions Dashboard - Enterprise Resource Planning Software by Mints Global" />
+        <meta name="twitter:image:alt" content="ERP Software Solutions - Enterprise Resource Planning Platform" />
+        <meta name="twitter:creator" content="@MintsBranding" />
+      </Helmet>
+      
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
-
-
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex items-center gap-4 mb-6">
             <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
@@ -65,10 +133,14 @@ export function ERPSolutions() {
             Unify your business operations. We customize, integrate, and deploy Enterprise Resource Planning systems to give you total control over your resources, finance, and supply chain.
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mb-16">
             <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
               Streamline Operations <ArrowRight size={18} />
             </Link>
+          </div>
+
+          <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+            <img src="/images/erp-solutions-hero.jpg" alt="ERP Solutions Dashboard - Enterprise Resource Planning Software" width="1200" height="600" loading="lazy" className="w-full h-auto object-cover" />
           </div>
         </motion.div>
       </section>
@@ -81,7 +153,6 @@ export function ERPSolutions() {
             <p className="text-brand-white-70 text-lg max-w-3xl">Transition away from disconnected spreadsheets into a single source of truth for your entire enterprise.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
             <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
               <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Custom ERP Development</h3>
@@ -157,9 +228,9 @@ export function ERPSolutions() {
       </section>
 
       <JsonLd data={serviceSchema} />
-      <JsonLd data={buildFaqSchema(faqs)} />
-
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={localBusinessSchema} />
+      <JsonLd data={buildFaqSchema(faqs)} />
     </div>
   );
 }

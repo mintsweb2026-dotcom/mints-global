@@ -2,8 +2,9 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { JsonLd } from '../components/JsonLd';
-import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
+import { buildFaqSchema } from '../lib/schema-helpers';
 import { SEO } from '../components/SEO';
 import { ServicesAccordion } from '../components/ServicesAccordion';
 
@@ -27,29 +28,92 @@ const faqs = [
 ];
 
 export function Ecommerce() {
-  const serviceSchema = buildServiceSchema({
-    name: "E-Commerce",
-    description: "Ready to turn visitors into buyers? Let's build your digital storefront.",
-    url: "/software-development/ecommerce",
-    serviceType: "Software Development"
-  });
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "E-Commerce Development",
+    "description": "Custom e-commerce platform development for Dubai retailers and businesses.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Mints Global",
+      "url": "https://www.mintsglobal.ae",
+      "telephone": "+971502943916",
+      "email": "info@mintsglobal.ae",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Office #315, 3rd Floor, Bank Street Building, Bur Dubai",
+        "addressLocality": "Dubai",
+        "addressCountry": "AE"
+      }
+    },
+    "areaServed": "Dubai, UAE",
+    "image": "https://www.mintsglobal.ae/images/ecommerce-hero.jpg",
+    "url": "https://www.mintsglobal.ae/software-development/ecommerce"
+  };
 
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Software Development", url: "/software-development" },
-    { name: "E-Commerce", url: "/software-development/ecommerce" }
-  ]);
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mints Global",
+    "url": "https://www.mintsglobal.ae",
+    "logo": "https://www.mintsglobal.ae/images/logo.png",
+    "description": "Digital marketing agency and software development company in Dubai",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #315, 3rd Floor, Bank Street Building, Bur Dubai",
+      "addressLocality": "Dubai",
+      "addressCountry": "AE"
+    },
+    "telephone": "+971502943916",
+    "email": "info@mintsglobal.ae"
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.mintsglobal.ae"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Software Development",
+        "item": "https://www.mintsglobal.ae/software-development"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "E-Commerce Development",
+        "item": "https://www.mintsglobal.ae/software-development/ecommerce"
+      }
+    ]
+  };
 
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="E-Commerce Development | Mints Global" 
-        description="Launch powerful, high-converting online stores. We specialize in Shopify, WooCommerce, and massive custom headless commerce solutions that drive global sales."
-        keywords={["ecommerce development agency", "custom ecommerce platforms", "scalable ecommerce solutions", "B2B ecommerce development", "high converting ecommerce"]}
+        title="E-Commerce Development Company Dubai | Mints Global" 
+        description=" Mints Global delivers scalable e-commerce platforms, payment gateways, and inventory management for Dubai businesses. "
+        canonical="/software-development/ecommerce"
+        ogTitle="E-Commerce Development Company Dubai"
+        ogDescription="Custom e-commerce solutions for Dubai businesses. Scalable platforms with payment integration and inventory management."
+        ogImage="https://www.mintsglobal.ae/images/ecommerce-og.jpg"
+        twitterTitle="E-Commerce Development Company Dubai | Mints Global"
+        twitterDescription="Build custom e-commerce solutions. Scalable shopping platforms with payment integration and inventory management."
+        twitterImage="https://www.mintsglobal.ae/images/ecommerce-twitter.jpg"
+        rawTitle={true}
       />
+      <Helmet>
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@MintsDubai" />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
-        
         
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex items-center gap-4 mb-6">
@@ -65,10 +129,14 @@ export function Ecommerce() {
             Launch powerful, high-converting online stores. We specialize in Shopify, WooCommerce, and massive custom headless commerce solutions that drive global sales.
           </p>
           
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mb-16">
              <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
                Start Selling Online <ArrowRight size={18} />
              </Link>
+          </div>
+
+          <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+            <img src="/images/ecommerce-hero.jpg" alt="Custom e-commerce platform development for Dubai retailers" width="1200" height="630" loading="lazy" className="w-full h-auto object-cover" />
           </div>
         </motion.div>
       </section>
@@ -157,9 +225,10 @@ export function Ecommerce() {
       </section>
       
       <JsonLd data={serviceSchema} />
+      <JsonLd data={organizationSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <JsonLd data={buildFaqSchema(faqs)} />
       
-      <JsonLd data={breadcrumbSchema} />
     </div>
   );
 }

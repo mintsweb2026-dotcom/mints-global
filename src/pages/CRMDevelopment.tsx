@@ -2,8 +2,9 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { JsonLd } from '../components/JsonLd';
-import { buildServiceSchema, buildFaqSchema, buildBreadcrumbSchema } from '../lib/schema-helpers';
+import { buildFaqSchema } from '../lib/schema-helpers';
 import { SEO } from '../components/SEO';
 import { ServicesAccordion } from '../components/ServicesAccordion';
 
@@ -27,29 +28,112 @@ const faqs = [
 ];
 
 export function CRMDevelopment() {
-  const serviceSchema = buildServiceSchema({
-    name: "CRM Development",
-    description: "Stop losing leads to bad processes. Let's build a CRM that drives sales.",
-    url: "/software-development/crm-development",
-    serviceType: "Software Development"
-  });
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://www.mintsglobal.ae/software-development/crm-development",
+    "name": "CRM Development",
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://www.mintsglobal.ae",
+      "name": "Mints Global",
+      "url": "https://www.mintsglobal.ae",
+      "telephone": "+971-50-2943916",
+      "email": "info@mintsglobal.ae",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Office #315, 3rd Floor, Bank Street Building, Bur Dubai",
+        "addressLocality": "Dubai",
+        "addressRegion": "Dubai",
+        "postalCode": "00000",
+        "addressCountry": "AE"
+      }
+    },
+    "serviceType": "CRM Development & Implementation",
+    "description": "Custom CRM development solutions including Salesforce, HubSpot and bespoke CRM systems designed to streamline business workflows and enhance customer relationships.",
+    "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
+    "availableLanguage": ["en", "ar"],
+    "image": "https://www.mintsglobal.ae/images/crm-development-og.jpg"
+  };
 
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Software Development", url: "/software-development" },
-    { name: "CRM Development", url: "/software-development/crm-development" }
-  ]);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.mintsglobal.ae"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Software Development",
+        "item": "https://www.mintsglobal.ae/software-development"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "CRM Development",
+        "item": "https://www.mintsglobal.ae/software-development/crm-development"
+      }
+    ]
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.mintsglobal.ae",
+    "name": "Mints Global",
+    "alternateName": "Mints Global Digital Agency",
+    "url": "https://www.mintsglobal.ae",
+    "logo": "https://www.mintsglobal.ae/logo.png",
+    "description": "Leading digital marketing and software development agency in Dubai providing SEO, web development, custom solutions, and IT services.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #315, 3rd Floor, Bank Street Building, Bur Dubai",
+      "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
+      "postalCode": "00000",
+      "addressCountry": "AE"
+    },
+    "telephone": "+971-50-2943916",
+    "email": "info@mintsglobal.ae",
+    "sameAs": [
+      "https://www.facebook.com/mintsglobal",
+      "https://www.linkedin.com/company/mintsglobal",
+      "https://twitter.com/mintsglobal",
+      "https://www.instagram.com/mintsglobal"
+    ],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  };
 
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="CRM Development | Mints Global" 
-        description="Manage your sales pipeline, enhance customer retention, and automate marketing. We build custom CRMs and implement elite enterprise platforms tailored to your sales process."
-        keywords={["custom CRM development", "customer relationship management software", "sales automation CRM", "CRM integration services", "enterprise CRM solutions"]}
+        title="CRM Development Services Dubai | Custom Solutions" 
+        description="Custom CRM development solutions for Dubai & UAE. Salesforce, Streamline workflows, boost productivity. Expert implementation & support."
+        canonical="/software-development/crm-development"
+        ogTitle="CRM Development Services Dubai | Custom Solutions"
+        ogDescription="Custom CRM development solutions for Dubai & UAE. Salesforce, HubSpot & bespoke systems. Expert implementation."
+        ogImage="https://www.mintsglobal.ae/images/crm-development-og.jpg"
+        twitterTitle="CRM Development Services Dubai | Custom Solutions"
+        twitterDescription="Custom CRM development solutions for Dubai & UAE. Salesforce, HubSpot & bespoke systems. Expert implementation."
+        twitterImage="https://www.mintsglobal.ae/images/crm-development-twitter.jpg"
+        rawTitle={true}
       />
+      <Helmet>
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
-        
         
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex items-center gap-4 mb-6">
@@ -65,10 +149,14 @@ export function CRMDevelopment() {
             Manage your sales pipeline, enhance customer retention, and automate marketing. We build custom CRMs and implement elite enterprise platforms tailored to your sales process.
           </p>
           
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mb-16">
              <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
                Empower Your Sales <ArrowRight size={18} />
              </Link>
+          </div>
+
+          <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+            <img src="/images/crm-development-og.jpg" alt="CRM development specialist implementing custom solutions on computer screen" title="CRM Development Solutions from Mints Global" width="1200" height="630" loading="lazy" className="w-full h-auto object-cover" />
           </div>
         </motion.div>
       </section>
@@ -157,9 +245,10 @@ export function CRMDevelopment() {
       </section>
       
       <JsonLd data={serviceSchema} />
+      <JsonLd data={localBusinessSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <JsonLd data={buildFaqSchema(faqs)} />
       
-      <JsonLd data={breadcrumbSchema} />
     </div>
   );
 }

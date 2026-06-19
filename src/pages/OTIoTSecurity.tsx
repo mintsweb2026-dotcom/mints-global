@@ -9,43 +9,34 @@ import { ServicesAccordion } from '../components/ServicesAccordion';
 
 const faqs = [
   {
-    "q": "How is OT security different from regular IT security?",
-    "a": "In IT, the priority is Data Confidentiality. In OT, the absolute priority is Safety and Availability (uptime). A scanner that works safely in IT might crash a fragile legacy PLC causing a plant shutdown. OT security requires highly specialized, passive methodologies."
+    "q": "What is OT/IoT security?",
+    "a": "OT/IoT security protects operational technology and Internet of Things devices from cyber threats."
   },
   {
-    "q": "Can you test our operational systems while they are running?",
-    "a": "We primarily utilize entirely passive monitoring and network traffic analysis. For active testing, we require duplicate testing environments, digital twins, or strictly scheduled maintenance windows to ensure zero impact on production."
+    "q": "Why do critical infrastructure need OT/IoT security?",
+    "a": "Critical infrastructure such as utilities, manufacturing, and transportation systems rely on OT/IoT devices. Compromising these systems can have severe operational and safety consequences."
   },
   {
-    "q": "What framework do you use for OT Security?",
-    "a": "Our OT capability is heavily aligned with the ISA/IEC 62443 series of standards, which is the global consensus standard for industrial automation and control systems security."
-  },
-  {
-    "q": "Do you audit the firmware on connected devices?",
-    "a": "Yes. For IoT manufacturers, we extract firmware, decompile binaries, hunt for hardcoded credentials, and analyze how the device communicates with its companion cloud applications."
+    "q": "How does Mints Global protect OT/IoT systems?",
+    "a": "Mints Global provides comprehensive OT/IoT security through assessment, continuous monitoring, threat detection, and defense mechanism implementation."
   }
 ];
 
 export function OTIoTSecurity() {
-  const serviceSchema = buildServiceSchema({
-    name: "OT/IoT Security",
-    description: "Your critical infrastructure needs specialized protection. Let's secure your operational tech.",
-    url: "/cyber-security/ot-iot-security",
-    serviceType: "Cyber Security"
-  });
-
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Cyber Security", url: "/cyber-security" },
-    { name: "OT/IoT Security", url: "/cyber-security/ot-iot-security" }
-  ]);
-
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="OT & IoT Security | Mints Global" 
-        description="Safeguard critical infrastructure, manufacturing plants, and smart devices. We secure the boundary where the digital world meets the physical world."
-        keywords={["OT security services", "IoT security framework", "industrial control systems security", "critical infrastructure protection", "smart device security"]}
+        title="OT/IoT Security Solutions | Mints Global" 
+        description="Mints Global offers comprehensive OT/IoT security assessment, monitoring & defense strategies for UAE enterprises."
+        canonical="/cyber-security/ot-iot-security"
+        ogTitle="OT/IoT Security Solutions | Mints Global"
+        ogDescription="Protect critical OT & IoT infrastructure from cyber threats. Mints Global offers comprehensive assessment, monitoring & defense strategies."
+        ogType="website"
+        ogImage="https://www.mintsglobal.ae/images/ot-iot-security-hero.jpg"
+        twitterTitle="OT/IoT Security Solutions | Mints Global"
+        twitterDescription="Protect critical OT & IoT infrastructure from cyber threats. Mints Global offers comprehensive assessment, monitoring & defense."
+        twitterImage="https://www.mintsglobal.ae/images/ot-iot-security-hero.jpg"
+        rawTitle={true}
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -156,10 +147,122 @@ export function OTIoTSecurity() {
         </div>
       </section>
       
-      <JsonLd data={serviceSchema} />
-      <JsonLd data={buildFaqSchema(faqs)} />
-      
-      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "https://www.mintsglobal.ae/cyber-security/ot-iot-security",
+        "name": "OT/IoT Security Solutions",
+        "description": "Comprehensive operational technology and IoT infrastructure security assessment, continuous monitoring, threat detection, and defense strategies for critical systems.",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://www.mintsglobal.ae",
+          "name": "Mints Global",
+          "url": "https://www.mintsglobal.ae",
+          "logo": "https://www.mintsglobal.ae/logo.png",
+          "image": "https://www.mintsglobal.ae/images/mints-global-team.jpg",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+            "addressLocality": "Bur Dubai",
+            "addressRegion": "Dubai",
+            "postalCode": "0000",
+            "addressCountry": "AE"
+          },
+          "telephone": "+971502943916",
+          "email": "info@mintsglobal.ae",
+          "sameAs": [
+            "https://www.facebook.com/mintsglobal",
+            "https://www.linkedin.com/company/mintsglobal",
+            "https://twitter.com/mintsglobal"
+          ]
+        },
+        "serviceType": "Cybersecurity",
+        "areaServed": {
+          "@type": "Country",
+          "name": "United Arab Emirates"
+        },
+        "hasOfferingDescription": [
+          {
+            "@type": "Offer",
+            "name": "OT/IoT Security Assessment",
+            "description": "Comprehensive evaluation of operational technology and IoT infrastructure vulnerabilities and security posture"
+          },
+          {
+            "@type": "Offer",
+            "name": "Real-time Threat Monitoring",
+            "description": "24/7 continuous monitoring and threat detection for critical OT/IoT systems"
+          },
+          {
+            "@type": "Offer",
+            "name": "Security Implementation",
+            "description": "Deployment of defense mechanisms and security protocols for OT/IoT infrastructure"
+          }
+        ],
+        "priceRange": "Custom Quote"
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://www.mintsglobal.ae",
+        "name": "Mints Global",
+        "url": "https://www.mintsglobal.ae",
+        "logo": "https://www.mintsglobal.ae/logo.png",
+        "image": "https://www.mintsglobal.ae/images/mints-global-office.jpg",
+        "description": "Dubai-based digital agency offering cybersecurity, digital marketing, software development, branding, and IT services.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+          "addressLocality": "Bur Dubai",
+          "addressRegion": "Dubai",
+          "postalCode": "0000",
+          "addressCountry": "AE"
+        },
+        "telephone": "+971502943916",
+        "email": "info@mintsglobal.ae",
+        "priceRange": "Varies by service",
+        "areaServed": "AE",
+        "sameAs": [
+          "https://www.facebook.com/mintsglobal",
+          "https://www.linkedin.com/company/mintsglobal",
+          "https://twitter.com/mintsglobal"
+        ]
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.mintsglobal.ae"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Cybersecurity",
+            "item": "https://www.mintsglobal.ae/cyber-security"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "OT/IoT Security",
+            "item": "https://www.mintsglobal.ae/cyber-security/ot-iot-security"
+          }
+        ]
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.a
+          }
+        }))
+      }} />
     </div>
   );
 }

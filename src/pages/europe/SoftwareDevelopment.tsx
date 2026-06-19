@@ -9,20 +9,16 @@ import { buildFaqSchema } from '../../lib/schema-helpers';
 
 const faqs = [
   {
-    "q": "Can you work with European clients fully remotely?",
-    "a": "Yes, our team is equipped to work asynchronously or within adjusted European business hours, providing dedicated project management and unified communications via Slack, Jira, and Teams."
+    "q": "Why choose a Dubai-based team for European software development?",
+    "a": "Mints Global offers European businesses cost-efficient development capacity with strong English-language communication, overlapping working hours with most EU time zones, and enterprise-grade delivery standards."
   },
   {
-    "q": "Do you build GDPR-compliant software?",
-    "a": "Absolutely. Privacy by design is our baseline. All architectures, database implementations, and data-handling workflows pass through strict GDPR compliance audits during development."
+    "q": "What types of software development services does Mints Global offer?",
+    "a": "Services include custom software development, enterprise application development, dedicated development team augmentation, and full-cycle product engineering for European clients."
   },
   {
-    "q": "Do you take over existing projects or legacy systems?",
-    "a": "Yes. We offer legacy modernization and careful code takeovers. We perform a robust systems audit, refactor where necessary, and carefully migrate your platform to modern stacks."
-  },
-  {
-    "q": "What happens after the project is delivered?",
-    "a": "We offer extensive Service Level Agreements (SLAs) for post-launch monitoring, security updates, feature scaling, and ongoing infrastructure management."
+    "q": "How does pricing compare to hiring a European development agency?",
+    "a": "Mints Global typically offers more competitive rates than Western European agencies while maintaining enterprise-grade quality, similar to the value positioning of nearshore and offshore development hubs."
   }
 ];
 
@@ -31,9 +27,16 @@ export function SoftwareDevelopmentEurope() {
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Software Development Services in Europe | Mints Global" 
-        description="Custom software, powerful applications, and scalable digital solutions — built for European businesses." 
-        keywords={["software development Europe", "custom software Europe", "app development Europe", "web development Europe", "European tech agency"]}
+        title="Software Development Services for Europe | Mints Global" 
+        description="Scale your software roadmap with Mints Global's European-focused development team. Custom builds, enterprise apps & dedicated resourcing." 
+        canonical="/europe-services/software-development"
+        ogTitle="Software Development Services for Europe | Mints Global"
+        ogDescription="Partner with Mints Global for custom software development built for European businesses. Dedicated teams, enterprise-grade delivery & transparent pricing."
+        ogImage="https://www.mintsglobal.ae/images/og/software-development-europe.jpg"
+        ogType="website"
+        twitterTitle="Software Development Services for Europe | Mints Global"
+        twitterDescription="Custom software development & dedicated teams for European businesses. Enterprise-grade delivery, transparent pricing. Get a free quote from Mints Global."
+        twitterImage="https://www.mintsglobal.ae/images/og/software-development-europe.jpg"
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -130,6 +133,57 @@ export function SoftwareDevelopmentEurope() {
             </Link>
          </div>
       </section>
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Software Development",
+        "name": "Software Development Services for Europe",
+        "provider": {
+          "@type": "Organization",
+          "name": "Mints Global",
+          "url": "https://www.mintsglobal.ae",
+          "logo": "https://www.mintsglobal.ae/images/logo.png",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dubai",
+            "addressCountry": "AE"
+          }
+        },
+        "areaServed": {
+          "@type": "Place",
+          "name": "Europe"
+        },
+        "audience": {
+          "@type": "BusinessAudience",
+          "audienceType": "European businesses and enterprises"
+        },
+        "description": "Custom software development, enterprise application development, and dedicated development teams for European businesses, delivered by Mints Global from Dubai, UAE.",
+        "url": "https://www.mintsglobal.ae/europe-services/software-development"
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.mintsglobal.ae/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Europe Services",
+            "item": "https://www.mintsglobal.ae/europe-services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Software Development",
+            "item": "https://www.mintsglobal.ae/europe-services/software-development"
+          }
+        ]
+      }} />
       <JsonLd data={buildFaqSchema(faqs)} />
 
     </div>

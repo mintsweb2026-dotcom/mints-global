@@ -9,43 +9,31 @@ import { ServicesAccordion } from '../components/ServicesAccordion';
 
 const faqs = [
   {
-    "q": "Do you provide the actual ISO 27001 certification?",
-    "a": "No, as an advisory firm, we implement the framework and prepare you for the audit. Certification MUST be performed by an independent, accredited external auditor to maintain objective neutrality."
+    "q": "What is GRC and why is it important?",
+    "a": "GRC stands for Governance, Risk, and Compliance. It is essential for organizations to manage regulatory requirements, mitigate risks, and maintain effective governance frameworks."
   },
   {
-    "q": "How long does it take to achieve ISO 27001?",
-    "a": "For an average mid-sized organization starting from scratch, the preparation and implementation process typically takes between 6 to 9 months before passing the stage 1 and 2 audits."
-  },
-  {
-    "q": "Does GDPR apply to my UAE business?",
-    "a": "If your business offers goods or services to residents within the European Union, or monitors their behavior (e.g., tracking cookies), you are legally required to comply with GDPR, regardless of your physical location."
-  },
-  {
-    "q": "How much time will this take away from my IT team?",
-    "a": "We handle the heavy lifting: documentation drafting, gap analyses, and roadmapping. However, we do require collaboration with your IT team to verify configurations and implement the required technical controls."
+    "q": "How can GRC solutions help our enterprise?",
+    "a": "Our GRC solutions streamline compliance processes, reduce risk exposure, enhance governance practices, and ensure regulatory adherence across your organization."
   }
 ];
 
 export function ComplianceGRC() {
-  const serviceSchema = buildServiceSchema({
-    name: "Compliance & GRC",
-    description: "Compliance doesn't have to be complex. Let's simplify your path to certification.",
-    url: "/cyber-security/compliance-grc",
-    serviceType: "Cyber Security"
-  });
-
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Cyber Security", url: "/cyber-security" },
-    { name: "Compliance & GRC", url: "/cyber-security/compliance-grc" }
-  ]);
-
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Compliance & GRC | Mints Global" 
-        description="Turn regulatory compliance into a competitive advantage. We guide organizations through the complexities of ISO 27001, GDPR, NIS2, and local UAE mandates (NESA, ISR)."
+        title="Compliance Management & GRC Solutions Dubai | Mints Global" 
+        description="Implement comprehensive compliance and GRC solutions. Manage enterprise risk, governance, and regulatory requirements with expert-led strategies."
         keywords={["NESA compliance UAE", "ISO 27001 certification", "GDPR compliance services", "cyber security GRC", "PDPL compliance Dubai"]}
+        canonical="/cyber-security/compliance-grc"
+        ogTitle="Compliance & GRC Solutions | Enterprise Risk Management"
+        ogDescription="Implement comprehensive compliance and GRC solutions. Manage enterprise risk, governance, and regulatory requirements with expert-led strategies."
+        ogImage="https://www.mintsglobal.ae/images/grc-governance-framework.jpg"
+        ogType="website"
+        twitterTitle="Compliance & GRC Solutions | Enterprise Risk Management"
+        twitterDescription="Implement comprehensive compliance and GRC solutions. Manage enterprise risk, governance, and regulatory requirements with expert-led strategies."
+        twitterImage="https://www.mintsglobal.ae/images/grc-governance-framework.jpg"
+        rawTitle={true}
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -156,10 +144,75 @@ export function ComplianceGRC() {
         </div>
       </section>
       
-      <JsonLd data={serviceSchema} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Mints Global",
+        "url": "https://www.mintsglobal.ae",
+        "logo": "https://www.mintsglobal.ae/logo.png",
+        "description": "Leading digital agency providing compliance and GRC solutions",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+          "addressLocality": "Bur Dubai",
+          "addressRegion": "Dubai",
+          "postalCode": "",
+          "addressCountry": "AE"
+        },
+        "telephone": "+971502943916",
+        "email": "info@mintsglobal.ae",
+        "sameAs": [
+          "https://www.facebook.com/mintsglobal",
+          "https://www.linkedin.com/company/mints-global",
+          "https://twitter.com/MintsBrandsDXB",
+          "https://www.instagram.com/mintsglobal"
+        ]
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Compliance & GRC Solutions",
+        "description": "Comprehensive governance, risk, and compliance management solutions for enterprise organizations",
+        "provider": {
+          "@type": "Organization",
+          "name": "Mints Global",
+          "url": "https://www.mintsglobal.ae",
+          "telephone": "+971502943916"
+        },
+        "areaServed": ["AE", "UAE", "Middle East"],
+        "hasOfferingDescription": "GRC Strategy & Assessment, Risk Management, Regulatory Compliance, Governance Framework, Compliance Audit, Internal Controls"
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.mintsglobal.ae"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://www.mintsglobal.ae/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Cyber Security",
+            "item": "https://www.mintsglobal.ae/cyber-security"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Compliance & GRC",
+            "item": "https://www.mintsglobal.ae/cyber-security/compliance-grc"
+          }
+        ]
+      }} />
       <JsonLd data={buildFaqSchema(faqs)} />
-      
-      <JsonLd data={breadcrumbSchema} />
     </div>
   );
 }

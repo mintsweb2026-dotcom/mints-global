@@ -27,13 +27,6 @@ const faqs = [
 ];
 
 export function OffensiveSecurity() {
-  const serviceSchema = buildServiceSchema({
-    name: "Offensive Security",
-    description: "Don't wait for a breach. Let our red team find the gaps before attackers do.",
-    url: "/cyber-security/offensive-security",
-    serviceType: "Cyber Security"
-  });
-
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Cyber Security", url: "/cyber-security" },
@@ -43,9 +36,18 @@ export function OffensiveSecurity() {
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Offensive Security | Mints Global" 
-        description="Identify your vulnerabilities before advanced threat actors do. We provide CREST-aligned penetration testing, Red Teaming, and vulnerability assessments."
+        title="Offensive Security & Penetration Testing UAE | MINTS GLOBAL" 
+        description="Uncover security vulnerabilities with Mints Global's offensive security services. Expert penetration testing & ethical hacking in UAE."
         keywords={["offensive security services", "penetration testing Dubai", "red teaming services", "vulnerability assessment", "ethical hacking agency"]}
+        canonical="/cyber-security/offensive-security"
+        ogTitle="Offensive Security Testing | Penetration Testing UAE"
+        ogDescription="Uncover security vulnerabilities with Mints Global's offensive security services. Expert penetration testing, vulnerability assessment & ethical hacking."
+        ogType="website"
+        ogImage="https://www.mintsglobal.ae/images/offensive-security-og.jpg"
+        twitterTitle="Offensive Security & Penetration Testing Services"
+        twitterDescription="Strengthen your security posture with expert penetration testing & vulnerability assessments from Mints Global. UAE-based cybersecurity experts."
+        twitterImage="https://www.mintsglobal.ae/images/offensive-security-twitter.jpg"
+        rawTitle={true}
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -156,7 +158,19 @@ export function OffensiveSecurity() {
         </div>
       </section>
       
-      <JsonLd data={serviceSchema} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Offensive Security Testing",
+        "description": "Expert penetration testing, vulnerability assessment, and ethical hacking services",
+        "provider": {
+          "@type": "Organization",
+          "name": "Mints Global",
+          "url": "https://www.mintsglobal.ae"
+        },
+        "serviceType": "Cybersecurity",
+        "areaServed": "AE"
+      }} />
       <JsonLd data={buildFaqSchema(faqs)} />
       
       <JsonLd data={breadcrumbSchema} />

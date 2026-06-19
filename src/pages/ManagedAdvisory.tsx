@@ -27,13 +27,6 @@ const faqs = [
 ];
 
 export function ManagedAdvisory() {
-  const serviceSchema = buildServiceSchema({
-    name: "Managed Advisory",
-    description: "Need a strategic security partner? Let our vCISOs guide your cyber maturity.",
-    url: "/cyber-security/managed-advisory",
-    serviceType: "Cyber Security"
-  });
-
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Cyber Security", url: "/cyber-security" },
@@ -43,9 +36,18 @@ export function ManagedAdvisory() {
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Managed Security & Advisory | Mints Global" 
-        description="Access elite, boardroom-level cybersecurity leadership and 24/7 managed defense. We act as an extension of your team to oversee and execute your security strategy."
+        title="Cybersecurity Managed Advisory Services | Mints Global" 
+        description="Expert managed cybersecurity advisory services to protect your business. 24/7 monitoring, threat intelligence & compliance support from Mints Global UAE."
         keywords={["managed security advisory", "virtual CISO services", "vCISO Dubai", "strategic cyber security", "ongoing security guidance"]}
+        canonical="/cyber-security/managed-advisory"
+        ogTitle="Cybersecurity Managed Advisory Services | Mints Global"
+        ogDescription="Expert managed cybersecurity advisory services to protect your business. 24/7 monitoring, threat intelligence, and compliance support."
+        ogImage="https://www.mintsglobal.ae/images/cybersecurity-managed-advisory-og.jpg"
+        ogType="website"
+        twitterTitle="Cybersecurity Managed Advisory Services | Mints Global"
+        twitterDescription="Expert managed cybersecurity advisory services to protect your business. 24/7 monitoring, threat intelligence, and compliance support."
+        twitterImage="https://www.mintsglobal.ae/images/cybersecurity-managed-advisory-twitter.jpg"
+        rawTitle={true}
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -156,7 +158,83 @@ export function ManagedAdvisory() {
         </div>
       </section>
       
-      <JsonLd data={serviceSchema} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Mints Global",
+        "url": "https://www.mintsglobal.ae",
+        "logo": "https://www.mintsglobal.ae/logo.png",
+        "description": "Digital Agency offering Digital Marketing, Software Development, Branding, Cybersecurity, and IT Services",
+        "foundingDate": "2015",
+        "telephone": "+971502943916",
+        "email": "info@mintsglobal.ae",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+          "addressLocality": "Bur Dubai",
+          "addressRegion": "Dubai",
+          "postalCode": "",
+          "addressCountry": "AE"
+        },
+        "sameAs": [
+          "https://www.facebook.com/mintsglobal",
+          "https://www.linkedin.com/company/mintsglobal",
+          "https://www.instagram.com/mintsglobal"
+        ]
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Cybersecurity Managed Advisory",
+        "description": "Expert managed cybersecurity advisory services to protect your business",
+        "provider": {
+          "@type": "Organization",
+          "name": "Mints Global",
+          "url": "https://www.mintsglobal.ae",
+          "logo": "https://www.mintsglobal.ae/logo.png",
+          "telephone": "+971502943916",
+          "email": "info@mintsglobal.ae",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+            "addressLocality": "Bur Dubai",
+            "addressRegion": "Dubai",
+            "postalCode": "",
+            "addressCountry": "AE"
+          }
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "UAE"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Managed Cybersecurity Advisory Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "24/7 Security Monitoring"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Threat Intelligence"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Compliance Support"
+              }
+            }
+          ]
+        }
+      }} />
       <JsonLd data={buildFaqSchema(faqs)} />
       
       <JsonLd data={breadcrumbSchema} />

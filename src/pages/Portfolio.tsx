@@ -9,19 +9,7 @@ import { SEO_DATA } from '../lib/seo-data';
 import { projects as staticProjects, Project } from '../data/projects';
 import { useWorks } from '../hooks/useWorks';
 
-const portfolioSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Mints Global Portfolio",
-  "url": "https://mintsglobal.ae/work",
-  "description": "Selected portfolio of digital marketing, software development, and cyber security projects.",
-  "itemListElement": staticProjects.slice(0, 10).map((p, i) => ({
-    "@type": "ListItem",
-    "position": i + 1,
-    "url": `https://mintsglobal.ae/work/${p._id}`,
-    "name": p.title
-  }))
-};
+
 
 export const getOptimizedUrl = (url: string, width?: number) => {
   if (!url || !url.includes('res.cloudinary.com')) return url;
@@ -142,26 +130,19 @@ export function Work() {
     .filter(p => filter === 'All' || p.category.name.toLowerCase() === filter.toLowerCase())
     .filter(p => p.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
-  const { i18n } = useTranslation();
-  const lang = (i18n.language as 'en' | 'ar' | 'de') || 'en';
-  const meta = SEO_DATA.portfolio[lang] || SEO_DATA.portfolio.en;
-
-  const jsonLd = {
+  const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Mints Global Portfolio",
-    "description": "A collection of successful projects and case studies by Mints Global.",
     "itemListElement": filteredProjects.map((proj, index) => ({
       "@type": "ListItem",
       "position": index + 1,
       "item": {
         "@type": "CreativeWork",
         "name": proj.title,
-        "description": proj.description || `${proj.category.name} project: ${proj.title}`,
+        "url": `https://www.mintsglobal.ae/work/${proj._id}`,
         "image": proj.titleImage,
-        "url": `https://mintsglobal.ae/work#${proj._id}`,
-        "genre": proj.category.name,
-        "author": {
+        "description": proj.description || `${proj.category.name} project: ${proj.title}`,
+        "creator": {
           "@type": "Organization",
           "name": "Mints Global"
         }
@@ -172,16 +153,19 @@ export function Work() {
   return (
     <div className="w-full">
       <SEO 
-        title={meta.title}
-        description={meta.description}
+        title="Our Work | Digital Agency Case Studies in Dubai | Mints Global" 
+        description="Explore real client work from Mints Global — 250+ projects delivered across web design, performance marketing, SEO & cybersecurity."
         keywords={["agency portfolio", "digital marketing case studies", "software development projects", "cyber security work", "Mints Global portfolio"]}
         canonical="/work"
+        ogTitle="Our Work | Digital Agency Case Studies in Dubai | Mints Global"
+        ogDescription="Explore real client work from Mints Global — 250+ projects delivered across web design, performance marketing, SEO & cybersecurity."
+        ogType="website"
+        ogImage="https://www.mintsglobal.ae/images/og/mints-global-work-portfolio-og.jpg"
+        twitterTitle="Our Work | Digital Agency Case Studies in Dubai | Mints Global"
+        twitterDescription="Explore real client work from Mints Global — 250+ projects delivered across web design, performance marketing, SEO & cybersecurity."
+        twitterImage="https://www.mintsglobal.ae/images/og/mints-global-work-portfolio-og.jpg"
+        rawTitle={true}
       />
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd)}
-        </script>
-      </Helmet>
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 pb-10">
         <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-tight uppercase">
           OUR <br/><span className="text-olive-500">WORK.</span>
@@ -286,7 +270,43 @@ export function Work() {
           />
         )}
       </AnimatePresence>
-      <JsonLd data={portfolioSchema} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.mintsglobal.ae/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Our Work",
+            "item": "https://www.mintsglobal.ae/work"
+          }
+        ]
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Our Work | Mints Global",
+        "url": "https://www.mintsglobal.ae/work",
+        "description": "Portfolio of digital marketing, web design, performance marketing and cybersecurity projects delivered by Mints Global for clients in Dubai and beyond.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Mints Global",
+          "url": "https://www.mintsglobal.ae/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Mints Global",
+          "url": "https://www.mintsglobal.ae/",
+          "logo": "https://www.mintsglobal.ae/images/logo.png"
+        }
+      }} />
+      <JsonLd data={itemListSchema} />
     </div>
   );
 }

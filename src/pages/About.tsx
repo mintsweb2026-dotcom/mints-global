@@ -16,24 +16,87 @@ const team = [
 export function About() {
   const { t, i18n } = useTranslation();
   const lang = (i18n.language as 'en' | 'ar' | 'de') || 'en';
-  const meta = SEO_DATA.about[lang] || SEO_DATA.about.en;
-
   const aboutSchema = {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "mainEntity": {
-      "@id": "https://mintsglobal.ae/#organization"
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.mintsglobal.ae/#organization",
+        "name": "Mints Global",
+        "url": "https://www.mintsglobal.ae/",
+        "logo": "https://www.mintsglobal.ae/images/logo.png",
+        "description": "Mints Global is a Dubai-based digital agency delivering cyber security, ROI-driven digital marketing, and enterprise software development for businesses across the UAE and Europe.",
+        "foundingLocation": {
+          "@type": "Place",
+          "address": "Dubai, United Arab Emirates"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dubai",
+          "addressCountry": "AE"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/mintsglobal",
+          "https://www.instagram.com/mintsglobal",
+          "https://www.facebook.com/mintsglobal"
+        ],
+        "knowsAbout": [
+          "Cyber Security",
+          "Digital Marketing",
+          "Performance Marketing",
+          "Search Engine Optimization",
+          "Enterprise Software Development",
+          "Branding and Graphic Design"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.mintsglobal.ae/about#webpage",
+        "url": "https://www.mintsglobal.ae/about",
+        "name": "About Mints Global | Digital Agency in Dubai",
+        "isPartOf": { "@id": "https://www.mintsglobal.ae/#website" },
+        "about": { "@id": "https://www.mintsglobal.ae/#organization" },
+        "description": "Learn about Mints Global, a Dubai-based digital agency bridging Middle Eastern and European markets through cyber security, digital marketing, and software development.",
+        "inLanguage": "en-AE",
+        "breadcrumb": { "@id": "https://www.mintsglobal.ae/about#breadcrumb" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.mintsglobal.ae/about#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.mintsglobal.ae/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About Us",
+            "item": "https://www.mintsglobal.ae/about"
+          }
+        ]
+      }
+    ]
   };
 
   return (
     <div className="w-full">
       <JsonLd data={aboutSchema} />
       <SEO 
-        title={meta.title}
-        description={meta.description}
+        title="About Mints Global | Digital Agency in Dubai, UAE" 
+        description="Mints Global is a Dubai-based digital agency offering cybersecurity, performance marketing, and enterprise software solutions. Explore our story and team."
         keywords={["about Mints Global", "digital agency Dubai", "tech agency team", "global digital solutions", "corporate overview"]}
         canonical="/about"
+        ogTitle="About Mints Global | Digital Agency in Dubai, UAE"
+        ogDescription="Mints Global is a Dubai-based digital agency delivering cyber security, performance marketing, and enterprise software development."
+        ogType="website"
+        ogImage="https://www.mintsglobal.ae/images/og/about-mints-global.jpg"
+        twitterTitle="About Mints Global | Digital Agency in Dubai, UAE"
+        twitterDescription="Dubai-based digital agency delivering cyber security, performance marketing, and enterprise software development."
+        twitterImage="https://www.mintsglobal.ae/images/og/about-mints-global.jpg"
+        rawTitle={true}
       />
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 pb-10">
         <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-tight uppercase">

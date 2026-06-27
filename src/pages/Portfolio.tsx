@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowUpRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
@@ -170,9 +170,20 @@ export function Work() {
         <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-tight uppercase">
           OUR <br/><span className="text-olive-500">WORK.</span>
         </h1>
-        <p className="text-brand-white-70 max-w-2xl text-lg mb-12">
+        <p className="text-brand-white-70 max-w-2xl text-lg mb-8">
           Explore our selected portfolio of digital marketing campaigns, secure platforms, and software solutions.
         </p>
+
+        <div className="mb-12">
+          <a 
+            href="https://portfolio.mintsglobal.tech/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-olive-500 text-white px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors"
+          >
+            Interactive Demos & Products <ArrowRight size={18} />
+          </a>
+        </div>
 
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
           <div className="flex flex-wrap gap-2">

@@ -15,6 +15,7 @@ export function SafeImage({ src, fallbackSrc, alt, ...props }: SafeImageProps) {
     <img
       src={imgSrc}
       alt={alt}
+      style={{ color: 'transparent' }}
       onError={() => {
         if (imgSrc !== fallbackSrc) {
           setImgSrc(fallbackSrc);

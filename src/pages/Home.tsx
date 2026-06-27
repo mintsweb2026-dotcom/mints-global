@@ -571,13 +571,27 @@ export function Home() {
               <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">Selected Work</span>
               <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tight">Our Work</h2>
             </div>
-            <Magnetic>
-              <div className="inline-block">
-                <Link to="/work" className="shrink-0 flex items-center gap-2 text-brand-white hover:text-olive-500 transition-colors font-bold group pb-2 block">
-                  View All Projects <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </Magnetic>
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <Magnetic>
+                <div className="inline-block">
+                  <a 
+                    href="https://portfolio.mintsglobal.tech/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-olive-500 text-white px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors shrink-0"
+                  >
+                    Interactive Demos & Products <ArrowRight size={18} />
+                  </a>
+                </div>
+              </Magnetic>
+              <Magnetic>
+                <div className="inline-block">
+                  <Link to="/work" className="shrink-0 flex items-center gap-2 text-brand-white hover:text-olive-500 transition-colors font-bold group pb-2 block mt-2 sm:mt-0">
+                    View All Projects <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </Magnetic>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">

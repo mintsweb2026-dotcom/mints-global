@@ -188,29 +188,27 @@ export function BlogPost() {
 
   const schemaData = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     "headline": post.seoTitle || post.title,
-    "description": post.seoDescription || post.excerpt,
-    "image": post.image ? [post.image] : [],
-    "url": canonicalUrl,
-    "datePublished": isoDate,
-    "dateModified": isoDate,
-    "inLanguage": lang,
+    "image": post.image || "",
     "author": {
-      "@type": parsedAuthor === "Mints Global" ? "Organization" : "Person",
-      "name": parsedAuthor,
-      "url": parsedAuthor === "Mints Global" ? "https://mintsglobal.ae" : undefined
+      "@type": "Organization",
+      "name": "MINTS Global"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Mints Global",
+      "name": "MINTS Global",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://mintsglobal.ae/NavLogoWhite1.png"
+        "url": "https://www.mintsglobal.ae/logo.png"
       }
     },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalUrl },
-    "articleSection": post.category
+    "datePublished": isoDate,
+    "dateModified": isoDate,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": canonicalUrl
+    }
   };
 
   return (

@@ -4,7 +4,26 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getPosts, BlogPost } from '../data/posts';
 import { SEO } from '../components/SEO';
+import { JsonLd } from '../components/JsonLd';
 import { SEO_DATA } from '../lib/seo-data';
+
+const blogListingSchema = {
+ "@context":"https://schema.org",
+ "@type":"Blog",
+ "name":"MINTS Global Blog",
+ "url":"https://www.mintsglobal.ae/blog",
+ "description":"Digital marketing, technology, cybersecurity and business growth insights from MINTS Global UAE.",
+ "publisher":{
+   "@type":"Organization",
+   "name":"MINTS Global",
+   "url":"https://www.mintsglobal.ae",
+   "logo":{
+     "@type":"ImageObject",
+     "url":"https://www.mintsglobal.ae/logo.png"
+   }
+ },
+ "inLanguage":"en"
+};
 
 export function Blog() {
   const [query, setQuery] = useState('');
@@ -51,11 +70,18 @@ export function Blog() {
   return (
     <div className="w-full">
       <SEO 
-        title={meta.title}
-        description={meta.description}
+        title="Digital Marketing & Technology Insights Blog | MINTS Global UAE"
+        rawTitle={true}
+        description="Explore MINTS Global’s latest blogs on digital marketing, SEO, technology, cybersecurity, software solutions, and business growth strategies in UAE."
         canonical="/blog"
-        keywords={["digital marketing blog", "tech insights", "cyber security news", "Mints Global blog", "industry updates"]}
+        ogTitle="Digital Marketing & Technology Insights Blog | MINTS Global UAE"
+        ogDescription="Explore MINTS Global blogs covering SEO, digital marketing, cybersecurity, technology, and business growth strategies."
+        ogImage="https://www.mintsglobal.ae/images/blog-og-image.jpg"
+        twitterTitle="Digital Marketing & Technology Insights Blog | MINTS Global UAE"
+        twitterDescription="Latest insights on SEO, technology, cybersecurity, and digital growth strategies from MINTS Global."
+        twitterImage="https://www.mintsglobal.ae/images/blog-og-image.jpg"
       />
+      <JsonLd data={blogListingSchema} />
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 pb-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div>
@@ -139,7 +165,7 @@ export function Blog() {
                  <Link to={`/blog/${post.slug}`} key={post.id} className="group cursor-pointer flex flex-col pt-8 border-t border-white/10">
                    {post.image && (
                      <div className="w-full h-48 sm:h-64 mb-6 overflow-hidden rounded-xl bg-olive-900 border border-white/10 relative">
-                       <img src={post.image} loading="lazy" alt={post.imageAlt || post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                       <img src={post.image} loading="lazy" alt="MINTS Global digital marketing and technology blog insights" title="Digital Marketing & Technology Insights - MINTS Global" width="800" height="600" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                      </div>
                    )}
                    <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-wider text-brand-white-70 mb-4">

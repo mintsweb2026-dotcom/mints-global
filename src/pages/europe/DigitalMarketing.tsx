@@ -31,9 +31,18 @@ export function DigitalMarketingEurope() {
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Digital Marketing Services in Europe | Mints Global" 
-        description="Build your brand. Grow your audience. Drive measurable results across Europe with our full-suite digital marketing services." 
-        keywords={["digital marketing Europe", "SEO agency Europe", "performance marketing Europe", "social media Europe", "European marketing agency"]}
+        title="Digital Marketing Services Europe | Mints Global" 
+        rawTitle={true}
+        description="Expert digital marketing services for European markets. SEO, content, PPC & social media strategies to grow your business globally." 
+        canonical="/europe-services/digital-marketing"
+        ogTitle="Digital Marketing Services Europe | Mints Global"
+        ogDescription="Expert digital marketing services for European markets. SEO, content, PPC & social media strategies to grow your business globally."
+        ogType="website"
+        ogImage="https://www.mintsglobal.ae/images/digital-marketing-hero.jpg"
+        twitterTitle="Digital Marketing Services Europe | Mints Global"
+        twitterDescription="Expert digital marketing services for European markets. SEO, content, PPC & social media strategies to grow your business globally."
+        twitterImage="https://www.mintsglobal.ae/images/digital-marketing-hero.jpg"
+        twitterSite="@MintsBrandsDXB"
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -131,6 +140,89 @@ export function DigitalMarketingEurope() {
          </div>
       </section>
       <JsonLd data={buildFaqSchema(faqs)} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Digital Marketing Services for Europe",
+        "description": "Comprehensive digital marketing solutions tailored for European businesses. Our services include SEO, content marketing, PPC advertising, and social media management.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Mints Global",
+          "url": "https://www.mintsglobal.ae",
+          "telephone": "+971502943916",
+          "email": "info@mintsglobal.ae",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+            "addressLocality": "Bur Dubai",
+            "addressCountry": "AE"
+          }
+        },
+        "serviceType": [
+          "SEO Services",
+          "Content Marketing",
+          "PPC Advertising",
+          "Social Media Marketing",
+          "Email Marketing"
+        ],
+        "areaServed": [
+          { "@type": "Country", "name": "Germany" },
+          { "@type": "Country", "name": "France" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Country", "name": "Italy" },
+          { "@type": "Country", "name": "Spain" }
+        ]
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Mints Global",
+        "image": "https://www.mintsglobal.ae/images/logo.png",
+        "description": "Premium digital marketing agency in Dubai offering SEO, PPC, content, and social media solutions for European and global markets.",
+        "url": "https://www.mintsglobal.ae",
+        "telephone": "+971502943916",
+        "email": "info@mintsglobal.ae",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+          "addressLocality": "Bur Dubai",
+          "addressCountry": "AE"
+        },
+        "sameAs": [
+          "https://twitter.com/MintsBrandsDXB",
+          "https://www.linkedin.com/company/mints-global"
+        ]
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.mintsglobal.ae"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://www.mintsglobal.ae/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Europe Services",
+            "item": "https://www.mintsglobal.ae/europe-services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Digital Marketing",
+            "item": "https://www.mintsglobal.ae/europe-services/digital-marketing"
+          }
+        ]
+      }} />
 
     </div>
   );

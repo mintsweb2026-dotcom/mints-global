@@ -31,9 +31,19 @@ export function CyberSecurityEurope() {
   return (
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
-        title="Cyber Security Services in Europe | Mints Global" 
-        description="Protecting European businesses from modern cyber threats — end to end. We provide advanced threat defense, red teaming, and strategic advisory." 
-        keywords={["cyber security Europe", "penetration testing Europe", "GDPR compliance consulting", "ISO 27001 Europe", "incident response Europe"]}
+        title="Cyber Security Services Europe | MINTS Global" 
+        rawTitle={true}
+        description="MINTS Global provides cyber security services in Europe including threat protection, cloud security, testing, and compliance solutions." 
+        canonical="/europe-services/cyber-security"
+        ogTitle="Cyber Security Services | Mints Global"
+        ogDescription="Protect your business with expert cyber security services in UAE. Incident response, threat detection, and managed security solutions."
+        ogType="website"
+        ogImage="https://www.mintsglobal.ae/images/cyber-security-og.jpg"
+        twitterTitle="Cyber Security Services | Mints Global"
+        twitterDescription="Protect your business with expert cyber security services in UAE. Incident response, threat detection, and managed security solutions."
+        twitterImage="https://www.mintsglobal.ae/images/cyber-security-twitter.jpg"
+        twitterSite="@MintsBrandsDXB"
+        twitterCreator="@MintsBrandsDXB"
       />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -131,6 +141,65 @@ export function CyberSecurityEurope() {
          </div>
       </section>
       <JsonLd data={buildFaqSchema(faqs)} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Cyber Security Services",
+        "description": "Expert cyber security services including incident response, threat detection, and managed security solutions",
+        "url": "https://www.mintsglobal.ae/europe-services/cyber-security",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Mints Global",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+            "addressLocality": "Bur Dubai",
+            "addressRegion": "Dubai",
+            "postalCode": "00000",
+            "addressCountry": "AE"
+          },
+          "telephone": "+971502943916",
+          "email": "info@mintsglobal.ae",
+          "url": "https://www.mintsglobal.ae"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Cyber Security Services",
+          "itemListElement": [
+            { "@type": "Offer", "name": "Incident Response Services" },
+            { "@type": "Offer", "name": "Managed Security Services" },
+            { "@type": "Offer", "name": "Threat Detection & Assessment" },
+            { "@type": "Offer", "name": "Compliance & Security Audit" }
+          ]
+        },
+        "areaServed": ["AE", "EU"],
+        "serviceType": "Cyber Security",
+        "image": "https://www.mintsglobal.ae/images/cyber-security-service.jpg"
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.mintsglobal.ae"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://www.mintsglobal.ae/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Cyber Security",
+            "item": "https://www.mintsglobal.ae/europe-services/cyber-security"
+          }
+        ]
+      }} />
 
     </div>
   );

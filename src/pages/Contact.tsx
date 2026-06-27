@@ -12,11 +12,67 @@ import { SEO_DATA } from '../lib/seo-data';
 
 const contactPageSchema = {
   "@context": "https://schema.org",
-  "@type": "ContactPage",
-  "name": "Contact Mints Global",
-  "url": "https://mintsglobal.ae/contact",
-  "description": "Contact Mints Global for digital marketing, software development, and cyber security enquiries.",
-  "mainEntity": { "@id": "https://mintsglobal.ae/#organization" }
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.mintsglobal.ae/#organization",
+      "name": "Mints Global",
+      "url": "https://www.mintsglobal.ae",
+      "logo": "https://www.mintsglobal.ae/images/logo.png",
+      "description": "Results-first digital marketing agency in Dubai offering SEO, performance marketing, social media marketing, brand strategy, video production, and photography & graphics.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": " Office #315, 3rd Floor, Bank Street Building ",
+        "addressLocality": " Bur Dubai ",
+        "addressCountry": "AE"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "[+971502943916]",
+          "contactType": "customer service",
+          "areaServed": "AE",
+          "availableLanguage": ["en", "ar"]
+        }
+      ],
+      "email": "[info@mintsglobal.ae]",
+      "sameAs": [
+        "https://www.instagram.com/[handle]",
+        "https://www.linkedin.com/company/[handle]",
+        "https://www.facebook.com/[handle]"
+      ]
+    },
+    {
+      "@type": "ContactPage",
+      "@id": "https://www.mintsglobal.ae/contact#webpage",
+      "url": "https://www.mintsglobal.ae/contact",
+      "name": "Contact Mints Global",
+      "isPartOf": {
+        "@id": "https://www.mintsglobal.ae/#website"
+      },
+      "about": {
+        "@id": "https://www.mintsglobal.ae/#organization"
+      },
+      "description": "Get in touch with Mints Global, Dubai’s results-driven digital agency."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.mintsglobal.ae/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://www.mintsglobal.ae/contact"
+        }
+      ]
+    }
+  ]
 };
 
 const contactSchema = z.object({
@@ -149,10 +205,18 @@ export function Contact() {
   return (
     <>
       <SEO 
-        title={meta.title}
-        description={meta.description}
-        keywords={["contact Mints Global", "digital agency contact", "hire tech agency", "Dubai agency contact", "project enquiry"]}
+        title="Contact Mints Global | Digital Marketing Agency Dubai"
+        rawTitle={true}
+        description="Get in touch with Mints Global, Dubai’s results-driven digital agency. Discuss SEO, performance marketing, branding & creative projects today."
         canonical="/contact"
+        ogTitle="Contact Mints Global | Digital Marketing Agency Dubai"
+        ogDescription="Get in touch with Mints Global, Dubai’s results-driven digital agency. Discuss SEO, performance marketing, branding & creative projects today."
+        ogType="website"
+        ogImage="https://www.mintsglobal.ae/images/og/contact-mints-global.jpg"
+        twitterTitle="Contact Mints Global | Digital Marketing Agency Dubai"
+        twitterDescription="Get in touch with Mints Global, Dubai’s results-driven digital agency. Discuss SEO, performance marketing, branding & creative projects today."
+        twitterImage="https://www.mintsglobal.ae/images/og/contact-mints-global.jpg"
+        twitterSite="@[MintsGlobalHandle]"
         geoTarget={true}
       />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-16">

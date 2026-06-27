@@ -21,6 +21,8 @@ interface SEOProps {
   twitterTitle?: string;
   twitterDescription?: string;
   twitterImage?: string;
+  twitterSite?: string;
+  twitterCreator?: string;
   rawTitle?: boolean;
 }
 
@@ -42,6 +44,8 @@ export function SEO({
   twitterTitle,
   twitterDescription,
   twitterImage,
+  twitterSite,
+  twitterCreator,
   rawTitle = false,
 }: SEOProps) {
   const { i18n } = useTranslation();
@@ -94,7 +98,8 @@ export function SEO({
 
       {/* ── Twitter / X Card ── */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@mintsglobal" />
+      <meta name="twitter:site" content={twitterSite || "@mintsglobal"} />
+      {twitterCreator && <meta name="twitter:creator" content={twitterCreator} />}
       <meta name="twitter:title" content={twitterTitle || fullTitle} />
       <meta name="twitter:description" content={twitterDescription || description} />
       <meta name="twitter:image" content={twitterImage || ogImage} />

@@ -1,18 +1,15 @@
 {
   "version": 2,
+  "outputDirectory": "dist/client",
   "functions": {
     "api/index.ts": {
       "includeFiles": "dist/**"
     }
   },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(assets|images|fonts|favicon.*|apple-touch-icon.*|site.webmanifest|robots.txt|sitemap.*|whatsapp-icon.svg|.*\\..*)",
-      "dest": "/dist/client/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.ts"
+      "source": "/(.*)",
+      "destination": "/api/index"
     }
   ]
 }

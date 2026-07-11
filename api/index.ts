@@ -11,7 +11,7 @@ type VercelResponse = any;
 const __dirname = process.cwd();
 
 // Cache the template at cold start
-const templatePath = path.resolve(__dirname, 'dist/client/index.html');
+const templatePath = path.resolve(__dirname, 'dist/server/index.html');
 let cachedTemplate: string;
 
 function getTemplate(): string {

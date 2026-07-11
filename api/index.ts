@@ -26,8 +26,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const url = req.url ?? '/';
     const template = getTemplate();
 
-    // Dynamically import the SSR render function
-    const { render } = await import('../dist/server/entry-server.js' as string);
+    // Dynamically import the SSR render function using absolute path
+    const serverEntryPath = path.join(process.cwd(), 'dist', 'server', 'entry-server.js');
+    const { render } = await import(`file://${serverEntryPath}`);
     const { html: appHtml, helmet } = render(url);
 
     const finalHtml = template

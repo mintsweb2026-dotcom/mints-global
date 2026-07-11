@@ -1,18 +1,10 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["dist/**"]
-      }
-    },
-    {
-      "src": "dist/client/**",
-      "use": "@vercel/static"
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "dist/**"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(assets|images|fonts|favicon.*|apple-touch-icon.*|site.webmanifest|robots.txt|sitemap.*|whatsapp-icon.svg|.*\\..*)",

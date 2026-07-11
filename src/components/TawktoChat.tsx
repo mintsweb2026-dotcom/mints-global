@@ -80,7 +80,7 @@ export default function TawktoChat({ mobileMenuOpen }: TawktoChatProps) {
       onClick={openChat}
       className={cn(
         "fixed z-50 bg-olive-500 text-white rounded-full shadow-2xl hover:scale-110 transition-transform items-center justify-center cursor-pointer group",
-        "bottom-[88px] right-6 p-3 md:bottom-6 md:right-[88px] md:p-4",
+        "bottom-24 right-6 p-3 md:bottom-6 md:right-[88px] md:p-4",
         mobileMenuOpen ? "hidden" : "flex"
       )}
       aria-label="Open Live Chat"

@@ -7,17 +7,21 @@ export function Preloader() {
 
   useEffect(() => {
     let currentProgress = 0;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const stepSize = isMobile ? 35 : Math.floor(Math.random() * 15) + 5;
+    const intervalTime = isMobile ? 50 : 100;
+    
     const interval = setInterval(() => {
-      currentProgress += Math.floor(Math.random() * 15) + 5;
-      if (currentProgress > 100) {
+      currentProgress += stepSize;
+      if (currentProgress >= 100) {
         currentProgress = 100;
         clearInterval(interval);
         setTimeout(() => {
           setLoading(false);
-        }, 600);
+        }, isMobile ? 200 : 600);
       }
       setProgress(currentProgress);
-    }, 100);
+    }, intervalTime);
 
     return () => clearInterval(interval);
   }, []);

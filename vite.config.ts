@@ -26,6 +26,9 @@ export default defineConfig(({ mode, isSsrBuild }) => {
     // `vite build --ssr` sets isSsrBuild=true → outputs entry-server to dist/server/
     ...(isSsrBuild
       ? {
+          ssr: {
+            noExternal: ['react-helmet-async'],
+          },
           build: {
             ssr: true,
             outDir: 'dist/server',

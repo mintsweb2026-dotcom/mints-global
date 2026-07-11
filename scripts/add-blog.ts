@@ -1,35 +1,22 @@
-import { db } from '../lib/firebase';
-import { collection, getDocs, query, orderBy, where, limit } from 'firebase/firestore';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import dotenv from 'dotenv';
 
-export interface BlogPost {
-  id: string;
-  title: string;
-  slug: string;
-  category: string;
-  tags?: string[];
-  date: string;
-  readTime: string;
-  excerpt: string;
-  content: string;
-  author?: string;
-  image?: string;
-  imageAlt?: string;
-  seoTitle?: string;
-  seoDescription?: string;
-  views?: number;
-  updatedAtIso?: string;
-}
+dotenv.config({ path: '.env.local' });
 
-const injectedPost: BlogPost = {
-  id: 'ai-powered-vapt-uae',
-  title: 'AI-Powered VAPT in the UAE: Why Testing Is Getting Smarter, Not Just Faster',
-  slug: 'ai-powered-vapt-uae',
-  category: 'Cybersecurity',
-  date: new Date().toLocaleDateString(),
-  updatedAtIso: new Date().toISOString(),
-  readTime: '5 min read',
-  excerpt: 'AI-powered VAPT for UAE firms: faster detection, fewer false positives, real compliance-ready reports.',
-  content: `If you run a business in Dubai or anywhere else in the UAE, you've probably had the "when did we last test our systems" conversation at least once this year. Cyber threats aren't slowing down, and neither are the compliance requirements from the CBUAE, DESC, and the UAE PDPL. What has changed is how vulnerability assessment and penetration testing, or VAPT, actually gets done. AI-powered VAPT is quickly becoming the standard for UAE companies that want real protection instead of a report that sits in a folder until the next audit.
+const firebaseConfig = {
+  projectId: process.env.VITE_FIREBASE_PROJECT_ID,
+  appId: process.env.VITE_FIREBASE_APP_ID,
+  apiKey: process.env.VITE_FIREBASE_API_KEY,
+  authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN,
+  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app, process.env.VITE_FIREBASE_FIRESTORE_DB_ID);
+
+const blogContent = `If you run a business in Dubai or anywhere else in the UAE, you've probably had the "when did we last test our systems" conversation at least once this year. Cyber threats aren't slowing down, and neither are the compliance requirements from the CBUAE, DESC, and the UAE PDPL. What has changed is how vulnerability assessment and penetration testing, or VAPT, actually gets done. AI-powered VAPT is quickly becoming the standard for UAE companies that want real protection instead of a report that sits in a folder until the next audit.
 
 ### What AI-Powered VAPT Actually Means
 
@@ -73,54 +60,32 @@ Whether you're a fintech navigating CBUAE's Open Finance requirements, a healthc
 
 If it's been a while since your last real security assessment, or if your last one felt more like a checkbox exercise than a genuine test, it might be time for a different approach.
 
-Ready to see where your systems stand? Get in touch with Mints Global for an AI-powered VAPT assessment built around your business.`,
-  author: 'Shyni',
-  image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200',
-  imageAlt: 'AI-powered VAPT security testing dashboard for UAE businesses',
-  seoTitle: 'AI-Powered VAPT Services in the UAE | Mints Global',
-  seoDescription: 'AI-powered VAPT for UAE firms: faster detection, fewer false positives, real compliance-ready reports.',
-  tags: ['VAPT', 'AI Cybersecurity', 'Penetration Testing', 'UAE Compliance'],
-  views: 0
-};
+Ready to see where your systems stand? Get in touch with Mints Global for an AI-powered VAPT assessment built around your business.`;
 
-export const getPosts = async (): Promise<BlogPost[]> => {
+async function addBlog() {
   try {
-    const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
-    const snapshot = await getDocs(q);
-    const fetchedPosts = snapshot.docs.map(doc => {
-      const data = doc.data();
-      const createdAtDate = data.createdAt ? data.createdAt.toDate() : new Date();
-      return {
-        id: doc.id,
-        title: data.title,
-        slug: doc.id, // using document ID as slug for simplicity since we don't store slug in FS
-        category: data.category || 'BLOG',
-        date: data.createdAt ? createdAtDate.toLocaleDateString() : 'Just now',
-        updatedAtIso: (data.updatedAt ? data.updatedAt.toDate() : createdAtDate).toISOString(),
-        readTime: data.readTime || '5 min read',
-        excerpt: data.excerpt || '',
-        content: data.content || '',
-        author: data.author || 'Mints Global',
-        image: data.image || '',
-        imageAlt: data.imageAlt || '',
-        seoTitle: data.seoTitle || '',
-        seoDescription: data.seoDescription || '',
-        views: data.views || 0,
-        tags: data.tags || [],
-        ...data,
-      } as BlogPost;
-    });
+    const slug = 'ai-powered-vapt-uae';
+    const postData = {
+      title: 'AI-Powered VAPT in the UAE: Why Testing Is Getting Smarter, Not Just Faster',
+      content: blogContent,
+      excerpt: 'AI-powered VAPT for UAE firms: faster detection, fewer false positives, real compliance-ready reports.',
+      category: 'Cybersecurity',
+      seoTitle: 'AI-Powered VAPT Services in the UAE | Mints Global',
+      seoDescription: 'AI-powered VAPT for UAE firms: faster detection, fewer false positives, real compliance-ready reports.',
+      slug: slug,
+      tags: ['vapt', 'ai-cybersecurity', 'penetration-testing', 'uae-compliance'],
+      imageAlt: 'AI-powered VAPT security testing dashboard for UAE businesses',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
 
-    return [injectedPost, ...fetchedPosts];
+    console.log('Attempting to add blog post via client SDK...');
+    await setDoc(doc(db, 'posts', slug), postData, { merge: true });
+    console.log('Successfully added blog post!');
   } catch (error) {
-    console.error('Error fetching posts:', error);
-    return [injectedPost];
+    console.error('Failed to add blog post:', error);
   }
-};
+  process.exit(0);
+}
 
-export const getPostBySlug = async (slug: string): Promise<BlogPost | undefined> => {
-  const posts = await getPosts();
-  return posts.find(p => p.slug === slug || p.id === slug);
-};
-
-
+addBlog();

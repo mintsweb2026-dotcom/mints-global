@@ -268,6 +268,13 @@ export function Home() {
     getPosts().then(fetched => setRecentPosts(fetched.slice(0, 3)));
   }, []);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((prev) => (prev === 3 ? 0 : prev + 1)); // 4 testimonials
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="flex flex-col w-full overflow-x-hidden pt-[116px]">
       <SEO 
@@ -302,6 +309,9 @@ export function Home() {
             fetchPriority="high"
             className="absolute inset-0 w-full h-full object-cover opacity-30 z-0 pointer-events-none"
           />
+          {/* Particle Grid Overlay */}
+          <div className="absolute inset-0 z-10 pointer-events-none opacity-20 bg-[radial-gradient(#84cc16_1px,transparent_1px)] [background-size:40px_40px]" />
+          
           {/* Noise overlay */}
           <div className="absolute inset-0 z-10 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ0cmFuc3BhcmVudCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIvPjwvc3ZnPg==')] pointer-events-none" />
           
@@ -414,7 +424,13 @@ export function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Card 1 */}
-          <div className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
+          >
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
              <div>
                <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
@@ -481,10 +497,16 @@ export function Home() {
                </div>
              </div>
              <Link to="/digital-marketing" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
-          </div>
+          </motion.div>
 
           {/* Card 2 */}
-          <div className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
+          >
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
              <div>
                <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
@@ -520,10 +542,16 @@ export function Home() {
                </div>
              </div>
              <Link to="/software-development" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
-          </div>
+          </motion.div>
 
           {/* Card 3 */}
-          <div className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
+          >
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
              <div>
                <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
@@ -559,7 +587,7 @@ export function Home() {
                </div>
              </div>
              <Link to="/cyber-security" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 

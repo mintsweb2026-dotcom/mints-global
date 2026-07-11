@@ -9,6 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://res.cloudinary.com" />
 
+    <!-- DNS-prefetch for Firebase services -->
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
+    <link rel="dns-prefetch" href="https://firebase.googleapis.com" />
+    <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
     <!-- Google Fonts Non-Blocking Loading -->
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;900&display=swap"
@@ -20,11 +26,24 @@
     </noscript>
 
     <!-- Preload Hero Image -->
-    <link rel="preload" as="image" href="https://www.mintsglobal.ae/images/hero-digital-agency-dubai.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="https://www.mintsglobal.ae/images/hero-digital-agency-dubai.webp" fetchpriority="high" width="1440" height="810" />
 
-    <!-- Default meta (overridden per-page by react-helmet-async) -->
+    <!-- SSR-injected head tags (title, meta, og, twitter, canonical) — filled per-route in SSR mode -->
+    <!--app-head-->
+
+    <!-- Default meta (overridden per-page by react-helmet-async in CSR / by SSR injection above) -->
     <title>Best Digital Marketing Agency Dubai | Mints Global</title>
+    <meta name="description" content="Mints Global is Dubai's best digital marketing agency delivering ROI-driven marketing, software development & cybersecurity solutions. Get a free consultation today!" />
     <meta name="google-site-verification" content="google92a8ddc32fa55bd3" />
+
+    <!-- Open Graph defaults -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Mints Global" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#0d1a0f" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#0d1a0f" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -32,23 +51,22 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#0d1a0f" />
 
     <!-- Robots default -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LVGEPW8RM"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-0LVGEPW8RM');
     </script>
   </head>
   <body>
+    <!--app-html-->
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/entry-client.tsx"></script>
   </body>
 </html>
-

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { ArrowUpRight, ArrowRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { ArrowUpRight, ArrowRight, X, ChevronLeft, ChevronRight, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
@@ -26,6 +26,7 @@ export const getSrcSet = (url: string, widths: number[]) => {
 
 function Lightbox({ project, onClose }: { project: Project; onClose: () => void }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
   
   // Combine title image and media urls
   const allImages = [project.titleImage, ...(project.mediaUrls || [])].filter(Boolean);
@@ -44,6 +45,20 @@ function Lightbox({ project, onClose }: { project: Project; onClose: () => void 
     };
   }, [onClose, allImages.length]);
 
+  // Touch swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) > 50) {
+      if (delta < 0) setCurrentIndex(prev => Math.min(prev + 1, allImages.length - 1));
+      else setCurrentIndex(prev => Math.max(prev - 1, 0));
+    }
+    touchStartX.current = null;
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -51,13 +66,23 @@ function Lightbox({ project, onClose }: { project: Project; onClose: () => void 
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 px-4"
       onClick={onClose}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       <button 
         onClick={onClose}
         className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors p-2 z-[60]"
+        aria-label="Close lightbox"
       >
         <X size={32} />
       </button>
+
+      {/* Image counter */}
+      {allImages.length > 1 && (
+        <div className="absolute top-6 left-6 z-[60] text-white/50 text-xs font-bold uppercase tracking-widest">
+          {currentIndex + 1} / {allImages.length}
+        </div>
+      )}
 
       <div 
         className="relative w-full max-w-6xl max-h-[85vh] flex items-center justify-center"
@@ -67,6 +92,7 @@ function Lightbox({ project, onClose }: { project: Project; onClose: () => void 
           <button 
             onClick={() => setCurrentIndex(prev => prev - 1)}
             className="absolute left-0 md:-left-16 text-white/50 hover:text-white transition-colors p-2"
+            aria-label="Previous image"
           >
             <ChevronLeft size={48} />
           </button>
@@ -85,6 +111,7 @@ function Lightbox({ project, onClose }: { project: Project; onClose: () => void 
           <button 
             onClick={() => setCurrentIndex(prev => prev + 1)}
             className="absolute right-0 md:-right-16 text-white/50 hover:text-white transition-colors p-2"
+            aria-label="Next image"
           >
             <ChevronRight size={48} />
           </button>
@@ -99,6 +126,7 @@ function Lightbox({ project, onClose }: { project: Project; onClose: () => void 
             <button 
               key={idx}
               onClick={() => setCurrentIndex(idx)}
+              aria-label={`View image ${idx + 1}`}
               className={`w-2 h-2 rounded-full transition-all ${idx === currentIndex ? 'bg-olive-500 w-6' : 'bg-white/30 hover:bg-white/60'}`}
             />
           ))}
@@ -197,20 +225,46 @@ export function Work() {
               </button>
             ))}
           </div>
-          <div className="relative w-full md:w-64 shrink-0">
-            <input
-              type="text"
-              placeholder="Search projects..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-olive-900 border border-white/10 rounded-full py-3 px-6 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-olive-500 transition-colors"
-            />
+          <div className="flex flex-col md:flex-row gap-4 items-center">
+            <span className="text-brand-white-40 text-xs font-bold uppercase tracking-widest whitespace-nowrap">
+              Showing {filteredProjects.length} Projects
+            </span>
+            <div className="relative w-full md:w-64 shrink-0">
+              <input
+                type="text"
+                placeholder="Search projects..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full bg-olive-900 border border-white/10 rounded-full py-3 px-6 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-olive-500 transition-colors"
+              />
+            </div>
           </div>
         </div>
 
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 min-h-[40vh]">
            <AnimatePresence>
-             {filteredProjects.map((proj, idx) => (
+             {filteredProjects.length === 0 ? (
+               <motion.div
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 exit={{ opacity: 0 }}
+                 className="col-span-full flex flex-col items-center justify-center py-20 text-center"
+               >
+                 <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4 text-brand-white-40">
+                   <Search size={24} />
+                 </div>
+                 <h3 className="text-xl font-display font-bold text-white mb-2">No projects found</h3>
+                 <p className="text-brand-white-70 text-sm max-w-sm">
+                   We couldn't find any projects matching "{searchTerm}" in the {filter} category.
+                 </p>
+                 <button
+                   onClick={() => { setFilter('All'); setSearchTerm(''); }}
+                   className="mt-6 text-olive-500 font-bold uppercase text-xs tracking-widest hover:text-white transition-colors"
+                 >
+                   Clear Filters
+                 </button>
+               </motion.div>
+             ) : filteredProjects.map((proj, idx) => (
                <motion.div 
                  layout
                  initial={{ opacity: 0, scale: 0.9 }}

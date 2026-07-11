@@ -1,8 +1,23 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/((?!assets/|.*\\..*$).*)",
-      "destination": "/index.html"
+      "src": "api/index.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/client/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(assets|images|fonts|favicon.*|apple-touch-icon.*|site.webmanifest|robots.txt|sitemap.*|whatsapp-icon.svg|.*\\..*)",
+      "dest": "/dist/client/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.ts"
     }
   ]
 }

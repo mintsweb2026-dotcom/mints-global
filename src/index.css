@@ -22,6 +22,9 @@
 
   --animate-bob: bob 2s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-fade-in-up: fadeInUp 0.6s ease forwards;
+  --animate-shimmer: shimmer 1.8s ease-in-out infinite;
+  --animate-gradient-shift: gradientShift 6s ease infinite;
 }
 
 @layer base {
@@ -42,38 +45,20 @@
 }
 
 @layer utilities {
-  .rtl {
-    direction: rtl;
-  }
-  .ltr {
-    direction: ltr;
-  }
+  .rtl { direction: rtl; }
+  .ltr { direction: ltr; }
 
-  /* Hide scrollbar while keeping scroll functionality — used in Blog pagination */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+  /* Hide scrollbar while keeping scroll functionality */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-  /* Custom thin scrollbar for BlogPost TOC sidebar */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 3px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(106,171,31,0.4);
-    border-radius: 3px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #6aab1f;
-  }
+  /* Thin scrollbar for TOC sidebar */
+  .custom-scrollbar::-webkit-scrollbar { width: 3px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(106,171,31,0.4); border-radius: 3px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #6aab1f; }
 
-  /* Clamp line count utilities */
+  /* Line clamp utilities */
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -88,25 +73,48 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  /* Shimmer skeleton loading */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 25%,
+      rgba(255,255,255,0.08) 50%,
+      rgba(255,255,255,0.03) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s ease-in-out infinite;
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    background: linear-gradient(135deg, #6aab1f 0%, #b5d97b 50%, #6aab1f 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s ease infinite;
+  }
+
+  /* Paint containment for animated cards */
+  .contain-paint { contain: paint; }
+
+  /* GPU-accelerated animated elements */
+  .gpu {
+    transform: translateZ(0);
+    will-change: transform;
+  }
 }
 
-
+/* ── Global styles ────────────────────────────────────────────────────────────── */
 ::selection {
   background-color: #6aab1f;
   color: #fff;
 }
 
-::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
-}
-::-webkit-scrollbar-track {
-  background: #0d1a0f;
-}
-::-webkit-scrollbar-thumb {
-  background: #6aab1f;
-  border-radius: 3px;
-}
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: #0d1a0f; }
+::-webkit-scrollbar-thumb { background: #6aab1f; border-radius: 3px; }
 
 .noise::after {
   content: "";
@@ -120,15 +128,32 @@
 
 .card-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  contain: paint;
 }
 .card-lift:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 20px rgba(106, 171, 31, 0.15);
 }
 
+/* ── Keyframe animations ───────────────────────────────────────────────────────── */
 @keyframes bob {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
 }
 
 @keyframes marquee {
@@ -139,31 +164,28 @@
   from { transform: translateX(0); }
   to   { transform: translateX(50%); }
 }
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes pulseBorder {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(106,171,31,0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(106,171,31,0); }
+}
+
 .animate-marquee { animation: marquee 30s linear infinite; }
 .animate-marquee-rtl { animation: marquee-rtl 30s linear infinite; }
+.animate-spin-slow { animation: spinSlow 8s linear infinite; }
+.animate-pulse-border { animation: pulseBorder 2s ease-in-out infinite; }
 
-/* Lenis Smooth Scrolling */
-html.lenis, html.lenis body {
-  height: auto;
-}
+/* ── Lenis Smooth Scrolling ────────────────────────────────────────────────────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
-}
-
-/* Floating WhatsApp button styling */
+/* ── Floating WhatsApp button ──────────────────────────────────────────────────── */
 .whatsapp-float {
   position: fixed;
   bottom: 24px;
@@ -173,6 +195,4 @@ html.lenis, html.lenis body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transition: transform 0.2s ease;
 }
-.whatsapp-float:hover {
-  transform: scale(1.08);
-}
+.whatsapp-float:hover { transform: scale(1.08); }

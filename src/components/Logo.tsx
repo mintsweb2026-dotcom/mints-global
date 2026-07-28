@@ -27,14 +27,14 @@ export function Logo({ className }: { className?: string }) {
 
   return (
     <img 
-      src="https://www.mintsglobal.ae/images/mints-global-logo.svg" 
+      src="/logo-07.png" 
       alt="Mints Global - Best Digital Marketing Agency Dubai" 
       width="180" 
       height="50" 
       loading="eager" 
       decoding="async"
       onError={() => setHasError(true)}
-      className={cn("h-10 w-auto object-contain", className)}
+      className={cn("h-20 w-auto object-contain transform scale-[3] origin-left", className)}
     />
   );
 }

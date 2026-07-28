@@ -470,12 +470,12 @@ export function AdminPanel() {
       fetchPosts();
     } catch (e: any) {
       console.error(e);
-      if (e.message.includes("permission-denied")) {
+      if (e.code === "permission-denied" || (e.message && e.message.includes("permission-denied"))) {
         setErrorMsg(
-          "Permission denied: You must be an authorized admin to post.",
+          "Permission denied: You must be an authorized admin to post. (Check your email/login).",
         );
       } else {
-        setErrorMsg("An error occurred submitting the block.");
+        setErrorMsg(`An error occurred submitting the block: ${e.message || e}`);
       }
     } finally {
       setSubmitting(false);

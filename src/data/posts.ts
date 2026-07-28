@@ -155,7 +155,7 @@ Certificates are valid for three years, with annual surveillance audits required
 **Can small businesses in Dubai get ISO 27001 certified?**
 Yes — the standard is scalable by design. A small business defines a narrower ISMS scope and typically moves through the process faster and at lower cost than a large, multi-site organization.`,
   author: 'Mints Global',
-  image: '/images/iso-27001-certification-in-dubai.webp',
+  image: '/images/iso-27001-certification-in-dubai.jpg',
   imageAlt: 'ISO 27001 certification consultants in Dubai',
   seoTitle: 'ISO 27001 Certification in Dubai | Mints Global',
   seoDescription: 'ISO 27001 certification in Dubai. Gap assessment, ISMS build & audit readiness support. Free consultation.',

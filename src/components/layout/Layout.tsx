@@ -76,7 +76,7 @@ export function Layout() {
 
   return (
     <SmoothScroll>
-      <div className="min-h-screen flex flex-col selection:bg-olive-500 selection:text-white">
+      <div className="min-h-screen relative flex flex-col selection:bg-olive-500 selection:text-white">
         <Preloader />
         <JsonLd data={orgSchema} />
 

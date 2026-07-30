@@ -174,7 +174,7 @@ export function Contact() {
       };
 
       await emailjs.send(
-        'service_y00l268',
+        'service_hsym0kb',
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
         templateParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'

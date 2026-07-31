@@ -163,7 +163,7 @@ export function CyberSecurity() {
             <p className="text-brand-white-70 max-w-2xl text-lg md:text-xl font-medium leading-relaxed mb-10">
               Military-grade offensive testing, infrastructure fortification, and rapid response to protect your most valuable digital assets.
             </p>
-            <Link to="/contact" className="inline-flex bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors items-center gap-2">
+            <Link to="/contact" className="inline-flex bg-olive-500 text-brand-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors items-center gap-2">
               Request an Audit <ArrowRight size={18} />
             </Link>
           </div>

@@ -472,7 +472,7 @@ export function Contact() {
                     type="submit" 
                     disabled={isSubmitting}
                     onClick={() => setSubmitAttempted(true)}
-                    className="bg-olive-500 text-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-black flex items-center gap-2 hover:bg-olive-400 transition-all disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-olive-900 text-base sm:text-lg shadow-lg hover:shadow-olive-500/30 hover:-translate-y-0.5 active:translate-y-0"
+                    className="bg-olive-500 text-brand-black px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-black flex items-center gap-2 hover:bg-olive-400 transition-all disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-olive-900 text-base sm:text-lg shadow-lg hover:shadow-olive-500/30 hover:-translate-y-0.5 active:translate-y-0"
                    >
                      {isSubmitting ? (
                        <>

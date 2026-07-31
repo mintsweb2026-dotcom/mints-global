@@ -66,7 +66,7 @@ export function IncidentResponse() {
           </p>
           
           <div className="flex flex-wrap gap-4">
-             <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
+             <Link to="/contact" className="bg-olive-500 text-brand-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
                Get Emergency Help <ArrowRight size={18} />
              </Link>
           </div>

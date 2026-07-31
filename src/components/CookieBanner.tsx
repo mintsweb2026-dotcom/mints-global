@@ -144,7 +144,7 @@ export function CookieBanner() {
               <>
                 <button
                   onClick={acceptAll}
-                  className="w-full bg-olive-500 text-white font-bold py-2.5 rounded-lg text-sm hover:bg-olive-400 transition-colors"
+                  className="w-full bg-olive-500 text-brand-black font-bold py-2.5 rounded-lg text-sm hover:bg-olive-400 transition-colors"
                 >
                   Accept All
                 </button>
@@ -167,7 +167,7 @@ export function CookieBanner() {
               <>
                 <button
                   onClick={savePreferences}
-                  className="w-full bg-olive-500 text-white font-bold py-2.5 rounded-lg text-sm hover:bg-olive-400 transition-colors"
+                  className="w-full bg-olive-500 text-brand-black font-bold py-2.5 rounded-lg text-sm hover:bg-olive-400 transition-colors"
                 >
                   Save Preferences
                 </button>

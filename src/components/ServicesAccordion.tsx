@@ -48,7 +48,7 @@ export function ServicesAccordion({ items }: ServicesAccordionProps) {
               <span className={`font-display font-bold text-xl md:text-2xl transition-colors duration-300 ${isOpen ? 'text-olive-500' : 'text-white'}`}>
                 {item.title}
               </span>
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-180 bg-olive-500 text-white' : 'bg-white/5 text-brand-white'}`} aria-hidden="true">
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-180 bg-olive-500 text-brand-black' : 'bg-white/5 text-brand-white'}`} aria-hidden="true">
                 <ChevronDown size={20} />
               </div>
             </button>

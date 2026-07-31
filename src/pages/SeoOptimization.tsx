@@ -228,7 +228,7 @@ export function SeoOptimization() {
               If your business is not on the first page of Google, it is practically invisible. Mints Global delivers bold, data-backed SEO strategies that position your brand at the top.
             </p>
             <div className="flex flex-wrap gap-4">
-               <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
+               <Link to="/contact" className="bg-olive-500 text-brand-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
                   Discuss Your Project <ArrowRight size={18} />
                </Link>
             </div>

@@ -79,7 +79,7 @@ export default function TawktoChat({ mobileMenuOpen }: TawktoChatProps) {
     <button
       onClick={openChat}
       className={cn(
-        "fixed z-50 bg-olive-500 text-white rounded-full shadow-2xl hover:scale-110 transition-transform items-center justify-center cursor-pointer group",
+        "fixed z-50 bg-olive-500 text-brand-black rounded-full shadow-2xl hover:scale-110 transition-transform items-center justify-center cursor-pointer group",
         "bottom-24 right-6 p-3 md:bottom-6 md:right-[88px] md:p-4",
         mobileMenuOpen ? "hidden" : "flex"
       )}

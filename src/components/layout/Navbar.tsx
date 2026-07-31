@@ -230,7 +230,7 @@ export function Navbar({
                       aria-pressed={i18n.language === lang}
                       className={cn(
                         'px-4 py-2 text-left rounded-lg transition-colors text-sm font-bold flex items-center justify-between',
-                        i18n.language === lang ? 'bg-olive-500 text-white' : 'hover:bg-white/10 text-brand-white',
+                        i18n.language === lang ? 'bg-olive-500 text-brand-black' : 'hover:bg-white/10 text-brand-white',
                       )}
                     >
                       {lang === 'en' ? 'English' : lang === 'ar' ? 'العربية' : 'Deutsch'}
@@ -330,7 +330,7 @@ export function Navbar({
                   <button
                     key={lang}
                     onClick={() => changeLanguage(lang)}
-                    className={cn('px-4 py-2 rounded-full transition-colors', i18n.language === lang ? 'bg-olive-500 text-white' : 'text-white/50 hover:text-white')}
+                    className={cn('px-4 py-2 rounded-full transition-colors', i18n.language === lang ? 'bg-olive-500 text-brand-black' : 'text-white/50 hover:text-white')}
                   >
                     {lang.toUpperCase()}
                   </button>

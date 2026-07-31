@@ -207,7 +207,7 @@ export function Work() {
             href="https://portfolio.mintsglobal.tech/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-olive-500 text-white px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors"
+            className="inline-flex items-center gap-2 bg-olive-500 text-brand-black px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors"
           >
             Interactive Demos & Products <ArrowRight size={18} />
           </a>
@@ -219,7 +219,7 @@ export function Work() {
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${filter === f ? 'bg-olive-500 text-white' : 'bg-transparent border border-white/10 text-brand-white-70 hover:border-olive-500/50 hover:text-white'}`}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${filter === f ? 'bg-olive-500 text-brand-black' : 'bg-transparent border border-white/10 text-brand-white-70 hover:border-olive-500/50 hover:text-white'}`}
               >
                 {f}
               </button>

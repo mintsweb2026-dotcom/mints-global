@@ -374,7 +374,7 @@ export function Home() {
             >
               <Magnetic>
                 <div className="inline-block">
-                  <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors flex items-center gap-2">
+                  <Link to="/contact" className="bg-olive-500 text-brand-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors flex items-center gap-2">
                     {t('hero.startProject')} <ArrowRight size={18} />
                   </Link>
                 </div>
@@ -606,7 +606,7 @@ export function Home() {
                     href="https://portfolio.mintsglobal.tech/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-olive-500 text-white px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors shrink-0"
+                    className="inline-flex items-center gap-2 bg-olive-500 text-brand-black px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors shrink-0"
                   >
                     Interactive Demos & Products <ArrowRight size={18} />
                   </a>
@@ -896,7 +896,7 @@ export function Home() {
                        <User className="text-olive-500" size={24} />
                      </div>
                      <div>
-                       <h4 className="font-display font-bold text-xl uppercase tracking-wider">{testimonials[activeTestimonial].name}</h4>
+                       <h3 className="font-display font-bold text-xl uppercase tracking-wider">{testimonials[activeTestimonial].name}</h3>
                        <p className="text-brand-white-70 text-sm uppercase tracking-widest">{testimonials[activeTestimonial].role}</p>
                      </div>
                    </div>

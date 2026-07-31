@@ -130,7 +130,7 @@ export function ProjectDetail() {
                 <Link to={`/work/${p._id}`} key={p._id} className="group block focus:outline-none">
                   <div className="rounded-3xl overflow-hidden bg-olive-900 border border-white/5 aspect-video mb-6 relative">
                      <div className="absolute inset-0 bg-brand-black/0 group-hover:bg-brand-black/40 transition-colors z-10 duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                       <span className="bg-olive-500 text-white w-14 h-14 rounded-full flex items-center justify-center translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                       <span className="bg-olive-500 text-brand-black w-14 h-14 rounded-full flex items-center justify-center translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                          <ArrowLeft size={24} className="rotate-180" />
                        </span>
                      </div>
@@ -146,7 +146,7 @@ export function ProjectDetail() {
 
       <section className="py-24 bg-olive-950 border-t border-white/5 text-center">
          <h2 className="font-display text-4xl font-black uppercase mb-8 text-white">Start Your Project</h2>
-         <Link to="/contact" className="bg-olive-500 text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-400 transition-colors inline-flex items-center gap-3">
+         <Link to="/contact" className="bg-olive-500 text-brand-black px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-400 transition-colors inline-flex items-center gap-3">
            Contact Us <ArrowLeft size={20} className="rotate-180" />
          </Link>
       </section>

@@ -41,7 +41,7 @@ export function FloatingButtons({ hidden }: { hidden: boolean }) {
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             onClick={scrollToTop}
             className={cn(
-              'fixed bottom-24 right-6 z-50 bg-olive-500 text-white p-3 md:p-4 rounded-full shadow-[0_0_15px_rgba(106,171,31,0.5)] border border-olive-400 hover:bg-olive-400 hover:scale-110 transition-all items-center justify-center group',
+              'fixed bottom-24 right-6 z-50 bg-olive-500 text-brand-black p-3 md:p-4 rounded-full shadow-[0_0_15px_rgba(106,171,31,0.5)] border border-olive-400 hover:bg-olive-400 hover:scale-110 transition-all items-center justify-center group',
               hidden ? 'hidden' : 'hidden md:flex',
             )}
             aria-label="Scroll to top"

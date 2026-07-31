@@ -99,14 +99,14 @@ export function Navbar({
           isScrolled ? 'bg-olive-950/85 backdrop-blur-xl py-4 border-b border-white/10' : 'bg-transparent py-6',
         )}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between relative">
           <Link to="/" className="z-50 hover:opacity-80 transition-opacity" aria-label="Mints Global — Home">
             <Logo className="text-[3rem]" />
           </Link>
 
           {/* Desktop Nav */}
-          <nav aria-label="Main Navigation" className="hidden md:flex items-center gap-8 font-display font-medium relative group">
-            <div className="relative group/nav">
+          <nav aria-label="Main Navigation" className="hidden md:flex items-center gap-8 font-display font-medium group">
+            <div className="group/nav">
               <NavLink
                 to="/services"
                 className={({ isActive }) => cn(
@@ -120,7 +120,7 @@ export function Navbar({
               </NavLink>
 
               {/* Mega Menu */}
-              <div className="absolute top-[100%] left-1/2 -translate-x-1/2 pt-6 w-[1100px] max-w-[90vw] opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 z-50">
+              <div className="absolute top-[100%] left-1/2 -translate-x-1/2 pt-6 w-[1100px] max-w-[calc(100vw-3rem)] opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 z-50">
                 <div className="bg-olive-950 border border-white/10 rounded-2xl p-8 shadow-2xl overflow-hidden">
                   <div className="grid grid-cols-3 gap-12">
                     {/* Digital Marketing */}

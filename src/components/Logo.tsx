@@ -34,7 +34,7 @@ export function Logo({ className }: { className?: string }) {
       loading="eager" 
       decoding="async"
       onError={() => setHasError(true)}
-      className={cn("h-8 sm:h-10 md:h-16 lg:h-20 w-auto object-contain transform scale-[1.5] sm:scale-[2] md:scale-[2.5] lg:scale-[3] origin-left", className)}
+      className={cn("h-10 sm:h-12 md:h-16 lg:h-20 w-auto object-contain transform md:scale-[1.5] lg:scale-[2] origin-left", className)}
     />
   );
 }

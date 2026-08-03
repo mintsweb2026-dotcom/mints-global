@@ -346,15 +346,15 @@ export function Home() {
             </div>
             
             <h1 className="sr-only">Best Digital Marketing Agency in Dubai</h1>
-            <div className="font-display font-black tracking-tighter mb-10 w-full overflow-visible flex flex-col gap-2 sm:gap-0 leading-none" aria-hidden="true">
-              <div className="self-start">
-                <AnimatedChars text={t('hero.line1')} className="text-brand-white text-[clamp(4.5rem,10vw,10rem)] leading-[0.85] tracking-tight" delay={0.3} />
+            <div className="font-display font-black tracking-tighter mb-10 w-full flex flex-col gap-2 sm:gap-0 leading-none overflow-hidden" aria-hidden="true">
+              <div className="self-start max-w-full">
+                <AnimatedChars text={t('hero.line1')} className="text-brand-white text-[clamp(3.5rem,10vw,10rem)] leading-[0.85] tracking-tight break-words" delay={0.3} />
               </div>
-              <div className="self-start ml-[clamp(16px,4vw,56px)]">
-                <AnimatedChars text={t('hero.line2')} className="text-brand-white text-[clamp(2.3rem,9vw,9rem)] leading-[0.85] tracking-tight" delay={0.6} />
+              <div className="self-start ml-[clamp(16px,4vw,56px)] max-w-full">
+                <AnimatedChars text={t('hero.line2')} className="text-brand-white text-[clamp(2rem,9vw,9rem)] leading-[0.85] tracking-tight break-words" delay={0.6} />
               </div>
-              <div className="self-start ml-[clamp(32px,8vw,112px)] mt-4">
-                <AnimatedChars text={t('hero.line3')} className="text-[clamp(4.5rem,10vw,10rem)] leading-[0.85] tracking-tight text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.7)]" delay={0.9} />
+              <div className="self-start ml-[clamp(32px,8vw,112px)] mt-4 max-w-full">
+                <AnimatedChars text={t('hero.line3')} className="text-[clamp(2.5rem,10vw,10rem)] leading-[0.85] tracking-tight text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.7)] break-words" delay={0.9} />
               </div>
             </div>
             <motion.p 
@@ -370,7 +370,7 @@ export function Home() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4, duration: 0.8 }}
-              className="mt-12 flex flex-wrap gap-4 items-center"
+              className="mt-12 flex flex-col sm:flex-row flex-wrap gap-4 items-start sm:items-center"
             >
               <Magnetic>
                 <div className="inline-block">

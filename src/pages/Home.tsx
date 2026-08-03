@@ -496,7 +496,7 @@ export function Home() {
                  </div>
                </div>
              </div>
-             <Link to="/digital-marketing" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
+             <Link to="/digital-marketing" aria-label={t('capabilities.s1.title', {defaultValue: 'Digital Marketing Services'})} className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
           </motion.div>
 
           {/* Card 2 */}
@@ -541,7 +541,7 @@ export function Home() {
                  </div>
                </div>
              </div>
-             <Link to="/software-development" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
+             <Link to="/software-development" aria-label={t('capabilities.s2.title', {defaultValue: 'Enterprise Software Development Dubai'})} className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
           </motion.div>
 
           {/* Card 3 */}
@@ -586,7 +586,7 @@ export function Home() {
                  </div>
                </div>
              </div>
-             <Link to="/cyber-security" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
+             <Link to="/cyber-security" aria-label={t('capabilities.s3.title', {defaultValue: 'Cybersecurity Solutions for Global Brands'})} className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <ArrowRight size={16} /></Link>
           </motion.div>
         </div>
       </section>

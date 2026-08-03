@@ -192,7 +192,7 @@ export function CyberSecurity() {
                 <srv.icon className="text-olive-500 mb-6" size={36} strokeWidth={1.5} />
                 <h3 className="text-xl font-display font-bold mb-3 group-hover:text-olive-500 transition-colors">{srv.name}</h3>
                 <p className="text-brand-white-70 text-sm leading-relaxed mb-8">{srv.desc}</p>
-                <Link to="/contact" className="text-sm font-bold flex items-center gap-2 hover:text-white transition-colors uppercase tracking-wider">
+                <Link to="/contact" aria-label={`Learn more about ${srv.name}`} className="text-sm font-bold flex items-center gap-2 hover:text-white transition-colors uppercase tracking-wider">
                   Learn More <ArrowRight size={16} />
                 </Link>
               </div>
@@ -215,7 +215,7 @@ export function CyberSecurity() {
                  </li>
                ))}
              </ul>
-             <Link to="/contact" className="text-sm font-bold w-fit flex items-center gap-2 hover:text-white transition-colors uppercase tracking-wider text-olive-500">
+             <Link to="/contact" aria-label="Learn more about our cybersecurity approach" className="text-sm font-bold w-fit flex items-center gap-2 hover:text-white transition-colors uppercase tracking-wider text-olive-500">
                Learn More <ArrowRight size={16} />
              </Link>
            </div>

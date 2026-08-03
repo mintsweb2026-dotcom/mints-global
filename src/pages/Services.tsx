@@ -101,7 +101,7 @@ export function Services() {
                      </li>
                   ))}
                </ul>
-               <Link to={grp.link} className="text-sm font-bold flex items-center gap-2 hover:text-olive-500 transition-colors">
+               <Link to={grp.link} aria-label={`Learn more about ${grp.title}`} className="text-sm font-bold flex items-center gap-2 hover:text-olive-500 transition-colors">
                  Learn More <ArrowRight size={16} />
                </Link>
              </div>

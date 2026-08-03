@@ -16,7 +16,7 @@ const { projects: staticProjects } = await import('../src/data/projects');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DOMAIN = 'https://mintsglobal.ae';
+const DOMAIN = 'https://www.mintsglobal.ae';
 
 const staticRoutes = [
   { url: '/', changefreq: 'weekly', priority: 1.0 },

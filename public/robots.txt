@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://mintsglobal.ae/sitemap.xml
+Sitemap: https://www.mintsglobal.ae/sitemap.xml

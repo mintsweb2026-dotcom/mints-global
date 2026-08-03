@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../lib/firebase';
+import emailjs from '@emailjs/browser';
 import { Send, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -51,10 +50,20 @@ export function NewsletterForm() {
     }
 
     try {
-      await addDoc(collection(db, 'subscribers'), {
-        email: email.toLowerCase(),
-        subscribedAt: serverTimestamp()
-      });
+      await emailjs.send(
+        'service_hsym0kb',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+        {
+          name: 'Newsletter Subscriber',
+          email: email.toLowerCase(),
+          company: 'N/A',
+          services: 'Newsletter Subscription',
+          timeline: 'N/A',
+          budget: 'N/A',
+          message: `New newsletter subscription request from: ${email.toLowerCase()}`,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+      );
 
       setStatus('success');
       setEmail('');

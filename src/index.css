@@ -189,7 +189,7 @@ html.lenis, html.lenis body { height: auto; }
 .whatsapp-float {
   position: fixed;
   bottom: 24px;
-  right: 24px;
+  left: 24px;
   z-index: 999;
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);

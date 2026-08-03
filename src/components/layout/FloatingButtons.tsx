@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUp } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { cn } from '../../lib/utils';
 
 export function FloatingButtons({ hidden }: { hidden: boolean }) {
@@ -26,10 +27,13 @@ export function FloatingButtons({ hidden }: { hidden: boolean }) {
         href="https://wa.me/971502943916?text=Hello%2C%20I%27d%20like%20to%20know%20more"
         target="_blank"
         rel="noopener noreferrer"
-        className={cn('whatsapp-float', hidden ? 'hidden' : 'block')}
+        className={cn(
+          'whatsapp-float flex items-center justify-center bg-olive-500 text-brand-black border border-olive-400 w-[56px] h-[56px]',
+          hidden ? 'hidden' : 'flex'
+        )}
         aria-label="Chat with Mints Global on WhatsApp"
       >
-        <img src="/whatsapp-icon.svg" alt="WhatsApp" width="56" height="56" />
+        <FaWhatsapp size={32} />
       </a>
 
       {/* Scroll to Top Button */}

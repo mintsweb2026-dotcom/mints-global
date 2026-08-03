@@ -107,60 +107,10 @@ export function Contact() {
   const watchName = watch('name');
   const watchEmail = watch('email');
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const tawkApi = (window as any).Tawk_API = (window as any).Tawk_API || {};
-      
-      tawkApi.onChatStarted = function() {
-        if (typeof tawkApi.setAttributes === 'function') {
-          const attributes: any = {};
-          if (watchName) attributes.name = watchName;
-          if (watchEmail) attributes.email = watchEmail;
-          
-          if (Object.keys(attributes).length > 0) {
-            tawkApi.setAttributes(attributes, function(error: any) {
-              if (error) {
-                console.error('Tawk.to error setting attributes on chat start:', error);
-              }
-            });
-          }
-        }
-      };
-    }
-  }, [watchName, watchEmail]);
+
 
   const onSubmit = async (data: ContactFormData) => {
-    // Tawk.to Integration
-    if (typeof window !== 'undefined' && (window as any).Tawk_API) {
-      const tawkApi = (window as any).Tawk_API;
-      
-      // Ensure the functions exist before calling
-      if (typeof tawkApi.setAttributes === 'function') {
-        const attributes = {
-          name: data.name,
-          email: data.email,
-          company: data.company || '',
-          budget: data.budget || '',
-          services: data.services.join(', ')
-        };
-        
-        tawkApi.setAttributes(attributes, function(error: any) {
-          if (error) {
-            console.error('Tawk.to error setting attributes:', error);
-          }
-        });
-      }
 
-      if (typeof tawkApi.addEvent === 'function') {
-        tawkApi.addEvent('contact_form_submitted', {
-          message: data.message,
-          company: data.company || '',
-          timeline: data.timeline || '',
-          budget: data.budget || '',
-          services: data.services.join(', ')
-        });
-      }
-    }
 
     try {
       const templateParams = {

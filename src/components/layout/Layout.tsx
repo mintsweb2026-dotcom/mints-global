@@ -21,7 +21,7 @@ import { FloatingButtons } from './FloatingButtons';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { CookieBanner } from '../CookieBanner';
 import { JsonLd } from '../JsonLd';
-import TawktoChat from '../TawktoChat';
+import CrispChat from '../CrispChat';
 import { Preloader } from '../Preloader';
 import { SmoothScroll } from '../SmoothScroll';
 
@@ -98,7 +98,7 @@ export function Layout() {
         </div>
 
         <FloatingButtons hidden={mobileMenuOpen} />
-        <TawktoChat mobileMenuOpen={mobileMenuOpen} />
+        <CrispChat />
         <CookieBanner />
       </div>
     </SmoothScroll>

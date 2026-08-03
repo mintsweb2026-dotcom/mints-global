@@ -378,6 +378,9 @@ i18n
     load: 'languageOnly',
     interpolation: {
       escapeValue: false // react already safes from xss
+    },
+    react: {
+      useSuspense: false
     }
   }).then(() => {
     if (typeof window !== 'undefined') {

@@ -78,7 +78,7 @@ async function generateSitemap() {
     const sortedProjects = [...allProjects].sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
     try {
       workLastMod = new Date(sortedProjects[0].updatedAt).toISOString().split('T')[0];
-    } catch {}
+    } catch { }
   }
 
   // Add static routes (includes the 19 sub-service and legal pages)
@@ -111,7 +111,7 @@ async function generateSitemap() {
         lastmod = TODAY;
       }
     }
-    
+
     xml += `  <url>
     <loc>${DOMAIN}/blog/${post.slug}</loc>
     ${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}
@@ -126,7 +126,7 @@ async function generateSitemap() {
     let lastmod = '';
     try {
       lastmod = new Date(proj.updatedAt).toISOString().split('T')[0];
-    } catch {}
+    } catch { }
 
     xml += `  <url>
     <loc>${DOMAIN}/work/${proj._id}</loc>

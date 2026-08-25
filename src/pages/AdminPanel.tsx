@@ -422,15 +422,7 @@ export function AdminPanel() {
     setSubmitting(true);
     setErrorMsg("");
     try {
-      let imageUrl = "";
-      if (imageFile) {
-        const imageRef = ref(
-          storage,
-          `blog_images/${Date.now()}_${imageFile.name}`,
-        );
-        const uploadResult = await uploadBytes(imageRef, imageFile);
-        imageUrl = await getDownloadURL(uploadResult.ref);
-      }
+      let imageUrl = imagePreview || "";
 
       const postData: any = {
         title,
@@ -1190,20 +1182,15 @@ export function AdminPanel() {
                     </div>
                     <div>
                       <label className="block text-sm text-brand-white-70 mb-2">
-                        Featured Image
+                        Featured Image URL
                       </label>
                       <input
-                        type="file"
-                        accept="image/*"
+                        type="url"
+                        placeholder="https://i.postimg.cc/image.jpg (Use a free image host)"
+                        value={imagePreview || ""}
                         onChange={(e) => {
-                          if (e.target.files && e.target.files[0]) {
-                            const file = e.target.files[0];
-                            setImageFile(file);
-                            setImagePreview(URL.createObjectURL(file));
-                          } else {
-                            setImageFile(null);
-                            setImagePreview(null);
-                          }
+                          setImagePreview(e.target.value);
+                          setImageFile(null);
                         }}
                         className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-olive-500 mb-2"
                       />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useAuth } from "../lib/AuthContext";
+import { useAuth, AuthProvider } from "../lib/AuthContext";
 import {
   auth,
   db,
@@ -101,7 +101,7 @@ const getCrossLinkSuggestions = (
   return suggestions;
 };
 
-export function AdminPanel() {
+function AdminPanelContent() {
   const { user, loading } = useAuth();
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
@@ -1489,5 +1489,13 @@ export function AdminPanel() {
         </main>
       </div>
     </div>
+  );
+}
+
+export function AdminPanel() {
+  return (
+    <AuthProvider>
+      <AdminPanelContent />
+    </AuthProvider>
   );
 }

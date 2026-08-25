@@ -6,7 +6,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { AuthProvider } from './lib/AuthContext';
 import { Layout } from './components/layout/Layout';
 
 const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
@@ -133,10 +132,8 @@ export function AppRoutes() {
 // ─── Default export wraps with BrowserRouter for CSR dev mode ─────────────────
 export default function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
-    </AuthProvider>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }

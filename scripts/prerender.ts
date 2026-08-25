@@ -21,7 +21,7 @@ async function prerender() {
 
   // Serve static files, but fallback to index.html for SPA routing
   app.use(express.static(distPath));
-  app.get('*', (req, res) => {
+  app.use((req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
   });
 
@@ -67,7 +67,7 @@ async function prerender() {
       // but we need Firebase to load, so we let it load normally.
       
       // Go to page and wait for network to be idle (so Firebase fetches complete)
-      await page.goto(`${LOCAL_URL}${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
+      await page.goto(`${LOCAL_URL}${route}`, { waitUntil: 'networkidle2', timeout: 30000 });
       
       // Optional: wait an extra second for any React animations or Suspense fallbacks to settle
       await new Promise(r => setTimeout(r, 1000));
@@ -88,7 +88,7 @@ async function prerender() {
     // Finally, prerender the home page (route === '/')
     console.log(`Prerendering / (Home)...`);
     const page = await browser.newPage();
-    await page.goto(`${LOCAL_URL}/`, { waitUntil: 'networkidle0', timeout: 30000 });
+    await page.goto(`${LOCAL_URL}/`, { waitUntil: 'networkidle2', timeout: 30000 });
     await new Promise(r => setTimeout(r, 1000));
     const homeHtml = await page.content();
     fs.writeFileSync(path.join(distPath, 'index.html'), homeHtml);

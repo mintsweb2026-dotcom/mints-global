@@ -8,6 +8,11 @@ const PORT = 3001;
 const LOCAL_URL = `http://localhost:${PORT}`;
 
 async function prerender() {
+  if (process.env.VERCEL || process.env.CI) {
+    console.log('Skipping Puppeteer prerender in CI/Vercel environment. Serving as SPA.');
+    return;
+  }
+  
   console.log('Starting prerender process...');
 
   // 1. Start local Express server for dist/client

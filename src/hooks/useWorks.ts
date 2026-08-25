@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
-import { db } from '../lib/firebase';
 import { projects as staticProjects, Project } from '../data/projects';
 
 export function useWorks() {
@@ -11,6 +9,8 @@ export function useWorks() {
   useEffect(() => {
     async function fetchWorks() {
       try {
+        const { collection, getDocs, orderBy, query } = await import('firebase/firestore');
+        const { db } = await import('../lib/firebase');
         const q = query(collection(db, 'works'), orderBy('createdAt', 'desc'));
         const snapshot = await getDocs(q);
         const dynamicWorks = snapshot.docs.map(doc => {

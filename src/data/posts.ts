@@ -1,5 +1,4 @@
-import { db } from '../lib/firebase';
-import { collection, getDocs, query, orderBy, where, limit } from 'firebase/firestore';
+
 
 export interface BlogPost {
   id: string;
@@ -165,6 +164,8 @@ Yes — the standard is scalable by design. A small business defines a narrower 
 
 export const getPosts = async (): Promise<BlogPost[]> => {
   try {
+    const { collection, getDocs, query, orderBy } = await import('firebase/firestore');
+    const { db } = await import('../lib/firebase');
     const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
     const snapshot = await getDocs(q);
     const fetchedPosts = snapshot.docs.map(doc => {

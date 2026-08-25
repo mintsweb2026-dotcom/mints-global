@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { Layout } from './components/layout/Layout';
 
-const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
+import { Home } from './pages/Home';
 const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: m.Contact })));
 const Services = lazy(() => import('./pages/Services').then(m => ({ default: m.Services })));
 const Work = lazy(() => import('./pages/Portfolio').then(m => ({ default: m.Work })));

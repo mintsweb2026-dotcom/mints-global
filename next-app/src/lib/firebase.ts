@@ -5,19 +5,19 @@ import { getStorage } from 'firebase/storage';
 import { getAnalytics, isSupported, Analytics } from 'firebase/analytics';
 
 const firebaseConfig = {
-  projectId: typeof import.meta.env !== 'undefined' ? import.meta.env.VITE_FIREBASE_PROJECT_ID : (typeof process !== 'undefined' && process.env ? process.env.VITE_FIREBASE_PROJECT_ID : undefined),
-  appId: typeof import.meta.env !== 'undefined' ? import.meta.env.VITE_FIREBASE_APP_ID : (typeof process !== 'undefined' && process.env ? process.env.VITE_FIREBASE_APP_ID : undefined),
-  apiKey: typeof import.meta.env !== 'undefined' ? import.meta.env.VITE_FIREBASE_API_KEY : (typeof process !== 'undefined' && process.env ? process.env.VITE_FIREBASE_API_KEY : undefined),
-  authDomain: typeof import.meta.env !== 'undefined' ? import.meta.env.VITE_FIREBASE_AUTH_DOMAIN : (typeof process !== 'undefined' && process.env ? process.env.VITE_FIREBASE_AUTH_DOMAIN : undefined),
-  storageBucket: typeof import.meta.env !== 'undefined' ? import.meta.env.VITE_FIREBASE_STORAGE_BUCKET : (typeof process !== 'undefined' && process.env ? process.env.VITE_FIREBASE_STORAGE_BUCKET : undefined),
-  messagingSenderId: typeof import.meta.env !== 'undefined' ? import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID : (typeof process !== 'undefined' && process.env ? process.env.VITE_FIREBASE_MESSAGING_SENDER_ID : undefined),
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || process.env.VITE_FIREBASE_PROJECT_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || process.env.VITE_FIREBASE_APP_ID,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || process.env.VITE_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || process.env.VITE_FIREBASE_AUTH_DOMAIN,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || process.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || process.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
 };
 
 const app = initializeApp(firebaseConfig);
 const isLighthouse = typeof window !== 'undefined' && navigator.userAgent.includes('Lighthouse');
 export const db = initializeFirestore(app, {
   experimentalForceLongPolling: isLighthouse
-}, typeof import.meta.env !== 'undefined' ? import.meta.env.VITE_FIREBASE_FIRESTORE_DB_ID : (typeof process !== 'undefined' && process.env ? process.env.VITE_FIREBASE_FIRESTORE_DB_ID : undefined)); // CRITICAL: Database ID
+}, process.env.NEXT_PUBLIC_FIREBASE_FIRESTORE_DB_ID || process.env.VITE_FIREBASE_FIRESTORE_DB_ID); // CRITICAL: Database ID
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 

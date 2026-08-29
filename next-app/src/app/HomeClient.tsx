@@ -1,11 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+"use client";
+import '../i18n';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import CountUp from 'react-countup';
 import { ArrowRight, ShieldCheck, Zap, LineChart, Globe2, Rocket, Headphones, ChevronLeft, ChevronRight, Calendar, User } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { SEO } from '../components/SEO';
-import { SEO_DATA } from '../lib/seo-data';
 import { JsonLd } from '../components/JsonLd';
 import { AnimatedChars } from '../components/AnimatedChars';
 import { Magnetic } from '../components/Magnetic';
@@ -204,7 +204,8 @@ const faqSchema = {
 
 const Marquee = () => {
   const { t } = useTranslation();
-  const TICKER = t('marquee', { returnObjects: true }) as string[];
+  const tickerData = t('marquee', { returnObjects: true });
+  const TICKER = Array.isArray(tickerData) ? tickerData : ["Software Development", "Cyber Security", "Digital Marketing", "Brand Strategy", "UX/UI Design", "Performance Marketing", "SEO Optimization", "Web Apps"];
 
   return (
   <div className="w-full overflow-hidden border-y border-white/5 py-10 my-0 relative z-20 bg-olive-900">
@@ -233,7 +234,6 @@ export function Home() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const { t, i18n } = useTranslation();
   const lang = (i18n.language as 'en' | 'ar' | 'de') || 'en';
-  const meta = SEO_DATA.home[lang] || SEO_DATA.home.en;
 
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -277,18 +277,7 @@ export function Home() {
 
   return (
     <div className="flex flex-col w-full overflow-x-hidden pt-[116px]">
-      <SEO 
-        title={meta.title}
-        description={meta.description}
-        keywords={["digital agency Dubai", "software development company UAE", "cyber security agency", "digital marketing agency", "Mints Global"]}
-        canonical="/"
-        ogTitle={lang === 'en' ? "Best Digital Marketing Agency Dubai | Mints Global" : undefined}
-        ogDescription={lang === 'en' ? "Mints Global is Dubai's best digital marketing agency delivering ROI-driven marketing, software & cybersecurity solutions. Get a free consultation today!" : undefined}
-        ogImage={lang === 'en' ? "https://www.mintsglobal.ae/images/og-mintsglobal-1200x630.jpg" : undefined}
-        twitterTitle={lang === 'en' ? "Best Digital Marketing Agency Dubai | Mints Global" : undefined}
-        twitterDescription={lang === 'en' ? "Dubai's best digital marketing agency. ROI-driven marketing, software & cybersecurity for global brands. Book your free consultation now!" : undefined}
-        twitterImage={lang === 'en' ? "https://www.mintsglobal.ae/images/twitter-mintsglobal-1200x628.jpg" : undefined}
-      />
+
       
       {/* Hero Section */}
       <section ref={heroRef} className="relative w-full min-h-[100vh] lg:min-h-[90vh] -mt-[116px] overflow-hidden flex items-center justify-center py-32">
@@ -374,14 +363,14 @@ export function Home() {
             >
               <Magnetic>
                 <div className="inline-block">
-                  <Link to="/contact" className="bg-olive-500 text-brand-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors flex items-center gap-2">
+                  <Link href="/contact" className="bg-olive-500 text-brand-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors flex items-center gap-2">
                     {t('hero.startProject')} <ArrowRight size={18} />
                   </Link>
                 </div>
               </Magnetic>
               <Magnetic>
                 <div className="inline-block">
-                  <Link to="/work" className="bg-transparent border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:border-white hover:bg-white/5 transition-colors backdrop-blur-sm block">
+                  <Link href="/work" className="bg-transparent border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:border-white hover:bg-white/5 transition-colors backdrop-blur-sm block">
                     {t('hero.viewWork')}
                   </Link>
                 </div>
@@ -415,7 +404,7 @@ export function Home() {
            </div>
            <Magnetic>
              <div className="inline-block">
-               <Link to="/services" className="shrink-0 flex items-center gap-2 text-brand-white hover:text-olive-500 transition-colors font-bold group pb-2 block">
+               <Link href="/services" className="shrink-0 flex items-center gap-2 text-brand-white hover:text-olive-500 transition-colors font-bold group pb-2 block">
                  {t('capabilities.explore')} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                </Link>
              </div>
@@ -496,7 +485,7 @@ export function Home() {
                  </div>
                </div>
              </div>
-             <Link to="/digital-marketing" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto"><span aria-hidden="true">{t('capabilities.learnMore')}</span><span className="sr-only"> about {t('capabilities.s1.title', {defaultValue: 'Digital Marketing Services'})}</span> <ArrowRight size={16} /></Link>
+             <Link href="/digital-marketing" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto"><span aria-hidden="true">{t('capabilities.learnMore')}</span><span className="sr-only"> about {t('capabilities.s1.title', {defaultValue: 'Digital Marketing Services'})}</span> <ArrowRight size={16} /></Link>
           </motion.div>
 
           {/* Card 2 */}
@@ -541,7 +530,7 @@ export function Home() {
                  </div>
                </div>
              </div>
-             <Link to="/software-development" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto"><span aria-hidden="true">{t('capabilities.learnMore')}</span><span className="sr-only"> about {t('capabilities.s2.title', {defaultValue: 'Enterprise Software Development Dubai'})}</span> <ArrowRight size={16} /></Link>
+             <Link href="/software-development" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto"><span aria-hidden="true">{t('capabilities.learnMore')}</span><span className="sr-only"> about {t('capabilities.s2.title', {defaultValue: 'Enterprise Software Development Dubai'})}</span> <ArrowRight size={16} /></Link>
           </motion.div>
 
           {/* Card 3 */}
@@ -586,7 +575,7 @@ export function Home() {
                  </div>
                </div>
              </div>
-             <Link to="/cyber-security" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto"><span aria-hidden="true">{t('capabilities.learnMore')}</span><span className="sr-only"> about {t('capabilities.s3.title', {defaultValue: 'Cybersecurity Solutions for Global Brands'})}</span> <ArrowRight size={16} /></Link>
+             <Link href="/cyber-security" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto"><span aria-hidden="true">{t('capabilities.learnMore')}</span><span className="sr-only"> about {t('capabilities.s3.title', {defaultValue: 'Cybersecurity Solutions for Global Brands'})}</span> <ArrowRight size={16} /></Link>
           </motion.div>
         </div>
       </section>
@@ -614,7 +603,7 @@ export function Home() {
               </Magnetic>
               <Magnetic>
                 <div className="inline-block">
-                  <Link to="/work" className="shrink-0 flex items-center gap-2 text-brand-white hover:text-olive-500 transition-colors font-bold group pb-2 block mt-2 sm:mt-0">
+                  <Link href="/work" className="shrink-0 flex items-center gap-2 text-brand-white hover:text-olive-500 transition-colors font-bold group pb-2 block mt-2 sm:mt-0">
                     View All Projects <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -632,7 +621,7 @@ export function Home() {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 className={`group relative ${idx % 2 === 1 ? 'md:mt-24' : ''}`}
               >
-                <Link to={`/work/${project._id}`} className="block overflow-hidden rounded-[2rem] aspect-[4/3] bg-olive-900 border border-white/5 mb-6">
+                <Link href={`/work/${project._id}`} className="block overflow-hidden rounded-[2rem] aspect-[4/3] bg-olive-900 border border-white/5 mb-6">
                    <img 
                      src={project.titleImage} 
                      alt={project.title} 
@@ -642,7 +631,7 @@ export function Home() {
                 </Link>
                 <div className="flex flex-col items-start px-2">
                   <span className="text-olive-500 text-xs font-bold uppercase tracking-widest mb-3 border border-olive-500/30 px-3 py-1 rounded-full">{project.category.name}</span>
-                  <Link to={`/work/${project._id}`} className="inline-block">
+                  <Link href={`/work/${project._id}`} className="inline-block">
                     <h3 className="font-display font-black text-3xl md:text-4xl hover:text-olive-500 transition-colors uppercase tracking-tight mb-4">{project.title}</h3>
                   </Link>
                   {(project.duration || project.kpi) && (
@@ -702,7 +691,7 @@ export function Home() {
 
                 <Magnetic>
                   <div className="inline-block">
-                    <Link to="/about" className="inline-flex items-center gap-3 border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:border-olive-500 hover:text-olive-500 transition-all block">
+                    <Link href="/about" className="inline-flex items-center gap-3 border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:border-olive-500 hover:text-olive-500 transition-all block">
                       About Us <ArrowRight size={18} className="inline ml-1" />
                     </Link>
                   </div>
@@ -917,7 +906,7 @@ export function Home() {
             </div>
             <Magnetic>
               <div className="inline-block">
-                <Link to="/blog" className="shrink-0 flex items-center gap-2 text-brand-white hover:text-olive-500 transition-colors font-bold group pb-2 block">
+                <Link href="/blog" className="shrink-0 flex items-center gap-2 text-brand-white hover:text-olive-500 transition-colors font-bold group pb-2 block">
                   View All Posts <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform inline" />
                 </Link>
               </div>
@@ -934,7 +923,7 @@ export function Home() {
                  transition={{ duration: 0.5, delay: idx * 0.1 }}
                  className="group flex flex-col bg-brand-black-light border border-white/5 rounded-3xl overflow-hidden hover:border-olive-500/30 transition-all duration-300"
                >
-                 <Link to={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden">
+                 <Link href={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden">
                    <img 
                      src={post.image} 
                      alt={post.imageAlt || post.title} 
@@ -946,13 +935,13 @@ export function Home() {
                    <div className="flex items-center gap-4 text-xs font-bold tracking-wider text-olive-500 uppercase mb-4">
                      <span className="flex items-center gap-1"><Calendar size={14} /> {post.date}</span>
                    </div>
-                   <Link to={`/blog/${post.slug}`} className="block mb-4">
+                   <Link href={`/blog/${post.slug}`} className="block mb-4">
                      <h3 className="font-display font-bold text-2xl group-hover:text-olive-500 transition-colors leading-tight line-clamp-2">{post.title}</h3>
                    </Link>
                    <p className="text-brand-white-70 text-sm leading-relaxed line-clamp-3 mb-6 flex-1">
                      {post.content.replace(/<[^>]*>?/gm, '').substring(0, 120)}...
                    </p>
-                   <Link to={`/blog/${post.slug}`} className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors mt-auto w-max">
+                   <Link href={`/blog/${post.slug}`} className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors mt-auto w-max">
                      Read Article <ArrowRight size={16} />
                    </Link>
                  </div>
@@ -1013,7 +1002,7 @@ export function Home() {
             <p className="text-olive-900 text-lg md:text-xl lg:text-2xl font-medium mb-12 max-w-3xl mx-auto">{t('cta.desc')}</p>
             <Magnetic>
               <div className="inline-block">
-                <Link to="/contact" className="inline-flex items-center gap-3 bg-olive-950 text-white px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-black transition-all hover:scale-105 shadow-2xl block">
+                <Link href="/contact" className="inline-flex items-center gap-3 bg-olive-950 text-white px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-black transition-all hover:scale-105 shadow-2xl block">
                   {t('cta.btn')} <ArrowRight size={20} className="inline ml-1" />
                 </Link>
               </div>

@@ -1,0 +1,198 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-olive-950: #0d1a0f;
+  --color-olive-900: #111f13;
+  --color-olive-800: #162019;
+  --color-olive-700: #1d2e1f;
+  --color-olive-500: #6aab1f;
+  --color-olive-400: #8bc34a;
+  --color-olive-300: #b5d97b;
+  --color-brand-white: #f0fdf4;
+  --color-brand-white-70: rgba(240,253,244,0.7);
+  --color-brand-white-40: rgba(240,253,244,0.4);
+  --color-brand-black: #050a06;
+  --color-brand-black-light: #0a140b;
+  
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-arabic: 'Cairo', sans-serif;
+  --font-german: 'Outfit', sans-serif;
+
+  --animate-bob: bob 2s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-fade-in-up: fadeInUp 0.6s ease forwards;
+  --animate-shimmer: shimmer 1.8s ease-in-out infinite;
+  --animate-gradient-shift: gradientShift 6s ease infinite;
+}
+
+@layer base {
+  html, body {
+    @apply overflow-x-hidden max-w-full;
+  }
+  body {
+    @apply text-brand-white font-body antialiased;
+    background-color: #0d1a0f;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 10% 0%, rgba(106,171,31,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 100%, rgba(14,40,16,0.4) 0%, transparent 60%);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-brand-white;
+  }
+}
+
+@layer utilities {
+  .rtl { direction: rtl; }
+  .ltr { direction: ltr; }
+
+  /* Hide scrollbar while keeping scroll functionality */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Thin scrollbar for TOC sidebar */
+  .custom-scrollbar::-webkit-scrollbar { width: 3px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(106,171,31,0.4); border-radius: 3px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #6aab1f; }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Shimmer skeleton loading */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 25%,
+      rgba(255,255,255,0.08) 50%,
+      rgba(255,255,255,0.03) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s ease-in-out infinite;
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    background: linear-gradient(135deg, #6aab1f 0%, #b5d97b 50%, #6aab1f 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s ease infinite;
+  }
+
+  /* Paint containment for animated cards */
+  .contain-paint { contain: paint; }
+
+  /* GPU-accelerated animated elements */
+  .gpu {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* ── Global styles ────────────────────────────────────────────────────────────── */
+::selection {
+  background-color: #6aab1f;
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: #0d1a0f; }
+::-webkit-scrollbar-thumb { background: #6aab1f; border-radius: 3px; }
+
+.noise::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  contain: paint;
+}
+.card-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(106, 171, 31, 0.15);
+}
+
+/* ── Keyframe animations ───────────────────────────────────────────────────────── */
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-rtl {
+  from { transform: translateX(0); }
+  to   { transform: translateX(50%); }
+}
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes pulseBorder {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(106,171,31,0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(106,171,31,0); }
+}
+
+.animate-marquee { animation: marquee 30s linear infinite; }
+.animate-marquee-rtl { animation: marquee-rtl 30s linear infinite; }
+.animate-spin-slow { animation: spinSlow 8s linear infinite; }
+.animate-pulse-border { animation: pulseBorder 2s ease-in-out infinite; }
+
+/* ── Lenis Smooth Scrolling ────────────────────────────────────────────────────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ── Floating WhatsApp button ──────────────────────────────────────────────────── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+.whatsapp-float:hover { transform: scale(1.08); }

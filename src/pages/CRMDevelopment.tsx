@@ -156,7 +156,7 @@ export function CRMDevelopment() {
           </div>
 
           <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-            <img src="/images/crm-development-og.jpg" alt="CRM development specialist implementing custom solutions on computer screen" title="CRM Development Solutions from Mints Global" width="1200" height="630" loading="lazy" className="w-full h-auto object-cover" />
+            <img src="/images/crm-development-og.webp" alt="CRM development specialist implementing custom solutions on computer screen" title="CRM Development Solutions from Mints Global" width="1200" height="630" loading="lazy" className="w-full h-auto object-cover" />
           </div>
         </motion.div>
       </section>

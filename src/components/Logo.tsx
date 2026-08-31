@@ -27,7 +27,7 @@ export function Logo({ className }: { className?: string }) {
 
   return (
     <img 
-      src="/logo-07.png" 
+      src="/logo-07.webp" 
       alt="Mints Global - Best Digital Marketing Agency Dubai" 
       width="180" 
       height="50" 

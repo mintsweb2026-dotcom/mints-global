@@ -52,6 +52,15 @@ async function prerender() {
       }
     }
 
+    // Add /admin and /impressum manually so they get generated as static files, avoiding 404 in production, 
+    // but without exposing them in the sitemap.xml
+    const hiddenRoutes = ['/admin', '/impressum'];
+    for (const hidden of hiddenRoutes) {
+      if (!routes.includes(hidden)) {
+        routes.push(hidden);
+      }
+    }
+
     console.log(`Found ${routes.length} routes to prerender.`);
 
     // 3. Launch Puppeteer

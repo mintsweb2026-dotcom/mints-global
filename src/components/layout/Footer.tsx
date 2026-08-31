@@ -143,8 +143,8 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-brand-white-40">
-        <p>© {new Date().getFullYear()} Mints Global. All rights reserved.</p>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-brand-white-70">
+        <p suppressHydrationWarning>© {new Date().getFullYear()} Mints Global. All rights reserved.</p>
         <nav aria-label="Footer Legal" className="flex gap-4">
           {i18n.language === 'de' && <Link to="/impressum" className="hover:text-white transition-colors">Impressum</Link>}
           <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>

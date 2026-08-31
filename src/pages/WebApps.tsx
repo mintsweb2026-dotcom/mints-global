@@ -157,7 +157,7 @@ export function WebApps() {
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/images/web-application-development-services-dubai.webp"
-              fallbackSrc="/hero.png"
+              fallbackSrc="/hero.webp"
               alt="Custom web application development services in Dubai UAE by MINTS Global"
               title="Web Application Development Company Dubai"
               width={1200}
@@ -232,7 +232,7 @@ export function WebApps() {
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/images/web-application-developers-dubai.webp"
-              fallbackSrc="/crm-blog-image.png"
+              fallbackSrc="/crm-blog-image.webp"
               alt="Web application developers building scalable business software solutions"
               title="MINTS Global Software Development Team"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
@@ -259,7 +259,7 @@ export function WebApps() {
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/images/crm-erp-web-applications-dubai.webp"
-              fallbackSrc="/hero.png"
+              fallbackSrc="/hero.webp"
               alt="Custom CRM and ERP web application solutions in Dubai"
               title="Bespoke CRM & ERP Web Applications"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"

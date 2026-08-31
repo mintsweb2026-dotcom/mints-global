@@ -165,8 +165,8 @@ export function PhotographyGraphics() {
           <div className="relative w-full aspect-[12/6] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
-              src="/images/photography-graphics-services-dubai.jpg"
-              fallbackSrc="/hero.png"
+              src="/images/photography-graphics-services-dubai.webp"
+              fallbackSrc="/hero.webp"
               alt="Professional photography and graphic design services in Dubai by Mints Global"
               title="Photography & Graphic Design Agency Dubai"
               width={1200}

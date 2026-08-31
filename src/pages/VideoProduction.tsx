@@ -130,7 +130,7 @@ export function VideoProduction() {
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/images/video-production-dubai-hero.webp"
-              fallbackSrc="/hero.png"
+              fallbackSrc="/hero.webp"
               alt="Professional video production team filming commercial content in Dubai studio"
               title="Video Production Services Dubai"
               width={1200}

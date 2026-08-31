@@ -300,7 +300,7 @@ export function Home() {
           <div className="absolute inset-0 bg-olive-950/80 mix-blend-multiply z-10" />
           <SafeImage
             src="https://www.mintsglobal.ae/images/hero-digital-agency-dubai.webp"
-            fallbackSrc="/hero.png"
+            fallbackSrc="/hero.webp"
             alt="Mints Global team delivering digital marketing solutions in Dubai"
             width="1440"
             height="810"
@@ -440,7 +440,7 @@ export function Home() {
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
                  <SafeImage 
                    src="https://www.mintsglobal.ae/images/digital-marketing-services-dubai.webp" 
-                   fallbackSrc="/hero.png"
+                   fallbackSrc="/hero.webp"
                    alt="ROI-driven digital marketing services for Dubai and GCC businesses" 
                    width="800" 
                    height="600" 
@@ -458,7 +458,7 @@ export function Home() {
                <div className="space-y-6 mb-10">
                  <div className="flex gap-4 items-start">
                    <SafeImage 
-                     src="https://www.mintsglobal.ae/images/seo-services-dubai.webp" fallbackSrc="/favicon-96x96.png" 
+                     src="https://www.mintsglobal.ae/images/seo-services-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
                      alt="SEO services helping Dubai businesses rank on Google search" 
                      width="800" 
                      height="600" 
@@ -474,7 +474,7 @@ export function Home() {
 
                  <div className="flex gap-4 items-start">
                    <SafeImage 
-                     src="https://www.mintsglobal.ae/images/social-media-marketing-dubai.webp" fallbackSrc="/favicon-96x96.png" 
+                     src="https://www.mintsglobal.ae/images/social-media-marketing-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
                      alt="Social media marketing and paid advertising campaigns for UAE brands" 
                      width="800" 
                      height="600" 
@@ -496,7 +496,7 @@ export function Home() {
                  </div>
                </div>
              </div>
-             <Link to="/digital-marketing" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto"><span aria-hidden="true">{t('capabilities.learnMore')}</span><span className="sr-only"> about {t('capabilities.s1.title', {defaultValue: 'Digital Marketing Services'})}</span> <ArrowRight size={16} /></Link>
+             <Link to="/digital-marketing" aria-label="Learn more about Digital Marketing Services" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <span className="sr-only">about Digital Marketing</span> <ArrowRight size={16} /></Link>
           </motion.div>
 
           {/* Card 2 */}
@@ -515,7 +515,7 @@ export function Home() {
 
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
                  <SafeImage 
-                   src="https://www.mintsglobal.ae/images/software-development-dubai.webp" fallbackSrc="/crm-blog-image.png" 
+                   src="https://www.mintsglobal.ae/images/software-development-dubai.webp" fallbackSrc="/crm-blog-image.webp" 
                    alt="Enterprise software and mobile app development services in Dubai" 
                    width="800" 
                    height="600" 
@@ -541,7 +541,7 @@ export function Home() {
                  </div>
                </div>
              </div>
-             <Link to="/software-development" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto"><span aria-hidden="true">{t('capabilities.learnMore')}</span><span className="sr-only"> about {t('capabilities.s2.title', {defaultValue: 'Enterprise Software Development Dubai'})}</span> <ArrowRight size={16} /></Link>
+             <Link to="/software-development" aria-label="Learn more about Enterprise Software Development Dubai" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <span className="sr-only">about Software Development</span> <ArrowRight size={16} /></Link>
           </motion.div>
 
           {/* Card 3 */}
@@ -560,7 +560,7 @@ export function Home() {
 
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
                  <SafeImage 
-                   src="https://www.mintsglobal.ae/images/cybersecurity-solutions-dubai.webp" fallbackSrc="/zero-trust-security.png" 
+                   src="https://www.mintsglobal.ae/images/cybersecurity-solutions-dubai.webp" fallbackSrc="/zero-trust-security.webp" 
                    alt="Military-grade cybersecurity solutions for global brands based in Dubai" 
                    width="800" 
                    height="600" 
@@ -586,7 +586,7 @@ export function Home() {
                  </div>
                </div>
              </div>
-             <Link to="/cyber-security" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto"><span aria-hidden="true">{t('capabilities.learnMore')}</span><span className="sr-only"> about {t('capabilities.s3.title', {defaultValue: 'Cybersecurity Solutions for Global Brands'})}</span> <ArrowRight size={16} /></Link>
+             <Link to="/cyber-security" aria-label="Learn more about Cybersecurity Solutions for Global Brands" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <span className="sr-only">about Cyber Security</span> <ArrowRight size={16} /></Link>
           </motion.div>
         </div>
       </section>
@@ -690,7 +690,7 @@ export function Home() {
 
                 <div className="w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative mb-12">
                   <SafeImage 
-                    src="https://www.mintsglobal.ae/images/mints-global-team-dubai.webp" fallbackSrc="/hero.png" 
+                    src="https://www.mintsglobal.ae/images/mints-global-team-dubai.webp" fallbackSrc="/hero.webp" 
                     alt="Mints Global digital agency team of marketing and tech experts in Dubai" 
                     width="900" 
                     height="600" 

@@ -1,32 +1,26 @@
-import { ArrowRight, Plus } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
-import { SEO_DATA } from '../lib/seo-data';
-import { JsonLd } from '../components/JsonLd';
-import { ServicesAccordion } from '../components/ServicesAccordion';
+"use client";
+import React, { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { ServicesAccordion } from '../../components/ServicesAccordion';
 
 const services = [
   {
     title: 'Digital Marketing',
     link: '/digital-marketing',
     description: 'Expert Digital Marketing services to boost your online presence and maximize ROI.',
-    keywords: ['SEO Strategy', 'Performance Marketing', 'Brand Strategy', 'Digital Marketing'],
     items: ['SEO Strategy', 'Performance Marketing', 'Brand Strategy']
   },
   {
     title: 'Software Development',
     link: '/software-development',
     description: 'Custom software development, mobile ecosystems, and scalable enterprise solutions.',
-    keywords: ['Custom Web Apps', 'Mobile Ecosystems', 'ERP & CRM Solutions', 'Software Development'],
     items: ['Custom Web Apps', 'Mobile Ecosystems', 'ERP & CRM Solutions']
   },
   {
     title: 'Cyber Security',
     link: '/cyber-security',
     description: 'Comprehensive cyber security testing, managed advisory, and cloud security.',
-    keywords: ['Offensive Security Testing', 'Managed Advisory', 'Cloud Security', 'Cyber Security'],
     items: ['Offensive Security Testing', 'Managed Advisory', 'Cloud Security']
   }
 ];
@@ -42,38 +36,11 @@ const faqs = [
   { q: "Why is bilingual SEO important for businesses in the UAE?", a: "The UAE is a highly diverse market. Optimizing your website for both English and Arabic ensures you capture the maximum possible audience, catering to local intent and searching habits which can differ significantly across languages." },
 ];
 
-function buildFaqSchema(faqsData: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqsData.map(({ q, a }) => ({
-      "@type": "Question",
-      "name": q,
-      "acceptedAnswer": { "@type": "Answer", "text": a }
-    }))
-  };
-}
-
-export function Services() {
-  const { i18n } = useTranslation();
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+export function ServicesClient() {
   const [selectedServiceIndex, setSelectedServiceIndex] = useState<number | null>(null);
-  const lang = (i18n.language as 'en' | 'ar' | 'de') || 'en';
-  const meta = SEO_DATA.services[lang] || SEO_DATA.services.en;
-
-  const seoTitle = selectedServiceIndex !== null ? `${services[selectedServiceIndex].title} | Mints Global` : meta.title;
-  const seoDesc = selectedServiceIndex !== null ? services[selectedServiceIndex].description : meta.description;
-  const seoKeywords = selectedServiceIndex !== null ? services[selectedServiceIndex].keywords : undefined;
 
   return (
-    <div className="w-full">
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={seoDesc} />
-        {seoKeywords && <meta name="keywords" content={seoKeywords.join(', ')} />}
-        <link rel="canonical" href="https://mintsglobal.ae/services" />
-      </Helmet>
-      <JsonLd data={buildFaqSchema(faqs)} />
+    <div className="w-full pt-[116px]">
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 pb-10">
         <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-tight uppercase">
           OUR PRIME <br/><span className="text-olive-500">CAPABILITIES.</span>
@@ -101,9 +68,10 @@ export function Services() {
                      </li>
                   ))}
                </ul>
-                <Link to={grp.link} aria-label={`Learn more about ${grp.title}`} className="text-sm font-bold flex items-center gap-2 hover:text-olive-500 transition-colors">
-                  Learn More <ArrowRight size={16} />
-                </Link>
+               <Link href={grp.link} className="text-sm font-bold flex items-center gap-2 hover:text-olive-500 transition-colors">
+                 <span aria-hidden="true">Learn More</span>
+                 <span className="sr-only"> about {grp.title}</span> <ArrowRight size={16} />
+               </Link>
              </div>
            ))}
         </div>

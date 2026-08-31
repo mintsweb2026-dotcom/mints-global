@@ -237,8 +237,8 @@ export function SeoOptimization() {
           <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-square rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
-              src="https://www.mintsglobal.ae/images/seo-services-og.jpg"
-              fallbackSrc="/hero.png"
+              src="https://www.mintsglobal.ae/images/seo-services-og.webp"
+              fallbackSrc="/hero.webp"
               alt="SEO agency team in Dubai planning a search engine optimization strategy for a UAE business"
               title="SEO Services Dubai – Mints Global"
               width="1200"

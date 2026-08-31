@@ -268,8 +268,8 @@ export function SoftwareDevelopment() {
           <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-square rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
-              src="/images/software-development-company-dubai.jpg"
-              fallbackSrc="/crm-blog-image.png"
+              src="/images/software-development-company-dubai.webp"
+              fallbackSrc="/crm-blog-image.webp"
               alt="Custom software development services by Mints Global in Dubai, UAE"
               title="Software Development Company Dubai – Mints Global"
               width="1920"
@@ -291,9 +291,8 @@ export function SoftwareDevelopment() {
                 <srv.icon className="text-olive-500 mb-6" size={36} strokeWidth={1.5} />
                 <h3 className="text-xl font-display font-bold mb-3 group-hover:text-olive-500 transition-colors">{srv.name}</h3>
                 <p className="text-brand-white-70 text-sm leading-relaxed mb-8">{srv.desc}</p>
-                <Link to="/contact" className="text-sm font-bold flex items-center gap-2 hover:text-white transition-colors uppercase tracking-wider">
-                  <span aria-hidden="true">Learn More</span>
-                  <span className="sr-only"> about {srv.name}</span> <ArrowRight size={16} />
+                <Link to="/contact" aria-label={`Learn more about ${srv.name}`} className="text-sm font-bold flex items-center gap-2 hover:text-white transition-colors uppercase tracking-wider">
+                  Learn More <ArrowRight size={16} />
                 </Link>
               </div>
             ))}

@@ -180,7 +180,7 @@ export function PerformanceMarketing() {
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/assets/images/performance-marketing-agency-dubai.webp"
-              fallbackSrc="/hero.png"
+              fallbackSrc="/hero.webp"
               alt="Performance marketing agency in Dubai helping brands drive ROI through paid campaigns"
               title="Performance Marketing Agency Dubai - Mints Global"
               width="1440"

@@ -136,7 +136,7 @@ export function Ecommerce() {
           </div>
 
           <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-            <img src="/images/ecommerce-hero.jpg" alt="Custom e-commerce platform development for Dubai retailers" width="1200" height="630" loading="lazy" className="w-full h-auto object-cover" />
+            <img src="/images/ecommerce-hero.webp" alt="Custom e-commerce platform development for Dubai retailers" width="1200" height="630" loading="lazy" className="w-full h-auto object-cover" />
           </div>
         </motion.div>
       </section>

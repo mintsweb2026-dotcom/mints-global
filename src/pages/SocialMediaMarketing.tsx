@@ -240,7 +240,7 @@ export function SocialMediaMarketing() {
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/assets/images/social-media-marketing-agency-dubai.webp"
-              fallbackSrc="/hero.png"
+              fallbackSrc="/hero.webp"
               alt="Social media marketing agency in Dubai providing SMM services"
               title="Social Media Marketing Services Dubai - MINTS Global"
               width="1440"

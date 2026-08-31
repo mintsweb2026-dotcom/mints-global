@@ -1,0 +1,168 @@
+"use client";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import CountUp from 'react-countup';
+import { ShieldCheck, Rocket, Map, Globe2 } from 'lucide-react';
+import { SafeImage } from '../../components/SafeImage';
+
+const team = [
+  { name: 'Arya Lakshmi', roleKey: 'about.roles.ceo', img: '/executives/Arya Lakshmi_ceo.jpg-800w.webp' },
+  { name: 'Jishnu Das', roleKey: 'about.roles.cco', img: '/executives/Jishnu Das _Cheif client officer-800w.webp' },
+  { name: 'Razal Basheer', roleKey: 'about.roles.cd', img: '/executives/Razal Basheer _Creative director.JPG-800w.webp' },
+  { name: 'Anand Binu Arjun', roleKey: 'about.roles.cto', img: '/executives/anand binu arjun_Cheif technical officer-800w.webp' },
+  { name: 'Febin Sani', roleKey: 'about.roles.advisor', img: '/executives/febin sani_Advisor.JPG-400w.webp' },
+];
+
+export function AboutClient() {
+  const { t } = useTranslation();
+
+  return (
+    <div className="w-full pt-[116px]">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 pb-10">
+        <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-tight uppercase">
+          {t('about.title1')}<span className="text-olive-500">{t('about.title2')}</span>
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div>
+            <p className="text-brand-white-70 text-lg mb-6 leading-relaxed">
+              {t('about.desc1')}
+            </p>
+            <p className="text-brand-white-70 text-lg leading-relaxed">
+              {t('about.desc2')}
+            </p>
+          </div>
+          <div className="bg-olive-900 border border-white/5 p-8 rounded-3xl">
+             <h3 className="font-display text-2xl font-bold mb-6">{t('about.pillarsTitle')}</h3>
+             <ul className="space-y-4">
+                <li className="flex gap-4 border-b border-white/5 pb-4">
+                  <div className="font-black text-olive-500">01</div>
+                  <div>
+                    <h4 className="font-bold">{t('about.pillars.p1.title')}</h4>
+                    <p className="text-sm text-brand-white-70">{t('about.pillars.p1.desc')}</p>
+                  </div>
+                </li>
+                <li className="flex gap-4 border-b border-white/5 pb-4">
+                  <div className="font-black text-olive-500">02</div>
+                  <div>
+                    <h4 className="font-bold">{t('about.pillars.p2.title')}</h4>
+                    <p className="text-sm text-brand-white-70">{t('about.pillars.p2.desc')}</p>
+                  </div>
+                </li>
+                <li className="flex gap-4 border-b border-white/5 pb-4">
+                  <div className="font-black text-olive-500">03</div>
+                  <div>
+                    <h4 className="font-bold">{t('about.pillars.p3.title')}</h4>
+                    <p className="text-sm text-brand-white-70">{t('about.pillars.p3.desc')}</p>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <div className="font-black text-olive-500">04</div>
+                  <div>
+                    <h4 className="font-bold">{t('about.pillars.p4.title')}</h4>
+                    <p className="text-sm text-brand-white-70">{t('about.pillars.p4.desc')}</p>
+                  </div>
+                </li>
+             </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="bg-olive-500 text-olive-950 py-24 w-full">
+         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-12">
+            <div>
+               <div className="font-display text-5xl md:text-7xl font-black mb-2">
+                 <CountUp end={250} duration={2.5} enableScrollSpy aria-label="250" />+
+               </div>
+               <div className="font-bold text-sm uppercase tracking-wider">{t('about.stats.s1')}</div>
+            </div>
+            <div>
+               <div className="font-display text-5xl md:text-7xl font-black mb-2">
+                 <CountUp end={35} duration={2.5} enableScrollSpy aria-label="35" />+
+               </div>
+               <div className="font-bold text-sm uppercase tracking-wider">{t('about.stats.s2')}</div>
+            </div>
+            <div>
+               <div className="font-display text-5xl md:text-7xl font-black mb-2">
+                 <CountUp end={15} duration={2.5} enableScrollSpy aria-label="15" />+
+               </div>
+               <div className="font-bold text-sm uppercase tracking-wider">{t('about.stats.s3')}</div>
+            </div>
+            <div>
+               <div className="font-display text-5xl md:text-7xl font-black mb-2">
+                 <CountUp end={99} duration={2.5} enableScrollSpy aria-label="99" />%
+               </div>
+               <div className="font-bold text-sm uppercase tracking-wider">{t('about.stats.s4')}</div>
+            </div>
+         </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <div className="text-center mb-16">
+          <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">{t('about.team.badge')}</span>
+          <h2 className="font-display text-4xl md:text-5xl font-black uppercase">
+            {t('about.team.title1')}<span className="text-olive-500">{t('about.team.title2')}</span>
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          {team.map((member, i) => (
+            <div key={i} className="group cursor-pointer">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl mb-4 bg-olive-900 border border-white/10">
+                <SafeImage src={`https://www.mintsglobal.ae${member.img}`} fallbackSrc="/hero.png" alt={member.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0" />
+                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-olive-950 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex justify-end">
+                  <a href="#" className="w-10 h-10 rounded-full bg-olive-500 text-brand-black flex items-center justify-center hover:bg-olive-400 transition-colors">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                      <rect width="4" height="12" x="2" y="9" />
+                      <circle cx="4" cy="4" r="2" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <h4 className="font-display font-bold text-xl mb-1">{member.name}</h4>
+              <p className="text-sm text-olive-500 font-bold uppercase tracking-wider">{t(member.roleKey)}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Global Regions Section */}
+      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-8 w-full border-b border-white/5">
+        <div className="text-center mb-16">
+          <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">{t('about.presence.badge')}</span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black uppercase">
+            {t('about.presence.title1')}<span className="text-olive-500">{t('about.presence.title2')}</span>
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="bg-brand-black-light border border-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
+            <Globe2 className="text-olive-500 mb-6" size={48} />
+            <h3 className="font-display font-bold text-2xl uppercase mb-4">{t('about.presence.r1.title')}</h3>
+            <p className="text-brand-white-70 text-sm leading-relaxed mb-6">{t('about.presence.r1.desc')}</p>
+          </div>
+          <div className="bg-brand-black-light border border-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
+            <Map className="text-olive-500 mb-6" size={48} />
+            <h3 className="font-display font-bold text-2xl uppercase mb-4">{t('about.presence.r2.title')}</h3>
+            <p className="text-brand-white-70 text-sm leading-relaxed mb-6">{t('about.presence.r2.desc')}</p>
+          </div>
+          <div className="bg-brand-black-light border border-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
+            <Rocket className="text-olive-500 mb-6" size={48} />
+            <h3 className="font-display font-bold text-2xl uppercase mb-4">{t('about.presence.r3.title')}</h3>
+            <p className="text-brand-white-70 text-sm leading-relaxed mb-6">{t('about.presence.r3.desc')}</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

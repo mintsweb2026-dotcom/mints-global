@@ -299,7 +299,7 @@ export function Home() {
         >
           <div className="absolute inset-0 bg-olive-950/80 mix-blend-multiply z-10" />
           <SafeImage
-            src="https://www.mintsglobal.ae/images/hero-digital-agency-dubai.webp"
+            src="/images/hero-digital-agency-dubai.webp"
             fallbackSrc="/hero.webp"
             alt="Mints Global team delivering digital marketing solutions in Dubai"
             width="1440"
@@ -439,7 +439,7 @@ export function Home() {
                
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
                  <SafeImage 
-                   src="https://www.mintsglobal.ae/images/digital-marketing-services-dubai.webp" 
+                   src="/images/digital-marketing-services-dubai.webp" 
                    fallbackSrc="/hero.webp"
                    alt="ROI-driven digital marketing services for Dubai and GCC businesses" 
                    width="800" 
@@ -458,7 +458,7 @@ export function Home() {
                <div className="space-y-6 mb-10">
                  <div className="flex gap-4 items-start">
                    <SafeImage 
-                     src="https://www.mintsglobal.ae/images/seo-services-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
+                     src="/images/seo-services-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
                      alt="SEO services helping Dubai businesses rank on Google search" 
                      width="800" 
                      height="600" 
@@ -474,7 +474,7 @@ export function Home() {
 
                  <div className="flex gap-4 items-start">
                    <SafeImage 
-                     src="https://www.mintsglobal.ae/images/social-media-marketing-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
+                     src="/images/social-media-marketing-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
                      alt="Social media marketing and paid advertising campaigns for UAE brands" 
                      width="800" 
                      height="600" 
@@ -515,7 +515,7 @@ export function Home() {
 
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
                  <SafeImage 
-                   src="https://www.mintsglobal.ae/images/software-development-dubai.webp" fallbackSrc="/crm-blog-image.webp" 
+                   src="/images/software-development-dubai.webp" fallbackSrc="/crm-blog-image.webp" 
                    alt="Enterprise software and mobile app development services in Dubai" 
                    width="800" 
                    height="600" 
@@ -560,7 +560,7 @@ export function Home() {
 
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
                  <SafeImage 
-                   src="https://www.mintsglobal.ae/images/cybersecurity-solutions-dubai.webp" fallbackSrc="/zero-trust-security.webp" 
+                   src="/images/cybersecurity-solutions-dubai.webp" fallbackSrc="/zero-trust-security.webp" 
                    alt="Military-grade cybersecurity solutions for global brands based in Dubai" 
                    width="800" 
                    height="600" 
@@ -690,7 +690,7 @@ export function Home() {
 
                 <div className="w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative mb-12">
                   <SafeImage 
-                    src="https://www.mintsglobal.ae/images/mints-global-team-dubai.webp" fallbackSrc="/hero.webp" 
+                    src="/images/mints-global-team-dubai.webp" fallbackSrc="/hero.webp" 
                     alt="Mints Global digital agency team of marketing and tech experts in Dubai" 
                     width="900" 
                     height="600" 

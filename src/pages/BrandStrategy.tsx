@@ -178,7 +178,7 @@ export function BrandStrategy() {
           <div className="relative w-full aspect-[12/6] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
-              src="https://www.mintsglobal.ae/images/branding-hero.webp"
+              src="/images/branding-hero.webp"
               fallbackSrc="/hero.webp"
               alt="Professional branding services and logo design process at Mints Global Dubai"
               title="Branding & Logo Design Services"

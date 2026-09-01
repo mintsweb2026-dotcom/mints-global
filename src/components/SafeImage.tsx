@@ -28,32 +28,38 @@ function generateSrcSet(src: string | undefined): string | undefined {
 }
 
 export function SafeImage({ src, fallbackSrc, alt, sizes: propsSizes, ...props }: SafeImageProps) {
-  const [imgSrc, setImgSrc] = useState(src);
+  const [error, setError] = useState(false);
+  
+  const currentSrc = error ? fallbackSrc : src;
   
   const srcSet = useMemo(() => {
-    if (imgSrc === src) {
+    if (!error) {
       return generateSrcSet(src);
     }
     return undefined;
-  }, [src, imgSrc]);
+  }, [src, error]);
 
   const defaultSizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw";
   const sizes = propsSizes || defaultSizes;
 
   useEffect(() => {
-    setImgSrc(src);
+    setError(false);
   }, [src]);
 
   return (
     <img
-      src={imgSrc}
-      srcSet={srcSet}
+      src={currentSrc}
+      srcSet={srcSet || undefined}
       sizes={srcSet ? sizes : undefined}
       alt={alt}
       style={{ color: 'transparent' }}
-      onError={() => {
-        if (imgSrc !== fallbackSrc) {
-          setImgSrc(fallbackSrc);
+      onError={(e) => {
+        if (!error) {
+          setError(true);
+          // Force remove the srcset attribute from the DOM element directly
+          // This ensures the browser falls back to the src attribute immediately
+          e.currentTarget.removeAttribute('srcset');
+          e.currentTarget.removeAttribute('sizes');
         }
       }}
       {...props}

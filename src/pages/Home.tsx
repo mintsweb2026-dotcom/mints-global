@@ -439,7 +439,7 @@ export function Home() {
                
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
                  <SafeImage 
-                   src="/images/digital-marketing-services-dubai.webp" 
+                   src="/images/photography-graphics-services-dubai.webp" 
                    fallbackSrc="/hero.webp"
                    alt="ROI-driven digital marketing services for Dubai and GCC businesses" 
                    width="800" 
@@ -458,7 +458,7 @@ export function Home() {
                <div className="space-y-6 mb-10">
                  <div className="flex gap-4 items-start">
                    <SafeImage 
-                     src="/images/seo-services-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
+                     src="/images/website-development-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
                      alt="SEO services helping Dubai businesses rank on Google search" 
                      width="800" 
                      height="600" 
@@ -474,7 +474,7 @@ export function Home() {
 
                  <div className="flex gap-4 items-start">
                    <SafeImage 
-                     src="/images/social-media-marketing-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
+                     src="/images/mobile-app-development-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
                      alt="Social media marketing and paid advertising campaigns for UAE brands" 
                      width="800" 
                      height="600" 
@@ -515,7 +515,7 @@ export function Home() {
 
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
                  <SafeImage 
-                   src="/images/software-development-dubai.webp" fallbackSrc="/crm-blog-image.webp" 
+                   src="/images/ecommerce-hero.webp" fallbackSrc="/crm-blog-image.webp" 
                    alt="Enterprise software and mobile app development services in Dubai" 
                    width="800" 
                    height="600" 
@@ -560,7 +560,7 @@ export function Home() {
 
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
                  <SafeImage 
-                   src="/images/cybersecurity-solutions-dubai.webp" fallbackSrc="/zero-trust-security.webp" 
+                   src="/images/iso-27001-certification-in-dubai.webp" fallbackSrc="/zero-trust-security.webp" 
                    alt="Military-grade cybersecurity solutions for global brands based in Dubai" 
                    width="800" 
                    height="600" 

@@ -19,7 +19,7 @@ export function ProjectDetail() {
   if (!project) {
     return (
       <div className="w-full flex flex-col items-center justify-center min-h-[60vh] pt-32">
-        <h1 className="text-4xl font-black text-white mb-6">PROJECT NOT FOUND</h1>
+        <h2 className="text-4xl font-black text-white mb-6">PROJECT NOT FOUND</h2>
         <Link to="/work" className="text-olive-500 hover:text-white transition-colors flex items-center gap-2">
           <ArrowLeft size={16} /> Back to Work
         </Link>

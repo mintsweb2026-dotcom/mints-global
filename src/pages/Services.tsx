@@ -2,7 +2,7 @@ import { ArrowRight, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/SEO';
 import { SEO_DATA } from '../lib/seo-data';
 import { JsonLd } from '../components/JsonLd';
 import { ServicesAccordion } from '../components/ServicesAccordion';
@@ -67,12 +67,12 @@ export function Services() {
 
   return (
     <div className="w-full">
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={seoDesc} />
-        {seoKeywords && <meta name="keywords" content={seoKeywords.join(', ')} />}
-        <link rel="canonical" href="https://mintsglobal.ae/services" />
-      </Helmet>
+      <SEO 
+        title={seoTitle} 
+        description={seoDesc} 
+        keywords={seoKeywords} 
+        canonical="/services" 
+      />
       <JsonLd data={buildFaqSchema(faqs)} />
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 pb-10">
         <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-tight uppercase">

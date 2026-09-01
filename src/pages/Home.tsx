@@ -757,7 +757,7 @@ export function Home() {
           <div className="absolute inset-y-0 left-0 w-24 md:w-32 bg-gradient-to-r from-brand-black to-transparent z-10 pointer-events-none"></div>
           <div className="absolute inset-y-0 right-0 w-24 md:w-32 bg-gradient-to-l from-brand-black to-transparent z-10 pointer-events-none"></div>
           <div className="flex w-max animate-marquee hover:[animation-play-state:paused] items-center">
-             {[...Array(6)].map((_, i) => (
+             {[...Array(2)].map((_, i) => (
                <div key={i} className="flex items-center">
                  <div className="px-10 md:px-16 flex items-center justify-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-110">
                     <div className="flex flex-col items-center justify-center font-sans tracking-tighter">

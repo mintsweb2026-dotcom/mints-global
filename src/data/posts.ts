@@ -209,6 +209,11 @@ export const getPosts = async (): Promise<BlogPost[]> => {
   }
 };
 
+export const getStaticPostBySlug = (slug: string): BlogPost | undefined => {
+  const lowerSlug = slug.toLowerCase();
+  return [injectedPost, injectedPost2].find(p => (p.slug && p.slug.toLowerCase() === lowerSlug) || (p.id && p.id.toLowerCase() === lowerSlug));
+};
+
 export const getPostBySlug = async (slug: string): Promise<BlogPost | undefined> => {
   const posts = await getPosts();
   const lowerSlug = slug.toLowerCase();

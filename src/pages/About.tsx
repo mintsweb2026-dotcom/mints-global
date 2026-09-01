@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import CountUp from 'react-countup';
+import { SafeCountUp as CountUp } from '../components/SafeCountUp';
 import { SEO } from '../components/SEO';
 import { SEO_DATA } from '../lib/seo-data';
 import { JsonLd } from '../components/JsonLd';

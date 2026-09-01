@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import CountUp from 'react-countup';
+import { SafeCountUp as CountUp } from '../components/SafeCountUp';
 import { ArrowRight, ShieldCheck, Zap, LineChart, Globe2, Rocket, Headphones, ChevronLeft, ChevronRight, Calendar, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -204,7 +204,15 @@ const faqSchema = {
 
 const Marquee = () => {
   const { t } = useTranslation();
-  const TICKER = t('marquee', { returnObjects: true }) as string[];
+  const rawTicker = t('marquee', { returnObjects: true });
+  const TICKER = Array.isArray(rawTicker) ? rawTicker : [
+    "STRATEGIC BRANDING",
+    "ENTERPRISE SOFTWARE",
+    "CYBER SECURITY",
+    "AI INTEGRATION",
+    "SEO & GROWTH MARKETING",
+    "CLOUD ARCHITECTURE"
+  ];
 
   return (
   <div className="w-full overflow-hidden border-y border-white/5 py-10 my-0 relative z-20 bg-olive-900">

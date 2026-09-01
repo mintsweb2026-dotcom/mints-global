@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import { getPostBySlug, getPosts, BlogPost as BlogPostType } from '../data/posts';
+import { getPostBySlug, getStaticPostBySlug, getPosts, BlogPost as BlogPostType } from '../data/posts';
 import { SEO } from '../components/SEO';
 import { JsonLd } from '../components/JsonLd';
 import { NewsletterForm } from '../components/NewsletterForm';
@@ -28,9 +28,10 @@ const generateId = (text: string) => {
 
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<BlogPostType | undefined>(undefined);
+  const initialStaticPost = slug ? getStaticPostBySlug(slug) : undefined;
+  const [post, setPost] = useState<BlogPostType | undefined>(initialStaticPost);
   const [relatedPosts, setRelatedPosts] = useState<BlogPostType[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!initialStaticPost);
   const [toc, setToc] = useState<{ id: string, text: string, level: number }[]>([]);
   const [activeId, setActiveId] = useState<string>('');
   

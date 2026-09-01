@@ -52,27 +52,74 @@ async function runPrerender() {
 
   for (const route of routes) {
     try {
-      const { html, helmet } = render(route);
+      let { html, helmet } = render(route);
+
+      // Extract SEO head tags that React rendered inline
+      let extractedHeadTags = [];
+
+      // Extract title
+      const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
+      if (titleMatch) {
+        extractedHeadTags.push(titleMatch[0]);
+        html = html.replace(titleMatch[0], '');
+      }
+
+      // Extract description
+      const descMatch = html.match(/<meta[^>]*name="description"[^>]*\/?>/i);
+      if (descMatch) {
+        extractedHeadTags.push(descMatch[0]);
+        html = html.replace(descMatch[0], '');
+      }
+
+      // Extract keywords
+      const kwMatch = html.match(/<meta[^>]*name="keywords"[^>]*\/?>/i);
+      if (kwMatch) {
+        extractedHeadTags.push(kwMatch[0]);
+        html = html.replace(kwMatch[0], '');
+      }
+
+      // Extract canonical
+      const canonicalMatch = html.match(/<link[^>]*rel="canonical"[^>]*\/?>/i);
+      if (canonicalMatch) {
+        extractedHeadTags.push(canonicalMatch[0]);
+        html = html.replace(canonicalMatch[0], '');
+      }
+
+      // Extract JSON-LD scripts
+      const jsonLdMatches = html.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/gi) || [];
+      jsonLdMatches.forEach(jsonLd => {
+        extractedHeadTags.push(jsonLd);
+        html = html.replace(jsonLd, '');
+      });
+
+      // Extract Open Graph tags
+      const ogMatches = html.match(/<meta[^>]*property="og:[^"]+"[^>]*\/?>/gi) || [];
+      ogMatches.forEach(og => {
+        extractedHeadTags.push(og);
+        html = html.replace(og, '');
+      });
+
+      const headContent = [...extractedHeadTags, helmet || ''].join('\n');
 
       // Replace app-html placeholder
       let pageHtml = template.includes('<!--app-html-->')
         ? template.replace('<!--app-html-->', html)
         : template.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
 
-      // Replace app-head placeholder
-      if (helmet) {
-        if (pageHtml.includes('<!--app-head-->')) {
-          pageHtml = pageHtml.replace('<!--app-head-->', helmet);
-        } else {
-          pageHtml = pageHtml.replace('</head>', `${helmet}\n</head>`);
-        }
-
-        // Remove default title/desc if helmet provided a page-specific title/desc
-        if (helmet.includes('<title')) {
+      // Inject extracted head tags
+      if (headContent) {
+        // Remove default title/desc if custom head tags were extracted
+        if (headContent.includes('<title')) {
           pageHtml = pageHtml.replace(/<title>Best Digital Marketing Agency Dubai \| Mints Global<\/title>/g, '');
         }
-        if (helmet.includes('name="description"')) {
+        if (headContent.includes('name="description"')) {
           pageHtml = pageHtml.replace(/<meta name="description" content="Mints Global is Dubai's best digital marketing agency delivering ROI-driven marketing, software development & cybersecurity solutions\. Get a free consultation today!" \/>/g, '');
+        }
+
+        if (pageHtml.includes('<!--app-head-->')) {
+          pageHtml = pageHtml.replace('<!--app-head-->', headContent);
+        } else {
+          pageHtml = pageHtml.replace('</head>', `${headContent}\n</head>`);
         }
       }
 

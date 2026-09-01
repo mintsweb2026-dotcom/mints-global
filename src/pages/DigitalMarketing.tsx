@@ -1,6 +1,6 @@
 import { ArrowRight, Search, TrendingUp, Share2, Target, Video, Image as ImageIcon, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import CountUp from 'react-countup';
+import { SafeCountUp as CountUp } from '../components/SafeCountUp';
 import { useTranslation } from 'react-i18next';
 import { SEO } from '../components/SEO';
 import { SEO_DATA } from '../lib/seo-data';

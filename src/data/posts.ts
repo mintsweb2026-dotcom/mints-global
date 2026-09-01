@@ -170,14 +170,15 @@ export const getPosts = async (): Promise<BlogPost[]> => {
     const snapshot = await getDocs(q);
     const fetchedPosts = snapshot.docs.map(doc => {
       const data = doc.data();
-      const createdAtDate = data.createdAt ? data.createdAt.toDate() : new Date();
+      const createdAtDate = data.createdAt && typeof data.createdAt.toDate === 'function' ? data.createdAt.toDate() : new Date();
+      const slugVal = data.slug || doc.id;
       return {
         id: doc.id,
         title: data.title,
-        slug: doc.id, // using document ID as slug for simplicity since we don't store slug in FS
+        slug: slugVal,
         category: data.category || 'BLOG',
         date: data.createdAt ? createdAtDate.toLocaleDateString() : 'Just now',
-        updatedAtIso: (data.updatedAt ? data.updatedAt.toDate() : createdAtDate).toISOString(),
+        updatedAtIso: (data.updatedAt && typeof data.updatedAt.toDate === 'function' ? data.updatedAt.toDate() : createdAtDate).toISOString(),
         readTime: data.readTime || '5 min read',
         excerpt: data.excerpt || '',
         content: data.content || '',
@@ -192,7 +193,16 @@ export const getPosts = async (): Promise<BlogPost[]> => {
       } as BlogPost;
     });
 
-    return [injectedPost, injectedPost2, ...fetchedPosts];
+    // Map to deduplicate by slug or ID
+    const allPostsMap = new Map<string, BlogPost>();
+    [injectedPost, injectedPost2].forEach(p => {
+      allPostsMap.set(p.slug || p.id, p);
+    });
+    fetchedPosts.forEach(p => {
+      allPostsMap.set(p.slug || p.id, p);
+    });
+
+    return Array.from(allPostsMap.values());
   } catch (error) {
     console.error('Error fetching posts:', error);
     return [injectedPost, injectedPost2];
@@ -201,7 +211,9 @@ export const getPosts = async (): Promise<BlogPost[]> => {
 
 export const getPostBySlug = async (slug: string): Promise<BlogPost | undefined> => {
   const posts = await getPosts();
-  return posts.find(p => p.slug === slug || p.id === slug);
+  const lowerSlug = slug.toLowerCase();
+  return posts.find(p => (p.slug && p.slug.toLowerCase() === lowerSlug) || (p.id && p.id.toLowerCase() === lowerSlug));
 };
+
 
 

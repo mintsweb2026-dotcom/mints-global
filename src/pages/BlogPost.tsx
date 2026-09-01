@@ -59,13 +59,11 @@ export function BlogPost() {
           });
         }
         
-        try {
-          updateDoc(doc(db, 'posts', fetchedPost.id), {
-            views: increment(1)
-          });
-        } catch (e) {
-          console.error("Error updating views", e);
-        }
+        updateDoc(doc(db, 'posts', fetchedPost.id), {
+          views: increment(1)
+        }).catch((e) => {
+          console.warn("Could not update post views in Firestore:", e);
+        });
 
         setRelatedPosts(
           allPosts

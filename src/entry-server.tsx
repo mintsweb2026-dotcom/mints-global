@@ -6,6 +6,7 @@
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { HelmetProvider, HelmetServerState } from 'react-helmet-async';
+import './i18n';
 import { AppRoutes } from './App';
 import { AuthProvider } from './lib/AuthContext';
 

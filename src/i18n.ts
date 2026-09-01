@@ -368,11 +368,15 @@ const resources = {
   }
 };
 
+if (typeof window !== 'undefined') {
+  i18n.use(LanguageDetector);
+}
+
 i18n
-  .use(LanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
+    lng: "en",
     fallbackLng: "en",
     supportedLngs: ['en', 'de', 'ar'],
     load: 'languageOnly',
@@ -382,13 +386,13 @@ i18n
     react: {
       useSuspense: false
     }
-  }).then(() => {
-    if (typeof window !== 'undefined') {
-      const urlLang = new URLSearchParams(window.location.search).get('lang');
-      if (urlLang && ['en', 'de', 'ar'].includes(urlLang)) {
-        i18n.changeLanguage(urlLang);
-      }
-    }
   });
+
+if (typeof window !== 'undefined') {
+  const urlLang = new URLSearchParams(window.location.search).get('lang');
+  if (urlLang && ['en', 'de', 'ar'].includes(urlLang)) {
+    i18n.changeLanguage(urlLang);
+  }
+}
 
 export default i18n;

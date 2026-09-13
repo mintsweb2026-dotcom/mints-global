@@ -27,7 +27,7 @@ export function Footer() {
             <Logo className="text-[3rem]" />
           </Link>
           <p className="text-brand-white-70 max-w-sm">
-            Weaving technical precision into creative vision. Your trusted digital partner in Dubai.
+            Building software, growing brands, and securing digital infrastructure. Your dedicated digital partner in Dubai.
           </p>
           <div className="flex gap-4">
             <a
@@ -79,13 +79,18 @@ export function Footer() {
                 { to: '/digital-marketing/photography-graphics', label: 'PHOTOGRAPHY & GRAPHICS' },
                 { to: '/software-development/mobile-apps', label: 'MOBILE APPLICATIONS' },
                 { to: '/software-development/erp-solutions', label: 'ERP SOLUTIONS' },
+                { to: 'https://erp.mintsglobal.ae/', label: 'MINTS ERP PLATFORM ↗' },
                 { to: '/software-development/ecommerce', label: 'E-COMMERCE' },
                 { to: '/cyber-security/incident-response', label: 'INCIDENT RESPONSE' },
                 { to: '/cyber-security/compliance-grc', label: 'COMPLIANCE & GRC' },
                 { to: '/cyber-security/ot-iot-security', label: 'OT / IOT SECURITY' },
               ].map(item => (
                 <li key={item.to}>
-                  <Link to={item.to} className="hover:text-white transition-colors">{item.label}</Link>
+                  {item.to.startsWith('http') ? (
+                    <a href={item.to} target="_blank" rel="noopener noreferrer" className="hover:text-olive-400 text-olive-500 font-semibold transition-colors">{item.label}</a>
+                  ) : (
+                    <Link to={item.to} className="hover:text-white transition-colors">{item.label}</Link>
+                  )}
                 </li>
               ))}
             </ul>

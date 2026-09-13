@@ -241,7 +241,7 @@ export function SocialMediaMarketing() {
             <SafeImage
               src="/assets/images/social-media-marketing-agency-dubai.webp"
               fallbackSrc="/hero.webp"
-              alt="Social media marketing agency in Dubai providing SMM services"
+              alt="Social content calendar and campaign analytics"
               title="Social Media Marketing Services Dubai - MINTS Global"
               width="1440"
               height="720"

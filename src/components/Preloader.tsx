@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export function Preloader() {
+  const [mounted, setMounted] = useState(false);
   const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setMounted(true);
     let currentProgress = 0;
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     const stepSize = isMobile ? 35 : Math.floor(Math.random() * 15) + 5;
@@ -27,12 +29,17 @@ export function Preloader() {
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
     if (loading) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-  }, [loading]);
+  }, [loading, mounted]);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <AnimatePresence>

@@ -36,8 +36,8 @@ export const SEO_DATA = {
   },
   services: {
     en: { 
-      title: 'Our Services | Digital Marketing, Software & Cyber Security — Mints Global', 
-      description: 'Discover Mints Global’s core service pillars: ROI-driven digital marketing, custom enterprise software development, and military-grade cyber security in Dubai.',
+      title: 'Digital Services | Marketing, Software, Security | Mints Global', 
+      description: 'Explore Mints Global’s full spectrum of digital services in Dubai: data-driven SEO & performance marketing, custom enterprise software development, and military-grade cyber security solutions.',
       canonicalUrl: 'https://www.mintsglobal.ae/services'
     },
     ar: { 

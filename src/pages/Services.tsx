@@ -69,9 +69,12 @@ export function Services() {
     <div className="w-full">
       <SEO 
         title={seoTitle} 
+        rawTitle={true}
         description={seoDesc} 
         keywords={seoKeywords} 
         canonical="/services" 
+        ogTitle={seoTitle}
+        ogDescription={seoDesc}
       />
       <JsonLd data={buildFaqSchema(faqs)} />
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 pb-10">

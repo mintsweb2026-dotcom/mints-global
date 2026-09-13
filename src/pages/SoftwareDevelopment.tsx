@@ -9,12 +9,12 @@ import { ServicesAccordion } from '../components/ServicesAccordion';
 import { SafeImage } from '../components/SafeImage';
 
 const subServices = [
-  { icon: Code2, name: "Custom Web Apps", desc: "Scalable, high-performance web applications built with modern frontend and backend frameworks." },
-  { icon: Smartphone, name: "Mobile Ecosystems", desc: "Native and cross-platform mobile applications for iOS and Android tailored to your business. Contact us for a consultation today." },
-  { icon: Globe, name: "Website Development", desc: "Corporate sites, portals, and landing pages optimized for speed and maximum conversion." },
-  { icon: Database, name: "ERP Solutions", desc: "Bespoke Enterprise Resource Planning systems to unify your business operations." },
-  { icon: Network, name: "CRM Development", desc: "Custom Customer Relationship Management platforms that empower your sales teams." },
-  { icon: ShoppingCart, name: "E-Commerce Platforms", desc: "Secure, scalable, and high-converting e-commerce experiences on modern architectures." }
+  { icon: Code2, name: "Custom Web Apps", desc: "Scalable, high-performance web applications built with modern frontend and backend frameworks.", href: "/software-development/web-apps" },
+  { icon: Smartphone, name: "Mobile Ecosystems", desc: "Native and cross-platform mobile applications for iOS and Android tailored to your business. Contact us for a consultation today.", href: "/software-development/mobile-apps" },
+  { icon: Globe, name: "Website Development", desc: "Corporate sites, portals, and landing pages optimized for speed and maximum conversion.", href: "/software-development/website-development" },
+  { icon: Database, name: "ERP Solutions", desc: "Bespoke Enterprise Resource Planning systems to unify your business operations.", href: "/software-development/erp-solutions" },
+  { icon: Network, name: "CRM Development", desc: "Custom Customer Relationship Management platforms that empower your sales teams.", href: "/software-development/crm-development" },
+  { icon: ShoppingCart, name: "E-Commerce Platforms", desc: "Secure, scalable, and high-converting e-commerce experiences on modern architectures.", href: "/software-development/ecommerce" }
 ];
 
 const faqs = [
@@ -270,7 +270,7 @@ export function SoftwareDevelopment() {
             <SafeImage
               src="/images/software-development-company-dubai.webp"
               fallbackSrc="/crm-blog-image.webp"
-              alt="Custom software development services by Mints Global in Dubai, UAE"
+              alt="Software engineering and cloud architecture overview"
               title="Software Development Company Dubai – Mints Global"
               width="1920"
               height="800"
@@ -291,7 +291,7 @@ export function SoftwareDevelopment() {
                 <srv.icon className="text-olive-500 mb-6" size={36} strokeWidth={1.5} />
                 <h3 className="text-xl font-display font-bold mb-3 group-hover:text-olive-500 transition-colors">{srv.name}</h3>
                 <p className="text-brand-white-70 text-sm leading-relaxed mb-8">{srv.desc}</p>
-                <Link to="/contact" aria-label={`Learn more about ${srv.name}`} className="text-sm font-bold flex items-center gap-2 hover:text-white transition-colors uppercase tracking-wider">
+                <Link to={srv.href} aria-label={`Learn more about ${srv.name}`} className="text-sm font-bold flex items-center gap-2 hover:text-white transition-colors uppercase tracking-wider">
                   Learn More <ArrowRight size={16} />
                 </Link>
               </div>

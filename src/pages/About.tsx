@@ -164,7 +164,7 @@ export function About() {
             </div>
             <div>
                <div className="font-display text-5xl md:text-7xl font-black mb-2">
-                 <CountUp end={15} duration={2.5} enableScrollSpy aria-label="15" />+
+                 <CountUp end={5} duration={2.5} enableScrollSpy aria-label="5" />+
                </div>
                <div className="font-bold text-sm uppercase tracking-wider">{t('about.stats.s3')}</div>
             </div>

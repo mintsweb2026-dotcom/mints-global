@@ -167,7 +167,7 @@ export function MobileApps() {
             <SafeImage
               src="/images/mobile-app-development-dubai.webp"
               fallbackSrc="/hero.webp"
-              alt="Mobile App Development Company in Dubai UAE"
+              alt="Mobile application interface prototype on smartphone"
               title="Mobile App Development Dubai"
               width={1200}
               height={700}

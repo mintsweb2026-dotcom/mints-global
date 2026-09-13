@@ -239,7 +239,7 @@ export function SeoOptimization() {
             <SafeImage
               src="/images/seo-services-og.webp"
               fallbackSrc="/hero.webp"
-              alt="SEO agency team in Dubai planning a search engine optimization strategy for a UAE business"
+              alt="SEO keyword rankings and organic traffic report"
               title="SEO Services Dubai – Mints Global"
               width="1200"
               height="630"

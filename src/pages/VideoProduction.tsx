@@ -131,7 +131,7 @@ export function VideoProduction() {
             <SafeImage
               src="/images/video-production-dubai-hero.webp"
               fallbackSrc="/hero.webp"
-              alt="Professional video production team filming commercial content in Dubai studio"
+              alt="Video production camera setup on commercial set"
               title="Video Production Services Dubai"
               width={1200}
               height={600}

@@ -230,7 +230,7 @@ export function DigitalMarketing() {
         title={lang === 'en' ? "Digital Marketing Services in Dubai, UAE | Mints Global" : meta.title}
         description={lang === 'en' ? "Grow your brand with Mints Global Dubai. ROI-driven SEO, PPC, social media, content marketing & email campaigns for UAE and global brands." : meta.description}
         keywords={["digital marketing agency Dubai", "ROI digital marketing", "SEO and performance marketing", "social media strategy", "brand resonance"]}
-        canonical="https://www.mintsglobal.ae/digital-marketing"
+        canonical="/digital-marketing"
         ogTitle="Digital Marketing Services in Dubai, UAE | Mints Global"
         ogDescription="ROI-driven digital marketing in Dubai — SEO, PPC, social media & content marketing. Mints Global delivers measurable results for UAE and global brands."
         ogImage="https://www.mintsglobal.ae/images/digital-marketing-og.jpg"

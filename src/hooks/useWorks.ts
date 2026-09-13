@@ -3,7 +3,7 @@ import { projects as staticProjects, Project } from '../data/projects';
 
 export function useWorks() {
   const [works, setWorks] = useState<Project[]>(staticProjects);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {

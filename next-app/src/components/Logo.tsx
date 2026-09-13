@@ -27,14 +27,14 @@ export function Logo({ className }: { className?: string }) {
 
   return (
     <img 
-      src="/logo-07.png" 
-      alt="Mints Global - Best Digital Marketing Agency Dubai" 
-      width="180" 
-      height="50" 
+      src="/images/logo-white.webp" 
+      alt="Mints Global logo" 
+      width="175" 
+      height="36" 
       loading="eager" 
       decoding="async"
       onError={() => setHasError(true)}
-      className={cn("h-10 sm:h-12 md:h-16 lg:h-20 w-auto object-contain transform scale-[1.3] sm:scale-[1.5] md:scale-[1.8] lg:scale-[2] origin-left", className)}
+      className={cn("h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-200", className)}
     />
   );
 }

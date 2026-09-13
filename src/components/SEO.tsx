@@ -51,9 +51,18 @@ export function SEO({
   const { i18n } = useTranslation();
   const lang = i18n.language; // 'en' | 'ar' | 'de'
 
-  const cleanCanonical = canonical && canonical !== '/' 
-    ? (canonical.startsWith('/') ? canonical : `/${canonical}`) 
-    : '';
+  let cleanCanonical = '';
+  if (canonical && canonical !== '/') {
+    if (canonical.startsWith('http://') || canonical.startsWith('https://')) {
+      try {
+        cleanCanonical = new URL(canonical).pathname;
+      } catch {
+        cleanCanonical = canonical.replace(/^https?:\/\/[^\/]+/, '');
+      }
+    } else {
+      cleanCanonical = canonical.startsWith('/') ? canonical : `/${canonical}`;
+    }
+  }
   const langQuery = lang && lang !== 'en' ? `?lang=${lang}` : '';
   const canonicalUrl = `${BASE_URL}${cleanCanonical}${langQuery}`;
 

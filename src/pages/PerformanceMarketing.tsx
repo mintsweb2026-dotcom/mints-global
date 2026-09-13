@@ -181,7 +181,7 @@ export function PerformanceMarketing() {
             <SafeImage
               src="/assets/images/performance-marketing-agency-dubai.webp"
               fallbackSrc="/hero.webp"
-              alt="Performance marketing agency in Dubai helping brands drive ROI through paid campaigns"
+              alt="Paid search and social ad campaign performance graphs"
               title="Performance Marketing Agency Dubai - Mints Global"
               width="1440"
               height="720"

@@ -180,7 +180,7 @@ export function BrandStrategy() {
             <SafeImage
               src="/images/branding-hero.webp"
               fallbackSrc="/hero.webp"
-              alt="Professional branding services and logo design process at Mints Global Dubai"
+              alt="Brand identity guidelines and visual design moodboard"
               title="Branding & Logo Design Services"
               width="1200"
               height="600"

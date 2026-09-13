@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'motion/react';
 import {
-  Menu, X, Leaf, Code2, ShieldAlert, ChevronDown, Globe,
+  Menu, X, Leaf, Code2, ShieldAlert, ChevronDown, Globe, ExternalLink,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '../../lib/utils';
@@ -48,15 +48,29 @@ function MobileAccordion({
           >
             <div className="flex flex-col gap-3 pt-3 pl-4 border-l border-white/10 mt-2 text-sm text-brand-white-40">
               {links.map((link, i) => (
-                <Link
-                  key={i}
-                  to={link.path}
-                  onClick={closeMenu}
-                  aria-current={location.pathname === link.path ? 'page' : undefined}
-                  className="hover:text-olive-500 transition-colors focus-visible:ring-2 focus-visible:ring-olive-500 rounded"
-                >
-                  {link.label}
-                </Link>
+                link.path.startsWith('http') ? (
+                  <a
+                    key={i}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMenu}
+                    className="hover:text-olive-500 transition-colors focus-visible:ring-2 focus-visible:ring-olive-500 rounded flex items-center justify-between text-olive-400 font-medium"
+                  >
+                    <span>{link.label}</span>
+                    <span className="text-[10px] bg-olive-500/20 text-olive-400 px-1.5 py-0.5 rounded border border-olive-500/30">Live ↗</span>
+                  </a>
+                ) : (
+                  <Link
+                    key={i}
+                    to={link.path}
+                    onClick={closeMenu}
+                    aria-current={location.pathname === link.path ? 'page' : undefined}
+                    className="hover:text-olive-500 transition-colors focus-visible:ring-2 focus-visible:ring-olive-500 rounded"
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
             </div>
           </motion.div>
@@ -134,17 +148,17 @@ export function Navbar({
                       </div>
                       <ul className="space-y-6">
                         {[
-                          { to: '/digital-marketing/seo', label: 'SEO OPTIMIZATION', desc: 'DOMINATING SEARCH & AUTHORITY BUILDING.' },
-                          { to: '/digital-marketing/performance-marketing', label: 'PERFORMANCE MARKETING', desc: 'DATA-DRIVEN ROI, LEAD GEN, AND COMMERCIAL SCALING.' },
-                          { to: '/digital-marketing/smm', label: 'SOCIAL MEDIA MARKETING', desc: 'BUILDING COMMUNITY & BRAND EQUITY.' },
-                          { to: '/digital-marketing/branding', label: 'BRAND STRATEGY', desc: 'CRAFTING BOLD IDENTITIES AND POSITIONING.' },
-                          { to: '/digital-marketing/video-production', label: 'VIDEO PRODUCTION', desc: 'HIGH-IMPACT CINEMATIC STORYTELLING.' },
-                          { to: '/digital-marketing/photography-graphics', label: 'PHOTOGRAPHY & GRAPHICS', desc: 'ELITE VISUAL PRODUCTION AND DESIGN.' },
+                          { to: '/digital-marketing/seo', label: 'SEO OPTIMIZATION', desc: 'Rank higher on Google with technical audits, local citations, and quality links.' },
+                          { to: '/digital-marketing/performance-marketing', label: 'PERFORMANCE MARKETING', desc: 'Paid search and social campaigns engineered around CPA and direct revenue.' },
+                          { to: '/digital-marketing/smm', label: 'SOCIAL MEDIA MARKETING', desc: 'Consistent content and community management across Instagram and LinkedIn.' },
+                          { to: '/digital-marketing/branding', label: 'BRAND STRATEGY', desc: 'Positioning, messaging, and visual identity from scratch or rebrand.' },
+                          { to: '/digital-marketing/video-production', label: 'VIDEO PRODUCTION', desc: 'Commercial shoots, reels, and video ads produced start-to-finish.' },
+                          { to: '/digital-marketing/photography-graphics', label: 'PHOTOGRAPHY & GRAPHICS', desc: 'Product photography, lookbooks, and high-res campaign collateral.' },
                         ].map(item => (
                           <li key={item.to}>
                             <Link to={item.to} className="group block">
                               <div className="font-bold text-sm text-brand-white group-hover:text-olive-500 transition-colors uppercase">{item.label}</div>
-                              <div className="text-[10px] text-brand-white-40 mt-1 uppercase tracking-wider">{item.desc}</div>
+                              <div className="text-[11px] normal-case text-brand-white-60 mt-1 leading-normal">{item.desc}</div>
                             </Link>
                           </li>
                         ))}
@@ -161,21 +175,40 @@ export function Navbar({
                       </div>
                       <ul className="space-y-6">
                         {[
-                          { to: '/software-development/web-apps', label: 'WEB APPLICATIONS', desc: 'POWERFUL, SCALABLE WEB SOLUTIONS.' },
-                          { to: '/software-development/mobile-apps', label: 'MOBILE APPLICATIONS', desc: 'NATIVE IOS & ANDROID EXPERIENCES.' },
-                          { to: '/software-development/website-development', label: 'WEBSITE DEVELOPMENT', desc: 'WORDPRESS, SHOPIFY & CUSTOM CODE.' },
-                          { to: '/software-development/erp-solutions', label: 'ERP SOLUTIONS', desc: 'UAE VAT COMPLIANT BUSINESS ENGINES.' },
-                          { to: '/software-development/crm-development', label: 'CRM DEVELOPMENT', desc: 'TAILORED CUSTOMER MANAGEMENT.' },
-                          { to: '/software-development/ecommerce', label: 'E-COMMERCE', desc: 'HIGH-PERFORMANCE BESPOKE STORES.' },
+                          { to: '/software-development/web-apps', label: 'WEB APPLICATIONS', desc: 'Full-stack web apps built in React, Node, and Python.' },
+                          { to: '/software-development/mobile-apps', label: 'MOBILE APPLICATIONS', desc: 'iOS and Android apps that feel fast, clean, and reliable.' },
+                          { to: '/software-development/website-development', label: 'WEBSITE DEVELOPMENT', desc: 'Marketing and corporate sites that load fast and convert visitors.' },
+                          { to: '/software-development/erp-solutions', label: 'ERP SOLUTIONS', desc: 'Custom systems to manage inventory, invoicing, and team operations.' },
+                          { to: '/software-development/crm-development', label: 'CRM DEVELOPMENT', desc: 'Tailored customer pipelines that fit how your sales team actually works.' },
+                          { to: '/software-development/ecommerce', label: 'E-COMMERCE', desc: 'Fast online stores with clean checkout flows and payment integrations.' },
                         ].map(item => (
                           <li key={item.to}>
                             <Link to={item.to} className="group block">
                               <div className="font-bold text-sm text-brand-white group-hover:text-olive-500 transition-colors uppercase">{item.label}</div>
-                              <div className="text-[10px] text-brand-white-40 mt-1 uppercase tracking-wider">{item.desc}</div>
+                              <div className="text-[11px] normal-case text-brand-white-60 mt-1 leading-normal">{item.desc}</div>
                             </Link>
                           </li>
                         ))}
                       </ul>
+
+                      {/* Product Callout */}
+                      <div className="mt-6 pt-5 border-t border-white/10">
+                        <a 
+                          href="https://erp.mintsglobal.ae/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="flex items-center justify-between p-3 rounded-xl bg-olive-500/10 border border-olive-500/30 hover:bg-olive-500/20 transition-all group"
+                        >
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-bold text-xs text-white group-hover:text-olive-400 transition-colors uppercase tracking-wider">Mints ERP Platform</span>
+                              <span className="text-[9px] font-black uppercase tracking-widest bg-olive-500 text-white px-1.5 py-0.5 rounded">Product</span>
+                            </div>
+                            <div className="text-[10px] text-brand-white-60 mt-0.5">Live command center for HR, CRM & projects.</div>
+                          </div>
+                          <ExternalLink size={14} className="text-olive-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </a>
+                      </div>
                     </div>
 
                     {/* Cyber Security */}
@@ -188,17 +221,17 @@ export function Navbar({
                       </div>
                       <ul className="space-y-6">
                         {[
-                          { to: '/cyber-security/offensive-security', label: 'OFFENSIVE SECURITY', desc: 'PEN-TESTING, RED TEAMING, AND VULNERABILITY ASSESSMENTS.' },
-                          { to: '/cyber-security/incident-response', label: 'INCIDENT RESPONSE', desc: 'RAPID RESPONSE AND DIGITAL FORENSICS.' },
-                          { to: '/cyber-security/managed-advisory', label: 'MANAGED & ADVISORY', desc: 'EXPERT SECURITY LEADERSHIP AND STRATEGIC GUIDANCE.' },
-                          { to: '/cyber-security/compliance-grc', label: 'COMPLIANCE & GRC', desc: 'UAE NESA, PDPL, ISO 27001, AND GDPR.' },
-                          { to: '/cyber-security/cloud-security', label: 'CLOUD SECURITY', desc: 'AWS, AZURE, AND GCP PROTECTION & ENCRYPTION.' },
-                          { to: '/cyber-security/ot-iot-security', label: 'OT / IOT SECURITY', desc: 'CONTROLS FOR INDUSTRIAL SYSTEMS, ENERGY & UTILITIES.' },
+                          { to: '/cyber-security/offensive-security', label: 'OFFENSIVE SECURITY', desc: 'Hands-on penetration testing and vulnerability assessments.' },
+                          { to: '/cyber-security/incident-response', label: 'INCIDENT RESPONSE', desc: 'Containment and digital forensics when things go wrong.' },
+                          { to: '/cyber-security/managed-advisory', label: 'MANAGED & ADVISORY', desc: 'Virtual CISO services and pragmatic roadmap planning.' },
+                          { to: '/cyber-security/compliance-grc', label: 'COMPLIANCE & GRC', desc: 'Audit-ready preparation for UAE NESA, PDPL, and ISO 27001.' },
+                          { to: '/cyber-security/cloud-security', label: 'CLOUD SECURITY', desc: 'Hardened AWS, Azure, and Google Cloud configurations.' },
+                          { to: '/cyber-security/ot-iot-security', label: 'OT / IOT SECURITY', desc: 'Security audits for industrial hardware and connected sensors.' },
                         ].map(item => (
                           <li key={item.to}>
                             <Link to={item.to} className="group block">
                               <div className="font-bold text-sm text-brand-white group-hover:text-olive-500 transition-colors uppercase">{item.label}</div>
-                              <div className="text-[10px] text-brand-white-40 mt-1 uppercase tracking-wider">{item.desc}</div>
+                              <div className="text-[11px] normal-case text-brand-white-60 mt-1 leading-normal">{item.desc}</div>
                             </Link>
                           </li>
                         ))}
@@ -299,6 +332,7 @@ export function Navbar({
                     { path: '/software-development/mobile-apps', label: 'Mobile Apps' },
                     { path: '/software-development/website-development', label: 'Website Dev' },
                     { path: '/software-development/erp-solutions', label: 'ERP Solutions' },
+                    { path: 'https://erp.mintsglobal.ae/', label: 'Mints ERP Platform' },
                     { path: '/software-development/crm-development', label: 'CRM' },
                     { path: '/software-development/ecommerce', label: 'E-Commerce' },
                   ]}

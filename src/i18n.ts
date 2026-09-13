@@ -18,7 +18,7 @@ const resources = {
         line1: "DIGITAL",
         line2: "SOLUTIONS",
         line3: "FOR BUSINESS",
-        desc: "We create immersive digital ecosystems, architecting scalable end-to-end software solutions and engineering cyber resilience for ambitious global brands.",
+        desc: "We build high-performing websites, custom software, and data-backed marketing campaigns that drive measurable revenue for companies across the UAE and Europe.",
         startProject: "Start a Project",
         viewWork: "View Our Work"
       },
@@ -98,7 +98,7 @@ const resources = {
         stats: {
           s1: "Clients Worldwide",
           s2: "Countries Reached",
-          s3: "Industry Awards",
+          s3: "Years in UAE & Global Markets",
           s4: "Client Retention"
         },
         team: {
@@ -139,7 +139,7 @@ const resources = {
         line1: "خبراء",
         line2: "التحول",
         line3: "الرقمي",
-        desc: "نقوم بإنشاء أنظمة رقمية غامرة، وبناء برمجيات قابلة للتطوير، وهندسة المرونة السيبرانية للعلامات التجارية العالمية الطموحة.",
+        desc: "نبني مواقع عالية الأداء وبرمجيات مخصصة وحملات تسويقية قائمة على البيانات تحقق عوائد حقيقية للشركات في الإمارات وأوروبا.",
         startProject: "ابدأ مشروعاً",
         viewWork: "شاهد أعمالنا"
       },
@@ -219,7 +219,7 @@ const resources = {
         stats: {
           s1: "عملاء حول العالم",
           s2: "بلدان تم الوصول إليها",
-          s3: "جوائز الصناعة",
+          s3: "سنوات من الخبرة في الإمارات وعالمياً",
           s4: "الاحتفاظ بالعملاء"
         },
         team: {
@@ -260,7 +260,7 @@ const resources = {
         line1: "DIGITALE",
         line2: "TRANSFORMATION",
         line3: "EXPERTEN",
-        desc: "Wir schaffen immersive digitale Ökosysteme, entwickeln skalierbare Software und sorgen für Cyber-Resilienz für ehrgeizige globale Marken.",
+        desc: "Wir entwickeln leistungsstarke Websites, maßgeschneiderte Software und datenbasierte Marketingkampagnen, die echten Umsatz für Unternehmen in den VAE und Europa generieren.",
         startProject: "Projekt starten",
         viewWork: "Unsere Arbeit"
       },
@@ -340,7 +340,7 @@ const resources = {
         stats: {
           s1: "Kunden Weltweit",
           s2: "Erreichte Länder",
-          s3: "Branchenpreise",
+          s3: "Jahre in den VAE & weltweit",
           s4: "Kundenbindung"
         },
         team: {

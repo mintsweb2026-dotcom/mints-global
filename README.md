@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="https://mintsglobal.ae/NavLogoWhite1.png" alt="Mints Global Logo" width="300" />
+  <img src="/images/logo-white.webp" alt="Mints Global Logo" width="220" />
   <br />
-  <h1>Mints Global Website</h1>
-  <p><strong>Digital Transformation Experts | Digital Marketing • Software Development • Cyber Security</strong></p>
+  <h1>Mints Global Web Platform</h1>
+  <p><strong>Digital Marketing • Software Engineering • Cyber Security</strong></p>
   
   [![Vite](https://img.shields.io/badge/Vite-6.0+-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
   [![React](https://img.shields.io/badge/React-19.0+-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
@@ -14,80 +14,69 @@
 
 ## 🌐 Overview
 
-Welcome to the official repository for the **Mints Global** corporate website. Mints Global is a premier digital agency based in Dubai, serving the UAE, GCC, Europe, and global markets. We specialize in delivering high-impact digital solutions across three core pillars:
+This repository powers the official digital platform for **Mints Global**, an independent digital agency headquartered in Dubai, UAE, serving clients across the Middle East and Europe.
 
-- **Digital Marketing**: Strategic SEO, social media management, and performance marketing.
-- **Software Development**: Bespoke web applications, mobile apps, and enterprise solutions.
-- **Cyber Security**: Comprehensive security audits, threat protection, and data privacy.
+We engineer software, scale digital marketing, and defend enterprise infrastructure across three primary practices:
+- **Software Engineering**: Bespoke web applications, mobile platforms, and ERP/CRM business systems.
+- **Data-Driven Marketing**: High-intent search engine optimization (SEO), performance advertising, and brand strategy.
+- **Cyber Security**: Offensive security testing (VAPT), compliance readiness (NESA, PDPL, ISO 27001), and cloud security.
 
-## 🚀 Technical Stack
+---
 
-This project is built using modern web technologies to ensure performance, SEO, and scalability:
+## 🏗️ Architecture & Rendering Pipeline
 
-- **Frontend**: React 19 with TypeScript
-- **Build Tool**: Vite 6
-- **Styling**: Tailwind CSS 4
-- **Animations**: Framer Motion
-- **Internationalization**: i18next (English, Arabic, German)
-- **SEO**: React Helmet Async & Schema.org JSON-LD
+The platform uses a high-performance **hybrid architecture**:
+1. **Client SPA**: React 19, Vite 6, Tailwind CSS, Framer Motion, and React Router v7.
+2. **Server-Side Pre-Rendering (SSG/SSR)**: Custom Node.js pre-rendering (`scripts/prerender-ssr.js`) that renders every production route into static HTML with inline metadata, self-referencing canonicals, and JSON-LD structured schemas (`Organization`, `LocalBusiness`, `FAQPage`, `BreadcrumbList`, `CreativeWork`).
+3. **Dual-Framework Flexibility**: Contains the main Vite/React application at root and Next.js assets under `next-app/`.
 
-## 🛠️ Local Development
+Additional technical documentation is available in [`/docs`](./docs/):
+- [`docs/SEO_IMPLEMENTATION.md`](./docs/SEO_IMPLEMENTATION.md) — Technical SEO architecture, schema structures, and indexing requirements.
+- [`docs/HOSTING_SPECIFICATIONS.md`](./docs/HOSTING_SPECIFICATIONS.md) — CDN edge caching, caching headers, and hosting configuration.
 
-Follow these steps to get the development environment running on your machine:
+---
 
-### Prerequisites
+## 🛠️ Quick Start
 
-- [Node.js](https://nodejs.org/) (v20.19.0 or higher recommended)
-- [npm](https://www.npmjs.com/)
+```bash
+# Clone the repository
+git clone https://github.com/mintsweb2026-dotcom/mints-global.git
+cd mintsglobal-webpage
 
-## 🚀 Deployment
+# Install dependencies
+npm install
 
-You can host this website for free using several modern platforms. Since the project is already on GitHub, we recommend the following:
+# Start development server
+npm run dev
+```
 
-### 1. Netlify (Recommended)
+Visit `http://localhost:3000` in your browser.
 
-1. Sign in to [Netlify](https://www.netlify.com/).
-2. Click **Add new site** > **Import from git**.
-3. Connect your GitHub account and select the `mints_global` repository.
-4. Netlify will automatically detect the build settings:
-    - **Build Command**: `npm run build`
-    - **Publish Directory**: `dist`
-5. (Optional) Add your environment variables (like `VITE_GEMINI_API_KEY`) in **Site settings** > **Environment variables**.
-6. Click **Deploy site**.
+---
 
-### 2. Vercel
+## 📦 Production Build
 
-1. Sign in to [Vercel](https://vercel.com/).
-2. Click **Add New** > **Project**.
-3. Import the `mints_global` repository.
-4. Vercel will automatically configure the Vite build settings.
-5. Click **Deploy**.
+To run the complete production build and SSR pre-rendering pipeline:
+```bash
+npm run build
+```
 
-### 3. GitHub Pages
+This command:
+1. Generates `public/sitemap.xml` with all canonical routes.
+2. Compiles client bundles into `dist/client` with Brotli and Gzip compression.
+3. Builds the SSR bundle into `dist/server/entry-server.js`.
+4. Executes `scripts/prerender-ssr.js` to pre-render all routes into flat static HTML files.
 
-If you prefer to stay within GitHub:
+For development guidelines, branching conventions, and contributing rules, see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
-1. Go to your repository **Settings** > **Pages**.
-2. Under **Build and deployment**, select **GitHub Actions** as the source.
-3. GitHub will provide a "Static HTML" or "Vite" template to automate the build and deploy process.
+---
 
-## 📈 SEO & Performance
+## 📞 Contact
 
-The site is optimized for search engines with:
-
-- Dynamic metadata and OpenGraph tags.
-- Structured data (JSON-LD) for Organization and Services.
-- Sitemap and robots.txt generation.
-- Responsive design for all device types.
-
-## 🤝 Contact Us
-
-Interested in working with us?
-
-- **Website**: [mintsglobal.ae](https://mintsglobal.ae)
+- **Website**: [mintsglobal.ae](https://www.mintsglobal.ae)
 - **Email**: [info@mintsglobal.ae](mailto:info@mintsglobal.ae)
-- **LinkedIn**: [Mints Global](https://www.linkedin.com/company/mints-dubai)
-- **Instagram**: [@mints.global](https://www.instagram.com/mints.global/)
+- **Phone / WhatsApp**: +971 502943916 / +44 7899727950
+- **Office**: Office #315, 3rd Floor, Bank Street Building, Bur Dubai, Dubai, UAE
 
 ---
 

@@ -167,7 +167,7 @@ export function PhotographyGraphics() {
             <SafeImage
               src="/images/photography-graphics-services-dubai.webp"
               fallbackSrc="/hero.webp"
-              alt="Professional photography and graphic design services in Dubai by Mints Global"
+              alt="Studio camera setup and graphic design moodboard"
               title="Photography & Graphic Design Agency Dubai"
               width={1200}
               height={600}

@@ -24,3 +24,10 @@ scripts/fix_16_pages.js
 
 # Firebase configurations
 firebase-applet-config.json
+
+# Audit & QA artifacts
+reports/
+*-report.json
+*-audit.json
+local-audit.json
+final-audit.json

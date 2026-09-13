@@ -28,6 +28,7 @@ export function SoftwareDevelopmentEurope() {
     <div className="w-full relative z-10 min-h-screen bg-brand-black">
       <SEO 
         title="Software Development Services for Europe | Mints Global" 
+        rawTitle={true}
         description="Scale your software roadmap with Mints Global's European-focused development team. Custom builds, enterprise apps & dedicated resourcing." 
         canonical="/europe-services/software-development"
         ogTitle="Software Development Services for Europe | Mints Global"

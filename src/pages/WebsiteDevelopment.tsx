@@ -156,7 +156,7 @@ export function WebsiteDevelopment() {
             <SafeImage
               src="/images/website-development-dubai.webp"
               fallbackSrc="/hero.webp"
-              alt="Website Development Company in Dubai Creating Custom Business Websites"
+              alt="Responsive business website layout and components"
               title="Custom Website Development Services Dubai"
               width={1200}
               height={800}

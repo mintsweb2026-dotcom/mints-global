@@ -318,51 +318,69 @@ export function Home() {
               y: astronautY, 
               rotate: astronautRotate 
             }}
-            className="absolute inset-0 w-full h-full will-change-transform"
+            className="absolute inset-0 w-full h-full will-change-transform md:translate-x-[6vw] pointer-events-none"
           >
             <SafeImage
-              src="/images/hero-digital-agency-dubai.webp"
-              fallbackSrc="/hero.webp"
-              alt="Mints Global - Digital Solutions and Marketing Agency Dubai"
-              width="1440"
-              height="810"
+              src="/images/hero-digital-agency-dubai-1920w.webp"
+              fallbackSrc="/images/hero-digital-agency-dubai.webp"
+              alt="Mints Global creative digital agency hero"
+              width="1920"
+              height="1080"
               sizes="100vw"
               loading="eager"
               decoding="async"
               fetchPriority="high"
-              className="w-full h-full object-cover object-[70%_center] opacity-85 pointer-events-none"
+              className="w-full h-full object-cover object-[58%_10%] sm:object-[72%_10%] lg:object-[80%_10%] pointer-events-none"
             />
           </motion.div>
-          {/* Subtle directional gradient overlay ensuring text legibility on the left while astronaut shines on the right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-olive-950/95 via-olive-950/60 to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-olive-950/70 via-transparent to-olive-950 z-10 pointer-events-none" />
+          {/* Directional gradient overlay: darkens the left for solid typography while letting astronaut pop on the right */}
+          <div className="absolute inset-0 bg-gradient-to-b from-olive-950/45 via-olive-950/35 to-olive-950 lg:bg-gradient-to-r lg:from-olive-950 lg:via-olive-950/70 lg:to-transparent z-10 pointer-events-none w-full lg:w-[65%]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none" />
           
           {/* Particle Grid Overlay */}
           <div className="absolute inset-0 z-10 pointer-events-none opacity-20 bg-[radial-gradient(#4d7a3c_1px,transparent_1px)] [background-size:40px_40px]" />
+
+          {/* 3D Perspective Wireframe Mesh / Landscape Floor (Moonbox inspired) */}
+          <div className="absolute bottom-0 inset-x-0 h-[40vh] z-10 pointer-events-none overflow-hidden opacity-30">
+            <svg className="w-full h-full" viewBox="0 0 1440 320" preserveAspectRatio="none" fill="none">
+              {/* Horizontal curved perspective contours */}
+              <path d="M-100 300 C300 200, 700 310, 1540 220" stroke="rgba(255,255,255,0.2)" strokeWidth="1.2" />
+              <path d="M-100 260 C350 160, 750 280, 1540 180" stroke="rgba(77,122,60,0.35)" strokeWidth="1" />
+              <path d="M-100 220 C400 130, 800 250, 1540 150" stroke="rgba(255,255,255,0.12)" strokeWidth="0.8" />
+              <path d="M-100 190 C450 100, 850 220, 1540 120" stroke="rgba(77,122,60,0.25)" strokeWidth="0.8" />
+              <path d="M-100 165 C500 80, 900 195, 1540 100" stroke="rgba(255,255,255,0.08)" strokeWidth="0.6" />
+              {/* Converging perspective rays */}
+              {[...Array(18)].map((_, idx) => (
+                <line 
+                  key={idx} 
+                  x1={idx * 90 - 50} 
+                  y1="320" 
+                  x2={250 + idx * 55} 
+                  y2="70" 
+                  stroke="rgba(255,255,255,0.07)" 
+                  strokeWidth="0.7" 
+                />
+              ))}
+            </svg>
+          </div>
           
           {/* Noise overlay */}
           <div className="absolute inset-0 z-10 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ0cmFuc3BhcmVudCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIvPjwvc3ZnPg==')] pointer-events-none" />
           
-          {/* Animated Blobs */}
+          {/* Atmospheric Backlight / Nebula Glow behind astronaut */}
+          <div className="absolute top-[18%] right-[8%] w-[42vw] h-[42vw] bg-radial from-olive-500/30 via-emerald-900/20 to-transparent rounded-full blur-[100px] z-0 pointer-events-none" />
           <motion.div 
             animate={{ 
-              x: [0, 100, 0],
-              y: [0, -50, 0],
+              x: [0, 60, 0],
+              y: [0, -30, 0],
             }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-olive-500/20 rounded-full blur-[120px] z-0 pointer-events-none" 
-          />
-          <motion.div 
-            animate={{ 
-              x: [0, -100, 0],
-              y: [0, 50, 0],
-            }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-1/4 right-1/4 w-[30vw] h-[30vw] bg-brand-white/10 rounded-full blur-[100px] z-0 pointer-events-none" 
+            className="absolute top-1/4 left-1/4 w-[35vw] h-[35vw] bg-olive-500/15 rounded-full blur-[120px] z-0 pointer-events-none" 
           />
         </motion.div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full mt-8 sm:mt-14 lg:mt-20">
+        {/* FOREGROUND HERO CONTENT (Monumental typography with solid DIGITAL SOLUTIONS and giant outlined FOR BUSINESS cascading towards the astronaut) */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full mt-6 sm:mt-10 lg:mt-14">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -374,22 +392,22 @@ export function Home() {
             </div>
             
             <h1 className="sr-only">Best Digital Marketing Agency in Dubai</h1>
-            <div className="font-display font-black tracking-tighter mb-8 sm:mb-10 w-full flex flex-col gap-1 sm:gap-0 leading-none overflow-hidden" aria-hidden="true">
+            <div className="font-display font-black tracking-tighter mb-8 sm:mb-10 w-full flex flex-col gap-1 sm:gap-1.5 leading-none overflow-hidden" aria-hidden="true">
               <div className="self-start max-w-full">
-                <AnimatedChars text={t('hero.line1')} className="text-brand-white text-[clamp(2.5rem,8.5vw,10rem)] leading-[0.88] tracking-tight break-words" delay={0.3} />
+                <AnimatedChars text={t('hero.line1')} className="text-brand-white text-[clamp(2.8rem,8vw,9.5rem)] leading-[0.88] tracking-tight break-words" delay={0.3} />
               </div>
-              <div className="self-start ml-0 sm:ml-[clamp(16px,4vw,56px)] max-w-full">
-                <AnimatedChars text={t('hero.line2')} className="text-brand-white text-[clamp(1.8rem,7.5vw,9rem)] leading-[0.88] tracking-tight break-words" delay={0.6} />
+              <div className="self-start ml-0 sm:ml-[clamp(16px,3.5vw,50px)] max-w-full">
+                <AnimatedChars text={t('hero.line2')} className="text-brand-white text-[clamp(2.4rem,7.2vw,8.5rem)] leading-[0.88] tracking-tight break-words" delay={0.5} />
               </div>
-              <div className="self-start ml-0 sm:ml-[clamp(32px,8vw,112px)] mt-2 sm:mt-4 max-w-full">
-                <AnimatedChars text={t('hero.line3')} className="text-[clamp(2.2rem,8.5vw,10rem)] leading-[0.88] tracking-tight text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.7)] sm:[-webkit-text-stroke:2px_rgba(255,255,255,0.7)] break-words" delay={0.9} />
+              <div className="self-start ml-0 sm:ml-[clamp(24px,6vw,90px)] mt-2 sm:mt-3 max-w-full">
+                <AnimatedChars text={t('hero.line3')} className="text-[clamp(2.4rem,8.2vw,9.8rem)] leading-[0.88] tracking-tight text-transparent [-webkit-text-stroke:1.6px_rgba(255,255,255,0.75)] sm:[-webkit-text-stroke:2.4px_rgba(255,255,255,0.75)] drop-shadow-[0_0_35px_rgba(77,122,60,0.3)] break-words" delay={0.7} />
               </div>
             </div>
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="mt-6 sm:mt-10 text-brand-white-70 max-w-2xl text-base sm:text-lg md:text-xl font-medium leading-relaxed"
+              className="mt-4 sm:mt-6 text-brand-white-70 max-w-xl text-base sm:text-lg md:text-xl font-medium leading-relaxed"
             >
               {t('hero.desc')}
             </motion.p>
@@ -469,7 +487,7 @@ export function Home() {
                   <SafeImage 
                     src="/images/data-driven-marketing-dubai.webp" 
                     fallbackSrc="/images/photography-graphics-services-dubai.webp"
-                    alt="Data-driven digital marketing agency collaboration and strategy in Dubai" 
+                    alt="Marketing team reviewing performance analytics" 
                     width="800" 
                     height="500" 
                     loading="lazy" 
@@ -487,7 +505,7 @@ export function Home() {
                  <div className="flex gap-4 items-start">
                    <SafeImage 
                      src="/images/website-development-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
-                     alt="SEO services helping Dubai businesses rank on Google search" 
+                     alt="Search rankings and organic traffic dashboard" 
                      width="800" 
                      height="600" 
                      loading="lazy" 
@@ -503,7 +521,7 @@ export function Home() {
                  <div className="flex gap-4 items-start">
                    <SafeImage 
                      src="/images/mobile-app-development-dubai.webp" fallbackSrc="/favicon-96x96.webp" 
-                     alt="Social media marketing and paid advertising campaigns for UAE brands" 
+                     alt="Social campaign creative and ad manager metrics" 
                      width="800" 
                      height="600" 
                      loading="lazy" 
@@ -545,7 +563,7 @@ export function Home() {
                   <SafeImage 
                     src="/images/business-software-solutions-globe.webp" 
                     fallbackSrc="/images/website-development-services-dubai.webp"
-                    alt="Custom business software and cloud ERP solutions architected in Dubai" 
+                    alt="Web and mobile software architecture overview" 
                     width="800" 
                     height="500" 
                     loading="lazy" 
@@ -595,7 +613,7 @@ export function Home() {
                   <SafeImage 
                     src="/images/cybersecurity-threat-intelligence-dubai.webp" 
                     fallbackSrc="/images/iso-27001-certification-in-dubai.webp" 
-                    alt="Military-grade cybersecurity and threat intelligence solutions in Dubai" 
+                    alt="Security team monitoring threat intelligence feed" 
                     width="800" 
                     height="500" 
                     loading="lazy" 
@@ -705,17 +723,17 @@ export function Home() {
                   Why Mints Global is Dubai's Most Trusted Digital Agency
                 </h2>
                 <p className="text-brand-white-70 text-lg leading-relaxed mb-8">
-                  We are a premium digital agency based in Dubai, architecting solutions at the intersection of powerful software, striking design, and robust security.
+                  We are an independent digital agency based in Dubai. Our engineers, designers, and marketing strategists work directly with founding teams and enterprise leaders to build things that work and scale.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
                   <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
-                    <h3 className="text-base font-bold text-white uppercase tracking-wider mb-2">Bridging Middle Eastern & European Markets</h3>
-                    <p className="text-brand-white-70 text-xs leading-relaxed">We provide cross-border engineering and marketing, adapting international standards to GCC regional regulatory environments.</p>
+                    <h3 className="text-base font-bold text-white uppercase tracking-wider mb-2">Dual-Market Grounding: Dubai & Europe</h3>
+                    <p className="text-brand-white-70 text-xs leading-relaxed">Cross-border engineering and marketing, adapting international execution standards to GCC regulatory environments like NESA and PDPL.</p>
                   </div>
                   <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
-                    <h3 className="text-base font-bold text-white uppercase tracking-wider mb-2">Results-Driven Strategy With Measurable Outcomes</h3>
-                    <p className="text-brand-white-70 text-xs leading-relaxed">Every line of code and marketing campaign we deploy is optimized for maximum conversion, scalability, and user acquisition.</p>
+                    <h3 className="text-base font-bold text-white uppercase tracking-wider mb-2">Engineers & Marketers, Not Account Managers</h3>
+                    <p className="text-brand-white-70 text-xs leading-relaxed">You speak directly to the specialists writing the code and managing your spend. No communication layers, no fluff, just measurable results.</p>
                   </div>
                 </div>
 
@@ -734,7 +752,7 @@ export function Home() {
                 <div className="w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative">
                   <SafeImage 
                     src="/images/mints-global-team-dubai.webp" fallbackSrc="/hero.webp" 
-                    alt="Mints Global digital agency headquarters architectural towers in Dubai" 
+                    alt="The Mints Global team at our Dubai office" 
                     width="900" 
                     height="600" 
                     loading="lazy" 

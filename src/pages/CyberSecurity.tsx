@@ -172,7 +172,7 @@ export function CyberSecurity() {
             <SafeImage
               src="/images/hero-cyber-security.webp"
               fallbackSrc="/zero-trust-security.webp"
-              alt="Cyber Security Services in Dubai by Mints Global"
+              alt="Cyber security operations center and network monitoring"
               title="Enterprise Cyber Security Solutions UAE"
               width="1280"
               height="720"

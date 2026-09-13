@@ -249,8 +249,11 @@ export function Home() {
     offset: ["start start", "end start"]
   });
 
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "35%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 0.6, 0]);
+  const astronautScale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
+  const astronautY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
+  const astronautRotate = useTransform(scrollYProgress, [0, 1], [0, 2]);
 
   const testimonials = [
     { name: t('testimonials.i1.name'), role: t('testimonials.i1.role'), doc: t('testimonials.i1.doc') },
@@ -284,7 +287,7 @@ export function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col w-full overflow-x-hidden pt-[116px]">
+    <div className="relative flex flex-col w-full overflow-x-hidden pt-[116px]">
       <SEO 
         title={meta.title}
         description={meta.description}
@@ -299,26 +302,40 @@ export function Home() {
       />
       
       {/* Hero Section */}
-      <section ref={heroRef} className="relative w-full min-h-[100vh] lg:min-h-[90vh] -mt-[116px] overflow-hidden flex items-center justify-center py-32">
+      <section ref={heroRef} className="relative w-full min-h-[100vh] lg:min-h-[90vh] -mt-[116px] overflow-hidden flex items-center justify-center pt-28 pb-16 sm:py-28 lg:py-32">
         {/* Background Parallax Image */}
         <motion.div 
           style={{ y: heroY, opacity: heroOpacity }}
           className="absolute inset-0 z-0 w-full h-full"
         >
-          <div className="absolute inset-0 bg-olive-950/80 mix-blend-multiply z-10" />
-          <SafeImage
-            src="/images/hero-digital-agency-dubai.webp"
-            fallbackSrc="/hero.webp"
-            alt="Mints Global team delivering digital marketing solutions in Dubai"
-            width="1440"
-            height="810"
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
-            className="absolute inset-0 w-full h-full object-cover opacity-30 z-0 pointer-events-none"
-          />
+          {/* Scroll-driven floating astronaut animation */}
+          <motion.div
+            style={{ 
+              scale: astronautScale, 
+              y: astronautY, 
+              rotate: astronautRotate 
+            }}
+            className="absolute inset-0 w-full h-full will-change-transform"
+          >
+            <SafeImage
+              src="/images/hero-digital-agency-dubai.webp"
+              fallbackSrc="/hero.webp"
+              alt="Mints Global - Digital Solutions and Marketing Agency Dubai"
+              width="1440"
+              height="810"
+              sizes="100vw"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="w-full h-full object-cover object-[70%_center] opacity-85 pointer-events-none"
+            />
+          </motion.div>
+          {/* Subtle directional gradient overlay ensuring text legibility on the left while astronaut shines on the right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-olive-950/95 via-olive-950/60 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-olive-950/70 via-transparent to-olive-950 z-10 pointer-events-none" />
+          
           {/* Particle Grid Overlay */}
-          <div className="absolute inset-0 z-10 pointer-events-none opacity-20 bg-[radial-gradient(#84cc16_1px,transparent_1px)] [background-size:40px_40px]" />
+          <div className="absolute inset-0 z-10 pointer-events-none opacity-20 bg-[radial-gradient(#4d7a3c_1px,transparent_1px)] [background-size:40px_40px]" />
           
           {/* Noise overlay */}
           <div className="absolute inset-0 z-10 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ0cmFuc3BhcmVudCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIvPjwvc3ZnPg==')] pointer-events-none" />
@@ -342,34 +359,34 @@ export function Home() {
           />
         </motion.div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20 w-full mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full mt-8 sm:mt-14 lg:mt-20">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold tracking-widest text-brand-white uppercase backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-xs font-bold tracking-widest text-brand-white uppercase backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-olive-500 animate-pulse"></span>
               {t('hero.badge')} — Dubai
             </div>
             
             <h1 className="sr-only">Best Digital Marketing Agency in Dubai</h1>
-            <div className="font-display font-black tracking-tighter mb-10 w-full flex flex-col gap-2 sm:gap-0 leading-none overflow-hidden" aria-hidden="true">
+            <div className="font-display font-black tracking-tighter mb-8 sm:mb-10 w-full flex flex-col gap-1 sm:gap-0 leading-none overflow-hidden" aria-hidden="true">
               <div className="self-start max-w-full">
-                <AnimatedChars text={t('hero.line1')} className="text-brand-white text-[clamp(3.5rem,10vw,10rem)] leading-[0.85] tracking-tight break-words" delay={0.3} />
+                <AnimatedChars text={t('hero.line1')} className="text-brand-white text-[clamp(2.5rem,8.5vw,10rem)] leading-[0.88] tracking-tight break-words" delay={0.3} />
               </div>
-              <div className="self-start ml-[clamp(16px,4vw,56px)] max-w-full">
-                <AnimatedChars text={t('hero.line2')} className="text-brand-white text-[clamp(2rem,9vw,9rem)] leading-[0.85] tracking-tight break-words" delay={0.6} />
+              <div className="self-start ml-0 sm:ml-[clamp(16px,4vw,56px)] max-w-full">
+                <AnimatedChars text={t('hero.line2')} className="text-brand-white text-[clamp(1.8rem,7.5vw,9rem)] leading-[0.88] tracking-tight break-words" delay={0.6} />
               </div>
-              <div className="self-start ml-[clamp(32px,8vw,112px)] mt-4 max-w-full">
-                <AnimatedChars text={t('hero.line3')} className="text-[clamp(2.5rem,10vw,10rem)] leading-[0.85] tracking-tight text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.7)] break-words" delay={0.9} />
+              <div className="self-start ml-0 sm:ml-[clamp(32px,8vw,112px)] mt-2 sm:mt-4 max-w-full">
+                <AnimatedChars text={t('hero.line3')} className="text-[clamp(2.2rem,8.5vw,10rem)] leading-[0.88] tracking-tight text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.7)] sm:[-webkit-text-stroke:2px_rgba(255,255,255,0.7)] break-words" delay={0.9} />
               </div>
             </div>
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="mt-10 text-brand-white-70 max-w-2xl text-lg md:text-xl font-medium leading-relaxed"
+              className="mt-6 sm:mt-10 text-brand-white-70 max-w-2xl text-base sm:text-lg md:text-xl font-medium leading-relaxed"
             >
               {t('hero.desc')}
             </motion.p>
@@ -378,18 +395,18 @@ export function Home() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4, duration: 0.8 }}
-              className="mt-12 flex flex-col sm:flex-row flex-wrap gap-4 items-start sm:items-center"
+              className="mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap gap-4 items-start sm:items-center"
             >
               <Magnetic>
                 <div className="inline-block">
-                  <Link to="/contact" className="bg-olive-500 text-brand-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors flex items-center gap-2">
+                  <Link to="/contact" className="bg-olive-500 text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold uppercase tracking-wider text-xs sm:text-sm hover:bg-olive-400 transition-colors flex items-center gap-2">
                     {t('hero.startProject')} <ArrowRight size={18} />
                   </Link>
                 </div>
               </Magnetic>
               <Magnetic>
                 <div className="inline-block">
-                  <Link to="/work" className="bg-transparent border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:border-white hover:bg-white/5 transition-colors backdrop-blur-sm block">
+                  <Link to="/work" className="bg-transparent border border-white/20 text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold uppercase tracking-wider text-xs sm:text-sm hover:border-white hover:bg-white/5 transition-colors backdrop-blur-sm block">
                     {t('hero.viewWork')}
                   </Link>
                 </div>
@@ -415,11 +432,11 @@ export function Home() {
       <Marquee />
 
       {/* Services Section */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-32 w-full relative z-10 bg-olive-950">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 w-full relative z-10 bg-olive-950">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-20 gap-8">
            <div>
              <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">{t('capabilities.badge')}</span>
-             <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tight">{t('capabilities.title')}</h2>
+             <h2 className="font-display text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tight">{t('capabilities.title')}</h2>
            </div>
            <Magnetic>
              <div className="inline-block">
@@ -437,7 +454,7 @@ export function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
+            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
           >
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
              <div>
@@ -446,16 +463,16 @@ export function Home() {
                </div>
                
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
-                 <SafeImage 
-                   src="/images/photography-graphics-services-dubai.webp" 
-                   fallbackSrc="/hero.webp"
-                   alt="ROI-driven digital marketing services for Dubai and GCC businesses" 
-                   width="800" 
-                   height="600" 
-                   loading="lazy" 
-                   decoding="async"
-                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                 />
+                  <SafeImage 
+                    src="/images/data-driven-marketing-dubai.webp" 
+                    fallbackSrc="/images/photography-graphics-services-dubai.webp"
+                    alt="Data-driven digital marketing agency collaboration and strategy in Dubai" 
+                    width="800" 
+                    height="500" 
+                    loading="lazy" 
+                    decoding="async"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
                </div>
 
                <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-white">{t('capabilities.s1.title', {defaultValue: 'Digital Marketing Services That Drive Real ROI'})}</h2>
@@ -513,7 +530,7 @@ export function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
+            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
           >
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
              <div>
@@ -522,15 +539,16 @@ export function Home() {
                </div>
 
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
-                 <SafeImage 
-                   src="/images/ecommerce-hero.webp" fallbackSrc="/crm-blog-image.webp" 
-                   alt="Enterprise software and mobile app development services in Dubai" 
-                   width="800" 
-                   height="600" 
-                   loading="lazy" 
-                   decoding="async"
-                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                 />
+                  <SafeImage 
+                    src="/images/business-software-solutions-globe.webp" 
+                    fallbackSrc="/images/website-development-services-dubai.webp"
+                    alt="Custom business software and cloud ERP solutions architected in Dubai" 
+                    width="800" 
+                    height="500" 
+                    loading="lazy" 
+                    decoding="async"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
                </div>
 
                <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-white">{t('capabilities.s2.title', {defaultValue: 'Enterprise Software Development Dubai'})}</h2>
@@ -540,8 +558,12 @@ export function Home() {
 
                <div className="space-y-6 mb-10">
                  <div>
-                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Custom Web & Mobile App Development</h3>
-                   <h4 className="text-[10px] text-olive-500 font-bold uppercase tracking-widest mt-1">SaaS Platforms & API Integrations</h4>
+                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Scalable Web & Mobile Architectures</h3>
+                   <h4 className="text-[10px] text-olive-500 font-bold uppercase tracking-widest mt-1">Next.js, React Native & Microservices</h4>
+                 </div>
+
+                 <div>
+                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">ERP & Custom Business Systems</h3>
                  </div>
 
                  <div>
@@ -558,7 +580,7 @@ export function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-[2rem] p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
+            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
           >
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
              <div>
@@ -567,15 +589,16 @@ export function Home() {
                </div>
 
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
-                 <SafeImage 
-                   src="/images/iso-27001-certification-in-dubai.webp" fallbackSrc="/zero-trust-security.webp" 
-                   alt="Military-grade cybersecurity solutions for global brands based in Dubai" 
-                   width="800" 
-                   height="600" 
-                   loading="lazy" 
-                   decoding="async"
-                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                 />
+                  <SafeImage 
+                    src="/images/cybersecurity-threat-intelligence-dubai.webp" 
+                    fallbackSrc="/images/iso-27001-certification-in-dubai.webp" 
+                    alt="Military-grade cybersecurity and threat intelligence solutions in Dubai" 
+                    width="800" 
+                    height="500" 
+                    loading="lazy" 
+                    decoding="async" 
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
                </div>
 
                <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-white">{t('capabilities.s3.title', {defaultValue: 'Cybersecurity Solutions for Global Brands'})}</h2>
@@ -600,21 +623,21 @@ export function Home() {
       </section>
 
       {/* Portfolio Preview Section */}
-      <section className="py-32 w-full bg-olive-950 border-t border-white/5 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+      <section className="py-16 sm:py-24 lg:py-32 w-full bg-olive-950 border-t border-white/5 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-20 gap-8">
             <div>
               <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">Selected Work</span>
-              <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tight">Our Work</h2>
+              <h2 className="font-display text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tight">Our Work</h2>
             </div>
-            <div className="flex flex-col sm:flex-row items-center gap-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
               <Magnetic>
                 <div className="inline-block">
                   <a 
                     href="https://portfolio.mintsglobal.tech/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-olive-500 text-brand-black px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors shrink-0"
+                    className="inline-flex items-center gap-2 bg-olive-500 text-white px-5 sm:px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs sm:text-sm hover:bg-olive-400 transition-colors shrink-0"
                   >
                     Interactive Demos & Products <ArrowRight size={18} />
                   </a>
@@ -640,7 +663,7 @@ export function Home() {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 className={`group relative ${idx % 2 === 1 ? 'md:mt-24' : ''}`}
               >
-                <Link to={`/work/${project._id}`} className="block overflow-hidden rounded-[2rem] aspect-[4/3] bg-olive-900 border border-white/5 mb-6">
+                <Link to={`/work/${project._id}`} className="block overflow-hidden rounded-2xl sm:rounded-[2rem] aspect-[4/3] bg-olive-900 border border-white/5 mb-6">
                    <img 
                      src={project.titleImage} 
                      alt={project.title} 
@@ -651,7 +674,7 @@ export function Home() {
                 <div className="flex flex-col items-start px-2">
                   <span className="text-olive-500 text-xs font-bold uppercase tracking-widest mb-3 border border-olive-500/30 px-3 py-1 rounded-full">{project.category.name}</span>
                   <Link to={`/work/${project._id}`} className="inline-block">
-                    <h3 className="font-display font-black text-3xl md:text-4xl hover:text-olive-500 transition-colors uppercase tracking-tight mb-4">{project.title}</h3>
+                    <h3 className="font-display font-black text-2xl sm:text-3xl md:text-4xl hover:text-olive-500 transition-colors uppercase tracking-tight mb-4">{project.title}</h3>
                   </Link>
                   {(project.duration || project.kpi) && (
                     <div className="flex flex-wrap items-center gap-3 w-full text-xs font-medium uppercase tracking-wider text-white">
@@ -667,25 +690,22 @@ export function Home() {
       </section>
 
       {/* About + Stats Section combined */}
-      <section className="py-32 w-full bg-olive-900 overflow-hidden relative z-10 border-t border-white/5">
-        <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
-            <polygon fill="currentColor" points="100,0 100,100 0,100" />
-          </svg>
-        </div>
+      <section className="py-16 sm:py-24 lg:py-32 w-full bg-olive-900/60 overflow-hidden relative z-10 border-t border-white/5">
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-olive-500/10 rounded-full blur-[120px] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-             <div>
-                <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-6">Who We Are</span>
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight mb-8 leading-tight text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+             {/* Left Column: Narrative & Values */}
+             <div className="flex flex-col">
+                <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">Who We Are</span>
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight mb-6 leading-tight text-white">
                   Why Mints Global is Dubai's Most Trusted Digital Agency
                 </h2>
                 <p className="text-brand-white-70 text-lg leading-relaxed mb-8">
                   We are a premium digital agency based in Dubai, architecting solutions at the intersection of powerful software, striking design, and robust security.
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
                   <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
                     <h3 className="text-base font-bold text-white uppercase tracking-wider mb-2">Bridging Middle Eastern & European Markets</h3>
                     <p className="text-brand-white-70 text-xs leading-relaxed">We provide cross-border engineering and marketing, adapting international standards to GCC regional regulatory environments.</p>
@@ -694,18 +714,6 @@ export function Home() {
                     <h3 className="text-base font-bold text-white uppercase tracking-wider mb-2">Results-Driven Strategy With Measurable Outcomes</h3>
                     <p className="text-brand-white-70 text-xs leading-relaxed">Every line of code and marketing campaign we deploy is optimized for maximum conversion, scalability, and user acquisition.</p>
                   </div>
-                </div>
-
-                <div className="w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative mb-12">
-                  <SafeImage 
-                    src="/images/mints-global-team-dubai.webp" fallbackSrc="/hero.webp" 
-                    alt="Mints Global digital agency team of marketing and tech experts in Dubai" 
-                    width="900" 
-                    height="600" 
-                    loading="lazy" 
-                    decoding="async"
-                    className="w-full h-full object-cover"
-                  />
                 </div>
 
                 <Magnetic>
@@ -717,31 +725,50 @@ export function Home() {
                 </Magnetic>
              </div>
              
-             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 relative max-w-lg mx-auto lg:ml-auto lg:mr-0">
-                <div className="absolute inset-0 bg-olive-500/5 blur-3xl rounded-full" />
-                <div className="flex flex-col">
-                   <div className="font-display text-5xl md:text-7xl font-black text-olive-500 mb-2">
-                     <CountUp end={250} duration={2.5} enableScrollSpy />+
-                   </div>
-                   <div className="font-bold text-sm text-brand-white uppercase tracking-wider">Projects Delivered</div>
+             {/* Right Column: Visual Team & Clean 2x2 Stats */}
+             <div className="flex flex-col gap-8 w-full">
+                {/* Team photo */}
+                <div className="w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative">
+                  <SafeImage 
+                    src="/images/mints-global-team-dubai.webp" fallbackSrc="/hero.webp" 
+                    alt="Mints Global digital agency headquarters architectural towers in Dubai" 
+                    width="900" 
+                    height="600" 
+                    loading="lazy" 
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="flex flex-col mt-12 md:mt-16">
-                   <div className="font-display text-5xl md:text-7xl font-black text-olive-500 mb-2">
-                     <CountUp end={35} duration={2.5} enableScrollSpy />+
+
+                {/* 2x2 Stats Grid aligned cleanly */}
+                <div className="grid grid-cols-2 gap-4 sm:gap-6 w-full">
+                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center">
+                      <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-olive-500 mb-1 leading-none">
+                        <CountUp end={250} duration={2.5} enableScrollSpy />+
+                      </div>
+                      <div className="font-bold text-xs sm:text-sm text-brand-white uppercase tracking-wider mt-2">Projects Delivered</div>
                    </div>
-                   <div className="font-bold text-sm text-brand-white uppercase tracking-wider">Enterprise Clients</div>
-                </div>
-                <div className="flex flex-col">
-                   <div className="font-display text-5xl md:text-7xl font-black text-white mb-2">
-                     <CountUp end={5} duration={2.5} enableScrollSpy />
+
+                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center">
+                      <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-olive-500 mb-1 leading-none">
+                        <CountUp end={35} duration={2.5} enableScrollSpy />+
+                      </div>
+                      <div className="font-bold text-xs sm:text-sm text-brand-white uppercase tracking-wider mt-2">Enterprise Clients</div>
                    </div>
-                   <div className="font-bold text-sm text-brand-white-70 uppercase tracking-wider">Years Experience</div>
-                </div>
-                <div className="flex flex-col mt-12 md:mt-16">
-                   <div className="font-display text-5xl md:text-7xl font-black text-white mb-2">
-                     <CountUp end={99} duration={2.5} enableScrollSpy />%
+
+                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center">
+                      <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-1 leading-none">
+                        <CountUp end={5} duration={2.5} enableScrollSpy />
+                      </div>
+                      <div className="font-bold text-xs sm:text-sm text-brand-white-70 uppercase tracking-wider mt-2">Years Experience</div>
                    </div>
-                   <div className="font-bold text-sm text-brand-white-70 uppercase tracking-wider">Client Retention</div>
+
+                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center">
+                      <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-1 leading-none">
+                        <CountUp end={99} duration={2.5} enableScrollSpy />%
+                      </div>
+                      <div className="font-bold text-xs sm:text-sm text-brand-white-70 uppercase tracking-wider mt-2">Client Retention</div>
+                   </div>
                 </div>
              </div>
           </div>
@@ -763,7 +790,7 @@ export function Home() {
                     <div className="flex flex-col items-center justify-center font-sans tracking-tighter">
                       <div className="flex items-center text-5xl font-black leading-none bg-white/5 py-2 px-4 rounded-xl border border-white/10 group-hover:bg-white transition-colors duration-500">
                          <span className="text-[#184d28]">H</span>
-                         <span className="text-[#6bbd24] -mt-1 text-6xl">D</span>
+                         <span className="text-[#4d7a3c] -mt-1 text-6xl">D</span>
                          <span className="text-[#184d28]">F</span>
                       </div>
                       <div className="flex flex-col text-center mt-2 group-hover:opacity-100 opacity-60 transition-opacity">
@@ -819,8 +846,8 @@ export function Home() {
                  </div>
                  <div className="px-10 md:px-16 flex items-center justify-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-110 group">
                     <div className="flex flex-col items-center justify-center font-serif">
-                      <span className="text-5xl font-light italic tracking-widest text-[#a3e635]">OUD</span>
-                      <span className="text-[0.5rem] tracking-[0.25em] text-[#bef264] mt-1 whitespace-nowrap font-sans font-bold uppercase">Fragrances</span>
+                      <span className="text-5xl font-light italic tracking-widest text-[#4d7a3c]">OUD</span>
+                      <span className="text-[0.5rem] tracking-[0.25em] text-[#6e9c56] mt-1 whitespace-nowrap font-sans font-bold uppercase">Fragrances</span>
                     </div>
                  </div>
                  <div className="px-10 md:px-16 flex items-center justify-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-110 group text-center">
@@ -853,24 +880,24 @@ export function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-32 w-full bg-olive-950 border-t border-white/5 relative z-10 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+      <section className="py-16 sm:py-24 lg:py-32 w-full bg-olive-950 border-t border-white/5 relative z-10 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-20 gap-8">
             <div>
                <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">{t('testimonials.title1')}{t('testimonials.title2')}</span>
-               <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tight">{t('testimonials.title1')} <span className="text-olive-500">{t('testimonials.title2')}</span></h2>
+               <h2 className="font-display text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tight">{t('testimonials.title1')} <span className="text-olive-500">{t('testimonials.title2')}</span></h2>
             </div>
             <div className="flex items-center gap-4">
               <button 
                 onClick={handlePrevTestimonial}
-                className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-olive-500 hover:border-olive-500 transition-colors"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-olive-500 hover:border-olive-500 transition-colors"
                 aria-label="Previous Testimonial"
               >
                 <ChevronLeft className="text-white" />
               </button>
               <button 
                 onClick={handleNextTestimonial}
-                className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-olive-500 hover:border-olive-500 transition-colors"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-olive-500 hover:border-olive-500 transition-colors"
                 aria-label="Next Testimonial"
               >
                 <ChevronRight className="text-white" />
@@ -887,25 +914,25 @@ export function Home() {
                    animate={{ opacity: 1, x: 0 }}
                    exit={{ opacity: 0, x: -20 }}
                    transition={{ duration: 0.4 }}
-                   className="bg-brand-black-light border border-white/5 p-10 md:p-16 rounded-[3rem]"
+                   className="bg-brand-black-light border border-white/5 p-6 sm:p-10 md:p-16 rounded-2xl sm:rounded-[3rem]"
                  >
-                   <div className="flex text-olive-500 mb-8">
+                   <div className="flex text-olive-500 mb-6 sm:mb-8">
                      {[...Array(5)].map((_, i) => (
-                       <svg key={i} className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                       <svg key={i} className="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24">
                          <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
                        </svg>
                      ))}
                    </div>
-                   <p className="font-display text-2xl md:text-4xl text-brand-white leading-relaxed mb-12">
+                   <p className="font-display text-xl sm:text-2xl md:text-4xl text-brand-white leading-relaxed mb-8 sm:mb-12">
                      "{testimonials[activeTestimonial].doc}"
                    </p>
-                   <div className="flex items-center gap-6">
-                     <div className="w-16 h-16 rounded-full bg-olive-900 border border-white/10 flex items-center justify-center">
+                   <div className="flex items-center gap-4 sm:gap-6">
+                     <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-olive-900 border border-white/10 flex items-center justify-center shrink-0">
                        <User className="text-olive-500" size={24} />
                      </div>
                      <div>
-                       <h3 className="font-display font-bold text-xl uppercase tracking-wider">{testimonials[activeTestimonial].name}</h3>
-                       <p className="text-brand-white-70 text-sm uppercase tracking-widest">{testimonials[activeTestimonial].role}</p>
+                       <h3 className="font-display font-bold text-lg sm:text-xl uppercase tracking-wider">{testimonials[activeTestimonial].name}</h3>
+                       <p className="text-brand-white-70 text-xs sm:text-sm uppercase tracking-widest">{testimonials[activeTestimonial].role}</p>
                      </div>
                    </div>
                  </motion.div>
@@ -916,12 +943,12 @@ export function Home() {
       </section>
 
       {/* Blog Preview Section */}
-      <section className="py-32 w-full bg-olive-950 border-t border-white/5 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+      <section className="py-16 sm:py-24 lg:py-32 w-full bg-olive-950 border-t border-white/5 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-20 gap-8">
             <div>
               <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">Latest Insights</span>
-              <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tight">Journal</h2>
+              <h2 className="font-display text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tight">Journal</h2>
             </div>
             <Magnetic>
               <div className="inline-block">
@@ -940,7 +967,7 @@ export function Home() {
                  whileInView={{ opacity: 1, y: 0 }}
                  viewport={{ once: true }}
                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                 className="group flex flex-col bg-brand-black-light border border-white/5 rounded-3xl overflow-hidden hover:border-olive-500/30 transition-all duration-300"
+                 className="group flex flex-col bg-brand-black-light border border-white/5 rounded-2xl sm:rounded-3xl overflow-hidden hover:border-olive-500/30 transition-all duration-300"
                >
                  <Link to={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden">
                    <img 
@@ -950,12 +977,12 @@ export function Home() {
                      loading="lazy"
                    />
                  </Link>
-                 <div className="p-8 flex flex-col flex-1">
+                 <div className="p-6 sm:p-8 flex flex-col flex-1">
                    <div className="flex items-center gap-4 text-xs font-bold tracking-wider text-olive-500 uppercase mb-4">
                      <span className="flex items-center gap-1"><Calendar size={14} /> {post.date}</span>
                    </div>
                    <Link to={`/blog/${post.slug}`} className="block mb-4">
-                     <h3 className="font-display font-bold text-2xl group-hover:text-olive-500 transition-colors leading-tight line-clamp-2">{post.title}</h3>
+                     <h3 className="font-display font-bold text-xl sm:text-2xl group-hover:text-olive-500 transition-colors leading-tight line-clamp-2">{post.title}</h3>
                    </Link>
                    <p className="text-brand-white-70 text-sm leading-relaxed line-clamp-3 mb-6 flex-1">
                      {post.content.replace(/<[^>]*>?/gm, '').substring(0, 120)}...
@@ -971,15 +998,15 @@ export function Home() {
       </section>
 
       {/* Global Reach Section */}
-      <section className="py-32 w-full bg-olive-900 border-t border-white/5 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
+      <section className="py-16 sm:py-24 lg:py-32 w-full bg-olive-900 border-t border-white/5 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-20">
             <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">International Capabilities</span>
-            <AnimatedChars text="From Dubai to Europe." className="font-display text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tight" />
+            <AnimatedChars text="From Dubai to Europe." className="font-display text-3xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tight" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-brand-black-light border border-white/5 p-10 rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
-              <h3 className="font-display font-black text-3xl uppercase mb-6 flex items-center gap-4">🇦🇪 UAE</h3>
+            <div className="bg-brand-black-light border border-white/5 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
+              <h3 className="font-display font-black text-2xl sm:text-3xl uppercase mb-6 flex items-center gap-4">🇦🇪 UAE</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed mb-8">Dubai HQ. Arabic-first strategy, NESA compliance, and deep local market integration for brands scaling across the Middle East.</p>
               <ul className="space-y-3 text-sm font-bold tracking-wider text-olive-300 uppercase">
                 <li>✓ NESA & PDPL Compliant</li>
@@ -987,8 +1014,8 @@ export function Home() {
                 <li>✓ Local Business Integration</li>
               </ul>
             </div>
-            <div className="bg-brand-black-light border border-white/5 p-10 rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
-              <h3 className="font-display font-black text-3xl uppercase mb-6 flex items-center gap-4">🇩🇪 DACH</h3>
+            <div className="bg-brand-black-light border border-white/5 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
+              <h3 className="font-display font-black text-2xl sm:text-3xl uppercase mb-6 flex items-center gap-4">🇩🇪 DACH</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed mb-8">GDPR/DSGVO-compliant solutions, precision-engineered software, and B2B localized campaigns for the German market.</p>
               <ul className="space-y-3 text-sm font-bold tracking-wider text-olive-300 uppercase">
                 <li>✓ DSGVO & GDPR Strict</li>
@@ -996,8 +1023,8 @@ export function Home() {
                 <li>✓ B2B Growth Engines</li>
               </ul>
             </div>
-            <div className="bg-brand-black-light border border-white/5 p-10 rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
-              <h3 className="font-display font-black text-3xl uppercase mb-6 flex items-center gap-4">🇬🇧 UK</h3>
+            <div className="bg-brand-black-light border border-white/5 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
+              <h3 className="font-display font-black text-2xl sm:text-3xl uppercase mb-6 flex items-center gap-4">🇬🇧 UK</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed mb-8">High-performance English-language campaigns, robust platforms, and competitive organic dominance for the UK market.</p>
               <ul className="space-y-3 text-sm font-bold tracking-wider text-olive-300 uppercase">
                 <li>✓ High-Competition SEO</li>
@@ -1010,18 +1037,18 @@ export function Home() {
       </section>
 
       {/* CTA Section - Full width olive background */}
-      <section className="py-32 w-full bg-olive-500 text-olive-950 relative z-10 overflow-hidden">
+      <section className="py-16 sm:py-24 lg:py-32 w-full bg-olive-500 text-white relative z-10 overflow-hidden">
          {/* Background pattern */}
          <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ0cmFuc3BhcmVudCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIvPjwvc3ZnPg==')] pointer-events-none" />
          
-         <div className="max-w-5xl mx-auto px-6 text-center relative z-20">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-none tracking-tighter uppercase">
+         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-20">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-none tracking-tighter uppercase text-white">
               Get a Free Consultation With Our Dubai Marketing Experts
             </h2>
-            <p className="text-olive-900 text-lg md:text-xl lg:text-2xl font-medium mb-12 max-w-3xl mx-auto">{t('cta.desc')}</p>
+            <p className="text-brand-white/80 text-lg md:text-xl lg:text-2xl font-medium mb-12 max-w-3xl mx-auto">{t('cta.desc')}</p>
             <Magnetic>
               <div className="inline-block">
-                <Link to="/contact" className="inline-flex items-center gap-3 bg-olive-950 text-white px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-black transition-all hover:scale-105 shadow-2xl block">
+                <Link to="/contact" className="inline-flex items-center gap-3 bg-brand-white text-olive-950 px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-brand-black hover:text-white transition-all hover:scale-105 shadow-2xl block">
                   {t('cta.btn')} <ArrowRight size={20} className="inline ml-1" />
                 </Link>
               </div>

@@ -4,22 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Preconnect to critical origins — reduces TTFB for fonts, images, Cloudinary -->
+    <!-- Preconnect to critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://res.cloudinary.com" />
-
-    <!-- DNS-prefetch for Firebase services -->
-    <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
-    <link rel="dns-prefetch" href="https://firebase.googleapis.com" />
-    <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-    <!-- Google Fonts Loading -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;900&display=swap" />
+    <!-- Non-render-blocking Google Fonts Loading -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;900&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;500;600&family=Outfit:wght@400;700;900&display=swap" />
+    </noscript>
 
-    <!-- Preload Hero Image -->
-    <link rel="preload" as="image" href="https://www.mintsglobal.ae/images/hero-digital-agency-dubai.webp" fetchpriority="high" width="1440" height="810" />
+    <!-- Preload Hero Image for instant LCP -->
+    <link rel="preload" as="image" href="/images/hero-digital-agency-dubai.webp" imagesrcset="/images/hero-digital-agency-dubai-400w.webp 400w, /images/hero-digital-agency-dubai-800w.webp 800w, /images/hero-digital-agency-dubai-1200w.webp 1200w, /images/hero-digital-agency-dubai-1920w.webp 1920w" imagesizes="100vw" fetchpriority="high" />
 
     <!-- SSR-injected head tags (title, meta, og, twitter, canonical) — filled per-route in SSR mode -->
     <!--app-head-->
@@ -47,13 +46,25 @@
     <!-- Robots default -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LVGEPW8RM"></script>
+    <!-- Google tag (gtag.js) - loaded without blocking LCP / initial paint -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-0LVGEPW8RM');
+      (function() {
+        function loadGTM() {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0LVGEPW8RM';
+          document.head.appendChild(s);
+        }
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadGTM, { timeout: 2500 });
+        } else {
+          window.addEventListener('load', loadGTM, { once: true });
+        }
+      })();
     </script>
   </head>
   <body>

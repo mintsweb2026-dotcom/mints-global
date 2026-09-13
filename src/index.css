@@ -6,9 +6,9 @@
   --color-olive-900: #111f13;
   --color-olive-800: #162019;
   --color-olive-700: #1d2e1f;
-  --color-olive-500: #6aab1f;
-  --color-olive-400: #8bc34a;
-  --color-olive-300: #b5d97b;
+  --color-olive-500: #3a5d2d;
+  --color-olive-400: #4d7a3c;
+  --color-olive-300: #6e9c56;
   --color-brand-white: #f0fdf4;
   --color-brand-white-70: rgba(240,253,244,0.7);
   --color-brand-white-40: rgba(240,253,244,0.4);
@@ -35,7 +35,7 @@
     @apply text-brand-white font-body antialiased;
     background-color: #0d1a0f;
     background-image:
-      radial-gradient(ellipse 80% 50% at 10% 0%, rgba(106,171,31,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 50% at 10% 0%, rgba(58,93,45,0.12) 0%, transparent 60%),
       radial-gradient(ellipse 60% 40% at 90% 100%, rgba(14,40,16,0.4) 0%, transparent 60%);
   }
   
@@ -55,8 +55,8 @@
   /* Thin scrollbar for TOC sidebar */
   .custom-scrollbar::-webkit-scrollbar { width: 3px; }
   .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-  .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(106,171,31,0.4); border-radius: 3px; }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #6aab1f; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(58,93,45,0.5); border-radius: 3px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #4d7a3c; }
 
   /* Line clamp utilities */
   .line-clamp-2 {
@@ -88,7 +88,7 @@
 
   /* Gradient text utility */
   .gradient-text {
-    background: linear-gradient(135deg, #6aab1f 0%, #b5d97b 50%, #6aab1f 100%);
+    background: linear-gradient(135deg, #4d7a3c 0%, #6e9c56 50%, #3a5d2d 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -108,13 +108,13 @@
 
 /* ── Global styles ────────────────────────────────────────────────────────────── */
 ::selection {
-  background-color: #6aab1f;
+  background-color: #3a5d2d;
   color: #fff;
 }
 
 ::-webkit-scrollbar { width: 3px; height: 3px; }
 ::-webkit-scrollbar-track { background: #0d1a0f; }
-::-webkit-scrollbar-thumb { background: #6aab1f; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #3a5d2d; border-radius: 3px; }
 
 .noise::after {
   content: "";
@@ -132,7 +132,7 @@
 }
 .card-lift:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(106, 171, 31, 0.15);
+  box-shadow: 0 0 20px rgba(58, 93, 45, 0.25);
 }
 
 /* ── Keyframe animations ───────────────────────────────────────────────────────── */
@@ -169,8 +169,8 @@
   to   { transform: rotate(360deg); }
 }
 @keyframes pulseBorder {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(106,171,31,0.4); }
-  50%       { box-shadow: 0 0 0 8px rgba(106,171,31,0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(58, 93, 45, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(58, 93, 45, 0); }
 }
 
 .animate-marquee { animation: marquee 30s linear infinite; }
@@ -192,7 +192,20 @@ html.lenis, html.lenis body { height: auto; }
   left: 24px;
   z-index: 999;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   transition: transform 0.2s ease;
 }
 .whatsapp-float:hover { transform: scale(1.08); }
+
+@media (max-width: 640px) {
+  .whatsapp-float {
+    bottom: 16px;
+    left: 16px;
+    width: 46px !important;
+    height: 46px !important;
+  }
+  .whatsapp-float svg {
+    width: 26px !important;
+    height: 26px !important;
+  }
+}

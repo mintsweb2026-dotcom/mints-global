@@ -341,7 +341,7 @@ export function AdminWorksTab() {
            </div>
 
            <div className="pt-4 flex gap-3 flex-wrap">
-             <button type="submit" disabled={submitting} className="flex-1 bg-olive-500 text-black px-4 py-3 rounded-xl font-bold hover:bg-olive-400 disabled:opacity-50 transition-colors">
+             <button type="submit" disabled={submitting} className="flex-1 bg-olive-500 text-white px-4 py-3 rounded-xl font-bold hover:bg-olive-400 disabled:opacity-50 transition-colors">
                {submitting ? 'Saving...' : editingId ? 'Update Work' : 'Add Work'}
              </button>
              <button type="button" onClick={() => setShowPreview(true)} className="px-4 py-3 bg-white/10 text-olive-400 rounded-xl hover:bg-white/20 transition-colors font-medium flex items-center justify-center gap-2">

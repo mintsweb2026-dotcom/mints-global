@@ -88,7 +88,7 @@ export function Services() {
                key={i} 
                onMouseEnter={() => setSelectedServiceIndex(i)}
                onMouseLeave={() => setSelectedServiceIndex(null)}
-               className={`border rounded-2xl p-8 hover:-translate-y-2 transition-all duration-300 ${selectedServiceIndex === i ? 'bg-olive-900 border-olive-500 shadow-[0_0_30px_rgba(106,171,31,0.15)]' : 'bg-olive-900 border-white/5'}`}
+               className={`border rounded-2xl p-8 hover:-translate-y-2 transition-all duration-300 ${selectedServiceIndex === i ? 'bg-olive-900 border-olive-500 shadow-[0_0_30px_rgba(58,93,45,0.25)]' : 'bg-olive-900 border-white/5'}`}
              >
                <div className="w-14 h-14 bg-olive-800 rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black">
                  0{i + 1}

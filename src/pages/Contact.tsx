@@ -234,7 +234,7 @@ export function Contact() {
                       }}
                       disabled={s > step && step === 1 && selectedServices.length === 0}
                       className={`h-2 flex-1 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-olive-500/50 ${
-                        step === s ? 'bg-olive-500 shadow-[0_0_15px_rgba(106,171,31,0.5)]' 
+                        step === s ? 'bg-olive-500 shadow-[0_0_15px_rgba(58,93,45,0.5)]' 
                         : step > s ? 'bg-olive-600/80 hover:bg-olive-400 cursor-pointer' 
                         : 'bg-white/10'
                       }`}
@@ -289,7 +289,7 @@ export function Contact() {
                           key={srv}
                           type="button"
                           onClick={() => toggleService(srv)}
-                          className={`text-left p-6 rounded-2xl border transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-olive-500/50 ${selectedServices.includes(srv) ? 'bg-olive-500/20 border-olive-500 text-white shadow-[0_0_20px_rgba(106,171,31,0.15)] ring-4 ring-olive-500/20' : 'bg-transparent border-white/10 text-brand-white-70 hover:border-white/30 hover:bg-white/5'}`}
+                          className={`text-left p-6 rounded-2xl border transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-olive-500/50 ${selectedServices.includes(srv) ? 'bg-olive-500/20 border-olive-500 text-white shadow-[0_0_20px_rgba(58,93,45,0.25)] ring-4 ring-olive-500/20' : 'bg-transparent border-white/10 text-brand-white-70 hover:border-white/30 hover:bg-white/5'}`}
                         >
                           <div className={`w-5 h-5 rounded-full border mb-4 flex items-center justify-center transition-colors ${selectedServices.includes(srv) ? 'border-olive-500' : 'border-white/30'}`}>
                              {selectedServices.includes(srv) ? <div className="w-2.5 h-2.5 bg-olive-500 rounded-full" /> : null}
@@ -314,7 +314,7 @@ export function Contact() {
                        <h3 className="text-xl font-bold mb-5 text-white">When do you want to start?</h3>
                        <div className="flex flex-wrap gap-3">
                          {['ASAP', '1–3 Months', '3–6 Months', '6–12 Months', 'Just Exploring'].map((tl) => (
-                           <label key={tl} className={`px-6 py-3.5 rounded-full border cursor-pointer transition-all text-sm font-bold flex items-center justify-center text-center has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-olive-500/50 ${watch('timeline') === tl ? 'bg-olive-500/20 border-olive-500 text-white shadow-[0_0_15px_rgba(106,171,31,0.15)] ring-4 ring-olive-500/20' : 'border-white/10 text-brand-white-70 hover:border-white/30 hover:bg-white/5 mx-0'}`}>
+                           <label key={tl} className={`px-6 py-3.5 rounded-full border cursor-pointer transition-all text-sm font-bold flex items-center justify-center text-center has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-olive-500/50 ${watch('timeline') === tl ? 'bg-olive-500/20 border-olive-500 text-white shadow-[0_0_15px_rgba(58,93,45,0.25)] ring-4 ring-olive-500/20' : 'border-white/10 text-brand-white-70 hover:border-white/30 hover:bg-white/5 mx-0'}`}>
                              <input type="radio" value={tl} {...register('timeline')} className="sr-only" />
                              {tl}
                            </label>
@@ -325,7 +325,7 @@ export function Contact() {
                     <h3 className="text-xl font-bold mb-5 text-white">What is your estimated budget?</h3>
                     <div className="grid grid-cols-1 gap-3.5">
                       {['Under AED 10,000', 'AED 10,000 – 30,000', 'AED 30,000 – 100,000', 'AED 100,000+', 'Not Sure Yet'].map((bdg) => (
-                        <label key={bdg} className={`flex items-center gap-4 px-6 py-5 rounded-2xl border cursor-pointer transition-all has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-olive-500/50 ${watch('budget') === bdg ? 'bg-olive-500/20 border-olive-500 text-white shadow-[0_0_15px_rgba(106,171,31,0.1)] ring-4 ring-olive-500/20' : 'border-white/10 text-brand-white-70 hover:border-white/30 hover:bg-white/5'}`}>
+                        <label key={bdg} className={`flex items-center gap-4 px-6 py-5 rounded-2xl border cursor-pointer transition-all has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-olive-500/50 ${watch('budget') === bdg ? 'bg-olive-500/20 border-olive-500 text-white shadow-[0_0_15px_rgba(58,93,45,0.2)] ring-4 ring-olive-500/20' : 'border-white/10 text-brand-white-70 hover:border-white/30 hover:bg-white/5'}`}>
                           <input type="radio" value={bdg} {...register('budget')} className="sr-only" />
                           <div className={`w-5 h-5 rounded-full border flex-shrink-0 flex items-center justify-center transition-colors ${watch('budget') === bdg ? 'border-olive-500' : 'border-white/30'}`}>
                             {watch('budget') === bdg && <div className="w-2.5 h-2.5 bg-olive-500 rounded-full" />}
@@ -422,7 +422,7 @@ export function Contact() {
                     type="submit" 
                     disabled={isSubmitting}
                     onClick={() => setSubmitAttempted(true)}
-                    className="bg-olive-500 text-brand-black px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-black flex items-center gap-2 hover:bg-olive-400 transition-all disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-olive-900 text-base sm:text-lg shadow-lg hover:shadow-olive-500/30 hover:-translate-y-0.5 active:translate-y-0"
+                    className="bg-olive-500 text-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-black flex items-center gap-2 hover:bg-olive-400 transition-all disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-olive-900 text-base sm:text-lg shadow-lg hover:shadow-olive-500/30 hover:-translate-y-0.5 active:translate-y-0"
                    >
                      {isSubmitting ? (
                        <>

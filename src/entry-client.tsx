@@ -10,15 +10,12 @@ import './index.css';
 import './i18n';
 import { AppRoutes } from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './lib/AuthContext';
 
 const app = (
   <StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <AuthProvider>
-          <AppRoutes />
-        </AuthProvider>
+        <AppRoutes />
       </BrowserRouter>
     </HelmetProvider>
   </StrictMode>

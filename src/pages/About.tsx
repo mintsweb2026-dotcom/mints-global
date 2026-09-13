@@ -148,7 +148,7 @@ export function About() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-olive-500 text-olive-950 py-24 w-full">
+      <section className="bg-olive-500 text-white py-24 w-full">
          <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-12">
             <div>
                <div className="font-display text-5xl md:text-7xl font-black mb-2">
@@ -191,7 +191,7 @@ export function About() {
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl mb-4 bg-olive-900 border border-white/10">
                 <img src={member.img} alt={member.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0" />
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-olive-950 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex justify-end">
-                  <a href="#" className="w-10 h-10 rounded-full bg-olive-500 text-brand-black flex items-center justify-center hover:bg-olive-400 transition-colors">
+                  <a href="#" className="w-10 h-10 rounded-full bg-olive-500 text-white flex items-center justify-center hover:bg-olive-400 transition-colors">
                     <Linkedin size={18} />
                   </a>
                 </div>

@@ -8,7 +8,6 @@ import { StaticRouter } from 'react-router';
 import { HelmetProvider, HelmetServerState } from 'react-helmet-async';
 import './i18n';
 import { AppRoutes } from './App';
-import { AuthProvider } from './lib/AuthContext';
 
 export function render(url: string): { html: string; helmet: string } {
   const helmetContext: { helmet?: HelmetServerState } = {};
@@ -16,9 +15,7 @@ export function render(url: string): { html: string; helmet: string } {
   const html = renderToString(
     <HelmetProvider context={helmetContext}>
       <StaticRouter location={url}>
-        <AuthProvider>
-          <AppRoutes />
-        </AuthProvider>
+        <AppRoutes />
       </StaticRouter>
     </HelmetProvider>
   );

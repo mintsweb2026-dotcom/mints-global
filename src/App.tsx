@@ -43,8 +43,9 @@ import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Terms } from './pages/Terms';
 import { Impressum } from './pages/Impressum';
 import { ProjectDetail } from './pages/ProjectDetail';
-import { AdminPanel } from './pages/AdminPanel';
 import { NotFound } from './pages/NotFound';
+
+const AdminPanel = lazy(() => import('./pages/AdminPanel').then(m => ({ default: m.AdminPanel })));
 
 // ─── Page transition animation ────────────────────────────────────────────────
 function AnimatedOutlet() {

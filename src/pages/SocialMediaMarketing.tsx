@@ -229,11 +229,11 @@ export function SocialMediaMarketing() {
             <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12">
               Turn your social platforms into powerful community-building and lead-generation engines. We craft compelling narratives, stunning visuals, and engaging content calendars tailored to your specific audience.
             </p>
-            <div className="flex gap-4">
-               <Link to="/contact" className="bg-olive-500 text-brand-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
-                 Discuss Your Project <ArrowRight size={18} />
-               </Link>
-            </div>
+             <div className="flex gap-4">
+                <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
+                  Discuss Your Project <ArrowRight size={18} />
+                </Link>
+             </div>
           </motion.div>
 
           <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-square rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">

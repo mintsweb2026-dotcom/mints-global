@@ -9,9 +9,6 @@ import { getPostBySlug, getStaticPostBySlug, getPosts, BlogPost as BlogPostType 
 import { SEO } from '../components/SEO';
 import { JsonLd } from '../components/JsonLd';
 import { NewsletterForm } from '../components/NewsletterForm';
-import { analytics, db } from '../lib/firebase';
-import { logEvent } from 'firebase/analytics';
-import { doc, updateDoc, increment } from 'firebase/firestore';
 
 const flattenText = (children: React.ReactNode): string => {
   if (typeof children === 'string') return children;
@@ -46,25 +43,30 @@ export function BlogPost() {
     Promise.all([getPostBySlug(slug), getPosts()]).then(([fetchedPost, allPosts]) => {
       setPost(fetchedPost);
       if (fetchedPost) {
-        // Log analytics and update firestore views
-        if (analytics) {
-          logEvent(analytics, 'page_view', {
-            page_title: fetchedPost.title,
-            page_location: window.location.href,
-            page_path: `/blog/${fetchedPost.slug}`
-          });
-          logEvent(analytics, 'view_item', {
-            item_id: fetchedPost.id,
-            item_name: fetchedPost.title,
-            item_category: fetchedPost.category
-          });
-        }
-        
-        updateDoc(doc(db, 'posts', fetchedPost.id), {
-          views: increment(1)
-        }).catch((e) => {
-          console.warn("Could not update post views in Firestore:", e);
-        });
+        // Log analytics and update firestore views dynamically
+        import('../lib/firebase').then(async ({ analytics, db }) => {
+          if (analytics) {
+            const { logEvent } = await import('firebase/analytics');
+            logEvent(analytics, 'page_view', {
+              page_title: fetchedPost.title,
+              page_location: window.location.href,
+              page_path: `/blog/${fetchedPost.slug}`
+            });
+            logEvent(analytics, 'view_item', {
+              item_id: fetchedPost.id,
+              item_name: fetchedPost.title,
+              item_category: fetchedPost.category
+            });
+          }
+          if (db) {
+            const { doc, updateDoc, increment } = await import('firebase/firestore');
+            updateDoc(doc(db, 'posts', fetchedPost.id), {
+              views: increment(1)
+            }).catch((e) => {
+              console.warn("Could not update post views in Firestore:", e);
+            });
+          }
+        }).catch(() => {});
 
         setRelatedPosts(
           allPosts

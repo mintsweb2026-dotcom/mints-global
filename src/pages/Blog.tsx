@@ -240,7 +240,7 @@ export function Blog() {
               onClick={() => setSelectedTag(null)}
               className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors border ${
                 selectedTag === null
-                  ? 'bg-olive-500 text-black border-olive-500'
+                  ? 'bg-olive-500 text-white border-olive-500'
                   : 'bg-white/5 text-brand-white-70 border-white/10 hover:bg-white/10 hover:text-white'
               }`}
             >
@@ -252,7 +252,7 @@ export function Blog() {
                 onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors border ${
                   tag === selectedTag
-                    ? 'bg-olive-500 text-black border-olive-500'
+                    ? 'bg-olive-500 text-white border-olive-500'
                     : 'bg-white/5 text-brand-white-70 border-white/10 hover:bg-white/10 hover:text-white'
                 }`}
               >
@@ -315,7 +315,7 @@ export function Blog() {
                       aria-current={currentPage === page ? 'page' : undefined}
                       className={`w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full text-sm font-bold transition-colors ${
                         currentPage === page
-                          ? 'bg-olive-500 text-brand-black border border-olive-500'
+                          ? 'bg-olive-500 text-white border border-olive-500'
                           : 'border border-white/20 hover:bg-white/10'
                       }`}
                     >

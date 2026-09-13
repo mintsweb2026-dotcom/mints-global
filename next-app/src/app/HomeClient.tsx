@@ -363,7 +363,7 @@ export function Home() {
             >
               <Magnetic>
                 <div className="inline-block">
-                  <Link href="/contact" className="bg-olive-500 text-brand-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors flex items-center gap-2">
+                  <Link href="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors flex items-center gap-2">
                     {t('hero.startProject')} <ArrowRight size={18} />
                   </Link>
                 </div>
@@ -595,7 +595,7 @@ export function Home() {
                     href="https://portfolio.mintsglobal.tech/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-olive-500 text-brand-black px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors shrink-0"
+                    className="inline-flex items-center gap-2 bg-olive-500 text-white px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors shrink-0"
                   >
                     Interactive Demos & Products <ArrowRight size={18} />
                   </a>
@@ -991,18 +991,18 @@ export function Home() {
       </section>
 
       {/* CTA Section - Full width olive background */}
-      <section className="py-32 w-full bg-olive-500 text-olive-950 relative z-10 overflow-hidden">
+      <section className="py-32 w-full bg-olive-500 text-white relative z-10 overflow-hidden">
          {/* Background pattern */}
          <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ0cmFuc3BhcmVudCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIvPjwvc3ZnPg==')] pointer-events-none" />
          
          <div className="max-w-5xl mx-auto px-6 text-center relative z-20">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-none tracking-tighter uppercase">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-none tracking-tighter uppercase text-white">
               Get a Free Consultation With Our Dubai Marketing Experts
             </h2>
-            <p className="text-olive-900 text-lg md:text-xl lg:text-2xl font-medium mb-12 max-w-3xl mx-auto">{t('cta.desc')}</p>
+            <p className="text-brand-white/80 text-lg md:text-xl lg:text-2xl font-medium mb-12 max-w-3xl mx-auto">{t('cta.desc')}</p>
             <Magnetic>
               <div className="inline-block">
-                <Link href="/contact" className="inline-flex items-center gap-3 bg-olive-950 text-white px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-black transition-all hover:scale-105 shadow-2xl block">
+                <Link href="/contact" className="inline-flex items-center gap-3 bg-brand-white text-olive-950 px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-brand-black hover:text-white transition-all hover:scale-105 shadow-2xl block">
                   {t('cta.btn')} <ArrowRight size={20} className="inline ml-1" />
                 </Link>
               </div>

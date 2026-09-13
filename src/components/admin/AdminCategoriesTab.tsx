@@ -105,7 +105,7 @@ export function AdminCategoriesTab() {
            </div>
 
            <div className="pt-4 flex gap-3">
-             <button type="submit" disabled={submitting} className="flex-1 bg-olive-500 text-black px-4 py-3 rounded-xl font-bold hover:bg-olive-400 disabled:opacity-50 transition-colors">
+             <button type="submit" disabled={submitting} className="flex-1 bg-olive-500 text-white px-4 py-3 rounded-xl font-bold hover:bg-olive-400 disabled:opacity-50 transition-colors">
                {submitting ? 'Saving...' : editingId ? 'Update Category' : 'Add Category'}
              </button>
              {editingId && (

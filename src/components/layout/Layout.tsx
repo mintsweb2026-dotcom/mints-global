@@ -25,33 +25,94 @@ import CrispChat from '../CrispChat';
 import { Preloader } from '../Preloader';
 import { SmoothScroll } from '../SmoothScroll';
 
-const orgSchema = {
+const sitewideSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  '@id': 'https://mintsglobal.ae/#organization',
-  name: 'Mints Global',
-  url: 'https://mintsglobal.ae',
-  logo: 'https://mintsglobal.ae/NavLogoWhite1.png',
-  image: 'https://mintsglobal.ae/NavLogoWhite1.png',
-  description: 'Premium digital marketing agency, software development, and cyber security consultant serving Dubai, UAE, GCC, UK, and Germany.',
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: ['+971-50-294-3916', '+44-7899-727950'],
-    contactType: 'customer service',
-    email: 'info@mintsglobal.ae',
-    areaServed: ['AE', 'GB', 'DE'],
-    availableLanguage: ['en', 'ar', 'de'],
-  },
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Dubai',
-    addressRegion: 'Dubai',
-    addressCountry: 'AE',
-  },
-  sameAs: [
-    'https://www.linkedin.com/company/mints-dubai',
-    'https://www.instagram.com/mints.global/',
-    'https://www.instagram.com/mints.creative/',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.mintsglobal.ae/#organization',
+      name: 'Mints Global',
+      alternateName: 'Mints Global Digital Agency',
+      url: 'https://www.mintsglobal.ae/',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.mintsglobal.ae/logo-07.webp',
+        width: 1000,
+        height: 1000,
+      },
+      image: 'https://www.mintsglobal.ae/images/hero-digital-agency-dubai.webp',
+      description: 'Premium digital marketing agency, enterprise software development firm, and cybersecurity consultancy serving Dubai, UAE, GCC, UK, and Germany.',
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+971-50-294-3916',
+          contactType: 'customer service',
+          areaServed: ['AE', 'GB', 'DE'],
+          availableLanguage: ['en', 'ar', 'de'],
+        },
+        {
+          '@type': 'ContactPoint',
+          telephone: '+44-7899-727950',
+          contactType: 'customer service',
+          areaServed: 'GB',
+          availableLanguage: ['en'],
+        },
+      ],
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Office #315, 3rd Floor, Bank Street Building, Bur Dubai',
+        addressLocality: 'Dubai',
+        addressRegion: 'Dubai',
+        addressCountry: 'AE',
+      },
+      sameAs: [
+        'https://www.linkedin.com/company/mints-dubai',
+        'https://www.instagram.com/mints.global/',
+        'https://www.instagram.com/mints.creative/',
+        'https://www.facebook.com/mintsglobal',
+      ],
+    },
+    {
+      '@type': ['LocalBusiness', 'ProfessionalService'],
+      '@id': 'https://www.mintsglobal.ae/#localbusiness',
+      name: 'Mints Global',
+      url: 'https://www.mintsglobal.ae/',
+      logo: 'https://www.mintsglobal.ae/logo-07.webp',
+      image: 'https://www.mintsglobal.ae/images/hero-digital-agency-dubai.webp',
+      description: 'Premier digital marketing agency, custom software development company, and cybersecurity consultancy in Dubai, UAE.',
+      parentOrganization: {
+        '@id': 'https://www.mintsglobal.ae/#organization',
+      },
+      telephone: '+971-50-294-3916',
+      email: 'info@mintsglobal.ae',
+      priceRange: '$$$$',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Office #315, 3rd Floor, Bank Street Building, Bur Dubai',
+        addressLocality: 'Dubai',
+        addressRegion: 'Dubai',
+        addressCountry: 'AE',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 25.2532,
+        longitude: 55.3005,
+      },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '09:00',
+          closes: '18:00',
+        },
+      ],
+      sameAs: [
+        'https://www.linkedin.com/company/mints-dubai',
+        'https://www.instagram.com/mints.global/',
+        'https://www.instagram.com/mints.creative/',
+        'https://www.facebook.com/mintsglobal',
+      ],
+    },
   ],
 };
 
@@ -78,7 +139,7 @@ export function Layout() {
     <SmoothScroll>
       <div className="min-h-screen relative flex flex-col selection:bg-olive-500 selection:text-white">
         <Preloader />
-        <JsonLd data={orgSchema} />
+        <JsonLd data={sitewideSchema} />
 
         <Navbar mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
 

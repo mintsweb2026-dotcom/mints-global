@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 interface AccordionItem {
@@ -11,7 +11,12 @@ interface ServicesAccordionProps {
 }
 
 export function ServicesAccordion({ items }: ServicesAccordionProps) {
+  const [isClient, setIsClient] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const toggleItem = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -27,7 +32,10 @@ export function ServicesAccordion({ items }: ServicesAccordionProps) {
   return (
     <div className="w-full space-y-4" role="region" aria-label="Frequently Asked Questions">
       {items.map((item, index) => {
-        const isOpen = openIndex === index;
+        // In SSR (pre-rendering), all items are open so non-JS crawlers, AEO engines,
+        // and search bots parse and index 100% of the Q&A text.
+        // Once hydrated on client, standard interactive accordion behavior applies.
+        const isOpen = !isClient || openIndex === index;
         const buttonId = `accordion-button-${index}`;
         const contentId = `accordion-content-${index}`;
 
@@ -36,6 +44,7 @@ export function ServicesAccordion({ items }: ServicesAccordionProps) {
             key={index} 
             open={isOpen}
             onToggle={(e) => {
+              if (!isClient) return;
               const isCurrentlyOpen = (e.currentTarget as HTMLDetailsElement).open;
               if (isCurrentlyOpen) {
                 setOpenIndex(index);

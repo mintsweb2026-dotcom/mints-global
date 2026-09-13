@@ -333,7 +333,7 @@ export function Navbar({
                     onClick={() => changeLanguage(lang)}
                     className={cn('px-4 py-2 rounded-full transition-colors', i18n.language === lang ? 'bg-olive-500 text-white' : 'text-white/50 hover:text-white')}
                   >
-                    {lang.toUpperCase()}
+                    {lang === 'en' ? 'English' : lang === 'ar' ? 'العربية' : 'Deutsch'}
                   </button>
                 ))}
               </div>

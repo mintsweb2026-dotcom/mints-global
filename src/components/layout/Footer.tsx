@@ -2,7 +2,7 @@
  * Footer — site-wide footer with newsletter, links, contact, and legal nav.
  */
 import { Link } from 'react-router-dom';
-import { Instagram, Linkedin, MapPin, Phone, Mail } from 'lucide-react';
+import { Instagram, Linkedin, MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Logo } from '../Logo';
 import { NewsletterForm } from '../NewsletterForm';
@@ -78,7 +78,7 @@ export function Footer() {
                 { to: '/digital-marketing/photography-graphics', label: 'PHOTOGRAPHY & GRAPHICS' },
                 { to: '/software-development/mobile-apps', label: 'MOBILE APPLICATIONS' },
                 { to: '/software-development/erp-solutions', label: 'ERP SOLUTIONS' },
-                { to: 'https://erp.mintsglobal.ae/', label: 'MINTS ERP PLATFORM ↗' },
+                { to: 'https://erp.mintsglobal.ae/', label: 'MINTS ERP PLATFORM' },
                 { to: '/software-development/ecommerce', label: 'E-COMMERCE' },
                 { to: '/cyber-security/incident-response', label: 'INCIDENT RESPONSE' },
                 { to: '/cyber-security/compliance-grc', label: 'COMPLIANCE & GRC' },
@@ -86,7 +86,15 @@ export function Footer() {
               ].map(item => (
                 <li key={item.to}>
                   {item.to.startsWith('http') ? (
-                    <a href={item.to} target="_blank" rel="noopener noreferrer" className="hover:text-olive-400 text-olive-500 font-semibold transition-colors">{item.label}</a>
+                    <a 
+                      href={item.to} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="group inline-flex items-center gap-1.5 hover:text-olive-400 text-olive-400 font-semibold transition-colors"
+                    >
+                      <span>{item.label}</span>
+                      <ArrowUpRight size={13} className="stroke-[2.5] text-olive-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </a>
                   ) : (
                     <Link to={item.to} className="hover:text-white transition-colors">{item.label}</Link>
                   )}

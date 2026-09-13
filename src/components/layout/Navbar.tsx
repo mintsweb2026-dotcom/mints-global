@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'motion/react';
 import {
-  Menu, X, Leaf, Code2, ShieldAlert, ChevronDown, Globe, ExternalLink,
+  Menu, X, Leaf, Code2, ShieldAlert, ChevronDown, Globe, ExternalLink, ArrowUpRight,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '../../lib/utils';
@@ -55,10 +55,15 @@ function MobileAccordion({
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeMenu}
-                    className="hover:text-olive-500 transition-colors focus-visible:ring-2 focus-visible:ring-olive-500 rounded flex items-center justify-between text-olive-400 font-medium"
+                    className="group/item flex items-center justify-between py-1 focus-visible:ring-2 focus-visible:ring-olive-500 rounded text-brand-white hover:text-olive-400 transition-colors"
                   >
-                    <span>{link.label}</span>
-                    <span className="text-[10px] bg-olive-500/20 text-olive-400 px-1.5 py-0.5 rounded border border-olive-500/30">Live ↗</span>
+                    <span className="font-semibold text-white group-hover/item:text-olive-400 transition-colors">
+                      {link.label}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-olive-400 bg-olive-500/15 border border-olive-500/30 px-2.5 py-0.5 rounded-full group-hover/item:bg-olive-500 group-hover/item:text-white transition-all shadow-sm">
+                      <span>Live</span>
+                      <ArrowUpRight size={13} className="stroke-[2.5] text-olive-400 group-hover/item:text-white group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 transition-transform" />
+                    </span>
                   </a>
                 ) : (
                   <Link

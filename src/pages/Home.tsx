@@ -300,6 +300,9 @@ export function Home() {
         twitterDescription={lang === 'en' ? "Dubai's best digital marketing agency. ROI-driven marketing, software & cybersecurity for global brands. Book your free consultation now!" : undefined}
         twitterImage={lang === 'en' ? "https://www.mintsglobal.ae/images/twitter-mintsglobal-1200x628.jpg" : undefined}
       />
+      <JsonLd data={organizationSchema} />
+      <JsonLd data={localBusinessSchema} />
+      <JsonLd data={professionalServiceSchema} />
       
       {/* Hero Section */}
       <section ref={heroRef} className="relative w-full min-h-[100vh] lg:min-h-[90vh] -mt-[116px] overflow-hidden flex items-center justify-center pt-28 pb-16 sm:py-28 lg:py-32">

@@ -3,19 +3,19 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Premium Digital Services Dubai | Mints Global",
-  description: "Explore our premium digital services including SEO, software development, cybersecurity, and performance marketing in Dubai.",
+  title: "Our Services | Digital Marketing, Software & Cyber Security — Mints Global",
+  description: "Discover Mints Global’s core service pillars: ROI-driven digital marketing, custom enterprise software development, and military-grade cyber security in Dubai.",
   alternates: {
-    canonical: "https://www.mintsglobal.ae/services/",
+    canonical: "https://www.mintsglobal.ae/services",
   },
   openGraph: {
-    title: "Premium Digital Services Dubai | Mints Global",
-    description: "Explore our premium digital services including SEO, software development, cybersecurity, and performance marketing in Dubai.",
-    url: "https://www.mintsglobal.ae/services/",
+    title: "Our Services | Digital Marketing, Software & Cyber Security — Mints Global",
+    description: "Discover Mints Global’s core service pillars: ROI-driven digital marketing, custom enterprise software development, and military-grade cyber security in Dubai.",
+    url: "https://www.mintsglobal.ae/services",
   },
   twitter: {
-    title: "Premium Digital Services Dubai | Mints Global",
-    description: "Explore our premium digital services including SEO, software development, cybersecurity, and performance marketing in Dubai.",
+    title: "Our Services | Digital Marketing, Software & Cyber Security — Mints Global",
+    description: "Discover Mints Global’s core service pillars: ROI-driven digital marketing, custom enterprise software development, and military-grade cyber security in Dubai.",
   }
 };
 

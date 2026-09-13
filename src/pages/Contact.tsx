@@ -14,46 +14,70 @@ const contactPageSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      "@id": "https://www.mintsglobal.ae/#organization",
-      "name": "Mints Global",
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": "https://www.mintsglobal.ae/#localbusiness",
+      "name": "Mints Global Dubai",
       "url": "https://www.mintsglobal.ae",
-      "logo": "https://www.mintsglobal.ae/images/logo.png",
-      "description": "Results-first digital marketing agency in Dubai offering SEO, performance marketing, social media marketing, brand strategy, video production, and photography & graphics.",
+      "logo": "https://www.mintsglobal.ae/logo-07.webp",
+      "image": "https://www.mintsglobal.ae/images/hero-digital-agency-dubai.webp",
+      "description": "Dubai's leading digital marketing agency, enterprise software development firm, and cybersecurity consultancy.",
+      "telephone": "+971502943916",
+      "email": "info@mintsglobal.ae",
+      "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": " Office #315, 3rd Floor, Bank Street Building ",
-        "addressLocality": " Bur Dubai ",
+        "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
+        "addressLocality": "Bur Dubai",
+        "addressRegion": "Dubai",
         "addressCountry": "AE"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 25.2631,
+        "longitude": 55.3006
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
       "contactPoint": [
         {
           "@type": "ContactPoint",
-          "telephone": "[+971502943916]",
+          "telephone": "+971502943916",
           "contactType": "customer service",
           "areaServed": "AE",
           "availableLanguage": ["en", "ar"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+447899727950",
+          "contactType": "customer service",
+          "areaServed": "GB",
+          "availableLanguage": ["en"]
         }
       ],
-      "email": "[info@mintsglobal.ae]",
       "sameAs": [
-        "https://www.instagram.com/[handle]",
-        "https://www.linkedin.com/company/[handle]",
-        "https://www.facebook.com/[handle]"
+        "https://www.instagram.com/mints.global/",
+        "https://www.linkedin.com/company/mints-dubai",
+        "https://www.facebook.com/mintsglobal"
       ]
     },
     {
       "@type": "ContactPage",
       "@id": "https://www.mintsglobal.ae/contact#webpage",
       "url": "https://www.mintsglobal.ae/contact",
-      "name": "Contact Mints Global",
+      "name": "Contact Mints Global | Digital Marketing Agency Dubai",
       "isPartOf": {
         "@id": "https://www.mintsglobal.ae/#website"
       },
       "about": {
-        "@id": "https://www.mintsglobal.ae/#organization"
+        "@id": "https://www.mintsglobal.ae/#localbusiness"
       },
-      "description": "Get in touch with Mints Global, Dubai’s results-driven digital agency."
+      "description": "Get in touch with Mints Global, Dubai’s results-driven digital agency. Discuss SEO, performance marketing, software engineering, and cybersecurity."
     },
     {
       "@type": "BreadcrumbList",
@@ -166,9 +190,9 @@ export function Contact() {
         twitterTitle="Contact Mints Global | Digital Marketing Agency Dubai"
         twitterDescription="Get in touch with Mints Global, Dubai’s results-driven digital agency. Discuss SEO, performance marketing, branding & creative projects today."
         twitterImage="https://www.mintsglobal.ae/images/og/contact-mints-global.jpg"
-        twitterSite="@[MintsGlobalHandle]"
         geoTarget={true}
       />
+      <JsonLd data={contactPageSchema} />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-16">
         
         {/* Left Info */}

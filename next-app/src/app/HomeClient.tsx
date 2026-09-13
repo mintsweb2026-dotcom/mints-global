@@ -2,7 +2,7 @@
 import '../i18n';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import CountUp from 'react-countup';
+import { SafeCountUp as CountUp } from '../components/SafeCountUp';
 import { ArrowRight, ShieldCheck, Zap, LineChart, Globe2, Rocket, Headphones, ChevronLeft, ChevronRight, Calendar, User } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';

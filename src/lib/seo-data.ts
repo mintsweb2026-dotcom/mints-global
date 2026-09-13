@@ -35,9 +35,21 @@ export const SEO_DATA = {
     de: { title: 'Kontakt | Starten Sie Ihr digitales Projekt | Mints Global', description: 'Nehmen Sie Kontakt mit Mints Global auf. Wir beraten Sie zu Digital Marketing, Softwareentwicklung und Cybersicherheit. info@mintsglobal.ae' },
   },
   services: {
-    en: { title: 'Digital Services | Marketing, Software, Security | Mints Global', description: 'Explore our elite agency services. We deliver ROI-driven digital marketing, robust enterprise software, and military-grade cyber security solutions.' },
-    ar: { title: 'الخدمات الرقمية | التسويق والبرمجيات والأمن | مينتس جلوبال', description: 'اكتشف خدمات وكالتنا الرقمية المتميزة. نقدم حلول التسويق الرقمي وتطوير البرمجيات والأمن السيبراني.' },
-    de: { title: 'Digitale Dienstleistungen | Marketing, Software, Security | Mints Global', description: 'Entdecken Sie unsere digitalen Dienstleistungen. Wir bieten Digital Marketing, Softwareentwicklung und Cybersicherheit.' },
+    en: { 
+      title: 'Our Services | Digital Marketing, Software & Cyber Security — Mints Global', 
+      description: 'Discover Mints Global’s core service pillars: ROI-driven digital marketing, custom enterprise software development, and military-grade cyber security in Dubai.',
+      canonicalUrl: 'https://www.mintsglobal.ae/services'
+    },
+    ar: { 
+      title: 'خدماتنا | التسويق الرقمي وتطوير البرمجيات والأمن السيبراني — مينتس جلوبال', 
+      description: 'اكتشف ركائز خدمات مينتس جلوبال: حلول التسويق الرقمي الموجهة نحو العائد، تطوير برمجيات المؤسسات المخصصة، والأمن السيبراني المتقدم في دبي.',
+      canonicalUrl: 'https://www.mintsglobal.ae/ar/services'
+    },
+    de: { 
+      title: 'Unsere Leistungen | Digital Marketing, Software & Cybersicherheit — Mints Global', 
+      description: 'Entdecken Sie die Kernbereiche von Mints Global: ROI-getriebenes Digital Marketing, maßgeschneiderte Enterprise-Softwareentwicklung und Cybersicherheit in Dubai.',
+      canonicalUrl: 'https://www.mintsglobal.ae/de/services'
+    },
   },
   portfolio: {
     en: { title: 'Our Work | Case Studies | Mints Global', description: 'Explore our selected portfolio of digital marketing campaigns, secure platforms, and software solutions.' },

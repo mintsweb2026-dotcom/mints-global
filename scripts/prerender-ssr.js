@@ -126,11 +126,20 @@ async function runPrerender() {
       if (route === '/') {
         fs.writeFileSync(templatePath, pageHtml, 'utf8');
       } else {
-        const routeDir = path.join(distClientPath, route.slice(1));
+        const cleanRoute = route.startsWith('/') ? route.slice(1) : route;
+        const routeDir = path.join(distClientPath, cleanRoute);
         if (!fs.existsSync(routeDir)) {
           fs.mkdirSync(routeDir, { recursive: true });
         }
         fs.writeFileSync(path.join(routeDir, 'index.html'), pageHtml, 'utf8');
+
+        // Also emit flat .html file for cleanUrls support without trailing slash
+        const flatHtmlPath = path.join(distClientPath, `${cleanRoute}.html`);
+        const flatDir = path.dirname(flatHtmlPath);
+        if (!fs.existsSync(flatDir)) {
+          fs.mkdirSync(flatDir, { recursive: true });
+        }
+        fs.writeFileSync(flatHtmlPath, pageHtml, 'utf8');
       }
 
       renderedCount++;

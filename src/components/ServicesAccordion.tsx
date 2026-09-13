@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 
 interface AccordionItem {
@@ -52,23 +51,20 @@ export function ServicesAccordion({ items }: ServicesAccordionProps) {
                 <ChevronDown size={20} />
               </div>
             </button>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  id={contentId}
-                  role="region"
-                  aria-labelledby={buttonId}
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="px-6 pb-6 pt-0 text-brand-white-70 leading-relaxed md:text-lg">
-                    {item.content}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div
+              id={contentId}
+              role="region"
+              aria-labelledby={buttonId}
+              className={`grid transition-all duration-300 ease-in-out ${
+                isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="px-6 pb-6 pt-0 text-brand-white-70 leading-relaxed md:text-lg">
+                  {item.content}
+                </div>
+              </div>
+            </div>
           </div>
         );
       })}

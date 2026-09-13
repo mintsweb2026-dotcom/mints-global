@@ -3,7 +3,7 @@ import { ArrowRight, Search, ArrowLeft, Clock, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
-import { getPosts, BlogPost } from '../data/posts';
+import { getPosts, STATIC_POSTS, BlogPost } from '../data/posts';
 import { SEO } from '../components/SEO';
 import { JsonLd } from '../components/JsonLd';
 import { SEO_DATA } from '../lib/seo-data';
@@ -20,9 +20,21 @@ const blogListingSchema = {
     url: 'https://www.mintsglobal.ae',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.mintsglobal.ae/logo.png',
+      url: 'https://www.mintsglobal.ae/logo-07.webp',
     },
   },
+  blogPost: STATIC_POSTS.map(post => ({
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    url: `https://www.mintsglobal.ae/blog/${post.slug}`,
+    image: post.image,
+    author: {
+      '@type': 'Organization',
+      name: 'MINTS Global Editorial Team',
+    },
+  })),
   inLanguage: 'en',
 };
 
@@ -141,14 +153,16 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
   );
 }
 
+const initialTags = Array.from(new Set(STATIC_POSTS.flatMap(p => p.tags || []))).sort();
+
 // ── Main Blog page ─────────────────────────────────────────────────────────────
 export function Blog() {
   const [query, setQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [availableTags, setAvailableTags] = useState<string[]>([]);
-  const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
-  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [availableTags, setAvailableTags] = useState<string[]>(initialTags);
+  const [allPosts, setAllPosts] = useState<BlogPost[]>(STATIC_POSTS);
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(STATIC_POSTS);
+  const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
   const { i18n } = useTranslation();
@@ -157,9 +171,8 @@ export function Blog() {
 
   useEffect(() => {
     let isActive = true;
-    setIsLoading(true);
     getPosts().then((data) => {
-      if (isActive) {
+      if (isActive && data && data.length > 0) {
         const tagsSet = new Set<string>();
         data.forEach(p => p.tags?.forEach(t => tagsSet.add(t)));
         setAvailableTags(Array.from(tagsSet).sort());

@@ -185,7 +185,7 @@ export function BlogPost() {
   }
 
   const parsedAuthor = post.author ? post.author.split('|')[0].trim() : "Mints Global";
-  const canonicalUrl = `https://mintsglobal.ae/blog/${post.slug}`;
+  const canonicalUrl = `https://www.mintsglobal.ae/blog/${post.slug}`;
 
   const schemaData = {
     "@context": "https://schema.org",
@@ -201,7 +201,7 @@ export function BlogPost() {
       "name": "MINTS Global",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.mintsglobal.ae/logo.png"
+        "url": "https://www.mintsglobal.ae/logo-07.webp"
       }
     },
     "datePublished": isoDate,

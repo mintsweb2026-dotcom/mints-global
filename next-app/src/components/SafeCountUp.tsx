@@ -1,3 +1,4 @@
+"use client";
 import CountUpRaw from 'react-countup';
 import type { ComponentProps } from 'react';
 import { useState, useEffect } from 'react';

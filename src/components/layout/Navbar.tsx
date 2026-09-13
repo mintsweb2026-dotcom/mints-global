@@ -117,7 +117,7 @@ export function Navbar({
                     : 'text-brand-white',
                 )}
               >
-                {t('nav.services')} <ChevronDown size={14} />
+                {t('nav.services', 'Services')} <ChevronDown size={14} />
               </NavLink>
 
               {/* Mega Menu */}
@@ -209,9 +209,9 @@ export function Navbar({
               </div>
             </div>
 
-            <NavLink to="/work" className={({ isActive }) => cn('hover:text-olive-500 transition-colors py-6 relative text-lg font-black', isActive ? "text-olive-500 after:content-[''] after:absolute after:bottom-[18px] after:left-0 after:right-0 after:h-[2px] after:bg-olive-500 after:rounded-full" : 'text-brand-white')}>{t('nav.work')}</NavLink>
-            <NavLink to="/about" className={({ isActive }) => cn('hover:text-olive-500 transition-colors py-6 relative text-lg font-black', isActive ? "text-olive-500 after:content-[''] after:absolute after:bottom-[18px] after:left-0 after:right-0 after:h-[2px] after:bg-olive-500 after:rounded-full" : 'text-brand-white')}>{t('nav.about')}</NavLink>
-            <NavLink to="/blog" className={({ isActive }) => cn('hover:text-olive-500 transition-colors py-6 relative text-lg font-black', isActive ? "text-olive-500 after:content-[''] after:absolute after:bottom-[18px] after:left-0 after:right-0 after:h-[2px] after:bg-olive-500 after:rounded-full" : 'text-brand-white')}>{t('nav.blog')}</NavLink>
+            <NavLink to="/work" className={({ isActive }) => cn('hover:text-olive-500 transition-colors py-6 relative text-lg font-black', isActive ? "text-olive-500 after:content-[''] after:absolute after:bottom-[18px] after:left-0 after:right-0 after:h-[2px] after:bg-olive-500 after:rounded-full" : 'text-brand-white')}>{t('nav.work', 'Work')}</NavLink>
+            <NavLink to="/about" className={({ isActive }) => cn('hover:text-olive-500 transition-colors py-6 relative text-lg font-black', isActive ? "text-olive-500 after:content-[''] after:absolute after:bottom-[18px] after:left-0 after:right-0 after:h-[2px] after:bg-olive-500 after:rounded-full" : 'text-brand-white')}>{t('nav.about', 'About')}</NavLink>
+            <NavLink to="/blog" className={({ isActive }) => cn('hover:text-olive-500 transition-colors py-6 relative text-lg font-black', isActive ? "text-olive-500 after:content-[''] after:absolute after:bottom-[18px] after:left-0 after:right-0 after:h-[2px] after:bg-olive-500 after:rounded-full" : 'text-brand-white')}>{t('nav.blog', 'Blog')}</NavLink>
           </nav>
 
           <div className="flex items-center gap-4 md:gap-6 z-50">
@@ -219,7 +219,7 @@ export function Navbar({
             <div className="hidden md:block relative group/lang cursor-pointer z-50">
               <div className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors rounded-full px-4 py-2 text-xs font-bold font-body">
                 <Globe size={16} />
-                <span className="uppercase">{i18n.language || 'EN'}</span>
+                <span className="font-semibold">{i18n.language === 'ar' ? 'العربية' : i18n.language === 'de' ? 'Deutsch' : 'English'}</span>
                 <ChevronDown size={14} className="opacity-50" />
               </div>
               <div className="absolute top-[100%] right-0 pt-2 opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all duration-300">
@@ -245,7 +245,7 @@ export function Navbar({
               to="/contact"
               className="bg-brand-white text-olive-950 px-5 py-2 md:px-7 md:py-2.5 rounded-full text-[10px] md:text-xs uppercase tracking-widest font-display font-black hover:bg-olive-500 hover:text-white transition-all transform hover:scale-105 inline-block text-center whitespace-nowrap"
             >
-              {t('nav.cta')}
+              {t('nav.cta', "Let's Talk →")}
             </Link>
 
             {/* Mobile menu button */}
@@ -272,7 +272,7 @@ export function Navbar({
             className="fixed inset-0 z-40 bg-olive-950/95 flex justify-center items-center backdrop-blur-3xl px-6"
           >
             <nav aria-label="Mobile Navigation" className="flex flex-col gap-6 text-center text-2xl font-display font-bold max-h-[80vh] overflow-y-auto w-full pb-20">
-              <Link to="/services" onClick={() => setMobileMenuOpen(false)} className="hover:text-olive-500 uppercase">{t('nav.services')}</Link>
+              <Link to="/services" onClick={() => setMobileMenuOpen(false)} className="hover:text-olive-500 uppercase">{t('nav.services', 'Services')}</Link>
               <div className="flex flex-col gap-3 mt-2 mb-4 border-l border-white/20 pl-4 text-left w-3/4 mx-auto text-[1rem] font-body font-semibold">
                 <MobileAccordion
                   id="digital-marketing"
@@ -321,10 +321,10 @@ export function Navbar({
                 />
               </div>
 
-              <Link to="/work" onClick={() => setMobileMenuOpen(false)} className="hover:text-olive-500 uppercase">{t('nav.work')}</Link>
-              <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="hover:text-olive-500 uppercase">{t('nav.about')}</Link>
-              <Link to="/blog" onClick={() => setMobileMenuOpen(false)} className="hover:text-olive-500 uppercase">{t('nav.blog')}</Link>
-              <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-olive-500 uppercase">{t('nav.contact')}</Link>
+              <Link to="/work" onClick={() => setMobileMenuOpen(false)} className="hover:text-olive-500 uppercase">{t('nav.work', 'Work')}</Link>
+              <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="hover:text-olive-500 uppercase">{t('nav.about', 'About')}</Link>
+              <Link to="/blog" onClick={() => setMobileMenuOpen(false)} className="hover:text-olive-500 uppercase">{t('nav.blog', 'Blog')}</Link>
+              <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-olive-500 uppercase">{t('nav.contact', 'Contact')}</Link>
 
               <div className="mt-8 flex justify-center gap-2 bg-white/10 rounded-full p-1 text-sm font-body w-fit mx-auto" dir="ltr">
                 {['en', 'ar', 'de'].map(lang => (

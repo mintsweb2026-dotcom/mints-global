@@ -189,12 +189,15 @@ export function BlogPost() {
 
   const schemaData = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": ["Article", "BlogPosting"],
     "headline": post.seoTitle || post.title,
-    "image": post.image || "",
+    "description": post.seoDescription || post.excerpt || `${post.title} — Insights from MINTS Global.`,
+    "articleBody": post.content ? post.content.replace(/[#*`_\[\]]/g, '').slice(0, 1000) : undefined,
+    "image": post.image ? [post.image] : [],
     "author": {
       "@type": "Organization",
-      "name": "MINTS Global"
+      "name": "MINTS Global",
+      "url": "https://www.mintsglobal.ae"
     },
     "publisher": {
       "@type": "Organization",

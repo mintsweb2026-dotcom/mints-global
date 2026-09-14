@@ -44,6 +44,7 @@ export function DigitalMarketingEurope() {
         twitterImage="https://www.mintsglobal.ae/images/digital-marketing-hero.jpg"
         twitterSite="@MintsBrandsDXB"
       />
+      <JsonLd data={buildFaqSchema(faqs)} />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
         

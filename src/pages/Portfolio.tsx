@@ -266,77 +266,75 @@ export function Work() {
                  </button>
                </motion.div>
              ) : filteredProjects.map((proj, idx) => (
-               <motion.div 
-                 layout
-                 initial={{ opacity: 0, scale: 0.9 }}
-                 animate={{ opacity: 1, scale: 1 }}
-                 exit={{ opacity: 0, scale: 0.9 }}
-                 transition={{ duration: 0.3 }}
-                 key={proj._id} 
-                 id={proj._id}
-                 className={`group relative ${idx % 3 === 1 ? 'lg:mt-16' : ''} ${idx % 3 === 2 ? 'lg:mt-32' : ''}`}
-               >
+                <motion.div 
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  key={proj._id} 
+                  id={proj._id}
+                  className={`group relative flex flex-col h-full ${idx % 3 === 1 ? 'lg:mt-16' : ''} ${idx % 3 === 2 ? 'lg:mt-32' : ''}`}
+                >
                   <Link 
                     to={`/work/${proj._id}`} 
-                    className="block w-full overflow-hidden rounded-[2rem] aspect-[4/3] bg-olive-900 border border-white/5 mb-6 shadow-lg relative text-left outline-none focus-visible:ring-2 focus-visible:ring-olive-500"
-                    aria-label={`View ${proj.title} case study`}
+                    className="group/card block w-full outline-none focus-visible:ring-2 focus-visible:ring-olive-500 rounded-[2rem] text-left cursor-pointer"
+                    aria-label={`Read ${proj.title} case study - ${proj.category.name}`}
                   >
-                    <img 
-                      src={getOptimizedUrl(proj.titleImage, 800)} 
-                      srcSet={getSrcSet(proj.titleImage, [400, 800, 1200])}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      alt={`${proj.title} - ${proj.category.name} Portfolio Project by Mints Global`} 
-                      loading="lazy" 
-                      decoding="async"
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" 
-                    />
+                    <div className="w-full overflow-hidden rounded-[2rem] aspect-[4/3] bg-olive-900 border border-white/5 mb-6 shadow-lg relative">
+                      <img 
+                        src={getOptimizedUrl(proj.titleImage, 800)} 
+                        srcSet={getSrcSet(proj.titleImage, [400, 800, 1200])}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        alt={`${proj.title} - ${proj.category.name} Portfolio Project by Mints Global`} 
+                        loading="lazy" 
+                        decoding="async"
+                        className="w-full h-full object-cover grayscale group-hover/card:grayscale-0 group-hover/card:scale-105 group-hover/card:opacity-90 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+                      />
+                      
+                      <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-olive-500 flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-all duration-500 scale-50 group-hover/card:scale-100 backdrop-blur-md shadow-lg">
+                        <ArrowUpRight size={24} />
+                      </div>
+                    </div>
                     
-                    <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-olive-500 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100 backdrop-blur-md">
-                       <ArrowUpRight size={24} />
+                    <div className="flex flex-col items-start px-2">
+                      <span className="text-olive-500 text-xs font-bold uppercase tracking-widest mb-3 border border-olive-500/30 px-3 py-1 rounded-full group-hover/card:border-olive-500 transition-colors">
+                        {proj.category.name}
+                      </span>
+                      <h2 className="font-display font-black text-[clamp(1.25rem,4vw,1.875rem)] text-white group-hover/card:text-olive-500 transition-colors uppercase tracking-tight mb-4 break-words hyphens-auto">
+                        {proj.title}
+                      </h2>
+                      {(proj.duration || proj.kpi) && (
+                        <div className="flex flex-wrap items-center gap-3 mb-4 w-full text-xs font-medium uppercase tracking-wider text-white">
+                          {proj.duration && <span className="bg-white/5 px-2 py-1 rounded-md border border-white/10">⏱ {proj.duration}</span>}
+                          {proj.kpi && <span className="text-olive-400 bg-olive-500/10 px-2 py-1 rounded-md border border-olive-500/20">🚀 {proj.kpi}</span>}
+                        </div>
+                      )}
+                      <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-olive-500 group-hover/card:text-white transition-colors mb-2">
+                        View Case Study <ArrowRight size={14} className="group-hover/card:translate-x-1 transition-transform" />
+                      </div>
                     </div>
                   </Link>
-                  
-                  <div className="flex flex-col items-start px-2">
-                    <span className="text-olive-500 text-xs font-bold uppercase tracking-widest mb-3 border border-olive-500/30 px-3 py-1 rounded-full">{proj.category.name}</span>
-                    <Link 
-                      to={`/work/${proj._id}`} 
-                      className="text-left outline-none focus-visible:ring-2 focus-visible:ring-olive-500 rounded group/link"
-                      aria-label={`Read case study for ${proj.title}`}
-                    >
-                      <h2 className="font-display font-black text-[clamp(1.25rem,4vw,1.875rem)] group-hover/link:text-olive-500 transition-colors uppercase tracking-tight text-white mb-4 break-words hyphens-auto">{proj.title}</h2>
-                    </Link>
-                    {(proj.duration || proj.kpi) && (
-                      <div className="flex flex-wrap items-center gap-3 mb-4 w-full text-xs font-medium uppercase tracking-wider text-white">
-                        {proj.duration && <span className="bg-white/5 px-2 py-1 rounded-md border border-white/10">⏱ {proj.duration}</span>}
-                        {proj.kpi && <span className="text-olive-400 bg-olive-500/10 px-2 py-1 rounded-md border border-olive-500/20">🚀 {proj.kpi}</span>}
-                      </div>
-                    )}
-                    <Link 
-                      to={`/work/${proj._id}`}
-                      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-olive-500 hover:text-white transition-colors mb-2"
-                    >
-                      View Case Study <ArrowRight size={14} />
-                    </Link>
-                  </div>
 
                   {proj.mediaUrls && proj.mediaUrls.length > 0 && (
                     <div className="grid grid-cols-3 gap-2 mt-2 px-2">
-                      {proj.mediaUrls.slice(0, 3).map((url, idx) => (
+                      {proj.mediaUrls.slice(0, 3).map((url, mediaIdx) => (
                         <button 
-                          key={idx} 
+                          key={mediaIdx} 
                           type="button"
                           onClick={(e) => {
                             e.preventDefault();
+                            e.stopPropagation();
                             setSelectedProject(proj);
                           }}
                           className="rounded-xl overflow-hidden aspect-square bg-olive-900 border border-white/5 cursor-pointer hover:border-olive-500/50 transition-colors"
-                          aria-label={`Preview media ${idx + 1} for ${proj.title}`}
+                          aria-label={`Preview media ${mediaIdx + 1} for ${proj.title}`}
                         >
                           <img 
                             src={getOptimizedUrl(url, 400)} 
                             srcSet={getSrcSet(url, [200, 400, 600])}
                             sizes="(max-width: 640px) 33vw, 10vw"
-                            alt={`${proj.title} interface screenshot ${idx + 1}`} 
+                            alt={`${proj.title} interface screenshot ${mediaIdx + 1}`} 
                             loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" 
@@ -345,7 +343,7 @@ export function Work() {
                       ))}
                     </div>
                   )}
-               </motion.div>
+                </motion.div>
              ))}
            </AnimatePresence>
         </motion.div>

@@ -2,25 +2,31 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, CheckCircle2, TrendingUp, Calendar, Building2, Layers } from 'lucide-react';
 import { useWorks } from '../hooks/useWorks';
+import { projects as staticProjects } from '../data/projects';
 import { SEO } from '../components/SEO';
 import { JsonLd } from '../components/JsonLd';
 import { getOptimizedUrl, getSrcSet } from './Portfolio';
 
 export function ProjectDetail() {
   const { id } = useParams();
-  const { works: projects, loading } = useWorks();
+  const { works: dynamicWorks, loading } = useWorks();
   
-  if (loading) {
-    return <div className="w-full min-h-[60vh] flex items-center justify-center pt-32 text-olive-500 font-bold tracking-widest uppercase">Loading Case Study...</div>;
-  }
-
-  const project = projects.find(p => 
+  // Resolve synchronously against dynamic works + static fallback for instant SSR & SEO indexing
+  const allProjects = dynamicWorks.length > 0 ? dynamicWorks : staticProjects;
+  const project = allProjects.find(p => 
+    p._id === id || 
+    p.title.toLowerCase().replace(/\s+/g, '-') === id?.toLowerCase() ||
+    p.title.toLowerCase() === id?.toLowerCase()
+  ) || staticProjects.find(p => 
     p._id === id || 
     p.title.toLowerCase().replace(/\s+/g, '-') === id?.toLowerCase() ||
     p.title.toLowerCase() === id?.toLowerCase()
   );
 
   if (!project) {
+    if (loading) {
+      return <div className="w-full min-h-[60vh] flex items-center justify-center pt-32 text-olive-500 font-bold tracking-widest uppercase">Loading Case Study...</div>;
+    }
     return (
       <div className="w-full flex flex-col items-center justify-center min-h-[60vh] pt-32">
         <h2 className="text-4xl font-black text-white mb-6 uppercase">Project Not Found</h2>
@@ -256,7 +262,7 @@ export function ProjectDetail() {
         <h2 className="font-display text-4xl font-black mb-12 uppercase text-white">Related <span className="text-olive-500">Projects</span></h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {(() => {
-            const otherProjects = projects.filter(p => p._id !== project._id);
+            const otherProjects = allProjects.filter(p => p._id !== project._id);
             const sameCategory = otherProjects.filter(p => p.category._id === project.category._id);
             
             sameCategory.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());

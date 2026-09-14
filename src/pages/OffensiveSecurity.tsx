@@ -49,6 +49,8 @@ export function OffensiveSecurity() {
         twitterImage="https://www.mintsglobal.ae/images/offensive-security-twitter.jpg"
         rawTitle={true}
       />
+      <JsonLd data={buildFaqSchema(faqs)} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero Section */}
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
         

@@ -4,7 +4,7 @@ interface SafeImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   fallbackSrc: string;
 }
 
-const SIZES = [400, 800, 1200, 1920, 2560];
+const SIZES = [400, 800, 1200, 1920, 2560, 3840];
 
 function generateSrcSet(src: string | undefined): string | undefined {
   if (!src) return undefined;

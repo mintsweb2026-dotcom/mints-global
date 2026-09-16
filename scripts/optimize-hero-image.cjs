@@ -2,7 +2,7 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
 
-const srcPath = 'C:/Users/anand/.gemini/antigravity-ide/brain/e02036d4-56da-4679-a3d3-7f1f02107b28/.user_uploaded/media_1789307663485.jpg';
+const srcPath = 'C:/Users/anand/.gemini/antigravity-ide/brain/0ea5546f-1a20-4dfc-9640-567891030d7b/.user_uploaded/media_1789563343173.jpg';
 const publicImagesDir = path.resolve(__dirname, '../public/images');
 const publicDir = path.resolve(__dirname, '../public');
 
@@ -13,22 +13,22 @@ async function convert() {
   // Backup original
   fs.copyFileSync(srcPath, path.join(publicImagesDir, 'hero-astronaut-original.jpg'));
 
-  // Main webp (1024 or full original)
+  // Main webp (original resolution)
   const mainTarget = path.join(publicImagesDir, 'hero-digital-agency-dubai.webp');
   await sharp(srcPath)
-    .webp({ quality: 80, effort: 6 })
+    .webp({ quality: 88, effort: 6 })
     .toFile(mainTarget);
 
-  // Fallback hero.webp
+  // Fallback hero.webp in public
   fs.copyFileSync(mainTarget, path.join(publicDir, 'hero.webp'));
 
-  // Responsive sizes: 400, 800, 1200, 1920
+  // Responsive sizes: 400, 800, 1200, 1920, 2560
   const sizes = [400, 800, 1200, 1920];
   for (const size of sizes) {
     const targetFile = path.join(publicImagesDir, `hero-digital-agency-dubai-${size}w.webp`);
     await sharp(srcPath)
-      .resize({ width: size, withoutEnlargement: false })
-      .webp({ quality: 80, effort: 6 })
+      .resize({ width: size, withoutEnlargement: false, kernel: sharp.kernel.lanczos3 })
+      .webp({ quality: 88, effort: 6 })
       .toFile(targetFile);
 
     const stat = fs.statSync(targetFile);
@@ -38,6 +38,13 @@ async function convert() {
       fs.copyFileSync(targetFile, path.join(publicDir, `hero-${size}w.webp`));
     }
   }
+
+  // Also create hero-enhanced-2k.webp for high-res displays
+  const enhancedTarget = path.join(publicImagesDir, 'hero-enhanced-2k.webp');
+  await sharp(srcPath)
+    .resize({ width: 2560, withoutEnlargement: false, kernel: sharp.kernel.lanczos3 })
+    .webp({ quality: 90, effort: 6 })
+    .toFile(enhancedTarget);
 
   const mainStat = fs.statSync(mainTarget);
   console.log(`Created main webp: ${(mainStat.size / 1024).toFixed(1)} KB`);

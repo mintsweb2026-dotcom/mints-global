@@ -305,20 +305,20 @@ export function Home() {
       <JsonLd data={professionalServiceSchema} />
       
       {/* Hero Section */}
-      <section ref={heroRef} className="relative w-full min-h-[100vh] lg:min-h-[90vh] -mt-[116px] overflow-hidden flex items-center justify-center pt-28 pb-16 sm:py-28 lg:py-32">
+      <section ref={heroRef} className="relative w-full min-h-[100vh] lg:min-h-[90vh] -mt-[116px] overflow-hidden flex items-center justify-center pt-28 pb-16 sm:py-28 lg:py-32 bg-[#050a06]">
         {/* Background Parallax Image */}
         <motion.div 
           style={{ y: heroY, opacity: heroOpacity }}
-          className="absolute inset-0 z-0 w-full h-full"
+          className="absolute inset-0 z-0 w-full h-full overflow-hidden"
         >
-          {/* Scroll-driven floating astronaut animation */}
+          {/* Scroll-driven floating astronaut animation - oversized container ensures full-bleed coverage with zero left/right edge seams */}
           <motion.div
             style={{ 
               scale: astronautScale, 
               y: astronautY, 
               rotate: astronautRotate 
             }}
-            className="absolute inset-0 w-full h-full will-change-transform md:translate-x-[6vw] pointer-events-none"
+            className="absolute -inset-x-[25%] inset-y-0 w-[150%] h-full will-change-transform md:translate-x-[10vw] lg:translate-x-[15vw] xl:translate-x-[18vw] pointer-events-none"
           >
             <SafeImage
               src="/images/hero-digital-agency-dubai-1920w.webp"
@@ -330,15 +330,15 @@ export function Home() {
               loading="eager"
               decoding="async"
               fetchPriority="high"
-              className="w-full h-full object-cover object-[58%_10%] sm:object-[72%_10%] lg:object-[80%_10%] pointer-events-none"
+              className="w-full h-full object-cover object-[50%_10%] pointer-events-none"
             />
           </motion.div>
-          {/* Directional gradient overlay: darkens the left for solid typography while letting astronaut pop on the right */}
-          <div className="absolute inset-0 bg-gradient-to-b from-olive-950/45 via-olive-950/35 to-olive-950 lg:bg-gradient-to-r lg:from-olive-950 lg:via-olive-950/70 lg:to-transparent z-10 pointer-events-none w-full lg:w-[65%]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none" />
+          {/* Directional gradient overlay: seamlessly matches the image base color (#050a06) across the full width, eliminating shade seams */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050a06]/70 via-transparent to-[#0d1a0f] lg:bg-gradient-to-r lg:from-[#050a06]/95 lg:via-[#050a06]/50 lg:to-transparent z-10 pointer-events-none w-full" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1a0f] via-transparent to-transparent z-10 pointer-events-none" />
           
           {/* Particle Grid Overlay */}
-          <div className="absolute inset-0 z-10 pointer-events-none opacity-20 bg-[radial-gradient(#4d7a3c_1px,transparent_1px)] [background-size:40px_40px]" />
+          <div className="absolute inset-0 z-10 pointer-events-none opacity-15 bg-[radial-gradient(#4d7a3c_1px,transparent_1px)] [background-size:40px_40px]" />
 
           {/* 3D Perspective Wireframe Mesh / Landscape Floor (Moonbox inspired) */}
           <div className="absolute bottom-0 inset-x-0 h-[40vh] z-10 pointer-events-none overflow-hidden opacity-30">
@@ -368,23 +368,16 @@ export function Home() {
           <div className="absolute inset-0 z-10 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ0cmFuc3BhcmVudCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIvPjwvc3ZnPg==')] pointer-events-none" />
           
           {/* Atmospheric Backlight / Nebula Glow behind astronaut */}
-          <div className="absolute top-[18%] right-[8%] w-[42vw] h-[42vw] bg-radial from-olive-500/30 via-emerald-900/20 to-transparent rounded-full blur-[100px] z-0 pointer-events-none" />
-          <motion.div 
-            animate={{ 
-              x: [0, 60, 0],
-              y: [0, -30, 0],
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute top-1/4 left-1/4 w-[35vw] h-[35vw] bg-olive-500/15 rounded-full blur-[120px] z-0 pointer-events-none" 
-          />
+          <div className="absolute top-[18%] right-[8%] w-[42vw] h-[42vw] bg-radial from-olive-500/20 via-emerald-950/15 to-transparent rounded-full blur-[120px] z-0 pointer-events-none" />
         </motion.div>
 
-        {/* FOREGROUND HERO CONTENT (Monumental typography with solid DIGITAL SOLUTIONS and giant outlined FOR BUSINESS cascading towards the astronaut) */}
+        {/* FOREGROUND HERO CONTENT - Clean, uncrowded layout with crisp left alignment */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full mt-6 sm:mt-10 lg:mt-14">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="max-w-3xl lg:max-w-2xl xl:max-w-[55%]"
           >
             <div className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-xs font-bold tracking-widest text-brand-white uppercase backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-olive-500 animate-pulse"></span>
@@ -392,22 +385,22 @@ export function Home() {
             </div>
             
             <h1 className="sr-only">Best Digital Marketing Agency in Dubai</h1>
-            <div className="font-display font-black tracking-tighter mb-8 sm:mb-10 w-full flex flex-col gap-1 sm:gap-1.5 leading-none overflow-hidden" aria-hidden="true">
+            <div className="font-display font-black tracking-tight mb-8 sm:mb-10 w-full flex flex-col gap-1.5 sm:gap-2.5 leading-none overflow-hidden" aria-hidden="true">
               <div className="self-start max-w-full">
-                <AnimatedChars text={t('hero.line1')} className="text-brand-white text-[clamp(2.8rem,8vw,9.5rem)] leading-[0.88] tracking-tight break-words" delay={0.3} />
+                <AnimatedChars text={t('hero.line1')} className="text-brand-white text-[clamp(2.5rem,5.5vw,5.8rem)] leading-[0.92] tracking-tight break-words" delay={0.3} />
               </div>
-              <div className="self-start ml-0 sm:ml-[clamp(16px,3.5vw,50px)] max-w-full">
-                <AnimatedChars text={t('hero.line2')} className="text-brand-white text-[clamp(2.4rem,7.2vw,8.5rem)] leading-[0.88] tracking-tight break-words" delay={0.5} />
+              <div className="self-start max-w-full">
+                <AnimatedChars text={t('hero.line2')} className="text-brand-white text-[clamp(2.5rem,5.5vw,5.8rem)] leading-[0.92] tracking-tight break-words" delay={0.5} />
               </div>
-              <div className="self-start ml-0 sm:ml-[clamp(24px,6vw,90px)] mt-2 sm:mt-3 max-w-full">
-                <AnimatedChars text={t('hero.line3')} className="text-[clamp(2.4rem,8.2vw,9.8rem)] leading-[0.88] tracking-tight text-transparent [-webkit-text-stroke:1.6px_rgba(255,255,255,0.75)] sm:[-webkit-text-stroke:2.4px_rgba(255,255,255,0.75)] drop-shadow-[0_0_35px_rgba(77,122,60,0.3)] break-words" delay={0.7} />
+              <div className="self-start mt-1 max-w-full">
+                <AnimatedChars text={t('hero.line3')} className="text-[clamp(2.5rem,5.5vw,5.8rem)] leading-[0.92] tracking-tight text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.75)] sm:[-webkit-text-stroke:2px_rgba(255,255,255,0.75)] drop-shadow-[0_0_35px_rgba(77,122,60,0.3)] break-words" delay={0.7} />
               </div>
             </div>
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="mt-4 sm:mt-6 text-brand-white-70 max-w-xl text-base sm:text-lg md:text-xl font-medium leading-relaxed"
+              className="mt-6 sm:mt-8 text-brand-white-70 max-w-lg text-base sm:text-lg md:text-xl font-medium leading-relaxed"
             >
               {t('hero.desc')}
             </motion.p>

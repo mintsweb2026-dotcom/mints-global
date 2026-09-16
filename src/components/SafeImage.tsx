@@ -4,7 +4,7 @@ interface SafeImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   fallbackSrc: string;
 }
 
-const SIZES = [400, 800, 1200, 1920];
+const SIZES = [400, 800, 1200, 1920, 2560];
 
 function generateSrcSet(src: string | undefined): string | undefined {
   if (!src) return undefined;
@@ -18,11 +18,12 @@ function generateSrcSet(src: string | undefined): string | undefined {
     return undefined;
   }
 
-  // Parse out the base url/path without extension
-  const lastDotIndex = src.lastIndexOf('.');
+  // Parse out the base url/path without extension and without existing size suffix
+  const cleanSrc = src.replace(/-\d+w(\.[^.]+)$/, '$1');
+  const lastDotIndex = cleanSrc.lastIndexOf('.');
   if (lastDotIndex === -1) return undefined;
   
-  const basePath = src.substring(0, lastDotIndex);
+  const basePath = cleanSrc.substring(0, lastDotIndex);
   
   return SIZES.map(size => `${basePath}-${size}w.webp ${size}w`).join(', ');
 }

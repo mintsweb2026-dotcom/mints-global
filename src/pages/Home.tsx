@@ -321,7 +321,7 @@ export function Home() {
             className="absolute -inset-x-[25%] inset-y-0 w-[150%] h-full will-change-transform md:translate-x-[10vw] lg:translate-x-[15vw] xl:translate-x-[18vw] pointer-events-none"
           >
             <SafeImage
-              src="/images/hero-digital-agency-dubai-1920w.webp"
+              src="/images/hero-digital-agency-dubai.webp"
               fallbackSrc="/images/hero-digital-agency-dubai.webp"
               alt="Mints Global creative digital agency hero"
               width="1920"
@@ -330,7 +330,7 @@ export function Home() {
               loading="eager"
               decoding="async"
               fetchPriority="high"
-              className="w-full h-full object-cover object-[50%_10%] pointer-events-none"
+              className="w-full h-full object-cover object-[50%_10%] pointer-events-none [image-rendering:high-quality]"
             />
           </motion.div>
           {/* Directional gradient overlay: seamlessly matches the image base color (#050a06) across the full width, eliminating shade seams */}

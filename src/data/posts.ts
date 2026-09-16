@@ -24,8 +24,8 @@ const injectedPost: BlogPost = {
   title: 'AI-Powered VAPT in the UAE: Why Testing Is Getting Smarter, Not Just Faster',
   slug: 'ai-powered-vapt-uae',
   category: 'Cybersecurity',
-  date: new Date().toLocaleDateString(),
-  updatedAtIso: new Date().toISOString(),
+  date: 'Sep 14, 2026',
+  updatedAtIso: '2026-09-14T09:30:00.000Z',
   readTime: '5 min read',
   excerpt: 'AI-powered VAPT for UAE firms: faster detection, fewer false positives, real compliance-ready reports.',
   content: `If you run a business in Dubai or anywhere else in the UAE, you've probably had the "when did we last test our systems" conversation at least once this year. Cyber threats aren't slowing down, and neither are the compliance requirements from the CBUAE, DESC, and the UAE PDPL. What has changed is how vulnerability assessment and penetration testing, or VAPT, actually gets done. AI-powered VAPT is quickly becoming the standard for UAE companies that want real protection instead of a report that sits in a folder until the next audit.
@@ -74,7 +74,7 @@ If it's been a while since your last real security assessment, or if your last o
 
 Ready to see where your systems stand? Get in touch with Mints Global for an AI-powered VAPT assessment built around your business.`,
   author: 'Shyni',
-  image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200',
+  image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1200',
   imageAlt: 'AI-powered VAPT security testing dashboard for UAE businesses',
   seoTitle: 'AI-Powered VAPT Services in the UAE | Mints Global',
   seoDescription: 'AI-powered VAPT for UAE firms: faster detection, fewer false positives, real compliance-ready reports.',
@@ -87,8 +87,8 @@ const injectedPost2: BlogPost = {
   title: 'ISO 27001 Certification in Dubai: Your Complete Guide to Getting Audit-Ready',
   slug: 'iso-27001-certification-in-dubai',
   category: 'Cybersecurity',
-  date: new Date().toLocaleDateString(),
-  updatedAtIso: new Date().toISOString(),
+  date: 'Sep 08, 2026',
+  updatedAtIso: '2026-09-08T11:15:00.000Z',
   readTime: '4 min read',
   excerpt: 'ISO 27001 certification in Dubai. Gap assessment, ISMS build & audit readiness support.',
   content: `ISO 27001 certification in Dubai and the wider UAE typically takes 3–6 months for small to mid-sized organizations and involves a gap assessment, ISMS implementation, an internal audit, and a two-stage external audit carried out by an accredited certification body. Mints Global manages the entire readiness journey — gap assessment, documentation, control implementation, and Stage 1/Stage 2 audit preparation — so your team gets certified without pausing day-to-day operations.
@@ -154,7 +154,7 @@ Certificates are valid for three years, with annual surveillance audits required
 **Can small businesses in Dubai get ISO 27001 certified?**
 Yes — the standard is scalable by design. A small business defines a narrower ISMS scope and typically moves through the process faster and at lower cost than a large, multi-site organization.`,
   author: 'Mints Global',
-  image: '/images/iso-27001-certification-in-dubai.jpg',
+  image: '/images/iso-27001-certification-in-dubai.webp',
   imageAlt: 'ISO 27001 certification consultants in Dubai',
   seoTitle: 'ISO 27001 Certification in Dubai | Mints Global',
   seoDescription: 'ISO 27001 certification in Dubai. Gap assessment, ISMS build & audit readiness support. Free consultation.',
@@ -167,8 +167,8 @@ const injectedPost3: BlogPost = {
   title: 'Bilingual SEO in the UAE: How English & Arabic Search Intent Differ for Maximum ROI',
   slug: 'bilingual-seo-uae-guide',
   category: 'Digital Marketing',
-  date: new Date().toLocaleDateString(),
-  updatedAtIso: new Date().toISOString(),
+  date: 'Aug 29, 2026',
+  updatedAtIso: '2026-08-29T14:20:00.000Z',
   readTime: '6 min read',
   excerpt: 'Bilingual SEO in Dubai & the UAE: keyword intent variances between English and Arabic, hreflang technical architecture, and localized search behavior.',
   content: `Operating in the United Arab Emirates requires recognizing a fundamental digital reality: your target audience searches in two distinct languages with very different commercial intents. More than 85% of the UAE's population comprises expatriates from over 200 countries searching in English, while Emirati citizens and long-standing regional decision-makers frequently search in Modern Standard Arabic or Gulf colloquial terms.
@@ -193,7 +193,7 @@ Google.ae prioritizes entities with verified regional signals. Securing citation
 
 Get in touch with Mints Global today to audit your current search visibility and build a bilingual SEO roadmap that drives tangible revenue.`,
   author: 'Mints Global SEO Team',
-  image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200',
+  image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1200',
   imageAlt: 'Bilingual SEO strategy and organic ranking analytics dashboard in Dubai',
   seoTitle: 'Bilingual SEO in the UAE: English vs Arabic Intent | Mints Global',
   seoDescription: 'Master bilingual SEO in Dubai & the UAE. Understand English vs Arabic search intent, hreflang setup, and local ranking factors.',
@@ -206,8 +206,8 @@ const injectedPost4: BlogPost = {
   title: 'UAE PDPL & NESA Compliance: A Practical Security & Data Privacy Roadmap for 2026',
   slug: 'nesa-pdpl-compliance-uae',
   category: 'Cybersecurity',
-  date: new Date().toLocaleDateString(),
-  updatedAtIso: new Date().toISOString(),
+  date: 'Aug 18, 2026',
+  updatedAtIso: '2026-08-18T10:00:00.000Z',
   readTime: '7 min read',
   excerpt: 'A practical guide to navigating the UAE Personal Data Protection Law (PDPL) and NESA Information Assurance Standards for enterprises operating in Dubai and Abu Dhabi.',
   content: `With regulatory enforcement increasing across the GCC, compliance with the UAE Federal Decree-Law No. 45 of 2021 regarding Personal Data Protection (UAE PDPL) and the National Electronic Security Authority (NESA) Information Assurance Standards has become mandatory for organizations processing consumer and enterprise data.
@@ -243,8 +243,8 @@ const injectedPost5: BlogPost = {
   title: 'Choosing the Right Tech Stack for Scalable Enterprise Applications in Dubai',
   slug: 'choosing-tech-stack-startups-dubai',
   category: 'Software Development',
-  date: new Date().toLocaleDateString(),
-  updatedAtIso: new Date().toISOString(),
+  date: 'Aug 04, 2026',
+  updatedAtIso: '2026-08-04T16:45:00.000Z',
   readTime: '6 min read',
   excerpt: 'Architecture decisions for Dubai enterprises: comparing Next.js, React, Node.js, Python, PostgreSQL, and cloud deployments on AWS and Vercel for maximum reliability.',
   content: `Building software for the GCC market requires engineering for extreme peak traffic, multi-currency transactions, regional compliance (such as UAE VAT-compliant ERPs), and bilingual user interfaces.
@@ -285,8 +285,8 @@ const injectedPost6: BlogPost = {
   title: 'Choosing Between Custom vs. Off-the-Shelf ERP in the UAE: An Executive Guide',
   slug: 'choosing-erp-solutions-uae-guide',
   category: 'Software Development',
-  date: new Date().toLocaleDateString(),
-  updatedAtIso: new Date().toISOString(),
+  date: 'Jul 22, 2026',
+  updatedAtIso: '2026-07-22T13:10:00.000Z',
   readTime: '6 min read',
   excerpt: 'A pragmatic evaluation framework for UAE companies weighing SAP/Odoo against custom ERP platforms like Mints ERP.',
   content: `For fast-scaling enterprises across Dubai, Abu Dhabi, and the wider GCC, managing operations across disconnected spreadsheets, third-party accounting packages, and siloed HR portals quickly bottlenecks growth. The transition to an Enterprise Resource Planning (ERP) platform is inevitable — but the critical fork in the road is deciding whether to buy off-the-shelf software or engineer a tailored solution.
@@ -319,7 +319,7 @@ Before committing to an ERP transformation, ask your leadership team:
 
 At Mints Global, we engineer modular, intuitive enterprise software and custom ERP command centers that adapt to your business rather than forcing your business to adapt to the software. Explore our live [Mints ERP showcase](https://erp.mintsglobal.ae/) or reach out to our solutions team to discuss your digital architecture.`,
   author: 'Mints Global Engineering Team',
-  image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200',
+  image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200',
   imageAlt: 'Enterprise ERP dashboard and analytics command center for UAE businesses',
   seoTitle: 'Custom vs Off-the-Shelf ERP in UAE: Executive Guide | Mints Global',
   seoDescription: 'Comprehensive guide for UAE businesses choosing between custom ERP solutions and off-the-shelf platforms like SAP or Odoo. TCO, VAT & workflow comparison.',
@@ -332,8 +332,8 @@ const injectedPost7: BlogPost = {
   title: 'Project Retrospective: Engineering an Enterprise Omnichannel Platform in 8 Weeks',
   slug: 'enterprise-software-retrospective-dubai',
   category: 'Case Study',
-  date: new Date().toLocaleDateString(),
-  updatedAtIso: new Date().toISOString(),
+  date: 'Jul 08, 2026',
+  updatedAtIso: '2026-07-08T08:30:00.000Z',
   readTime: '5 min read',
   excerpt: 'A technical deep-dive into how Mints Global re-architected a high-traffic regional platform with zero downtime and sub-second load times.',
   content: `Tight deadlines, distributed legacy data, and zero tolerance for checkout downtime — this was the brief when a regional luxury retail group approached Mints Global to overhaul their digital commerce infrastructure ahead of the peak GCC shopping season.
@@ -426,7 +426,13 @@ export const getPosts = async (): Promise<BlogPost[]> => {
       allPostsMap.set(p.slug || p.id, p);
     });
 
-    return Array.from(allPostsMap.values());
+    const allPosts = Array.from(allPostsMap.values());
+    allPosts.sort((a, b) => {
+      const timeA = new Date(a.date).getTime() || 0;
+      const timeB = new Date(b.date).getTime() || 0;
+      return timeB - timeA;
+    });
+    return allPosts;
   } catch (error) {
     console.error('Error fetching posts:', error);
     return STATIC_POSTS;

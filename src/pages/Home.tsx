@@ -10,7 +10,7 @@ import { JsonLd } from '../components/JsonLd';
 import { AnimatedChars } from '../components/AnimatedChars';
 import { Magnetic } from '../components/Magnetic';
 import { useWorks } from '../hooks/useWorks';
-import { getPosts, BlogPost } from '../data/posts';
+import { getPosts, BlogPost, STATIC_POSTS } from '../data/posts';
 import { SafeImage } from '../components/SafeImage';
 
 const organizationSchema = {
@@ -273,7 +273,7 @@ export function Home() {
   const { works } = useWorks();
   const featuredWorks = works.filter(w => w.featured);
   const recentProjects = featuredWorks.length > 0 ? featuredWorks : works.slice(0, 4);
-  const [recentPosts, setRecentPosts] = useState<BlogPost[]>([]);
+  const [recentPosts, setRecentPosts] = useState<BlogPost[]>(() => STATIC_POSTS.slice(0, 3));
 
   useEffect(() => {
     getPosts().then(fetched => setRecentPosts(fetched.slice(0, 3)));
@@ -555,7 +555,7 @@ export function Home() {
                <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
                   <SafeImage 
                     src="/images/business-software-solutions-globe.webp" 
-                    fallbackSrc="/images/website-development-services-dubai.webp"
+                    fallbackSrc="/images/web-application-development-services-dubai.webp"
                     alt="Web and mobile software architecture overview" 
                     width="800" 
                     height="500" 

@@ -46,6 +46,12 @@ async function runPrerender() {
     }
   }
 
+  // Ensure legal/standalone routes like /impressum are always pre-rendered
+  const extraRoutes = ['/impressum'];
+  for (const r of extraRoutes) {
+    if (!routes.includes(r)) routes.push(r);
+  }
+
   console.log(`Found ${routes.length} routes to pre-render.`);
 
   let renderedCount = 0;

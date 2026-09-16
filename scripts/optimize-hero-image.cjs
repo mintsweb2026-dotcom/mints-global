@@ -2,7 +2,7 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
 
-const srcPath = 'C:/Users/anand/.gemini/antigravity-ide/brain/0ea5546f-1a20-4dfc-9640-567891030d7b/hero_astronaut_deep_space_1789566090721.jpg';
+const srcPath = 'C:/Users/anand/.gemini/antigravity-ide/brain/0ea5546f-1a20-4dfc-9640-567891030d7b/.user_uploaded/media_1789566258755.jpg';
 const publicImagesDir = path.resolve(__dirname, '../public/images');
 const publicDir = path.resolve(__dirname, '../public');
 
@@ -13,11 +13,10 @@ async function convert() {
   // Backup original
   fs.copyFileSync(srcPath, path.join(publicImagesDir, 'hero-astronaut-original.jpg'));
 
-  // Main webp (original resolution) with 4:4:4 chroma subsampling and adaptive sharpening
+  // Main webp (original resolution) with 4:4:4 full chroma preservation and maximum fidelity (quality 95)
   const mainTarget = path.join(publicImagesDir, 'hero-digital-agency-dubai.webp');
   await sharp(srcPath)
-    .sharpen({ sigma: 1.0, m1: 0.8, m2: 2.2 })
-    .webp({ quality: 92, effort: 6, smartSubsample: false })
+    .webp({ quality: 95, effort: 6, smartSubsample: false })
     .toFile(mainTarget);
 
   // Fallback hero.webp in public
@@ -29,8 +28,8 @@ async function convert() {
     const targetFile = path.join(publicImagesDir, `hero-digital-agency-dubai-${size}w.webp`);
     await sharp(srcPath)
       .resize({ width: size, withoutEnlargement: false, kernel: sharp.kernel.lanczos3 })
-      .sharpen({ sigma: 1.15, m1: 0.85, m2: 2.3 })
-      .webp({ quality: 93, effort: 6, smartSubsample: false })
+      .sharpen({ sigma: 0.8, m1: 0.5, m2: 1.5 })
+      .webp({ quality: 95, effort: 6, smartSubsample: false })
       .toFile(targetFile);
 
     const stat = fs.statSync(targetFile);

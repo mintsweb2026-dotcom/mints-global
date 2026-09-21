@@ -50,8 +50,9 @@ export function NewsletterForm() {
     }
 
     try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_hsym0kb';
       await emailjs.send(
-        'service_hsym0kb',
+        serviceId,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
         {
           name: 'Newsletter Subscriber',

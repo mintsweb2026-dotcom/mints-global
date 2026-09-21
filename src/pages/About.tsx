@@ -6,11 +6,11 @@ import { JsonLd } from '../components/JsonLd';
 import { ShieldCheck, Rocket, Map, Globe2, Linkedin } from 'lucide-react';
 
 const team = [
-  { name: 'Arya Lakshmi', roleKey: 'about.roles.ceo', img: '/executives/Arya Lakshmi_ceo.jpg-800w.webp' },
-  { name: 'Jishnu Das', roleKey: 'about.roles.cco', img: '/executives/Jishnu Das _Cheif client officer-800w.webp' },
-  { name: 'Razal Basheer', roleKey: 'about.roles.cd', img: '/executives/Razal Basheer _Creative director.JPG-800w.webp' },
-  { name: 'Anand Binu Arjun', roleKey: 'about.roles.cto', img: '/executives/anand binu arjun_Cheif technical officer-800w.webp' },
-  { name: 'Febin Sani', roleKey: 'about.roles.advisor', img: '/executives/febin sani_Advisor.JPG-400w.webp' },
+  { name: 'Arya Lakshmi', roleKey: 'about.roles.ceo', img: '/executives/Arya Lakshmi_ceo.jpg-800w.webp', linkedin: 'https://www.linkedin.com/in/arya-lakshmi-a79326416/' },
+  { name: 'Jishnu Das', roleKey: 'about.roles.cco', img: '/executives/Jishnu Das _Cheif client officer-800w.webp', linkedin: 'https://www.linkedin.com/in/jishnu-das-/' },
+  { name: 'Razal Basheer', roleKey: 'about.roles.cd', img: '/executives/Razal Basheer _Creative director.JPG-800w.webp', linkedin: 'https://www.linkedin.com/in/razal-basheer-893882256/' },
+  { name: 'Anand Binu Arjun', roleKey: 'about.roles.cto', img: '/executives/anand binu arjun_Cheif technical officer-800w.webp', linkedin: 'https://www.linkedin.com/in/anand-b-arjun/' },
+  { name: 'Febin Sani', roleKey: 'about.roles.advisor', img: '/executives/febin sani_Advisor.JPG-400w.webp', linkedin: 'https://www.linkedin.com/in/febinnsani/' },
 ];
 
 export function About() {
@@ -191,7 +191,13 @@ export function About() {
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl mb-4 bg-olive-900 border border-white/10">
                 <img src={member.img} alt={member.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0" />
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-olive-950 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex justify-end">
-                  <a href="#" className="w-10 h-10 rounded-full bg-olive-500 text-white flex items-center justify-center hover:bg-olive-400 transition-colors">
+                  <a 
+                    href={member.linkedin} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label={`${member.name} on LinkedIn`}
+                    className="w-10 h-10 rounded-full bg-olive-500 text-white flex items-center justify-center hover:bg-olive-400 transition-colors"
+                  >
                     <Linkedin size={18} />
                   </a>
                 </div>

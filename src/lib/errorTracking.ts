@@ -1,8 +1,9 @@
 /**
  * Error Tracking & Centralized Telemetry
- * Provides unhandled error reporting, Sentry integration readiness,
+ * Provides unhandled error reporting, live Sentry integration,
  * and structured application telemetry.
  */
+import * as Sentry from '@sentry/react';
 
 interface ErrorContext {
   componentStack?: string;
@@ -11,25 +12,27 @@ interface ErrorContext {
   extra?: Record<string, unknown>;
 }
 
-declare global {
-  interface Window {
-    Sentry?: {
-      captureException: (error: unknown, captureContext?: unknown) => string;
-      captureMessage: (message: string, captureContext?: unknown) => string;
-    };
-  }
-}
+let sentryInitialized = false;
 
 /**
- * Initializes global client-side error listeners
+ * Initializes global client-side error listeners and Sentry SDK
  */
 export function initErrorTracking() {
   const sentryDsn = import.meta.env.VITE_SENTRY_DSN;
 
-  if (sentryDsn && typeof window !== 'undefined') {
-    // Sentry DSN is present - log initialization status in dev
-    if (import.meta.env.DEV) {
-      console.info('[ErrorTracking] Sentry DSN configured:', sentryDsn.slice(0, 12) + '...');
+  if (sentryDsn && typeof window !== 'undefined' && !sentryInitialized) {
+    try {
+      Sentry.init({
+        dsn: sentryDsn,
+        tracesSampleRate: import.meta.env.PROD ? 0.2 : 1.0,
+        environment: import.meta.env.MODE,
+      });
+      sentryInitialized = true;
+      if (import.meta.env.DEV) {
+        console.info('[ErrorTracking] Sentry initialized successfully with DSN:', sentryDsn.slice(0, 12) + '...');
+      }
+    } catch (err) {
+      console.warn('[ErrorTracking] Failed to initialize Sentry:', err);
     }
   }
 
@@ -46,9 +49,9 @@ export function initErrorTracking() {
  * Captures an exception and dispatches it to configured error services
  */
 export function captureException(error: unknown, context?: ErrorContext) {
-  // 1. If Sentry SDK is loaded on window, forward directly
-  if (typeof window !== 'undefined' && window.Sentry?.captureException) {
-    window.Sentry.captureException(error, { extra: context });
+  // 1. Dispatch to Sentry if initialized
+  if (sentryInitialized) {
+    Sentry.captureException(error, { extra: context as Record<string, unknown> });
   }
 
   // 2. In development or staging, print rich context to console
@@ -66,11 +69,12 @@ export function captureException(error: unknown, context?: ErrorContext) {
  * Captures an informational or warning message
  */
 export function captureMessage(message: string, level: 'info' | 'warning' | 'error' = 'info', context?: ErrorContext) {
-  if (typeof window !== 'undefined' && window.Sentry?.captureMessage) {
-    window.Sentry.captureMessage(message, { level, extra: context });
+  if (sentryInitialized) {
+    Sentry.captureMessage(message, { level, extra: context as Record<string, unknown> });
   }
 
   if (import.meta.env.DEV) {
     console.log(`%c[ErrorTracking] [${level.toUpperCase()}] ${message}`, 'color: #10b981;', context);
   }
 }
+

@@ -158,6 +158,8 @@ function AdminPanelContent() {
   const [draftLoaded, setDraftLoaded] = useState(false);
   const [isAutoSaving, setIsAutoSaving] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
+  const [checkingAdmin, setCheckingAdmin] = useState(false);
 
   const [activeAdminTab, setActiveAdminTab] = useState<
     "posts" | "works" | "categories" | "activity" | "seoAudit"
@@ -372,26 +374,42 @@ function AdminPanelContent() {
 
   useEffect(() => {
     if (user) {
-      if (user.email === "binuarjunanand@gmail.com" || user.email === "anandbhari123@gmail.com" || user.email === "shynim90@gmail.com") {
-        const bootstrapAdmin = async () => {
-          try {
-            const adminRef = doc(db, "admins", user.uid);
-            const adminSnap = await getDoc(adminRef);
-            if (!adminSnap.exists()) {
-              await setDoc(adminRef, {
-                email: user.email,
-                createdAt: serverTimestamp(),
-              });
-              console.log("Admin bootstrapped successfully");
-            }
-          } catch (e) {
-            console.error("Failed to bootstrap admin", e);
+      setCheckingAdmin(true);
+      const verifyAndBootstrap = async () => {
+        try {
+          const adminRef = doc(db, "admins", user.uid);
+          const adminSnap = await getDoc(adminRef);
+
+          const isBootstrapEmail =
+            user.email === "binuarjunanand@gmail.com" ||
+            user.email === "anandbhari123@gmail.com" ||
+            user.email === "shynim90@gmail.com";
+
+          if (adminSnap.exists()) {
+            setIsAdmin(true);
+            fetchPosts();
+          } else if (isBootstrapEmail) {
+            await setDoc(adminRef, {
+              email: user.email,
+              createdAt: serverTimestamp(),
+            });
+            setIsAdmin(true);
+            fetchPosts();
+          } else {
+            setIsAdmin(false);
           }
-        };
-        bootstrapAdmin().then(fetchPosts);
-      } else {
-        fetchPosts();
-      }
+        } catch (e) {
+          console.error("Failed to verify admin status", e);
+          setIsAdmin(false);
+        } finally {
+          setCheckingAdmin(false);
+        }
+      };
+
+      verifyAndBootstrap();
+    } else {
+      setIsAdmin(null);
+      setCheckingAdmin(false);
     }
   }, [user]);
 
@@ -583,8 +601,8 @@ function AdminPanelContent() {
     setImageAlt("");
   };
 
-  if (loading)
-    return <div className="p-20 text-center text-white">Loading...</div>;
+  if (loading || checkingAdmin)
+    return <div className="p-20 text-center text-white font-mono text-sm">Verifying administrator authorization...</div>;
 
   if (!user) {
     return (
@@ -598,6 +616,30 @@ function AdminPanelContent() {
             className="w-full bg-olive-500 text-white px-6 py-3 rounded-full hover:bg-olive-400 transition-colors"
           >
             Sign in with Google
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (isAdmin === false) {
+    return (
+      <div className="pt-32 pb-20 px-4 min-h-screen">
+        <div className="max-w-md mx-auto bg-red-950/20 border border-red-500/30 rounded-2xl p-8 backdrop-blur-sm text-center">
+          <div className="w-12 h-12 rounded-full bg-red-500/10 text-red-400 mx-auto flex items-center justify-center mb-4">
+            <X size={24} />
+          </div>
+          <h2 className="text-2xl font-display font-bold text-white mb-2">
+            Access Denied
+          </h2>
+          <p className="text-sm text-brand-white-70 mb-6 leading-relaxed">
+            Your account (<span className="text-white font-mono text-xs">{user.email}</span>) does not have administrator privileges.
+          </p>
+          <button
+            onClick={handleLogout}
+            className="px-6 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-medium transition-colors"
+          >
+            Sign out
           </button>
         </div>
       </div>

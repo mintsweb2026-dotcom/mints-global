@@ -7,6 +7,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { Layout } from './components/layout/Layout';
+import { ErrorBoundary } from './components/common/ErrorBoundary';
 
 import { Home } from './pages/Home';
 import { Contact } from './pages/Contact';
@@ -127,7 +128,11 @@ function PageSkeleton() {
 
 // ─── AppRoutes — used by both CSR (BrowserRouter) and SSR (StaticRouter) ─────
 export function AppRoutes() {
-  return <AnimatedOutlet />;
+  return (
+    <ErrorBoundary>
+      <AnimatedOutlet />
+    </ErrorBoundary>
+  );
 }
 
 // ─── Default export wraps with BrowserRouter for CSR dev mode ─────────────────

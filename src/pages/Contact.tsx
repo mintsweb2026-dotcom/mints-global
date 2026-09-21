@@ -147,17 +147,25 @@ export function Contact() {
         message: data.message,
       };
 
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_hsym0kb';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (!templateId || !publicKey) {
+        throw new Error('Email service credentials are missing. Please configure VITE_EMAILJS_TEMPLATE_ID and VITE_EMAILJS_PUBLIC_KEY.');
+      }
+
       await emailjs.send(
-        'service_hsym0kb',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+        serviceId,
+        templateId,
         templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+        publicKey
       );
       
       setIsSubmitted(true);
     } catch (err) {
       console.error('EmailJS error:', err);
-      alert('An error occurred while sending your message. Please try again later.');
+      alert('An error occurred while sending your message. Please try again or reach out to us directly at info@mintsglobal.ae.');
     }
   };
 

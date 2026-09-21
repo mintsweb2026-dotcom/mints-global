@@ -26,9 +26,9 @@ We engineer software, scale digital marketing, and defend enterprise infrastruct
 ## 🏗️ Architecture & Rendering Pipeline
 
 The platform uses a high-performance **hybrid architecture**:
-1. **Client SPA**: React 19, Vite 6, Tailwind CSS, Framer Motion, and React Router v7.
+1. **Client SPA**: React 19, Vite 6, Tailwind CSS v4, Motion (formerly Framer Motion), and React Router v7.
 2. **Server-Side Pre-Rendering (SSG/SSR)**: Custom Node.js pre-rendering (`scripts/prerender-ssr.js`) that renders every production route into static HTML with inline metadata, self-referencing canonicals, and JSON-LD structured schemas (`Organization`, `LocalBusiness`, `FAQPage`, `BreadcrumbList`, `CreativeWork`).
-3. **Dual-Framework Flexibility**: Contains the main Vite/React application at root and Next.js assets under `next-app/`.
+3. **Resilient Dual Data Layer**: All dynamic features (blog, portfolio works) fetch from Firebase Firestore in production with zero-downtime offline fallbacks to bundled static datasets (`STATIC_POSTS`, `PROJECTS`).
 
 Additional technical documentation is available in [`/docs`](./docs/):
 - [`docs/SEO_IMPLEMENTATION.md`](./docs/SEO_IMPLEMENTATION.md) — Technical SEO architecture, schema structures, and indexing requirements.
@@ -36,7 +36,132 @@ Additional technical documentation is available in [`/docs`](./docs/):
 
 ---
 
-## 🛠️ Quick Start
+## 🔐 Environment Configuration
+
+Create a local environment file by copying `.env.example`:
+
+```bash
+cp .env.example .env.local
+```
+
+### Environment Variables Reference
+
+| Variable | Required | Description |
+|---|---|---|
+| `VITE_EMAILJS_SERVICE_ID` | Optional | EmailJS Service ID (defaults to agency service ID) |
+| `VITE_EMAILJS_TEMPLATE_ID` | Yes (for contact form) | EmailJS Template ID for contact lead notifications |
+| `VITE_EMAILJS_PUBLIC_KEY` | Yes (for contact form) | EmailJS Public API Key |
+| `VITE_GA_ID` | Optional | Google Analytics 4 Measurement ID (`G-XXXXXXXXXX`) |
+| `VITE_FIREBASE_API_KEY` | Yes (for admin & dynamic data) | Firebase Web API Key |
+| `VITE_FIREBASE_AUTH_DOMAIN` | Yes | Firebase Auth Domain (`project-id.firebaseapp.com`) |
+| `VITE_FIREBASE_PROJECT_ID` | Yes | Firebase Project ID |
+| `VITE_FIREBASE_STORAGE_BUCKET` | Yes | Firebase Storage Bucket |
+| `VITE_FIREBASE_MESSAGING_SENDER_ID`| Yes | Firebase Messaging Sender ID |
+| `VITE_FIREBASE_APP_ID` | Yes | Firebase Web App ID |
+| `VITE_FIREBASE_MEASUREMENT_ID` | Optional | Firebase Analytics Measurement ID |
+| `VITE_SENTRY_DSN` | Optional | Sentry DSN for production exception telemetry |
+
+> [!CAUTION]
+> Never commit `.env.local` or any file containing live credentials to git. The `.gitignore` is pre-configured to exclude all `.env*` files with the exception of `.env.example`.
+
+---
+
+## 🔄 Data Flow Architecture
+
+```
+                    ┌─────────────────────────┐
+                    │      Client Browser     │
+                    └────────────┬────────────┘
+                                 │
+         ┌───────────────────────┼───────────────────────┐
+         ▼                       ▼                       ▼
+ ┌───────────────┐       ┌───────────────┐       ┌───────────────┐
+ │   Blog Posts  │       │  Work / Case  │       │  Contact Form │
+ │  Data Pipeline│       │    Studies    │       │   (Lead Gen)  │
+ └───────┬───────┘       └───────┬───────┘       └───────┬───────┘
+         │                       │                       │
+ ┌───────┴───────┐       ┌───────┴───────┐               │
+ │ Try Firestore │       │ Try Firestore │               ▼
+ │  `posts/` col │       │  `works/` col │       ┌───────────────┐
+ └───────┬───────┘       └───────┬───────┘       │    EmailJS    │
+         │ (fail/empty)          │ (fail/empty)  │  Client SDK   │
+         ▼                       ▼               └───────┬───────┘
+ ┌───────────────┐       ┌───────────────┐               ▼
+ │ STATIC_POSTS  │       │ data/projects │       ┌───────────────┐
+ │ (in-memory)   │       │ (in-memory)   │       │  Agency Inbox │
+ └───────────────┘       └───────────────┘       └───────────────┘
+```
+
+### 1. Blog Posts (`src/data/posts.ts`)
+- Calls `getPosts()` to query Firestore collection `posts` ordered by publish date.
+- If Firestore is unavailable, offline, or returns empty, it automatically falls back to `STATIC_POSTS` without throwing errors or breaking page rendering.
+- Views count increment is handled asynchronously through `incrementPostViews(slug)`.
+
+### 2. Portfolio Works (`src/hooks/useWorks.ts`)
+- Custom React hook subscribing to Firestore `works` collection.
+- Falls back seamlessly to `src/data/projects.ts` if offline or during initial SSR builds.
+
+### 3. Contact Inquiries (`src/pages/Contact.tsx`)
+- Validates form inputs through React Hook Form.
+- Submits inquiries directly via EmailJS to the agency sales inbox with zero server dependencies.
+- Validates credential presence and alerts the user gracefully if environment keys are missing.
+
+### 4. Admin Panel & Authentication (`src/pages/AdminPanel.tsx`)
+- Protected route accessible at `/admin`.
+- Authentication powered by Firebase Google OAuth (`GoogleAuthProvider`).
+- Requires authorization check against the `/admins/{uid}` document or authorized email list.
+
+---
+
+## 🛡️ Access Control & Security Guidelines
+
+Production security rules are located in [`firestore.rules`](./firestore.rules):
+- **Public Read**: Blog posts and published works are publicly readable by design.
+- **Admin Write**: Content modifications require `isAdmin()` authorization.
+- **Admin Whitelist**: The initial setup validates authorized administrative emails.
+
+> [!TIP]
+> **Recommended Production Enhancement (Custom Claims)**:
+> For enterprise environments, migrate admin authorization from email checks in `firestore.rules` to Firebase Auth Custom Claims (`request.auth.token.admin == true`). This allows adding and revoking administrators via Firebase CLI or Cloud Functions without requiring rules redeployment.
+
+---
+
+## 🚨 Error Tracking & Observability
+
+- **React Error Boundary**: All routes in `src/App.tsx` are wrapped with `src/components/common/ErrorBoundary.tsx`. If an unexpected runtime or render exception occurs, users are shown an elegant, brand-aligned recovery screen ("Reload Page" or "Return Home") rather than an unresponsive blank screen.
+- **Centralized Telemetry**: `src/lib/errorTracking.ts` provides `captureException()` and `captureMessage()`.
+- **Sentry Integration**: Simply add `VITE_SENTRY_DSN="https://..."` to your environment variables. The app automatically detects the DSN and initializes error dispatching.
+
+---
+
+## 📁 Repository Structure
+
+```
+├── public/                 # Static assets, WebP images, sitemap, robots.txt
+├── scripts/
+│   ├── prerender-ssr.js    # Production SSR static HTML generator
+│   ├── generate-sitemap.ts # Automated canonical sitemap generator
+│   └── optimize-images.ts  # Image optimization pipeline
+├── src/
+│   ├── components/         # Reusable UI components
+│   │   ├── common/         # ErrorBoundary, PageSkeleton, etc.
+│   │   ├── layout/         # Navbar, Footer, FloatingButtons
+│   │   └── admin/          # Admin dashboard tabs
+│   ├── data/               # Static fallback datasets (posts.ts, projects.ts)
+│   ├── hooks/              # Custom React hooks (useWorks, useScroll, etc.)
+│   ├── lib/                # Utilities, Firebase, schema-helpers, error tracking
+│   ├── pages/              # Application views & regional service pages
+│   ├── App.tsx             # Root router, animated routes, ErrorBoundary
+│   ├── index.css           # Tailwind CSS directives & global animations
+│   ├── i18n.ts             # Internationalization config (EN, AR, DE)
+│   └── main.tsx            # Client entry point
+├── firestore.rules         # Firebase Security Rules for Firestore
+└── vite.config.ts          # Vite build, SSR, and plugin configuration
+```
+
+---
+
+## 🛠️ Development & Build Commands
 
 ```bash
 # Clone the repository
@@ -48,26 +173,18 @@ npm install
 
 # Start development server
 npm run dev
-```
 
-Visit `http://localhost:3000` in your browser.
+# Run TypeScript type check
+npm run lint
 
----
-
-## 📦 Production Build
-
-To run the complete production build and SSR pre-rendering pipeline:
-```bash
+# Run production build (client bundle + SSR pre-rendering)
 npm run build
+
+# Preview production build locally
+npm run preview
 ```
 
-This command:
-1. Generates `public/sitemap.xml` with all canonical routes.
-2. Compiles client bundles into `dist/client` with Brotli and Gzip compression.
-3. Builds the SSR bundle into `dist/server/entry-server.js`.
-4. Executes `scripts/prerender-ssr.js` to pre-render all routes into flat static HTML files.
-
-For development guidelines, branching conventions, and contributing rules, see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+Visit `http://localhost:3000` in your browser for local development.
 
 ---
 

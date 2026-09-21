@@ -139,7 +139,7 @@ export function Navbar({
                 {t('nav.services', 'Services')} <ChevronDown size={14} />
               </NavLink>
 
-              {/* Mega Menu */}
+              {/* Mega Menu — solid backdrop prevents hero text bleed-through */}
               <div className="absolute top-[100%] left-1/2 -translate-x-1/2 pt-6 w-[1100px] max-w-[calc(100vw-3rem)] opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 z-50">
                 <div className="bg-olive-950 border border-white/10 rounded-2xl p-8 shadow-2xl overflow-hidden">
                   <div className="grid grid-cols-3 gap-12">
@@ -252,8 +252,8 @@ export function Navbar({
             <NavLink to="/blog" className={({ isActive }) => cn('hover:text-olive-500 transition-colors py-6 relative text-lg font-black', isActive ? "text-olive-500 after:content-[''] after:absolute after:bottom-[18px] after:left-0 after:right-0 after:h-[2px] after:bg-olive-500 after:rounded-full" : 'text-brand-white')}>{t('nav.blog', 'Blog')}</NavLink>
           </nav>
 
-          <div className="flex items-center gap-4 md:gap-6 z-50">
-            {/* Language switcher */}
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-6 z-50">
+            {/* Language switcher — desktop only */}
             <div className="hidden md:block relative group/lang cursor-pointer z-50">
               <div className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors rounded-full px-4 py-2 text-xs font-bold font-body">
                 <Globe size={16} />
@@ -279,9 +279,10 @@ export function Navbar({
               </div>
             </div>
 
+            {/* LET'S TALK — hidden on narrowest phones (< 380px) to avoid hamburger cramp */}
             <Link
               to="/contact"
-              className="bg-brand-white text-olive-950 px-5 py-2 md:px-7 md:py-2.5 rounded-full text-[10px] md:text-xs uppercase tracking-widest font-display font-black hover:bg-olive-500 hover:text-white transition-all transform hover:scale-105 inline-block text-center whitespace-nowrap"
+              className="hidden [min-width:380px]:inline-block bg-brand-white text-olive-950 px-4 py-2 md:px-7 md:py-2.5 rounded-full text-[10px] md:text-xs uppercase tracking-widest font-display font-black hover:bg-olive-500 hover:text-white transition-all transform hover:scale-105 text-center whitespace-nowrap"
             >
               {t('nav.cta', "Let's Talk →")}
             </Link>
@@ -293,7 +294,7 @@ export function Navbar({
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
           </div>
         </div>

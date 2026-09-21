@@ -15,12 +15,11 @@ const resources = {
       },
       hero: {
         badge: "Premium Digital Agency",
-        line1: "DIGITAL",
-        line2: "SOLUTIONS",
-        line3: "FOR BUSINESS",
-        desc: "We build high-performing websites, custom software, and data-backed marketing campaigns that drive measurable revenue for companies across the UAE and Europe.",
+        line1: "WE BUILD BRANDS",
+        line2: "THE INTERNET CAN'T IGNORE.",
+        desc: "Marketing, tech, and design for brands that refuse to be background noise.",
         startProject: "Start a Project",
-        viewWork: "View Our Work"
+        viewWork: "See the Project"
       },
       marquee: ["Software Development", "Cyber Security", "Digital Marketing", "Brand Strategy", "UX/UI Design", "Performance Marketing", "SEO Optimization", "Web Apps"],
       capabilities: {
@@ -136,9 +135,8 @@ const resources = {
       },
       hero: {
         badge: "وكالة رقمية متميزة",
-        line1: "خبراء",
-        line2: "التحول",
-        line3: "الرقمي",
+        line1: "نبني علامات تجارية",
+        line2: "لا يمكن للإنترنت تجاهلها.",
         desc: "نبني مواقع عالية الأداء وبرمجيات مخصصة وحملات تسويقية قائمة على البيانات تحقق عوائد حقيقية للشركات في الإمارات وأوروبا.",
         startProject: "ابدأ مشروعاً",
         viewWork: "شاهد أعمالنا"
@@ -257,9 +255,8 @@ const resources = {
       },
       hero: {
         badge: "Premium Digitalagentur",
-        line1: "DIGITALE",
-        line2: "TRANSFORMATION",
-        line3: "EXPERTEN",
+        line1: "WIR BAUEN MARKEN,",
+        line2: "DIE DAS INTERNET NICHT IGNORIEREN KANN.",
         desc: "Wir entwickeln leistungsstarke Websites, maßgeschneiderte Software und datenbasierte Marketingkampagnen, die echten Umsatz für Unternehmen in den VAE und Europa generieren.",
         startProject: "Projekt starten",
         viewWork: "Unsere Arbeit"

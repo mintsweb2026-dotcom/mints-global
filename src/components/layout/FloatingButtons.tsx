@@ -22,7 +22,7 @@ export function FloatingButtons({ hidden }: { hidden: boolean }) {
 
   return (
     <>
-      {/* Floating WhatsApp Button — fixed number: +971 502943916 */}
+      {/* Floating WhatsApp Button — raised on mobile to avoid overlapping card links */}
       <a
         href="https://wa.me/971502943916?text=Hello%2C%20I%27d%20like%20to%20know%20more"
         target="_blank"

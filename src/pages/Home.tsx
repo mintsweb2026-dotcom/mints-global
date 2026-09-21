@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { SafeCountUp as CountUp } from '../components/SafeCountUp';
-import { ArrowRight, ShieldCheck, Zap, LineChart, Globe2, Rocket, Headphones, ChevronLeft, ChevronRight, Calendar, User } from 'lucide-react';
+import { ShieldCheck, Zap, LineChart, Globe2, Rocket, Headphones, ChevronLeft, ChevronRight, Calendar, User, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { SEO } from '../components/SEO';
@@ -305,20 +305,20 @@ export function Home() {
       <JsonLd data={professionalServiceSchema} />
       
       {/* Hero Section */}
-      <section ref={heroRef} className="relative w-full min-h-[100vh] lg:min-h-[90vh] -mt-[116px] overflow-hidden flex items-center justify-center pt-28 pb-16 sm:py-28 lg:py-32 bg-[#050a06]">
-        {/* Background Parallax Image */}
+      <section ref={heroRef} className="relative w-full min-h-[100svh] -mt-[116px] overflow-hidden bg-[#050a06]">
+        {/* Background Parallax Image — full-width centered, no horizontal offset */}
         <motion.div 
           style={{ y: heroY, opacity: heroOpacity }}
           className="absolute inset-0 z-0 w-full h-full overflow-hidden"
         >
-          {/* Scroll-driven floating astronaut animation - oversized container ensures full-bleed coverage with zero left/right edge seams */}
+          {/* Full-bleed hero image, centered */}
           <motion.div
             style={{ 
               scale: astronautScale, 
               y: astronautY, 
               rotate: astronautRotate 
             }}
-            className="absolute -inset-x-[25%] inset-y-0 w-[150%] h-full will-change-transform md:translate-x-[10vw] lg:translate-x-[15vw] xl:translate-x-[18vw] pointer-events-none"
+            className="absolute inset-0 w-full h-full will-change-transform pointer-events-none"
           >
             <SafeImage
               src="/images/hero-digital-agency-dubai.webp"
@@ -330,116 +330,101 @@ export function Home() {
               loading="eager"
               decoding="async"
               fetchPriority="high"
-              className="w-full h-full object-cover object-[50%_10%] pointer-events-none [image-rendering:high-quality]"
+              className="w-full h-full object-cover object-center pointer-events-none [image-rendering:high-quality]"
             />
           </motion.div>
-          {/* Directional gradient overlay: seamlessly matches the image base color (#050a06) across the full width, eliminating shade seams */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050a06]/70 via-transparent to-[#0d1a0f] lg:bg-gradient-to-r lg:from-[#050a06]/95 lg:via-[#050a06]/50 lg:to-transparent z-10 pointer-events-none w-full" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1a0f] via-transparent to-transparent z-10 pointer-events-none" />
-          
-          {/* Particle Grid Overlay */}
-          <div className="absolute inset-0 z-10 pointer-events-none opacity-15 bg-[radial-gradient(#4d7a3c_1px,transparent_1px)] [background-size:40px_40px]" />
 
-          {/* 3D Perspective Wireframe Mesh / Landscape Floor (Moonbox inspired) */}
-          <div className="absolute bottom-0 inset-x-0 h-[40vh] z-10 pointer-events-none overflow-hidden opacity-30">
-            <svg className="w-full h-full" viewBox="0 0 1440 320" preserveAspectRatio="none" fill="none">
-              {/* Horizontal curved perspective contours */}
-              <path d="M-100 300 C300 200, 700 310, 1540 220" stroke="rgba(255,255,255,0.2)" strokeWidth="1.2" />
-              <path d="M-100 260 C350 160, 750 280, 1540 180" stroke="rgba(77,122,60,0.35)" strokeWidth="1" />
-              <path d="M-100 220 C400 130, 800 250, 1540 150" stroke="rgba(255,255,255,0.12)" strokeWidth="0.8" />
-              <path d="M-100 190 C450 100, 850 220, 1540 120" stroke="rgba(77,122,60,0.25)" strokeWidth="0.8" />
-              <path d="M-100 165 C500 80, 900 195, 1540 100" stroke="rgba(255,255,255,0.08)" strokeWidth="0.6" />
-              {/* Converging perspective rays */}
-              {[...Array(18)].map((_, idx) => (
-                <line 
-                  key={idx} 
-                  x1={idx * 90 - 50} 
-                  y1="320" 
-                  x2={250 + idx * 55} 
-                  y2="70" 
-                  stroke="rgba(255,255,255,0.07)" 
-                  strokeWidth="0.7" 
-                />
-              ))}
-            </svg>
-          </div>
-          
+          {/* Top vignette — dark fade at top to blend with navbar */}
+          <div className="absolute inset-x-0 top-0 h-[30%] bg-gradient-to-b from-[#050a06]/75 via-[#050a06]/20 to-transparent z-10 pointer-events-none" />
+          {/* Bottom vignette — moderate fade so image shows but content readable */}
+          <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#050a06]/90 via-[#050a06]/40 to-transparent z-10 pointer-events-none" />
+          {/* Subtle left + right edge darkening */}
+          <div className="absolute inset-y-0 left-0 w-[15%] bg-gradient-to-r from-[#050a06]/50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-[15%] bg-gradient-to-l from-[#050a06]/50 to-transparent z-10 pointer-events-none" />
+
+          {/* Particle Grid Overlay */}
+          <div className="absolute inset-0 z-10 pointer-events-none opacity-10 bg-[radial-gradient(#4d7a3c_1px,transparent_1px)] [background-size:40px_40px]" />
+
           {/* Noise overlay */}
           <div className="absolute inset-0 z-10 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ0cmFuc3BhcmVudCIgZmlsdGVyPSJ1cmwoI25vaXNlKSIvPjwvc3ZnPg==')] pointer-events-none" />
           
-          {/* Atmospheric Backlight / Nebula Glow behind astronaut */}
-          <div className="absolute top-[18%] right-[8%] w-[42vw] h-[42vw] bg-radial from-olive-500/20 via-emerald-950/15 to-transparent rounded-full blur-[120px] z-0 pointer-events-none" />
+          {/* Atmospheric glow — centered behind image subject */}
+          <div className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[55vw] h-[55vw] bg-radial from-olive-500/15 via-emerald-950/10 to-transparent rounded-full blur-[140px] z-0 pointer-events-none" />
         </motion.div>
 
-        {/* FOREGROUND HERO CONTENT - Clean, uncrowded layout with crisp left alignment */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full mt-6 sm:mt-10 lg:mt-14">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+        {/* FOREGROUND HERO CONTENT — absolutely pinned to bottom-center, matching reference */}
+        <div className="absolute inset-x-0 bottom-0 z-20 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 pb-20 sm:pb-28">
+          <h1 className="sr-only">Best Digital Marketing Agency in Dubai</h1>
+
+          {/* Giant centered headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-3xl lg:max-w-2xl xl:max-w-[55%]"
+            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display font-black tracking-tight flex flex-col items-center gap-0 leading-none mb-4 sm:mb-5"
+            aria-hidden="true"
           >
-            <div className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-xs font-bold tracking-widest text-brand-white uppercase backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-olive-500 animate-pulse"></span>
-              {t('hero.badge')} — Dubai
-            </div>
-            
-            <h1 className="sr-only">Best Digital Marketing Agency in Dubai</h1>
-            <div className="font-display font-black tracking-tight mb-8 sm:mb-10 w-full flex flex-col gap-1.5 sm:gap-2.5 leading-none overflow-hidden" aria-hidden="true">
-              <div className="self-start max-w-full">
-                <AnimatedChars text={t('hero.line1')} className="text-brand-white text-[clamp(2.5rem,5.5vw,5.8rem)] leading-[0.92] tracking-tight break-words" delay={0.3} />
+            <span className="text-white text-[clamp(1.8rem,4.5vw,5rem)] leading-[0.9] tracking-[-0.02em] uppercase block drop-shadow-[0_2px_24px_rgba(0,0,0,0.7)]">
+              {t('hero.line1')}
+            </span>
+            <span className="text-white text-[clamp(1.8rem,4.5vw,5rem)] leading-[0.9] tracking-[-0.02em] uppercase block drop-shadow-[0_2px_24px_rgba(0,0,0,0.7)]">
+              {t('hero.line2')}
+            </span>
+          </motion.div>
+
+          {/* Subtitle */}
+          <motion.p 
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="text-white/60 max-w-[400px] text-sm sm:text-[15px] font-normal leading-relaxed mb-8 sm:mb-10 text-center"
+          >
+            {t('hero.desc')}
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div 
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-3 items-center justify-center"
+          >
+            <Magnetic>
+              <div className="inline-block">
+                <Link
+                  to="/contact"
+                  className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-3.5 rounded-full font-bold uppercase tracking-[0.12em] text-xs hover:bg-white/20 hover:border-white/40 transition-all duration-300 flex items-center gap-2"
+                >
+                  {t('hero.startProject')}
+                </Link>
               </div>
-              <div className="self-start max-w-full">
-                <AnimatedChars text={t('hero.line2')} className="text-brand-white text-[clamp(2.5rem,5.5vw,5.8rem)] leading-[0.92] tracking-tight break-words" delay={0.5} />
+            </Magnetic>
+            <Magnetic>
+              <div className="inline-block">
+                <Link
+                  to="/work"
+                  className="bg-transparent border border-white/20 text-white px-8 py-3.5 rounded-full font-bold uppercase tracking-[0.12em] text-xs hover:border-white/40 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm block"
+                >
+                  {t('hero.viewWork')}
+                </Link>
               </div>
-              <div className="self-start mt-1 max-w-full">
-                <AnimatedChars text={t('hero.line3')} className="text-[clamp(2.5rem,5.5vw,5.8rem)] leading-[0.92] tracking-tight text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.75)] sm:[-webkit-text-stroke:2px_rgba(255,255,255,0.75)] drop-shadow-[0_0_35px_rgba(77,122,60,0.3)] break-words" delay={0.7} />
-              </div>
-            </div>
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-              className="mt-6 sm:mt-8 text-brand-white-70 max-w-lg text-base sm:text-lg md:text-xl font-medium leading-relaxed"
-            >
-              {t('hero.desc')}
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 0.8 }}
-              className="mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap gap-4 items-start sm:items-center"
-            >
-              <Magnetic>
-                <div className="inline-block">
-                  <Link to="/contact" className="bg-olive-500 text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold uppercase tracking-wider text-xs sm:text-sm hover:bg-olive-400 transition-colors flex items-center gap-2">
-                    {t('hero.startProject')} <ArrowRight size={18} />
-                  </Link>
-                </div>
-              </Magnetic>
-              <Magnetic>
-                <div className="inline-block">
-                  <Link to="/work" className="bg-transparent border border-white/20 text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold uppercase tracking-wider text-xs sm:text-sm hover:border-white hover:bg-white/5 transition-colors backdrop-blur-sm block">
-                    {t('hero.viewWork')}
-                  </Link>
-                </div>
-              </Magnetic>
-            </motion.div>
+            </Magnetic>
           </motion.div>
         </div>
 
+        {/* Scroll indicator — fades out before reaching next section to prevent overlap */}
         <motion.button 
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
           transition={{ delay: 2 }}
+          style={{ opacity: useTransform(scrollYProgress, [0, 0.55, 0.75], [1, 0.4, 0]) }}
           onClick={() => window.scrollTo({ top: window.innerHeight - 100, behavior: 'smooth' })}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 md:bottom-12 md:left-12 md:translate-x-0 flex items-center gap-3 text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-white-40 z-20 hover:text-white transition-colors cursor-pointer"
+          className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-white/40 z-20 hover:text-white/70 transition-colors cursor-pointer pointer-events-auto"
         >
-          <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
+          <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}>
             ↓
           </motion.div>
-          Scroll to explore
+          <span>Scroll</span>
         </motion.button>
       </section>
 

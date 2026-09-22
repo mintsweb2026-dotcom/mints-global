@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
+import { sendEmail } from '../lib/emailService';
 import { Send, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -50,21 +50,15 @@ export function NewsletterForm() {
     }
 
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_hsym0kb';
-      await emailjs.send(
-        serviceId,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
-        {
-          name: 'Newsletter Subscriber',
-          email: email.toLowerCase(),
-          company: 'N/A',
-          services: 'Newsletter Subscription',
-          timeline: 'N/A',
-          budget: 'N/A',
-          message: `New newsletter subscription request from: ${email.toLowerCase()}`,
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
-      );
+      await sendEmail({
+        name: 'Newsletter Subscriber',
+        email: email.toLowerCase(),
+        company: 'N/A',
+        services: 'Newsletter Subscription',
+        timeline: 'N/A',
+        budget: 'N/A',
+        message: `New newsletter subscription request from: ${email.toLowerCase()}`,
+      });
 
       setStatus('success');
       setEmail('');

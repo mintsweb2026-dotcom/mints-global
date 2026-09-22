@@ -1,11 +1,11 @@
-import { ArrowRight, Search, TrendingUp, Share2, Target, Video, Image as ImageIcon, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Search, TrendingUp, Share2, Target, Video, Image as ImageIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SafeCountUp as CountUp } from '../components/SafeCountUp';
 import { useTranslation } from 'react-i18next';
 import { SEO } from '../components/SEO';
 import { SEO_DATA } from '../lib/seo-data';
 import { JsonLd } from '../components/JsonLd';
 import { ServicesAccordion } from '../components/ServicesAccordion';
+import { WhyUsSection } from '../components/common/WhyUsSection';
 
 const subServices = [
   { icon: Search, name: "SEO & Content Strategy", desc: "Climb search rankings organically with high-intent keywords and authoritative content.", link: "/digital-marketing/seo" },
@@ -272,33 +272,13 @@ export function DigitalMarketing() {
         </div>
       </section>
 
-      {/* Why Us Section */}
-      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="font-display text-4xl font-black mb-6 uppercase">Why <span className="text-olive-500">Mints Global?</span></h2>
-            <p className="text-brand-white-70 mb-8 leading-relaxed">
-              We don't just chase clicks; we engineer growth. Our digital marketing strategies are deeply integrated with our technical capabilities, meaning your campaigns benefit from superior tracking, faster landing pages, and AI-driven insights.
-            </p>
-            <ul className="space-y-4">
-              {['Data-First Approach', 'Transparent Reporting Dashboard', 'Cross-Platform Synergy', 'Dedicated Account Managers'].map(item => (
-                <li key={item} className="flex items-center gap-3 font-bold text-sm uppercase tracking-wide">
-                  <CheckCircle2 className="text-olive-500" size={20} /> {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="bg-olive-900 border border-white/5 rounded-3xl p-10 relative overflow-hidden aspect-square flex items-center justify-center">
-            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-olive-500 via-olive-900 to-olive-950"></div>
-            <div className="relative text-center">
-              <div className="font-display text-4xl md:text-5xl lg:text-7xl font-black text-white mb-2">
-                <CountUp end={340} duration={2.5} enableScrollSpy />%
-              </div>
-              <div className="font-bold text-olive-500 uppercase tracking-widest text-sm">Average Traffic Increase</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <WhyUsSection
+        body="We don't just chase clicks; we engineer growth. Our digital marketing strategies are deeply integrated with our technical capabilities, meaning your campaigns benefit from superior tracking, faster landing pages, and AI-driven insights."
+        bullets={['Data-First Approach', 'Transparent Reporting Dashboard', 'Cross-Platform Synergy', 'Dedicated Account Managers']}
+        statEnd={340}
+        statSuffix="%"
+        statLabel="Average Traffic Increase"
+      />
 
       {/* FAQ */}
       <section className="bg-olive-900 border-t border-white/5 py-24">

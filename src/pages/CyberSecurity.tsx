@@ -6,6 +6,7 @@ import { SEO } from '../components/SEO';
 import { SEO_DATA } from '../lib/seo-data';
 import { JsonLd } from '../components/JsonLd';
 import { ServicesAccordion } from '../components/ServicesAccordion';
+import { WhyUsSection } from '../components/common/WhyUsSection';
 import { SafeImage } from '../components/SafeImage';
 
 const subServices = [
@@ -201,35 +202,14 @@ export function CyberSecurity() {
         </div>
       </section>
 
-      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-           <div>
-             <h2 className="font-display text-4xl font-black mb-6 uppercase">Why <span className="text-olive-500">Mints Global?</span></h2>
-             <p className="text-brand-white-70 mb-8 leading-relaxed">
-               Security cannot be an afterthought. We implement Zero-Trust architectures proactively and hunt threats relentlessly before they disrupt your business operations.
-             </p>
-             <ul className="space-y-4 mb-10">
-               {['Certified Ethical Hackers', 'Locally Compliant Advisory', '24/7/365 Incident Readiness', 'Executive Security Briefings'].map(item => (
-                 <li key={item} className="flex items-center gap-3 font-bold text-sm uppercase tracking-wide">
-                   <CheckCircle2 className="text-olive-500" size={20} /> {item}
-                 </li>
-               ))}
-             </ul>
-             <Link to="/contact" aria-label="Learn more about our cybersecurity approach" className="text-sm font-bold w-fit flex items-center gap-2 hover:text-white transition-colors uppercase tracking-wider text-olive-500">
-               Learn More <ArrowRight size={16} />
-             </Link>
-           </div>
-           <div className="bg-olive-900 border border-white/5 rounded-3xl p-10 relative overflow-hidden aspect-square flex items-center justify-center">
-              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-olive-500 via-olive-900 to-olive-950"></div>
-              <div className="relative text-center">
-                <div className="font-display text-4xl md:text-5xl lg:text-7xl font-black text-white mb-2">
-                  <CountUp end={100} duration={2.5} enableScrollSpy />%
-                </div>
-                <div className="font-bold text-olive-500 uppercase tracking-widest text-sm mt-4">Zero Trust Implementation</div>
-              </div>
-           </div>
-        </div>
-      </section>
+      <WhyUsSection
+        body="Security cannot be an afterthought. We implement Zero-Trust architectures proactively and hunt threats relentlessly before they disrupt your business operations."
+        bullets={['Certified Ethical Hackers', 'Locally Compliant Advisory', '24/7/365 Incident Readiness', 'Executive Security Briefings']}
+        statEnd={100}
+        statSuffix="%"
+        statLabel="Zero Trust Implementation"
+        learnMoreHref="/contact"
+      />
 
       <section className="bg-olive-900 border-t border-white/5 py-24">
          <div className="max-w-4xl mx-auto px-6 lg:px-8">

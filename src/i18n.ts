@@ -2,6 +2,18 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+/**
+ * Testimonial content is language-agnostic (English only).
+ * Defined once here and spread into each language translation block
+ * to avoid triple duplication across EN / AR / DE.
+ */
+const TESTIMONIAL_ITEMS = {
+  i1: { name: "Vyshakh Pradeep", role: "Wise cat business solutions", doc: "We've been working with Mints for our Google Ads and Meta Ads campaigns, and the experience has been great. They are highly responsive and always ready to help." },
+  i2: { name: "Mrigya", role: "Nohemi", doc: "For our e-commerce brand, Mints helped us with brand strategy and performance marketing. Their team is knowledgeable, supportive, and delivered a great experience throughout." },
+  i3: { name: "Aslam Muhammed", role: "HDF business services", doc: "The experience with Mints global Agency was outstanding from start to finish. They understood our vision perfectly and created marketing campaigns that truly worked. Amazing communication and excellent results!" },
+  i4: { name: "Shabna", role: "Lavessi Design", doc: "We are extremely happy with the services provided by Mints Marketing Agency. The team is talented, responsive, and focused on real business growth. Their strategies brought us more traffic, more customers, and better visibility online." }
+};
+
 const resources = {
   en: {
     translation: {
@@ -71,10 +83,7 @@ const resources = {
       testimonials: {
         title1: "Client ",
         title2: "Testimonials.",
-        i1: { name: "Vyshakh Pradeep", role: "Wise cat business solutions", doc: "We’ve been working with Mints for our Google Ads and Meta Ads campaigns, and the experience has been great. They are highly responsive and always ready to help." },
-        i2: { name: "Mrigya", role: "Nohemi", doc: "For our e-commerce brand, Mints helped us with brand strategy and performance marketing. Their team is knowledgeable, supportive, and delivered a great experience throughout." },
-        i3: { name: "Aslam Muhammed", role: "HDF business services", doc: "The experience with Mints global Agency was outstanding from start to finish. They understood our vision perfectly and created marketing campaigns that truly worked. Amazing communication and excellent results!" },
-        i4: { name: "Shabna", role: "Lavessi Design", doc: "We are extremely happy with the services provided by Mints Marketing Agency. The team is talented, responsive, and focused on real business growth. Their strategies brought us more traffic, more customers, and better visibility online." }
+        ...TESTIMONIAL_ITEMS
       },
       cta: {
         title1: "LET'S START A",
@@ -191,10 +200,7 @@ const resources = {
       testimonials: {
         title1: "آراء ",
         title2: "العملاء.",
-        i1: { name: "Vyshakh Pradeep", role: "Wise cat business solutions", doc: "We’ve been working with Mints for our Google Ads and Meta Ads campaigns, and the experience has been great. They are highly responsive and always ready to help." },
-        i2: { name: "Mrigya", role: "Nohemi", doc: "For our e-commerce brand, Mints helped us with brand strategy and performance marketing. Their team is knowledgeable, supportive, and delivered a great experience throughout." },
-        i3: { name: "Aslam Muhammed", role: "HDF business services", doc: "The experience with Mints global Agency was outstanding from start to finish. They understood our vision perfectly and created marketing campaigns that truly worked. Amazing communication and excellent results!" },
-        i4: { name: "Shabna", role: "Lavessi Design", doc: "We are extremely happy with the services provided by Mints Marketing Agency. The team is talented, responsive, and focused on real business growth. Their strategies brought us more traffic, more customers, and better visibility online." }
+        ...TESTIMONIAL_ITEMS
       },
       cta: {
         title1: "دعنا نبدأ",
@@ -311,10 +317,7 @@ const resources = {
       testimonials: {
         title1: "Kunden ",
         title2: "Stimmen.",
-        i1: { name: "Vyshakh Pradeep", role: "Wise cat business solutions", doc: "We’ve been working with Mints for our Google Ads and Meta Ads campaigns, and the experience has been great. They are highly responsive and always ready to help." },
-        i2: { name: "Mrigya", role: "Nohemi", doc: "For our e-commerce brand, Mints helped us with brand strategy and performance marketing. Their team is knowledgeable, supportive, and delivered a great experience throughout." },
-        i3: { name: "Aslam Muhammed", role: "HDF business services", doc: "The experience with Mints global Agency was outstanding from start to finish. They understood our vision perfectly and created marketing campaigns that truly worked. Amazing communication and excellent results!" },
-        i4: { name: "Shabna", role: "Lavessi Design", doc: "We are extremely happy with the services provided by Mints Marketing Agency. The team is talented, responsive, and focused on real business growth. Their strategies brought us more traffic, more customers, and better visibility online." }
+        ...TESTIMONIAL_ITEMS
       },
       cta: {
         title1: "STARTEN WIR EIN",

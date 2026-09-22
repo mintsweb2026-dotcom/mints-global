@@ -1,12 +1,12 @@
-import { ArrowRight, Code2, Smartphone, Globe, Database, Network, ShoppingCart, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Code2, Smartphone, Globe, Database, Network, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SafeCountUp as CountUp } from '../components/SafeCountUp';
 import { useTranslation } from 'react-i18next';
 import { SEO } from '../components/SEO';
 import { SEO_DATA } from '../lib/seo-data';
 import { JsonLd } from '../components/JsonLd';
 import { ServicesAccordion } from '../components/ServicesAccordion';
 import { SafeImage } from '../components/SafeImage';
+import { WhyUsSection } from '../components/common/WhyUsSection';
 
 const subServices = [
   { icon: Code2, name: "Custom Web Apps", desc: "Scalable, high-performance web applications built with modern frontend and backend frameworks.", href: "/software-development/web-apps" },
@@ -300,32 +300,14 @@ export function SoftwareDevelopment() {
         </div>
       </section>
 
-      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-           <div>
-             <h2 className="font-display text-4xl font-black mb-6 uppercase">Why <span className="text-olive-500">Mints Global?</span></h2>
-             <p className="text-brand-white-70 mb-8 leading-relaxed">
-               We treat code as a craft. Guided by agile methodologies and modern DevOps principles, we build software that scales securely to millions of users with near-zero downtime.
-             </p>
-             <ul className="space-y-4">
-               {['Agile Delivery Sprints', 'Test-Driven Development (TDD)', 'Secure By Design (DevSecOps)', 'Cloud-Native Architectures'].map(item => (
-                 <li key={item} className="flex items-center gap-3 font-bold text-sm uppercase tracking-wide">
-                   <CheckCircle2 className="text-olive-500" size={20} /> {item}
-                 </li>
-               ))}
-             </ul>
-           </div>
-           <div className="bg-olive-900 border border-white/5 rounded-3xl p-10 relative overflow-hidden aspect-square flex items-center justify-center">
-              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-olive-500 via-olive-900 to-olive-950"></div>
-              <div className="relative text-center">
-                <div className="font-display text-4xl md:text-5xl lg:text-7xl font-black text-white mb-2">
-                  <CountUp end={99.9} decimals={1} duration={2.5} enableScrollSpy />%
-                </div>
-                <div className="font-bold text-olive-500 uppercase tracking-widest text-sm mt-4">Uptime & Reliability</div>
-              </div>
-           </div>
-        </div>
-      </section>
+      <WhyUsSection
+        body="We treat code as a craft. Guided by agile methodologies and modern DevOps principles, we build software that scales securely to millions of users with near-zero downtime."
+        bullets={['Agile Delivery Sprints', 'Test-Driven Development (TDD)', 'Secure By Design (DevSecOps)', 'Cloud-Native Architectures']}
+        statEnd={99.9}
+        statDecimals={1}
+        statSuffix="%"
+        statLabel="Uptime & Reliability"
+      />
 
       <section className="bg-olive-900 border-t border-white/5 py-24">
          <div className="max-w-3xl mx-auto px-6 lg:px-8">

@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ArrowRight, CheckCircle2, Mail, MapPin, Phone, Loader2 } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import { sendEmail } from '../lib/emailService';
 import { SEO } from '../components/SEO';
 import { JsonLd } from '../components/JsonLd';
 import { SEO_DATA } from '../lib/seo-data';
@@ -137,7 +137,7 @@ export function Contact() {
 
 
     try {
-      const templateParams = {
+      await sendEmail({
         name: data.name,
         email: data.email,
         company: data.company || 'N/A',
@@ -145,22 +145,7 @@ export function Contact() {
         timeline: data.timeline || 'N/A',
         budget: data.budget || 'N/A',
         message: data.message,
-      };
-
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_hsym0kb';
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-      if (!templateId || !publicKey) {
-        throw new Error('Email service credentials are missing. Please configure VITE_EMAILJS_TEMPLATE_ID and VITE_EMAILJS_PUBLIC_KEY.');
-      }
-
-      await emailjs.send(
-        serviceId,
-        templateId,
-        templateParams,
-        publicKey
-      );
+      });
       
       setIsSubmitted(true);
     } catch (err) {

@@ -17,6 +17,8 @@ export interface BlogPost {
   seoDescription?: string;
   views?: number;
   updatedAtIso?: string;
+  createdAt?: any;
+  updatedAt?: any;
 }
 
 const injectedPost: BlogPost = {

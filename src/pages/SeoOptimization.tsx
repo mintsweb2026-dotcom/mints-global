@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { JsonLd } from '../components/JsonLd';
 import { SEO } from '../components/SEO';
 import { SafeImage } from '../components/SafeImage';
+import { buildFaqSchema } from '../lib/schema-helpers';
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -129,52 +130,30 @@ const serviceSchema = {
   }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What SEO services does Mints Global offer in Dubai?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Mints Global offers a full range of SEO services including technical SEO audits, on-page optimization, content strategy, link building, local SEO for Dubai businesses, and monthly performance reporting."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does SEO take to show results in UAE?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SEO results in the UAE typically begin to show within 3 to 6 months for competitive keywords. Mints Global provides monthly reporting so you can track progress from the first month of implementation."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does Mints Global provide local SEO for businesses in Dubai?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Mints Global specializes in local SEO for Dubai and UAE businesses, including Google Business Profile optimization, local citation building, and location-based keyword targeting to drive foot traffic and local leads."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What industries does Mints Global serve for SEO in the UAE?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Mints Global serves a wide range of industries including real estate, hospitality, e-commerce, healthcare, professional services, and technology companies across Dubai and the broader UAE market."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much do SEO services cost at Mints Global?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SEO packages at Mints Global are customized to your business goals, current website performance, and competitive landscape. Contact us for a free SEO audit and a tailored proposal for your Dubai or UAE business."
-      }
-    }
-  ]
-};
+const faqs = [
+  {
+    q: "What SEO services does Mints Global offer in Dubai?",
+    a: "Mints Global offers a full range of SEO services including technical SEO audits, on-page optimization, content strategy, link building, local SEO for Dubai businesses, and monthly performance reporting."
+  },
+  {
+    q: "How long does SEO take to show results in UAE?",
+    a: "SEO results in the UAE typically begin to show within 3 to 6 months for competitive keywords. Mints Global provides monthly reporting so you can track progress from the first month of implementation."
+  },
+  {
+    q: "Does Mints Global provide local SEO for businesses in Dubai?",
+    a: "Yes. Mints Global specializes in local SEO for Dubai and UAE businesses, including Google Business Profile optimization, local citation building, and location-based keyword targeting to drive foot traffic and local leads."
+  },
+  {
+    q: "What industries does Mints Global serve for SEO in the UAE?",
+    a: "Mints Global serves a wide range of industries including real estate, hospitality, e-commerce, healthcare, professional services, and technology companies across Dubai and the broader UAE market."
+  },
+  {
+    q: "How much do SEO services cost at Mints Global?",
+    a: "SEO packages at Mints Global are customized to your business goals, current website performance, and competitive landscape. Contact us for a free SEO audit and a tailored proposal for your Dubai or UAE business."
+  }
+];
+
+const faqSchema = buildFaqSchema(faqs);
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

@@ -5,6 +5,7 @@ import { JsonLd } from '../components/JsonLd';
 import { SEO } from '../components/SEO';
 import { SafeImage } from '../components/SafeImage';
 import { ServicesAccordion } from '../components/ServicesAccordion';
+import { buildFaqSchema } from '../lib/schema-helpers';
 
 const faqs = [
   {
@@ -170,18 +171,7 @@ const organizationSchema = {
   ]
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
-    "@type": "Question",
-    "name": faq.q,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.a
-    }
-  }))
-};
+const faqSchema = buildFaqSchema(faqs);
 
 const webPageSchema = {
   "@context": "https://schema.org",

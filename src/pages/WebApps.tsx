@@ -6,6 +6,7 @@ import { JsonLd } from '../components/JsonLd';
 import { SEO } from '../components/SEO';
 import { ServicesAccordion } from '../components/ServicesAccordion';
 import { SafeImage } from '../components/SafeImage';
+import { buildFaqSchema } from '../lib/schema-helpers';
 
 const faqs = [
   {
@@ -86,36 +87,7 @@ const breadcrumbSchema = {
   ]
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What types of web applications does MINTS Global develop?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We develop SaaS platforms, CRM systems, ERP software, customer portals, enterprise applications, dashboards, and custom business web applications."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you provide custom web application development in Dubai?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, MINTS Global provides custom web application development services for startups, SMEs, and enterprises across Dubai and the UAE."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which technologies do you use for web application development?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We use modern technologies such as React, Next.js, Node.js, Laravel, Python, .NET, and cloud-based architectures."
-      }
-    }
-  ]
-};
+const faqSchema = buildFaqSchema(faqs);
 
 export function WebApps() {
   return (

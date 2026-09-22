@@ -6,6 +6,7 @@ import { JsonLd } from '../components/JsonLd';
 import { SEO } from '../components/SEO';
 import { ServicesAccordion } from '../components/ServicesAccordion';
 import { SafeImage } from '../components/SafeImage';
+import { buildFaqSchema } from '../lib/schema-helpers';
 
 const faqs = [
   {
@@ -92,36 +93,7 @@ const breadcrumbSchema = {
  ]
 };
 
-const faqSchema = {
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [
-   {
-     "@type": "Question",
-     "name": "How much does mobile app development cost in Dubai?",
-     "acceptedAnswer": {
-       "@type": "Answer",
-       "text": "The cost depends on app complexity, features, integrations, and development platform. Custom mobile applications typically vary based on project requirements."
-     }
-   },
-   {
-     "@type": "Question",
-     "name": "Do you develop both iOS and Android apps?",
-     "acceptedAnswer": {
-       "@type": "Answer",
-       "text": "Yes, we develop native iOS apps, Android apps, and cross-platform mobile applications using modern frameworks."
-     }
-   },
-   {
-     "@type": "Question",
-     "name": "How long does it take to build a mobile app?",
-     "acceptedAnswer": {
-       "@type": "Answer",
-       "text": "Most mobile app projects take between 8 and 24 weeks depending on features, integrations and testing requirements."
-     }
-   }
- ]
-};
+const faqSchema = buildFaqSchema(faqs);
 
 export function MobileApps() {
   return (

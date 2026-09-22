@@ -7,6 +7,7 @@ import { JsonLd } from '../components/JsonLd';
 import { ServicesAccordion } from '../components/ServicesAccordion';
 import { WhyUsSection } from '../components/common/WhyUsSection';
 import { SafeImage } from '../components/SafeImage';
+import { buildFaqSchema } from '../lib/schema-helpers';
 
 const subServices = [
   { icon: ShieldAlert, name: "Offensive Security", desc: "Rigorous penetration testing, red teaming, and vulnerability assessments to expose critical flaws." },
@@ -120,17 +121,7 @@ const serviceSchema = {
   }
 };
 
-function buildFaqSchema(faqsData: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqsData.map(({ q, a }) => ({
-      "@type": "Question",
-      "name": q,
-      "acceptedAnswer": { "@type": "Answer", "text": a }
-    }))
-  };
-}
+
 
 export function CyberSecurity() {
   const { i18n } = useTranslation();

@@ -6,6 +6,7 @@ import { JsonLd } from '../components/JsonLd';
 import { SEO } from '../components/SEO';
 import { ServicesAccordion } from '../components/ServicesAccordion';
 import { SafeImage } from '../components/SafeImage';
+import { buildFaqSchema } from '../lib/schema-helpers';
 
 const faqs = [
   {
@@ -81,36 +82,7 @@ const breadcrumbSchema = {
   ]
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What website development services does Mints Global offer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Mints Global offers custom website development, WordPress development, Shopify development, eCommerce websites, and corporate website solutions."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you build SEO-friendly websites?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, all websites are built with SEO best practices, fast loading speed, mobile responsiveness, and optimized site structure."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can you redesign an existing website?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, we provide website redesign services to improve performance, design, user experience, and search engine visibility."
-      }
-    }
-  ]
-};
+const faqSchema = buildFaqSchema(faqs);
 
 export function WebsiteDevelopment() {
   return (

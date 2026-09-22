@@ -7,6 +7,7 @@ import { JsonLd } from '../components/JsonLd';
 import { ServicesAccordion } from '../components/ServicesAccordion';
 import { SafeImage } from '../components/SafeImage';
 import { WhyUsSection } from '../components/common/WhyUsSection';
+import { buildFaqSchema } from '../lib/schema-helpers';
 
 const subServices = [
   { icon: Code2, name: "Custom Web Apps", desc: "Scalable, high-performance web applications built with modern frontend and backend frameworks.", href: "/software-development/web-apps" },
@@ -217,17 +218,7 @@ const webPageSchema = {
   }
 };
 
-function buildFaqSchema(faqsData: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqsData.map(({ q, a }) => ({
-      "@type": "Question",
-      "name": q,
-      "acceptedAnswer": { "@type": "Answer", "text": a }
-    }))
-  };
-}
+
 
 export function SoftwareDevelopment() {
   const { i18n } = useTranslation();

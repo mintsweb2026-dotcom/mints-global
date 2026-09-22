@@ -216,18 +216,7 @@ export function CloudSecurity() {
           }
         ]
       }} />
-      <JsonLd data={{
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": faqs.map(faq => ({
-          "@type": "Question",
-          "name": faq.q,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": faq.a
-          }
-        }))
-      }} />
+      <JsonLd data={buildFaqSchema(faqs)} />
     </div>
   );
 }

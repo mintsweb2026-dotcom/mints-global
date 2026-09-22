@@ -6,6 +6,7 @@ import { SEO } from '../components/SEO';
 import { SEO_DATA } from '../lib/seo-data';
 import { JsonLd } from '../components/JsonLd';
 import { ServicesAccordion } from '../components/ServicesAccordion';
+import { buildFaqSchema } from '../lib/schema-helpers';
 
 const services = [
   {
@@ -42,17 +43,7 @@ const faqs = [
   { q: "Why is bilingual SEO important for businesses in the UAE?", a: "The UAE is a highly diverse market. Optimizing your website for both English and Arabic ensures you capture the maximum possible audience, catering to local intent and searching habits which can differ significantly across languages." },
 ];
 
-function buildFaqSchema(faqsData: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqsData.map(({ q, a }) => ({
-      "@type": "Question",
-      "name": q,
-      "acceptedAnswer": { "@type": "Answer", "text": a }
-    }))
-  };
-}
+
 
 export function Services() {
   const { i18n } = useTranslation();

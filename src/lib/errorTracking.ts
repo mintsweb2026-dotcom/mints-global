@@ -37,18 +37,54 @@ export function initErrorTracking() {
   }
 
   if (typeof window !== 'undefined') {
+    window.addEventListener('error', (event) => {
+      captureException(event.error || event.message, {
+        extra: { 
+          type: 'uncaught_error',
+          filename: event.filename,
+          lineno: event.lineno,
+          colno: event.colno 
+        }
+      });
+    });
+
     window.addEventListener('unhandledrejection', (event) => {
       captureException(event.reason, {
         extra: { type: 'unhandledrejection' }
       });
     });
+
+    (window as any).__getRecentErrors = getRecentErrors;
   }
+}
+
+/** In-memory ring buffer of recent errors */
+const recentErrors: Array<{ timestamp: string; message: string; context?: ErrorContext }> = [];
+
+export function getRecentErrors() {
+  return [...recentErrors];
 }
 
 /**
  * Captures an exception and dispatches it to configured error services
  */
 export function captureException(error: unknown, context?: ErrorContext) {
+  const errMsg = error instanceof Error ? error.message : String(error);
+  const entry = {
+    timestamp: new Date().toISOString(),
+    message: errMsg,
+    context
+  };
+
+  recentErrors.push(entry);
+  if (recentErrors.length > 20) recentErrors.shift();
+
+  try {
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.setItem('__mints_last_error__', JSON.stringify(entry));
+    }
+  } catch (_) {}
+
   // 1. Dispatch to Sentry if initialized
   if (sentryInitialized) {
     Sentry.captureException(error, { extra: context as Record<string, unknown> });

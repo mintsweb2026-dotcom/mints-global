@@ -358,12 +358,15 @@ function AdminPanelContent() {
             "shynim90@gmail.com",
           ];
 
+          const idTokenResult = await user.getIdTokenResult();
+          const hasAdminClaim = Boolean(idTokenResult.claims.admin);
+
           const isBootstrapEmail =
             Boolean(user.email) &&
             (envAdminEmails.includes(user.email!.toLowerCase()) ||
               defaultBootstrapEmails.includes(user.email!.toLowerCase()));
 
-          if (adminSnap.exists()) {
+          if (adminSnap.exists() || hasAdminClaim) {
             setIsAdmin(true);
             fetchPosts();
           } else if (isBootstrapEmail) {

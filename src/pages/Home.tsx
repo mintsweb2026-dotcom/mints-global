@@ -165,8 +165,8 @@ export function Home() {
             className="absolute inset-0 w-full h-full will-change-transform pointer-events-none"
           >
             <SafeImage
-              src="/web-1.webp"
-              fallbackSrc="/web-1.webp"
+              src="/images/hero-digital-agency-dubai.webp"
+              fallbackSrc="/images/hero-digital-agency-dubai.webp"
               alt="Mints Global creative digital agency hero"
               width="3840"
               height="2160"

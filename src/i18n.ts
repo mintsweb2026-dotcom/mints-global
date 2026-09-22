@@ -124,6 +124,7 @@ const resources = {
         },
         roles: {
           ceo: "Chief Executive Officer",
+          md: "Managing Director",
           cco: "Chief Client Officer",
           cd: "Creative Director",
           cto: "Chief Technical Officer",
@@ -241,6 +242,7 @@ const resources = {
         },
         roles: {
           ceo: "الرئيس التنفيذي",
+          md: "المدير العام",
           cco: "رئيس شؤون العملاء",
           cd: "المدير الإبداعي",
           cto: "الرئيس التنفيذي للتكنولوجيا",
@@ -358,6 +360,7 @@ const resources = {
         },
         roles: {
           ceo: "Geschäftsführer",
+          md: "Geschäftsführender Direktor",
           cco: "Leiter Kundenbetreuung",
           cd: "Kreativdirektor",
           cto: "Technischer Leiter",

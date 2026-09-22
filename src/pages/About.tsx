@@ -7,7 +7,7 @@ import { ShieldCheck, Rocket, Map, Globe2, Linkedin } from 'lucide-react';
 
 const team = [
   { name: 'Arya Lakshmi', roleKey: 'about.roles.ceo', img: '/executives/Arya Lakshmi_ceo.jpg-800w.webp', linkedin: 'https://www.linkedin.com/in/arya-lakshmi-a79326416/' },
-  { name: 'Jishnu Das', roleKey: 'about.roles.cco', img: '/executives/Jishnu Das _Cheif client officer-800w.webp', linkedin: 'https://www.linkedin.com/in/jishnu-das-/' },
+  { name: 'Jishnu Das', roleKey: 'about.roles.md', img: '/executives/Jishnu Das _Cheif client officer-800w.webp', linkedin: 'https://www.linkedin.com/in/jishnu-das-/' },
   { name: 'Razal Basheer', roleKey: 'about.roles.cd', img: '/executives/Razal Basheer _Creative director.JPG-800w.webp', linkedin: 'https://www.linkedin.com/in/razal-basheer-893882256/' },
   { name: 'Anand Binu Arjun', roleKey: 'about.roles.cto', img: '/executives/anand binu arjun_Cheif technical officer-800w.webp', linkedin: 'https://www.linkedin.com/in/anand-b-arjun/' },
   { name: 'Febin Sani', roleKey: 'about.roles.advisor', img: '/executives/febin sani_Advisor.JPG-400w.webp', linkedin: 'https://www.linkedin.com/in/febinnsani/' },

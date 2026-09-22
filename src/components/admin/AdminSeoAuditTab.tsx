@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../../lib/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { calcPostSeoScore, calcWorkSeoScore } from '../../lib/seoScore';
+import { getPosts } from '../../data/posts';
 import {
   LineChart,
   Line,
@@ -23,29 +24,31 @@ export function AdminSeoAuditTab() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const postsSnapshot = await getDocs(collection(db, 'posts'));
-        const worksSnapshot = await getDocs(collection(db, 'works'));
+        const [posts, worksSnapshot] = await Promise.all([
+          getPosts(),
+          getDocs(collection(db, 'works')),
+        ]);
 
         const items: any[] = [];
         const missingAlt: { id: string, type: 'post' | 'work', title: string, hasImage: boolean, hasAlt: boolean }[] = [];
         
-        postsSnapshot.forEach(doc => {
-            const data = doc.data();
-            if (data.image && (!data.imageAlt || !data.imageAlt.trim())) {
+        posts.forEach(post => {
+            if (post.image && (!post.imageAlt || !post.imageAlt.trim())) {
                 missingAlt.push({
-                   id: doc.id,
+                   id: post.id,
                    type: 'post',
-                   title: data.title || doc.id,
-                   hasImage: !!data.image,
+                   title: post.title || post.id,
+                   hasImage: !!post.image,
                    hasAlt: false
                 });
             }
 
-            if (data.createdAt) {
+            const postDate = post.createdAt?.toDate ? post.createdAt.toDate() : (post.date ? new Date(post.date) : null);
+            if (postDate) {
                 items.push({
                     type: 'post',
-                    score: calcPostSeoScore(data),
-                    date: data.createdAt.toDate()
+                    score: calcPostSeoScore(post),
+                    date: postDate
                 });
             }
         });

@@ -48,7 +48,7 @@ cp .env.example .env.local
 
 | Variable | Required | Description |
 |---|---|---|
-| `VITE_EMAILJS_SERVICE_ID` | Optional | EmailJS Service ID (defaults to agency service ID) |
+| `VITE_EMAILJS_SERVICE_ID` | Yes (for contact & newsletter) | EmailJS Service ID |
 | `VITE_EMAILJS_TEMPLATE_ID` | Yes (for contact form) | EmailJS Template ID for contact lead notifications |
 | `VITE_EMAILJS_PUBLIC_KEY` | Yes (for contact form) | EmailJS Public API Key |
 | `VITE_GA_ID` | Optional | Google Analytics 4 Measurement ID (`G-XXXXXXXXXX`) |
@@ -59,6 +59,9 @@ cp .env.example .env.local
 | `VITE_FIREBASE_MESSAGING_SENDER_ID`| Yes | Firebase Messaging Sender ID |
 | `VITE_FIREBASE_APP_ID` | Yes | Firebase Web App ID |
 | `VITE_FIREBASE_MEASUREMENT_ID` | Optional | Firebase Analytics Measurement ID |
+| `VITE_FIREBASE_FIRESTORE_DB_ID` | Optional | Firestore database ID (defaults to `(default)`) |
+| `VITE_CRISP_WEBSITE_ID` | Optional | Crisp Chat Widget ID (widget only loads when set) |
+| `VITE_ADMIN_EMAILS` | Optional | Comma-separated admin email list for bootstrap access |
 | `VITE_SENTRY_DSN` | Optional | Sentry DSN for production exception telemetry |
 
 > [!CAUTION]

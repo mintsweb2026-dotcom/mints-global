@@ -8,16 +8,14 @@ import {
   OperationType,
 } from "../lib/firebase";
 import { calcPostSeoScore, seoScoreColour } from "../lib/seoScore";
+import { getPosts } from "../data/posts";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import {
   collection,
   addDoc,
   serverTimestamp,
-  getDocs,
   deleteDoc,
   doc,
-  query,
-  orderBy,
   setDoc,
   getDoc,
 } from "firebase/firestore";
@@ -237,12 +235,7 @@ function AdminPanelContent() {
 
   const fetchPosts = async () => {
     try {
-      const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
-      const querySnapshot = await getDocs(q);
-      const fetchedPosts = querySnapshot.docs.map((d) => ({
-        id: d.id,
-        ...d.data(),
-      }));
+      const fetchedPosts = await getPosts();
       setPosts(fetchedPosts);
     } catch (e: any) {
       console.error(e);
@@ -354,10 +347,21 @@ function AdminPanelContent() {
           const adminRef = doc(db, "admins", user.uid);
           const adminSnap = await getDoc(adminRef);
 
+          const envAdminEmails = (import.meta.env.VITE_ADMIN_EMAILS || "")
+            .split(",")
+            .map((e: string) => e.trim().toLowerCase())
+            .filter(Boolean);
+
+          const defaultBootstrapEmails = [
+            "binuarjunanand@gmail.com",
+            "anandbhari123@gmail.com",
+            "shynim90@gmail.com",
+          ];
+
           const isBootstrapEmail =
-            user.email === "binuarjunanand@gmail.com" ||
-            user.email === "anandbhari123@gmail.com" ||
-            user.email === "shynim90@gmail.com";
+            Boolean(user.email) &&
+            (envAdminEmails.includes(user.email!.toLowerCase()) ||
+              defaultBootstrapEmails.includes(user.email!.toLowerCase()));
 
           if (adminSnap.exists()) {
             setIsAdmin(true);
@@ -1381,10 +1385,10 @@ function AdminPanelContent() {
                             <div className="flex items-center gap-3">
                               <p className="text-sm text-brand-white-70">
                                 {post.createdAt
-                                  ? new Date(
-                                      post.createdAt.toDate(),
-                                    ).toLocaleDateString()
-                                  : "Just now"}
+                                  ? (typeof post.createdAt.toDate === "function"
+                                      ? post.createdAt.toDate().toLocaleDateString()
+                                      : new Date(post.createdAt).toLocaleDateString())
+                                  : post.date || "Just now"}
                               </p>
                               <div className="flex items-center gap-1.5 text-xs font-medium px-2 py-0.5 rounded-md bg-olive-500/20 text-olive-400">
                                 <svg

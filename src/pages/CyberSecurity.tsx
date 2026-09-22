@@ -1,6 +1,5 @@
-import { ArrowRight, ShieldAlert, Activity, FileLock2, ShieldCheck, CloudLightning, Cpu, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ShieldAlert, Activity, FileLock2, ShieldCheck, CloudLightning, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SafeCountUp as CountUp } from '../components/SafeCountUp';
 import { useTranslation } from 'react-i18next';
 import { SEO } from '../components/SEO';
 import { SEO_DATA } from '../lib/seo-data';

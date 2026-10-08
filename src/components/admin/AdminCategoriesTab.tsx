@@ -88,51 +88,51 @@ export function AdminCategoriesTab() {
   return (
     <div className="grid md:grid-cols-2 gap-8">
        {/* Form Section */}
-       <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm h-fit">
-         <h2 className="text-2xl font-light text-white mb-6">{editingId ? 'Edit Category' : 'Add New Category'}</h2>
+       <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 shadow-sm h-fit">
+         <h2 className="text-2xl font-light text-[#182012] mb-6">{editingId ? 'Edit Category' : 'Add New Category'}</h2>
          
          <form onSubmit={handleSubmit} className="space-y-4">
-           {errorMsg && <div className="text-red-400 bg-red-400/10 p-3 rounded-lg text-sm">{errorMsg}</div>}
+           {errorMsg && <div className="text-red-600 bg-red-50 border border-red-200 p-3 rounded-lg text-sm">{errorMsg}</div>}
            
            <div>
-             <label className="block text-sm text-brand-white-70 mb-1">Category Name</label>
-             <input type="text" value={name} onChange={e => setName(e.target.value)} required className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500" />
+             <label className="block text-sm font-medium text-[#5A644D] mb-1">Category Name</label>
+             <input type="text" value={name} onChange={e => setName(e.target.value)} required className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 shadow-xs" />
            </div>
 
            <div>
-             <label className="block text-sm text-brand-white-70 mb-1">Description (Optional)</label>
-             <textarea value={description} onChange={e => setDescription(e.target.value)} rows={3} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500" />
+             <label className="block text-sm font-medium text-[#5A644D] mb-1">Description (Optional)</label>
+             <textarea value={description} onChange={e => setDescription(e.target.value)} rows={3} className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 shadow-xs" />
            </div>
 
            <div className="pt-4 flex gap-3">
-             <button type="submit" disabled={submitting} className="flex-1 bg-olive-500 text-white px-4 py-3 rounded-xl font-bold hover:bg-olive-400 disabled:opacity-50 transition-colors">
+             <button type="submit" disabled={submitting} className="flex-1 bg-olive-500 text-white px-4 py-3 rounded-xl font-bold hover:bg-olive-400 disabled:opacity-50 transition-colors shadow-sm">
                {submitting ? 'Saving...' : editingId ? 'Update Category' : 'Add Category'}
              </button>
              {editingId && (
-               <button type="button" onClick={() => { setEditingId(null); setName(''); setDescription(''); setErrorMsg(''); }} className="px-4 py-3 bg-white/10 text-white rounded-xl hover:bg-white/20 transition-colors font-medium">Cancel</button>
+               <button type="button" onClick={() => { setEditingId(null); setName(''); setDescription(''); setErrorMsg(''); }} className="px-4 py-3 bg-[#F0F0F0] hover:bg-[#DDD7C8] text-[#182012] rounded-xl transition-colors font-semibold">Cancel</button>
              )}
            </div>
          </form>
        </div>
 
        {/* List Section */}
-       <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm h-fit">
-         <h2 className="text-2xl font-light text-white mb-6">Manage Categories</h2>
+       <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 shadow-sm h-fit">
+         <h2 className="text-2xl font-light text-[#182012] mb-6">Manage Categories</h2>
          {loading ? (
-             <p className="text-brand-white-70">Loading categories...</p>
+             <p className="text-[#5A644D]">Loading categories...</p>
          ) : categories.length === 0 ? (
-             <p className="text-brand-white-70">No categories added yet.</p>
+             <p className="text-[#5A644D]">No categories added yet.</p>
          ) : (
              <div className="space-y-4">
                  {categories.map((cat) => (
-                     <div key={cat.id} className="flex items-center justify-between p-4 border border-white/5 bg-black/20 rounded-xl hover:border-olive-500/30 transition-colors">
+                     <div key={cat.id} className="flex items-center justify-between p-4 border border-[#E4E4E4] bg-white rounded-xl hover:border-olive-500/40 transition-colors shadow-xs">
                          <div className="flex-1 min-w-0 pr-4">
-                             <h3 className="text-white font-medium truncate">{cat.name}</h3>
-                             {cat.description && <p className="text-xs text-brand-white-50 truncate">{cat.description}</p>}
+                             <h3 className="text-[#182012] font-bold truncate">{cat.name}</h3>
+                             {cat.description && <p className="text-xs text-[#859177] truncate">{cat.description}</p>}
                          </div>
                          <div className="flex flex-col gap-2 shrink-0">
-                             <button onClick={() => handleEdit(cat)} className="text-xs px-3 py-1 bg-olive-500/10 text-olive-400 rounded-full hover:bg-olive-500/20">Edit</button>
-                             <button onClick={() => handleDelete(cat.id, cat.name)} className="text-xs px-3 py-1 bg-red-500/10 text-red-400 rounded-full hover:bg-red-500/20">Delete</button>
+                             <button onClick={() => handleEdit(cat)} className="text-xs px-3 py-1 bg-olive-500/10 text-olive-600 font-semibold rounded-full hover:bg-olive-500/20">Edit</button>
+                             <button onClick={() => handleDelete(cat.id, cat.name)} className="text-xs px-3 py-1 bg-red-500/10 text-red-600 font-semibold rounded-full hover:bg-red-500/20">Delete</button>
                          </div>
                      </div>
                  ))}

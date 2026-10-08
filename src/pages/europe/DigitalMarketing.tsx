@@ -50,11 +50,11 @@ export function DigitalMarketingEurope() {
         
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+            <span className="px-4 py-1.5 rounded-full border border-[#E4E4E4] bg-white text-xs font-bold uppercase tracking-widest text-[#5A644D] shadow-sm">
               European Market Focus
             </span>
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
             DIGITAL MARKETING<br/>
             <span className="text-olive-500">IN EUROPE.</span>
           </h1>
@@ -71,42 +71,42 @@ export function DigitalMarketingEurope() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white">Our Marketing Services In Europe</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012]">Our Marketing Services In Europe</h2>
             <p className="text-brand-white-70 text-lg max-w-3xl">We offer a complete suite of digital marketing services. Every service corresponds to a distinct pillar of digital growth, available standalone or as part of a master strategy.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Multilingual SEO</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Multilingual SEO</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Ranking on Google in Europe requires technical excellence and authoritative localized content across language borders (DACH, UK, Nordics).</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Performance Marketing (Ads)</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Performance Marketing (Ads)</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Data-driven campaigns across Google and Meta that are tightly targeted, highly optimized, and respect European cookie consent laws.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Social Media Strategy</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Social Media Strategy</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">We manage your digital presence end-to-end, building audiences that actually engage and converting followers into loyal customers.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Video Production</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Video Production</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Cinematic story-telling and short-form video crafted to stop the scroll and build emotional connection in the European market.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Influencer Marketing</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Influencer Marketing</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">We identify, vet, and manage the right influencers for your brand across UK and EU markets to drive trust and direct sales.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Brand Localization</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Brand Localization</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Adapting your corporate identity, messaging, and visual assets so they resonate profoundly with diverse European consumers.</p>
             </div>
           </div>
@@ -114,10 +114,10 @@ export function DigitalMarketingEurope() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-[#182012]">Frequently Asked Questions</h2>
             <p className="text-brand-white-70 text-lg">Everything you need to know about our digital marketing services.</p>
           </div>
           <div className="space-y-4">
@@ -127,15 +127,15 @@ export function DigitalMarketingEurope() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-olive-900 border-t border-white/5 text-center">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4] text-center">
          <div className="max-w-3xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
               Ready To Get Started?
             </h2>
             <p className="text-brand-white-70 text-lg leading-relaxed mb-10">
               Scale your growth across Europe with data-driven marketing campaigns that deliver measurable ROI.
             </p>
-            <Link to="/contact" className="bg-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit mx-auto">
+            <Link to="/contact" className="bg-[#687838] hover:bg-[#515E2C] text-white px-10 py-4 rounded-xl font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg block w-fit mx-auto">
               Contact Us Today
             </Link>
          </div>

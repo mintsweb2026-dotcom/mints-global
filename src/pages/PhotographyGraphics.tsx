@@ -143,11 +143,11 @@ export function PhotographyGraphics() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex items-center gap-4 mb-6">
-              <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+              <span className="px-4 py-1.5 rounded-full border border-[#E4E4E4] bg-white text-xs font-bold uppercase tracking-widest text-[#5A644D] shadow-sm">
                 Visual Excellence
               </span>
             </div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
               Photography<br/>
               <span className="text-olive-500">& Graphics.</span>
             </h1>
@@ -162,7 +162,7 @@ export function PhotographyGraphics() {
             </div>
           </motion.div>
 
-          <div className="relative w-full aspect-[12/6] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+          <div className="relative w-full aspect-[12/6] rounded-[2rem] overflow-hidden border border-[#E4E4E4] shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/images/photography-graphics-services-dubai.webp"
@@ -181,42 +181,42 @@ export function PhotographyGraphics() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white">Visual Services</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012]">Visual Services</h2>
             <p className="text-brand-white-70 text-lg max-w-3xl">Premium imagery and bespoke graphics that form the foundation of your marketing efforts and brand identity.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Corporate Photography</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Corporate Photography</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">High-end executive headshots, team photos, and office culture photography that humanizes your brand.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Product Photography</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Product Photography</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Crisp, perfectly lit e-commerce product photos and styled lifestyle shots that drive online sales.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Event Photography</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Event Photography</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Professional coverage for corporate events, gala dinners, and exhibitions, delivered with fast turnarounds.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Social Media Graphics</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Social Media Graphics</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Custom-designed templates and posts that ensure your social feeds look cohesive, branded, and professional.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Marketing Collateral</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Marketing Collateral</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Design of brochures, whitepapers, flyers, and digital presentations that impress clients and stakeholders.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">UI/UX Assets</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">UI/UX Assets</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Custom iconography, illustrations, and digital assets specifically designed for web and mobile interfaces.</p>
             </div>
           </div>
@@ -224,10 +224,10 @@ export function PhotographyGraphics() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-[#182012]">Frequently Asked Questions</h2>
             <p className="text-brand-white-70 text-lg">Everything you need to know about our creative services.</p>
           </div>
           <div className="space-y-4">
@@ -237,28 +237,28 @@ export function PhotographyGraphics() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-olive-900 border-t border-white/5 text-center">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4] text-center">
          <div className="max-w-3xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
               Ready To Get Started?
             </h2>
             <p className="text-brand-white-70 text-lg leading-relaxed mb-10">
               First impressions matter. Let's make your visuals impossible to ignore.
             </p>
-            <Link to="/contact" className="bg-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit mx-auto">
+            <Link to="/contact" className="bg-[#687838] hover:bg-[#515E2C] text-white px-10 py-4 rounded-xl font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg block w-fit mx-auto">
               Contact Us Today
             </Link>
          </div>
       </section>
     
       {/* Related Services */}
-      <section className="py-16 border-t border-white/5 bg-olive-950">
+      <section className="py-16 border-t border-[#E4E4E4] bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h3 className="font-display text-2xl font-black uppercase mb-8 text-white">Related Services</h3>
+          <h3 className="font-display text-2xl font-black uppercase mb-8 text-[#182012]">Related Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link to="/digital-marketing/seo" className="text-olive-500 hover:text-white font-bold transition-colors">SEO Optimization &rarr;</Link>
-            <Link to="/digital-marketing/smm" className="text-olive-500 hover:text-white font-bold transition-colors">Social Media Marketing &rarr;</Link>
-            <Link to="/digital-marketing/branding" className="text-olive-500 hover:text-white font-bold transition-colors">Brand Strategy &rarr;</Link>
+            <Link to="/digital-marketing/seo" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">SEO Optimization &rarr;</Link>
+            <Link to="/digital-marketing/smm" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Social Media Marketing &rarr;</Link>
+            <Link to="/digital-marketing/branding" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Brand Strategy &rarr;</Link>
           </div>
         </div>
       </section>

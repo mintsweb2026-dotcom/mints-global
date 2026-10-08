@@ -82,20 +82,24 @@ export function Services() {
                key={i} 
                onMouseEnter={() => setSelectedServiceIndex(i)}
                onMouseLeave={() => setSelectedServiceIndex(null)}
-               className={`border rounded-2xl p-8 hover:-translate-y-2 transition-all duration-300 ${selectedServiceIndex === i ? 'bg-olive-900 border-olive-500 shadow-[0_0_30px_rgba(58,93,45,0.25)]' : 'bg-olive-900 border-white/5'}`}
+               className={`rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 ${
+                 selectedServiceIndex === i 
+                   ? 'bg-white border border-olive-500/50 shadow-xl' 
+                   : 'bg-white border border-[#E4E4E4] shadow-sm'
+               }`}
              >
-               <div className="w-14 h-14 bg-olive-800 rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black">
+               <div className="w-14 h-14 bg-white rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black border border-[#E4E4E4] shadow-sm">
                  0{i + 1}
                </div>
-               <h3 className="text-2xl font-display font-bold mb-4">{grp.title}</h3>
+               <h3 className="text-2xl font-display font-bold mb-4 text-[#182012]">{grp.title}</h3>
                <ul className="space-y-3 text-sm font-medium mb-8">
                   {grp.items.map((item, j) => (
-                     <li key={j} className="flex gap-2 text-olive-300 items-center">
+                     <li key={j} className="flex gap-2 text-olive-500 font-bold items-center">
                        <ArrowRight size={16} /> {item}
                      </li>
                   ))}
                </ul>
-                <Link to={grp.link} aria-label={`Learn more about ${grp.title}`} className="text-sm font-bold flex items-center gap-2 hover:text-olive-500 transition-colors">
+                <Link to={grp.link} aria-label={`Learn more about ${grp.title}`} className="text-sm font-bold flex items-center gap-2 text-[#182012] hover:text-olive-500 transition-colors">
                   Learn More <ArrowRight size={16} />
                 </Link>
              </div>
@@ -103,9 +107,9 @@ export function Services() {
         </div>
       </section>
 
-      <section className="bg-olive-900 border-t border-white/5 py-24">
+      <section className="bg-[#F0F0F0] border-t border-[#E4E4E4] py-24">
          <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tight">Frequently Asked <span className="text-olive-500">Questions</span></h2>
+            <h2 className="font-display text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tight text-[#182012]">Frequently Asked <span className="text-olive-500">Questions</span></h2>
             <ServicesAccordion items={faqs.map(f => ({ title: f.q, content: f.a }))} />
          </div>
       </section>

@@ -220,14 +220,14 @@ export function Work() {
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${filter === f ? 'bg-olive-500 text-white' : 'bg-transparent border border-white/10 text-brand-white-70 hover:border-olive-500/50 hover:text-white'}`}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${filter === f ? 'bg-olive-500 text-white shadow-sm' : 'bg-white border border-[#E4E4E4] text-[#5A644D] hover:bg-[#F0F0F0] hover:text-[#182012]'}`}
               >
                 {f}
               </button>
             ))}
           </div>
           <div className="flex flex-col md:flex-row gap-4 items-center">
-            <span className="text-brand-white-40 text-xs font-bold uppercase tracking-widest whitespace-nowrap">
+            <span className="text-[#5A644D] text-xs font-bold uppercase tracking-widest whitespace-nowrap">
               Showing {filteredProjects.length} Projects
             </span>
             <div className="relative w-full md:w-64 shrink-0">
@@ -236,7 +236,7 @@ export function Work() {
                 placeholder="Search projects..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-olive-900 border border-white/10 rounded-full py-3 px-6 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-olive-500 transition-colors"
+                className="w-full bg-white border border-[#E4E4E4] rounded-full py-2.5 px-5 text-sm text-[#182012] placeholder:text-[#859177] focus:outline-none focus:border-olive-500 focus:ring-2 focus:ring-olive-500/20 transition-all shadow-sm"
               />
             </div>
           </div>
@@ -251,16 +251,16 @@ export function Work() {
                  exit={{ opacity: 0 }}
                  className="col-span-full flex flex-col items-center justify-center py-20 text-center"
                >
-                 <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4 text-brand-white-40">
+                 <div className="w-16 h-16 rounded-full bg-[#182012]/5 flex items-center justify-center mb-4 text-[#182012]/50">
                    <Search size={24} />
                  </div>
-                 <h3 className="text-xl font-display font-bold text-white mb-2">No projects found</h3>
+                 <h3 className="text-xl font-display font-bold text-[#182012] mb-2">No projects found</h3>
                  <p className="text-brand-white-70 text-sm max-w-sm">
                    We couldn't find any projects matching "{searchTerm}" in the {filter} category.
                  </p>
                  <button
                    onClick={() => { setFilter('All'); setSearchTerm(''); }}
-                   className="mt-6 text-olive-500 font-bold uppercase text-xs tracking-widest hover:text-white transition-colors"
+                   className="mt-6 text-olive-500 font-bold uppercase text-xs tracking-widest hover:text-[#182012] transition-colors"
                  >
                    Clear Filters
                  </button>
@@ -281,7 +281,7 @@ export function Work() {
                     className="group/card block w-full outline-none focus-visible:ring-2 focus-visible:ring-olive-500 rounded-[2rem] text-left cursor-pointer"
                     aria-label={`Read ${proj.title} case study - ${proj.category.name}`}
                   >
-                    <div className="w-full overflow-hidden rounded-[2rem] aspect-[4/3] bg-olive-900 border border-white/5 mb-6 shadow-lg relative">
+                    <div className="w-full overflow-hidden rounded-[2rem] aspect-[4/3] bg-[#F0F0F0] border border-[#E4E4E4] mb-6 shadow-md relative">
                       <img 
                         src={getOptimizedUrl(proj.titleImage, 800)} 
                         srcSet={getSrcSet(proj.titleImage, [400, 800, 1200])}
@@ -301,16 +301,16 @@ export function Work() {
                       <span className="text-olive-500 text-xs font-bold uppercase tracking-widest mb-3 border border-olive-500/30 px-3 py-1 rounded-full group-hover/card:border-olive-500 transition-colors">
                         {proj.category.name}
                       </span>
-                      <h2 className="font-display font-black text-[clamp(1.25rem,4vw,1.875rem)] text-white group-hover/card:text-olive-500 transition-colors uppercase tracking-tight mb-4 break-words hyphens-auto">
+                      <h2 className="font-display font-black text-[clamp(1.25rem,4vw,1.875rem)] text-[#182012] group-hover/card:text-olive-500 transition-colors uppercase tracking-tight mb-4 break-words hyphens-auto">
                         {proj.title}
                       </h2>
                       {(proj.duration || proj.kpi) && (
-                        <div className="flex flex-wrap items-center gap-3 mb-4 w-full text-xs font-medium uppercase tracking-wider text-white">
-                          {proj.duration && <span className="bg-white/5 px-2 py-1 rounded-md border border-white/10">⏱ {proj.duration}</span>}
-                          {proj.kpi && <span className="text-olive-400 bg-olive-500/10 px-2 py-1 rounded-md border border-olive-500/20">🚀 {proj.kpi}</span>}
+                        <div className="flex flex-wrap items-center gap-3 mb-4 w-full text-xs font-medium uppercase tracking-wider text-[#182012]">
+                          {proj.duration && <span className="bg-white px-2.5 py-1 rounded-md border border-[#E4E4E4] text-[#5A644D]">⏱ {proj.duration}</span>}
+                          {proj.kpi && <span className="text-olive-500 bg-olive-500/10 px-2.5 py-1 rounded-md border border-olive-500/20 font-bold">🚀 {proj.kpi}</span>}
                         </div>
                       )}
-                      <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-olive-500 group-hover/card:text-white transition-colors mb-2">
+                      <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-olive-500 group-hover/card:text-olive-400 transition-colors mb-2">
                         View Case Study <ArrowRight size={14} className="group-hover/card:translate-x-1 transition-transform" />
                       </div>
                     </div>
@@ -327,7 +327,7 @@ export function Work() {
                             e.stopPropagation();
                             setSelectedProject(proj);
                           }}
-                          className="rounded-xl overflow-hidden aspect-square bg-olive-900 border border-white/5 cursor-pointer hover:border-olive-500/50 transition-colors"
+                          className="rounded-xl overflow-hidden aspect-square bg-[#F0F0F0] border border-[#E4E4E4] cursor-pointer hover:border-olive-500/50 transition-colors"
                           aria-label={`Preview media ${mediaIdx + 1} for ${proj.title}`}
                         >
                           <img 

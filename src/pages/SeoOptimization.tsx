@@ -200,7 +200,7 @@ export function SeoOptimization() {
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
               BE FOUND.<br/><span className="text-olive-500">BE CHOSEN.</span>
             </h1>
             <p className="text-brand-white-70 text-lg md:text-xl max-w-3xl leading-relaxed mb-12 uppercase tracking-tight">
@@ -213,7 +213,7 @@ export function SeoOptimization() {
             </div>
           </motion.div>
           
-          <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-square rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+          <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-square rounded-[2rem] overflow-hidden border border-[#E4E4E4] shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/images/seo-services-og.webp"
@@ -230,9 +230,9 @@ export function SeoOptimization() {
         </div>
       </section>
       
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-3xl md:text-5xl font-black uppercase mb-8 text-white">Strategic <span className="text-olive-500">Systems.</span></h2>
+            <h2 className="font-display text-3xl md:text-5xl font-black uppercase mb-8 text-[#182012]">Strategic <span className="text-olive-500">Systems.</span></h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
               <div>
                 <p className="text-brand-white-70 text-lg font-medium leading-relaxed mb-6">
@@ -241,38 +241,38 @@ export function SeoOptimization() {
                 <p className="text-brand-white-40 font-medium leading-relaxed mb-8">
                   Whether you are a startup in Dubai, a mid-market company in Abu Dhabi, or an enterprise brand targeting Europe — we craft strategies built for your specific competition.
                 </p>
-                <div className="p-8 rounded-3xl bg-white/5 border border-white/10 italic text-brand-white-70">
+                <div className="p-8 rounded-3xl bg-white border border-[#E4E4E4] italic text-brand-white-70 shadow-sm">
                   "Everything you need to dominate search — technical, on-page, off-page, content, and local. One team, one strategy, one measurable outcome."
                 </div>
               </div>
             </div>
             
-            <h3 className="font-display text-3xl font-black uppercase mb-12 text-white">SEO Service Stack</h3>
+            <h3 className="font-display text-3xl font-black uppercase mb-12 text-[#182012]">SEO Service Stack</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                  <div key={0} className="bg-brand-black border border-white/5 p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
+                  <div key={0} className="bg-brand-black border border-[#E4E4E4] p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
                      <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Deep Technical Audits</h3>
+                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Deep Technical Audits</h3>
                      <p className="text-brand-white-70 text-sm leading-relaxed font-medium">
                         Full-stack analysis of site architecture, load speeds, and mobile-first readiness.
                      </p>
                   </div>
-                  <div key={1} className="bg-brand-black border border-white/5 p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
+                  <div key={1} className="bg-brand-black border border-[#E4E4E4] p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
                      <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Semantic On-Page</h3>
+                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Semantic On-Page</h3>
                      <p className="text-brand-white-70 text-sm leading-relaxed font-medium">
                         Strategically mapping intent-based keywords to titles, headers, and meta metadata.
                      </p>
                   </div>
-                  <div key={2} className="bg-brand-black border border-white/5 p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
+                  <div key={2} className="bg-brand-black border border-[#E4E4E4] p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
                      <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Bilingual Targeting</h3>
+                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Bilingual Targeting</h3>
                      <p className="text-brand-white-70 text-sm leading-relaxed font-medium">
                         Expertly optimized content in both English and Arabic to capture dual search intent.
                      </p>
                   </div>
-                  <div key={3} className="bg-brand-black border border-white/5 p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
+                  <div key={3} className="bg-brand-black border border-[#E4E4E4] p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
                      <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">UX & Core Web Vitals</h3>
+                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">UX & Core Web Vitals</h3>
                      <p className="text-brand-white-70 text-sm leading-relaxed font-medium">
                         Aligning technical health with user experience for maximum search engine priority.
                      </p>
@@ -281,16 +281,16 @@ export function SeoOptimization() {
          </div>
       </section>
 
-      <section className="py-24 bg-brand-black-light border-t border-white/5">
+      <section className="py-24 bg-brand-black-light border-t border-[#E4E4E4]">
          <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-               <h2 className="font-display text-4xl md:text-6xl font-black uppercase mb-4 text-white">ENGINEERED FOR <br/><span className="text-olive-500">UAE & EU.</span></h2>
+               <h2 className="font-display text-4xl md:text-6xl font-black uppercase mb-4 text-[#182012]">ENGINEERED FOR <br/><span className="text-olive-500">UAE & EU.</span></h2>
                <p className="text-olive-500 text-sm font-bold tracking-widest uppercase">Trans-Continental Search Optimization</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
-               <div className="bg-brand-black border border-white/5 p-10 rounded-3xl shadow-xl hover:border-olive-500/30 transition-colors">
-                  <h3 className="font-display font-bold text-3xl uppercase mb-4 text-white">Speed and Competition</h3>
+               <div className="bg-brand-black border border-[#E4E4E4] p-10 rounded-3xl shadow-xl hover:border-olive-500/30 transition-colors">
+                  <h3 className="font-display font-bold text-3xl uppercase mb-4 text-[#182012]">Speed and Competition</h3>
                   <p className="font-medium text-sm text-brand-white-70 uppercase tracking-tight mb-6">
                     99%+ internet penetration means you need mobile-first technical excellence and seasonal strategies for Ramadan and DSF.
                   </p>
@@ -301,22 +301,22 @@ export function SeoOptimization() {
                     <li className="flex items-center gap-3 text-sm font-black uppercase text-brand-white-70"><CheckCircle2 size={18} className="text-olive-500" /> Seasonal search alignment</li>
                   </ul>
                </div>
-               <div className="bg-olive-950 p-10 rounded-3xl shadow-xl text-white">
-                  <h3 className="font-display font-bold text-3xl uppercase mb-4 text-white">One Continent, Many Markets</h3>
-                  <p className="font-medium text-sm text-white/70 uppercase tracking-tight mb-6">
+               <div className="bg-white border border-[#E4E4E4] p-10 rounded-3xl shadow-md text-[#182012]">
+                  <h3 className="font-display font-bold text-3xl uppercase mb-4 text-[#182012]">One Continent, Many Markets</h3>
+                  <p className="font-medium text-sm text-brand-white-70 uppercase tracking-tight mb-6">
                     Navigating complexity from the UK to Germany with country-specific strategies and multilingual content.
                   </p>
                   <ul className="space-y-3">
-                    <li className="flex items-center gap-3 text-sm font-black uppercase text-white"><CheckCircle2 size={18} className="text-olive-500" /> hreflang Implementation</li>
-                    <li className="flex items-center gap-3 text-sm font-black uppercase text-white"><CheckCircle2 size={18} className="text-olive-500" /> GDPR-compliant Analytics</li>
-                    <li className="flex items-center gap-3 text-sm font-black uppercase text-white"><CheckCircle2 size={18} className="text-olive-500" /> EU-wide link building</li>
-                    <li className="flex items-center gap-3 text-sm font-black uppercase text-white"><CheckCircle2 size={18} className="text-olive-500" /> Localized content approach</li>
+                    <li className="flex items-center gap-3 text-sm font-black uppercase text-[#182012]"><CheckCircle2 size={18} className="text-olive-500" /> hreflang Implementation</li>
+                    <li className="flex items-center gap-3 text-sm font-black uppercase text-[#182012]"><CheckCircle2 size={18} className="text-olive-500" /> GDPR-compliant Analytics</li>
+                    <li className="flex items-center gap-3 text-sm font-black uppercase text-[#182012]"><CheckCircle2 size={18} className="text-olive-500" /> EU-wide link building</li>
+                    <li className="flex items-center gap-3 text-sm font-black uppercase text-[#182012]"><CheckCircle2 size={18} className="text-olive-500" /> Localized content approach</li>
                   </ul>
                </div>
             </div>
             
             <div className="text-center mb-16">
-               <h2 className="font-display text-4xl md:text-6xl font-black uppercase mb-4 text-white">THE SEO <br/><span className="text-olive-500">ADVANTAGE.</span></h2>
+               <h2 className="font-display text-4xl md:text-6xl font-black uppercase mb-4 text-[#182012]">THE SEO <br/><span className="text-olive-500">ADVANTAGE.</span></h2>
                <p className="text-olive-500 text-sm font-bold tracking-widest uppercase">Based in Bur Dubai — Delivering Bold Outcomes</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -328,21 +328,21 @@ export function SeoOptimization() {
                  {title: "Integrated Marketing Suite", desc: "SEO working in harmony with social, performance, and content funnels."},
                  {title: "No Templates, No Shortcuts", desc: "Every strategy is custom-built from scratch for your specific business goals."}
                ].map((adv, i) => (
-                 <div key={i} className="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white hover:border-white group transition-colors">
-                    <h3 className="font-display font-bold text-xl uppercase mb-3 text-white group-hover:text-olive-950 transition-colors">{adv.title}</h3>
-                    <p className="text-sm font-medium text-white/40 leading-relaxed uppercase tracking-tight group-hover:text-olive-600 transition-colors">{adv.desc}</p>
+                 <div key={i} className="bg-white border border-[#E4E4E4] p-8 rounded-3xl hover:border-olive-500/30 group transition-all shadow-sm">
+                    <h3 className="font-display font-bold text-xl uppercase mb-3 text-[#182012] group-hover:text-olive-950 transition-colors">{adv.title}</h3>
+                    <p className="text-sm font-medium text-brand-white-40 leading-relaxed uppercase tracking-tight group-hover:text-olive-600 transition-colors">{adv.desc}</p>
                  </div>
                ))}
             </div>
          </div>
       </section>
 
-      <section className="py-24 bg-olive-950 border-t border-white/5 text-center">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4] text-center">
          <div className="max-w-4xl mx-auto px-6 lg:px-8">
-           <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 leading-[0.85] text-white">
+           <h2 className="font-display text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 leading-[0.85] text-[#182012]">
              BECOME THE <br/><span className="text-olive-500">LEADER.</span>
            </h2>
-           <p className="text-xl text-white/60 uppercase tracking-tight mb-12 leading-relaxed">
+           <p className="text-xl text-brand-white-70 uppercase tracking-tight mb-12 leading-relaxed">
              Every day without a strong SEO strategy is another day your competitors take the traffic, the leads, and the revenue that should be yours. Ready to change that?
            </p>
            <Link to="/contact" className="inline-flex items-center gap-4 bg-olive-500 text-white px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-white hover:text-olive-950 transition-all group">
@@ -351,13 +351,13 @@ export function SeoOptimization() {
          </div>
       </section>
     
-      <section className="py-16 border-t border-white/5 bg-olive-950">
+      <section className="py-16 border-t border-[#E4E4E4] bg-olive-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h3 className="font-display text-2xl font-black uppercase mb-8 text-white">Related Services</h3>
+          <h3 className="font-display text-2xl font-black uppercase mb-8 text-[#182012]">Related Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link to="/digital-marketing/smm" className="text-olive-500 hover:text-white font-bold transition-colors">Social Media Marketing &rarr;</Link>
-            <Link to="/digital-marketing/branding" className="text-olive-500 hover:text-white font-bold transition-colors">Brand Strategy &rarr;</Link>
-            <Link to="/digital-marketing/performance-marketing" className="text-olive-500 hover:text-white font-bold transition-colors">Performance Marketing &rarr;</Link>
+            <Link to="/digital-marketing/smm" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Social Media Marketing &rarr;</Link>
+            <Link to="/digital-marketing/branding" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Brand Strategy &rarr;</Link>
+            <Link to="/digital-marketing/performance-marketing" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Performance Marketing &rarr;</Link>
           </div>
         </div>
       </section>

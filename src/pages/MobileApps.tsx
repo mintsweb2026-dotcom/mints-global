@@ -115,11 +115,11 @@ export function MobileApps() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex items-center gap-4 mb-6">
-              <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+              <span className="px-4 py-1.5 rounded-full border border-[#E4E4E4] bg-white text-xs font-bold uppercase tracking-widest text-[#5A644D] shadow-sm">
                 Native & Cross-Platform
               </span>
             </div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
               Mobile App<br/>
               <span className="text-olive-500">Development.</span>
             </h1>
@@ -134,7 +134,7 @@ export function MobileApps() {
             </div>
           </motion.div>
 
-          <div className="relative w-full aspect-[12/7] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+          <div className="relative w-full aspect-[12/7] rounded-[2rem] overflow-hidden border border-[#E4E4E4] shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/images/mobile-app-development-dubai.webp"
@@ -153,42 +153,42 @@ export function MobileApps() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white">Mobile Solutions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012]">Mobile Solutions</h2>
             <p className="text-brand-white-70 text-lg max-w-3xl">Whether native or cross-platform, we engineer mobile applications that deliver smooth performance and native feel.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">iOS Development</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">iOS Development</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Native application development for Apple devices using Swift and Objective-C, strictly adhering to Apple's Human Interface Guidelines.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Android Development</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Android Development</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Native Android apps written in Kotlin, optimized for the vast fragmentation of Android devices and screen sizes.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Cross-Platform (React Native / Flutter)</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Cross-Platform (React Native / Flutter)</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Build once, deploy everywhere. High-performance cross-platform frameworks to reduce time to market and development costs.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">UI/UX Design for Mobile</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">UI/UX Design for Mobile</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Intuitive, gesture-driven interface design that ensures your app is as easy to use as it is powerful.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">App Store Deployment</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">App Store Deployment</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">We manage the complex process of deploying your app to the Apple App Store and Google Play Store, managing reviews and compliance.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">App Maintenance & Updates</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">App Maintenance & Updates</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Ongoing support to ensure compatibility with new OS updates, bug fixes, and feature enhancements.</p>
             </div>
           </div>
@@ -196,10 +196,10 @@ export function MobileApps() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-[#182012]">Frequently Asked Questions</h2>
             <p className="text-brand-white-70 text-lg">Everything you need to know about our mobile app services.</p>
           </div>
           <div className="space-y-4">
@@ -209,28 +209,28 @@ export function MobileApps() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-olive-900 border-t border-white/5 text-center">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4] text-center">
          <div className="max-w-3xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
               Ready To Get Started?
             </h2>
             <p className="text-brand-white-70 text-lg leading-relaxed mb-10">
               Your audience is on mobile. Let's give them an app they'll love to use.
             </p>
-            <Link to="/contact" className="bg-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit mx-auto">
+            <Link to="/contact" className="bg-[#687838] hover:bg-[#515E2C] text-white px-10 py-4 rounded-xl font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg block w-fit mx-auto">
               Contact Us Today
             </Link>
          </div>
       </section>
     
       {/* Related Services */}
-      <section className="py-16 border-t border-white/5 bg-olive-950">
+      <section className="py-16 border-t border-[#E4E4E4] bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h3 className="font-display text-2xl font-black uppercase mb-8 text-white">Related Services</h3>
+          <h3 className="font-display text-2xl font-black uppercase mb-8 text-[#182012]">Related Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link to="/software-development/web-apps" className="text-olive-500 hover:text-white font-bold transition-colors">Web Apps &rarr;</Link>
-            <Link to="/software-development/website-development" className="text-olive-500 hover:text-white font-bold transition-colors">Website Development &rarr;</Link>
-            <Link to="/software-development/erp-solutions" className="text-olive-500 hover:text-white font-bold transition-colors">ERP Solutions &rarr;</Link>
+            <Link to="/software-development/web-apps" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Web Apps &rarr;</Link>
+            <Link to="/software-development/website-development" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Website Development &rarr;</Link>
+            <Link to="/software-development/erp-solutions" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">ERP Solutions &rarr;</Link>
           </div>
         </div>
       </section>

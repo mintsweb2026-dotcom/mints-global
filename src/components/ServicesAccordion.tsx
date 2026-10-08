@@ -52,7 +52,11 @@ export function ServicesAccordion({ items }: ServicesAccordionProps) {
                 setOpenIndex(null);
               }
             }}
-            className={`border border-white/10 rounded-2xl overflow-hidden transition-colors duration-300 ${isOpen ? 'bg-olive-900/50 border-olive-500/30' : 'bg-transparent hover:border-white/20'}`}
+            className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
+              isOpen 
+                ? 'bg-white border-olive-500/40 shadow-sm' 
+                : 'bg-white/60 border-[#E4E4E4] hover:border-[#DBE4C7] hover:bg-white'
+            }`}
           >
             <summary
               id={buttonId}
@@ -63,12 +67,12 @@ export function ServicesAccordion({ items }: ServicesAccordionProps) {
                 toggleItem(index);
               }}
               onKeyDown={(e) => handleKeyDown(e, index)}
-              className="w-full text-left px-6 py-6 flex items-center justify-between cursor-pointer list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-olive-500 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black [&::-webkit-details-marker]:hidden"
+              className="w-full text-left px-6 py-6 flex items-center justify-between cursor-pointer list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-olive-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#FAF8F5] [&::-webkit-details-marker]:hidden"
             >
-              <span className={`font-display font-bold text-xl md:text-2xl transition-colors duration-300 ${isOpen ? 'text-olive-500' : 'text-white'}`}>
+              <span className={`font-display font-bold text-xl md:text-2xl transition-colors duration-300 ${isOpen ? 'text-olive-500' : 'text-[#182012]'}`}>
                 {item.title}
               </span>
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-180 bg-olive-500 text-white' : 'bg-white/5 text-brand-white'}`} aria-hidden="true">
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-180 bg-olive-500 text-white' : 'bg-[#182012]/5 text-[#182012]'}`} aria-hidden="true">
                 <ChevronDown size={20} />
               </div>
             </summary>

@@ -81,19 +81,19 @@ export function Breadcrumbs() {
   };
 
   return (
-    <div className="w-full bg-olive-950/50 border-y border-white/5 py-4">
+    <div className="w-full bg-[#F0F0F0]/70 border-y border-[#E4E4E4] py-3.5">
       <JsonLd data={breadcrumbSchema} />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.nav 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center space-x-3 text-base text-brand-white-70 pb-1 breadcrumb-nav w-full min-w-0" 
+          className="flex items-center space-x-3 text-sm text-[#5A644D] pb-0.5 breadcrumb-nav w-full min-w-0" 
           aria-label="Breadcrumb"
         >
-          <ol className="flex items-center space-x-2 sm:space-x-3 w-full min-w-0">
+          <ol className="flex items-center space-x-2 sm:space-x-3 w-full min-w-0 overflow-x-auto no-scrollbar py-0.5">
             <li className="flex-shrink-0">
-              <Link to="/" className="flex items-center hover:text-white transition-colors">
-                <Home size={18} className="mr-1 sm:mr-2" />
+              <Link to="/" className="flex items-center text-[#5A644D] hover:text-olive-500 transition-colors">
+                <Home size={16} className="mr-1 sm:mr-1.5" />
                 <span className="sr-only">Home</span>
               </Link>
             </li>
@@ -105,13 +105,13 @@ export function Breadcrumbs() {
               
               return (
                 <li key={path} className={`flex items-center space-x-2 sm:space-x-3 ${isLast ? 'min-w-0 flex-1' : 'flex-shrink-0'}`}>
-                  <ChevronRight size={18} className="text-white/20 flex-shrink-0" />
+                  <ChevronRight size={15} className="text-[#182012]/30 flex-shrink-0" />
                   {isLast ? (
-                    <span className="text-olive-500 font-bold hover:text-olive-400 transition-colors truncate block text-lg" aria-current="page" title={displayName}>
+                    <span className="text-olive-500 font-bold hover:text-olive-400 transition-colors truncate block text-sm sm:text-base" aria-current="page" title={displayName}>
                       {displayName}
                     </span>
                   ) : (
-                    <Link to={routeTo} className="hover:text-white transition-colors font-medium">
+                    <Link to={routeTo} className="text-[#5A644D] hover:text-olive-500 transition-colors font-medium">
                       {displayName}
                     </Link>
                   )}

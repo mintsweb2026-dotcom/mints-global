@@ -29,23 +29,23 @@ export function PrivacyPolicy() {
       />
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black mb-8 uppercase text-white">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black mb-8 uppercase text-[#182012]">
             Privacy Policy
           </h1>
-          <div className="prose prose-invert prose-lg max-w-none text-brand-white-70">
+          <div className="prose prose-lg max-w-none text-[#1A2E1C]">
             
-      <h2 className="text-white text-2xl font-bold mt-8 mb-4">1. Introduction</h2>
+      <h2 className="text-[#182012] text-2xl font-bold mt-8 mb-4">1. Introduction</h2>
       <p className="mb-4">At Mints Global, we are committed to protecting the privacy and security of our clients, users, and website visitors. This Privacy Policy outlines our practices concerning the collection, use, and disclosure of personal data when you use our website, IT services, and platforms.</p>
       
-      <h2 className="text-white text-2xl font-bold mt-8 mb-4">2. Data We Collect</h2>
+      <h2 className="text-[#182012] text-2xl font-bold mt-8 mb-4">2. Data We Collect</h2>
       <p className="mb-4">We may collect personal identification information including, but not limited to:</p>
       <ul className="list-disc pl-6 mb-4 space-y-2">
-        <li><strong className="text-white">Contact Information:</strong> Name, email address, phone number, and physical business address.</li>
-        <li><strong className="text-white">Technical Data:</strong> IP address, browser type, operating system, and analytics mapping user interactions on our website.</li>
-        <li><strong className="text-white">Project Data:</strong> Information specifically provided by you during the consultation and execution phases of our software development or cybersecurity engagements.</li>
+        <li><strong className="text-[#182012]">Contact Information:</strong> Name, email address, phone number, and physical business address.</li>
+        <li><strong className="text-[#182012]">Technical Data:</strong> IP address, browser type, operating system, and analytics mapping user interactions on our website.</li>
+        <li><strong className="text-[#182012]">Project Data:</strong> Information specifically provided by you during the consultation and execution phases of our software development or cybersecurity engagements.</li>
       </ul>
 
-      <h2 className="text-white text-2xl font-bold mt-8 mb-4">3. How We Use Your Data</h2>
+      <h2 className="text-[#182012] text-2xl font-bold mt-8 mb-4">3. How We Use Your Data</h2>
       <p className="mb-4">Your data is strictly utilized to:</p>
       <ul className="list-disc pl-6 mb-4 space-y-2">
         <li>Provide, operate, and maintain our services.</li>
@@ -55,10 +55,10 @@ export function PrivacyPolicy() {
         <li>Comply with our legal and regulatory obligations, including GDPR and UAE Data Protection laws.</li>
       </ul>
 
-      <h2 className="text-white text-2xl font-bold mt-8 mb-4">4. Data Storage and Security</h2>
+      <h2 className="text-[#182012] text-2xl font-bold mt-8 mb-4">4. Data Storage and Security</h2>
       <p className="mb-4">We implement rigid, industry-standard technical and organizational security measures to protect your personal data against unauthorized access, destruction, or alteration. Data is stored on highly secure, encrypted cloud servers specifically configured by our internal cybersecurity teams.</p>
 
-      <h2 className="text-white text-2xl font-bold mt-8 mb-4">5. Your Data Protection Rights</h2>
+      <h2 className="text-[#182012] text-2xl font-bold mt-8 mb-4">5. Your Data Protection Rights</h2>
       <p className="mb-4">Depending on your location, you may have specific rights regarding your personal data:</p>
       <ul className="list-disc pl-6 mb-4 space-y-2">
         <li>The right to access, update, or delete the information we have on you.</li>
@@ -73,10 +73,10 @@ export function PrivacyPolicy() {
       </div>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5 mt-24">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4] mt-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="font-display text-3xl font-black uppercase mb-4 text-white">Legal FAQs</h2>
+            <h2 className="font-display text-3xl font-black uppercase mb-4 text-[#182012]">Legal FAQs</h2>
             <p className="text-brand-white-70 text-lg">Common questions regarding our Privacy Policy.</p>
           </div>
           <div className="space-y-4">

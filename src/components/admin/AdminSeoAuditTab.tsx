@@ -127,12 +127,12 @@ export function AdminSeoAuditTab() {
   }, []);
 
   return (
-    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
-      <h2 className="text-2xl font-light text-white mb-6">SEO Audit - Average Score Over Time</h2>
+    <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 shadow-sm">
+      <h2 className="text-2xl font-light text-[#182012] mb-6">SEO Audit - Average Score Over Time</h2>
       {loading ? (
-        <p className="text-brand-white-70">Loading SEO data...</p>
+        <p className="text-[#5A644D]">Loading SEO data...</p>
       ) : data.length === 0 ? (
-        <p className="text-brand-white-70">No data available for SEO chart.</p>
+        <p className="text-[#5A644D]">No data available for SEO chart.</p>
       ) : (
         <div className="w-full h-[400px]">
           <ResponsiveContainer width="100%" height="100%">
@@ -140,12 +140,12 @@ export function AdminSeoAuditTab() {
               data={data}
               margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
             >
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-              <XAxis dataKey="name" stroke="rgba(255,255,255,0.5)" />
-              <YAxis stroke="rgba(255,255,255,0.5)" domain={[0, 100]} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(13,26,15,0.1)" />
+              <XAxis dataKey="name" stroke="rgba(13,26,15,0.6)" />
+              <YAxis stroke="rgba(13,26,15,0.6)" domain={[0, 100]} />
               <Tooltip 
-                contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', borderColor: 'rgba(255,255,255,0.1)', color: '#fff', borderRadius: '8px' }}
-                itemStyle={{ color: '#fff' }}
+                contentStyle={{ backgroundColor: '#FAF8F5', borderColor: 'rgba(13,26,15,0.15)', color: '#182012', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}
+                itemStyle={{ color: '#182012' }}
               />
               <Legend />
               <Line 
@@ -161,9 +161,9 @@ export function AdminSeoAuditTab() {
                 type="monotone" 
                 dataKey="avgWorkScore" 
                 name="Avg Project SEO" 
-                stroke="#10b981" 
+                stroke="#687838" 
                 strokeWidth={3} 
-                dot={{ r: 4 }}
+                dot={{ r: 4 }} 
                 connectNulls
               />
             </LineChart>
@@ -172,40 +172,40 @@ export function AdminSeoAuditTab() {
       )}
 
       {/* Missing Alt Text Section */}
-      <div className="mt-12 bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
-        <h2 className="text-2xl font-light text-white mb-2">Image Accessibility & SEO Report</h2>
-        <p className="text-brand-white-70 text-sm mb-6">
-          The following posts and projects contain featured images but are missing descriptive <code className="bg-black/40 px-1.5 py-0.5 rounded text-olive-400">alt</code> text. Alt text is crucial for accessibility (screen readers) and helps search engines understand image content.
+      <div className="mt-12 bg-white border border-[#E4E4E4] rounded-2xl p-6 shadow-sm">
+        <h2 className="text-2xl font-light text-[#182012] mb-2">Image Accessibility & SEO Report</h2>
+        <p className="text-[#5A644D] text-sm mb-6">
+          The following posts and projects contain featured images but are missing descriptive <code className="bg-[#F0F0F0] px-1.5 py-0.5 rounded text-olive-600 font-bold">alt</code> text. Alt text is crucial for accessibility (screen readers) and helps search engines understand image content.
         </p>
         
         {loading ? (
-           <p className="text-brand-white-70">Scanning...</p>
+           <p className="text-[#5A644D]">Scanning...</p>
         ) : missingAltItems.length === 0 ? (
-           <div className="p-4 bg-olive-500/10 border border-olive-500/20 rounded-xl text-olive-400 font-medium">
+           <div className="p-4 bg-olive-500/10 border border-olive-500/20 rounded-xl text-olive-600 font-semibold">
              Great job! All posts and projects with featured images have descriptive alt text.
            </div>
         ) : (
            <div className="overflow-x-auto">
              <table className="w-full text-left">
                <thead>
-                 <tr className="border-b border-white/10">
-                   <th className="py-3 px-4 font-medium text-brand-white-70">Type</th>
-                   <th className="py-3 px-4 font-medium text-brand-white-70">Title</th>
-                   <th className="py-3 px-4 font-medium text-brand-white-70">Status</th>
+                 <tr className="border-b border-[#E4E4E4]">
+                   <th className="py-3 px-4 font-semibold text-[#5A644D]">Type</th>
+                   <th className="py-3 px-4 font-semibold text-[#5A644D]">Title</th>
+                   <th className="py-3 px-4 font-semibold text-[#5A644D]">Status</th>
                  </tr>
                </thead>
-               <tbody className="divide-y divide-white/5">
+               <tbody className="divide-y divide-[#182012]/10">
                  {missingAltItems.map((item, i) => (
-                   <tr key={`${item.type}-${item.id}-${i}`} className="hover:bg-white/5 text-sm transition-colors">
-                     <td className="py-3 px-4 text-white">
-                        <span className={`inline-block px-2 py-1 rounded text-xs uppercase font-medium ${item.type === 'post' ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' : 'bg-purple-500/10 text-purple-400 border border-purple-500/20'}`}>
+                   <tr key={`${item.type}-${item.id}-${i}`} className="hover:bg-white text-sm transition-colors">
+                     <td className="py-3 px-4 text-[#182012]">
+                        <span className={`inline-block px-2 py-1 rounded text-xs uppercase font-bold ${item.type === 'post' ? 'bg-blue-500/10 text-blue-700 border border-blue-500/20' : 'bg-purple-500/10 text-purple-700 border border-purple-500/20'}`}>
                           {item.type}
                         </span>
                      </td>
-                     <td className="py-3 px-4 text-white truncate max-w-[300px]" title={item.title}>{item.title}</td>
+                     <td className="py-3 px-4 text-[#182012] font-medium truncate max-w-[300px]" title={item.title}>{item.title}</td>
                      <td className="py-3 px-4">
-                        <span className="text-red-400 text-xs font-medium flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse"></span>
+                        <span className="text-red-600 text-xs font-semibold flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                           Missing Alt Text
                         </span>
                      </td>

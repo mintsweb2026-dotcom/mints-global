@@ -136,11 +136,11 @@ export function ERPSolutions() {
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+            <span className="px-4 py-1.5 rounded-full border border-[#E4E4E4] bg-white text-xs font-bold uppercase tracking-widest text-[#5A644D] shadow-sm">
               Business Intelligence
             </span>
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
             ERP<br />
             <span className="text-olive-500">Solutions.</span>
           </h1>
@@ -149,27 +149,27 @@ export function ERPSolutions() {
           </p>
 
           <div className="flex flex-wrap items-center gap-4 mb-16">
-            <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20">
+            <Link to="/contact" className="bg-olive-500 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-400 transition-colors inline-flex items-center gap-2 relative z-20 shadow-md">
               Streamline Operations <ArrowRight size={18} />
             </Link>
             <a 
               href="https://erp.mintsglobal.ae/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="bg-white/10 hover:bg-white text-white hover:text-olive-950 border border-white/20 px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm transition-all inline-flex items-center gap-2 relative z-20 shadow-lg"
+              className="bg-white hover:bg-[#182012] text-[#182012] hover:text-white border border-[#DBE4C7] px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm transition-all inline-flex items-center gap-2 relative z-20 shadow-md"
             >
               Explore Live Mints ERP <ExternalLink size={16} />
             </a>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+          <div className="relative rounded-3xl overflow-hidden border border-[#E4E4E4] shadow-2xl">
             <img src="/images/erp-solutions-hero.webp" alt="ERP Solutions Dashboard - Enterprise Resource Planning Software" width="1200" height="600" loading="lazy" className="w-full h-auto object-cover" />
           </div>
         </motion.div>
       </section>
 
       {/* Mints ERP Flagship Product Spotlight Section */}
-      <section className="py-20 lg:py-28 bg-gradient-to-b from-brand-black via-olive-950/60 to-brand-black border-y border-white/10 relative overflow-hidden">
+      <section className="py-20 lg:py-28 bg-gradient-to-b from-brand-black via-olive-950/60 to-brand-black border-y border-[#E4E4E4] relative overflow-hidden">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-olive-500/15 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-emerald-600/10 rounded-full blur-[100px] pointer-events-none" />
 
@@ -177,7 +177,7 @@ export function ERPSolutions() {
           <div className="bg-olive-900/40 border border-olive-500/30 rounded-3xl p-8 sm:p-12 lg:p-16 backdrop-blur-xl shadow-2xl relative overflow-hidden">
             {/* Top Badge */}
             <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-olive-500/20 border border-olive-500/40 text-xs font-bold uppercase tracking-widest text-olive-300">
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-olive-500/20 border border-olive-500/40 text-xs font-bold uppercase tracking-widest text-olive-500">
                 <span className="w-2 h-2 rounded-full bg-olive-400 animate-ping" />
                 Flagship Proprietary Platform
               </div>
@@ -189,41 +189,41 @@ export function ERPSolutions() {
             {/* Grid layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7">
-                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white leading-tight mb-6">
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-[#182012] leading-tight mb-6">
                   Meet Mints ERP <br />
                   <span className="text-olive-400">One Command Center for Modern Enterprise.</span>
                 </h2>
                 <p className="text-brand-white-70 text-base sm:text-lg leading-relaxed mb-8">
-                  Rather than waiting 12 months for custom builds or paying exorbitant recurring fees for rigid legacy software, deploy <strong className="text-white">Mints ERP</strong>. Engineered from the ground up for high-velocity teams managing HR, payroll, client pipelines, project delivery, and VAT-compliant accounting in one unified cloud system.
+                  Rather than waiting 12 months for custom builds or paying exorbitant recurring fees for rigid legacy software, deploy <strong className="text-[#182012]">Mints ERP</strong>. Engineered from the ground up for high-velocity teams managing HR, payroll, client pipelines, project delivery, and VAT-compliant accounting in one unified cloud system.
                 </p>
 
                 {/* Key feature pills */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                  <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-white/5">
+                  <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-[#E4E4E4]">
                     <CheckCircle2 className="text-olive-400 shrink-0 mt-0.5" size={18} />
                     <div>
-                      <h4 className="text-sm font-bold text-white uppercase tracking-wider">HR & WPS Payroll</h4>
+                      <h4 className="text-sm font-bold text-[#182012] uppercase tracking-wider">HR & WPS Payroll</h4>
                       <p className="text-xs text-brand-white-60 mt-0.5">Automated UAE compliance, leaves, and attendance.</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-white/5">
+                  <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-[#E4E4E4]">
                     <CheckCircle2 className="text-olive-400 shrink-0 mt-0.5" size={18} />
                     <div>
-                      <h4 className="text-sm font-bold text-white uppercase tracking-wider">CRM & Deals Pipeline</h4>
+                      <h4 className="text-sm font-bold text-[#182012] uppercase tracking-wider">CRM & Deals Pipeline</h4>
                       <p className="text-xs text-brand-white-60 mt-0.5">Real-time lead stages, quotations, and client portals.</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-white/5">
+                  <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-[#E4E4E4]">
                     <CheckCircle2 className="text-olive-400 shrink-0 mt-0.5" size={18} />
                     <div>
-                      <h4 className="text-sm font-bold text-white uppercase tracking-wider">Project Automations</h4>
+                      <h4 className="text-sm font-bold text-[#182012] uppercase tracking-wider">Project Automations</h4>
                       <p className="text-xs text-brand-white-60 mt-0.5">Task boards, milestones, and deliverable tracking.</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-white/5">
+                  <div className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-[#E4E4E4]">
                     <CheckCircle2 className="text-olive-400 shrink-0 mt-0.5" size={18} />
                     <div>
-                      <h4 className="text-sm font-bold text-white uppercase tracking-wider">Billing & VAT Reports</h4>
+                      <h4 className="text-sm font-bold text-[#182012] uppercase tracking-wider">Billing & VAT Reports</h4>
                       <p className="text-xs text-brand-white-60 mt-0.5">One-click tax invoices, expense tracking, and P&L.</p>
                     </div>
                   </div>
@@ -241,7 +241,7 @@ export function ERPSolutions() {
                   </a>
                   <Link 
                     to="/contact" 
-                    className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-8 py-4 rounded-full uppercase tracking-wider text-sm inline-flex items-center gap-2 transition-colors"
+                    className="bg-[#182012] hover:bg-olive-500 text-white border border-[#E4E4E4] font-bold px-8 py-4 rounded-full uppercase tracking-wider text-sm inline-flex items-center gap-2 transition-colors"
                   >
                     Request Guided Demo
                   </Link>
@@ -251,7 +251,7 @@ export function ERPSolutions() {
               {/* Visual Preview / Mockup Column */}
               <div className="lg:col-span-5">
                 <div className="relative rounded-2xl overflow-hidden border border-white/15 bg-olive-950 p-3 shadow-2xl group">
-                  <div className="flex items-center justify-between px-3 py-2 border-b border-white/10 bg-white/5 rounded-t-xl mb-3">
+                  <div className="flex items-center justify-between px-3 py-2 border-b border-[#E4E4E4] bg-white rounded-t-xl mb-3">
                     <div className="flex items-center gap-1.5">
                       <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                       <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
@@ -288,41 +288,41 @@ export function ERPSolutions() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white">Custom ERP Capabilities</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012]">Custom ERP Capabilities</h2>
             <p className="text-brand-white-70 text-lg max-w-3xl">Need bespoke customization or legacy migration? Transition away from disconnected spreadsheets into a single source of truth for your entire enterprise.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Custom ERP Development</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Custom ERP Development</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Building from the ground up to perfectly map your unique, complex operational workflows when off-the-shelf software fails.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">System Integration</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">System Integration</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Connecting your standalone accounting, HR, supply chain, and inventory systems into one unified data lake.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Odoo & ERPNext Implementation</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Odoo & ERPNext Implementation</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Expert setup, customization, and deployment of open-source ERP systems tailored for your business.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Supply Chain & Inventory Management</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Supply Chain & Inventory Management</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Real-time tracking of assets, stock levels, procurement flows, and logistics across multiple warehouses.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Finance & Accounting Modules</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Finance & Accounting Modules</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Automated billing, invoicing, payroll integration, and comprehensive financial reporting complying with regional tax laws.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Data Migration</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Data Migration</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Securely transferring years of disjointed historical data from your old systems into your new ERP environment.</p>
             </div>
           </div>
@@ -330,10 +330,10 @@ export function ERPSolutions() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-[#182012]">Frequently Asked Questions</h2>
             <p className="text-brand-white-70 text-lg">Everything you need to know about our ERP services.</p>
           </div>
           <div className="space-y-4">
@@ -343,28 +343,28 @@ export function ERPSolutions() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-olive-900 border-t border-white/5 text-center">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4] text-center">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
-          <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+          <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
             Ready To Get Started?
           </h2>
           <p className="text-brand-white-70 text-lg leading-relaxed mb-10">
             Fragmented systems are costing you time. Let's architect your single source of truth.
           </p>
-          <Link to="/contact" className="bg-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit mx-auto">
+          <Link to="/contact" className="bg-[#687838] hover:bg-[#515E2C] text-white px-10 py-4 rounded-xl font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg block w-fit mx-auto">
             Contact Us Today
           </Link>
         </div>
       </section>
 
       {/* Related Services */}
-      <section className="py-16 border-t border-white/5 bg-olive-950">
+      <section className="py-16 border-t border-[#E4E4E4] bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h3 className="font-display text-2xl font-black uppercase mb-8 text-white">Related Services</h3>
+          <h3 className="font-display text-2xl font-black uppercase mb-8 text-[#182012]">Related Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link to="/software-development/web-apps" className="text-olive-500 hover:text-white font-bold transition-colors">Web Apps &rarr;</Link>
-            <Link to="/software-development/mobile-apps" className="text-olive-500 hover:text-white font-bold transition-colors">Mobile Apps &rarr;</Link>
-            <Link to="/software-development/website-development" className="text-olive-500 hover:text-white font-bold transition-colors">Website Development &rarr;</Link>
+            <Link to="/software-development/web-apps" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Web Apps &rarr;</Link>
+            <Link to="/software-development/mobile-apps" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Mobile Apps &rarr;</Link>
+            <Link to="/software-development/website-development" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Website Development &rarr;</Link>
           </div>
         </div>
       </section>

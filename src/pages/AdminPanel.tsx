@@ -40,6 +40,7 @@ import { AdminWorksTab } from "../components/admin/AdminWorksTab";
 import { AdminCategoriesTab } from "../components/admin/AdminCategoriesTab";
 import { AdminActivityLogTab } from "../components/admin/AdminActivityLogTab";
 import { AdminSeoAuditTab } from "../components/admin/AdminSeoAuditTab";
+import { slugify } from "../lib/utils";
 
 
 const getCrossLinkSuggestions = (
@@ -185,19 +186,11 @@ function AdminPanelContent() {
     };
   }, [imagePreview]);
 
-  const generateSlug = (text: string) => {
-    return text
-      .toLowerCase()
-      .trim()
-      .replace(/[\s\W-]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-  };
-
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTitle = e.target.value;
     setTitle(newTitle);
     if (!slugEdited) {
-      setSlug(generateSlug(newTitle));
+      setSlug(slugify(newTitle));
     }
   };
 
@@ -352,19 +345,12 @@ function AdminPanelContent() {
             .map((e: string) => e.trim().toLowerCase())
             .filter(Boolean);
 
-          const defaultBootstrapEmails = [
-            "binuarjunanand@gmail.com",
-            "anandbhari123@gmail.com",
-            "shynim90@gmail.com",
-          ];
-
           const idTokenResult = await user.getIdTokenResult();
           const hasAdminClaim = Boolean(idTokenResult.claims.admin);
 
           const isBootstrapEmail =
             Boolean(user.email) &&
-            (envAdminEmails.includes(user.email!.toLowerCase()) ||
-              defaultBootstrapEmails.includes(user.email!.toLowerCase()));
+            envAdminEmails.includes(user.email!.toLowerCase());
 
           if (adminSnap.exists() || hasAdminClaim) {
             setIsAdmin(true);
@@ -412,7 +398,7 @@ function AdminPanelContent() {
     e.preventDefault();
     if (!title || !content) return;
 
-    const finalSlug = slug.trim() || generateSlug(title);
+    const finalSlug = slug.trim() || slugify(title);
     if (!finalSlug) {
       setErrorMsg("A valid slug is required.");
       return;
@@ -583,18 +569,18 @@ function AdminPanelContent() {
   };
 
   if (loading || checkingAdmin)
-    return <div className="p-20 text-center text-white font-mono text-sm">Verifying administrator authorization...</div>;
+    return <div className="p-20 text-center text-[#182012] font-mono text-sm">Verifying administrator authorization...</div>;
 
   if (!user) {
     return (
-      <div className="pt-32 pb-20 px-4 min-h-screen">
-        <div className="max-w-md mx-auto bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm text-center">
-          <h2 className="text-3xl font-display font-light text-white mb-6">
+      <div className="pt-32 pb-20 px-4 min-h-screen bg-[#F5F7F4]">
+        <div className="max-w-md mx-auto bg-white border border-[#E4E4E4] rounded-2xl p-8 shadow-lg text-center">
+          <h2 className="text-3xl font-display font-light text-[#182012] mb-6">
             Admin Access
           </h2>
           <button
             onClick={handleLogin}
-            className="w-full bg-olive-500 text-white px-6 py-3 rounded-full hover:bg-olive-400 transition-colors"
+            className="w-full bg-olive-500 text-white px-6 py-3 rounded-full hover:bg-olive-400 font-bold transition-colors shadow-sm"
           >
             Sign in with Google
           </button>
@@ -605,20 +591,20 @@ function AdminPanelContent() {
 
   if (isAdmin === false) {
     return (
-      <div className="pt-32 pb-20 px-4 min-h-screen">
-        <div className="max-w-md mx-auto bg-red-950/20 border border-red-500/30 rounded-2xl p-8 backdrop-blur-sm text-center">
-          <div className="w-12 h-12 rounded-full bg-red-500/10 text-red-400 mx-auto flex items-center justify-center mb-4">
+      <div className="pt-32 pb-20 px-4 min-h-screen bg-[#F5F7F4]">
+        <div className="max-w-md mx-auto bg-white border border-red-500/30 rounded-2xl p-8 shadow-lg text-center">
+          <div className="w-12 h-12 rounded-full bg-red-500/10 text-red-600 mx-auto flex items-center justify-center mb-4">
             <X size={24} />
           </div>
-          <h2 className="text-2xl font-display font-bold text-white mb-2">
+          <h2 className="text-2xl font-display font-bold text-[#182012] mb-2">
             Access Denied
           </h2>
           <p className="text-sm text-brand-white-70 mb-6 leading-relaxed">
-            Your account (<span className="text-white font-mono text-xs">{user.email}</span>) does not have administrator privileges.
+            Your account (<span className="text-[#182012] font-mono text-xs font-bold">{user.email}</span>) does not have administrator privileges.
           </p>
           <button
             onClick={handleLogout}
-            className="px-6 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full text-sm font-medium transition-colors"
+            className="px-6 py-2.5 bg-[#182012] hover:bg-olive-500 text-white rounded-full text-sm font-bold transition-colors shadow-sm"
           >
             Sign out
           </button>
@@ -628,13 +614,13 @@ function AdminPanelContent() {
   }
 
   return (
-    <div className="pt-32 pb-20 px-4 min-h-screen bg-brand-black/50">
+    <div className="pt-32 pb-20 px-4 min-h-screen bg-[#F5F7F4]">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
         {/* Sidebar */}
         <aside className="w-full md:w-64 flex-shrink-0">
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm sticky top-32">
+          <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 shadow-sm sticky top-32">
             <div className="mb-8">
-              <h1 className="text-2xl font-display font-bold text-white mb-1">
+              <h1 className="text-2xl font-display font-bold text-[#182012] mb-1">
                 Admin
               </h1>
               <p className="text-xs text-brand-white-50 truncate">
@@ -659,8 +645,8 @@ function AdminPanelContent() {
                   onClick={() => setActiveAdminTab(tab.id as any)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-sm font-medium ${
                     activeAdminTab === tab.id
-                      ? "bg-olive-500 text-white shadow-lg shadow-olive-500/20"
-                      : "text-brand-white-70 hover:bg-white/5 hover:text-white border border-transparent"
+                      ? "bg-olive-500 text-white shadow-md font-bold"
+                      : "text-[#5A644D] hover:bg-[#F0F0F0] hover:text-[#182012] border border-transparent font-medium"
                   }`}
                 >
                   <tab.icon size={18} />
@@ -671,7 +657,7 @@ function AdminPanelContent() {
 
             <button
               onClick={handleLogout}
-              className="mt-8 w-full flex items-center justify-center gap-2 px-4 py-3 text-red-400 hover:bg-red-500/10 rounded-xl transition-colors text-sm font-medium"
+              className="mt-8 w-full flex items-center justify-center gap-2 px-4 py-3 text-red-600 hover:bg-red-500/10 rounded-xl transition-colors text-sm font-semibold"
             >
               Sign out
             </button>
@@ -691,14 +677,14 @@ function AdminPanelContent() {
           ) : (
             <div className="w-full">
               {errorMsg && (
-                <div className="mb-8 p-4 bg-red-500/20 border border-red-500 text-red-100 rounded-xl">
+                <div className="mb-8 p-4 bg-red-100 border border-red-300 text-red-800 rounded-xl font-medium">
                   {errorMsg}
                 </div>
               )}
 
               {missingSeoPosts.length > 0 && (
-                <div className="mb-8 bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
-                  <h2 className="text-2xl font-light text-white mb-4 flex items-center gap-2">
+                <div className="mb-8 bg-white border border-[#E4E4E4] rounded-2xl p-6 shadow-sm">
+                  <h2 className="text-2xl font-light text-[#182012] mb-4 flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-red-500"></span>
                     Action Needed: Missing SEO Metadata (
                     {missingSeoPosts.length})
@@ -706,7 +692,7 @@ function AdminPanelContent() {
                   <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                       <thead>
-                        <tr className="border-b border-white/10 text-brand-white-70 text-sm">
+                        <tr className="border-b border-[#E4E4E4] text-brand-white-70 text-sm">
                           <th className="pb-3 font-medium">Post Title</th>
                           <th className="pb-3 font-medium">Missing</th>
                           <th className="pb-3 font-medium text-right">
@@ -717,7 +703,7 @@ function AdminPanelContent() {
                       <tbody>
                         {missingSeoPosts.map((post) => (
                           <React.Fragment key={post.id}>
-                            <tr className="border-b border-white/5 text-white">
+                            <tr className="border-b border-[#E4E4E4] text-white">
                               <td className="py-4 font-medium">{post.title}</td>
                               <td className="py-4 text-sm text-red-400">
                                 {!post.seoTitle && !post.seoDescription
@@ -729,21 +715,21 @@ function AdminPanelContent() {
                               <td className="py-4 text-right">
                                 <button
                                   onClick={() => handleInlineSeoEdit(post)}
-                                  className="text-olive-400 hover:text-olive-300 text-sm px-3 py-1 bg-olive-400/10 rounded-full"
+                                  className="text-olive-500 hover:text-olive-400 font-semibold text-sm px-3.5 py-1.5 bg-olive-500/10 rounded-full transition-colors"
                                 >
                                   Edit SEO
                                 </button>
                               </td>
                             </tr>
                             {editingSeoId === post.id && (
-                              <tr className="bg-black/20">
+                              <tr className="bg-white">
                                 <td
                                   colSpan={3}
-                                  className="px-4 py-6 rounded-b-xl border-x border-b border-white/10"
+                                  className="px-4 py-6 rounded-b-xl border-x border-b border-[#E4E4E4]"
                                 >
                                   <div className="space-y-4 max-w-2xl">
                                     <div>
-                                      <label className="block text-sm font-medium text-brand-white-70 mb-1">
+                                      <label className="block text-sm font-medium text-[#5A644D] mb-1">
                                         SEO Title (max 60 chars)
                                       </label>
                                       <input
@@ -752,16 +738,16 @@ function AdminPanelContent() {
                                         onChange={(e) =>
                                           setInlineSeoTitle(e.target.value)
                                         }
-                                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-olive-500"
+                                        className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] focus:outline-none focus:border-olive-500 shadow-xs"
                                       />
                                       <p
-                                        className={`mt-1 text-xs ${inlineSeoTitle.length > 60 ? "text-red-400" : "text-brand-white-50"}`}
+                                        className={`mt-1 text-xs ${inlineSeoTitle.length > 60 ? "text-red-500 font-bold" : "text-[#859177]"}`}
                                       >
                                         {inlineSeoTitle.length}/60
                                       </p>
                                     </div>
                                     <div>
-                                      <label className="block text-sm font-medium text-brand-white-70 mb-1">
+                                      <label className="block text-sm font-medium text-[#5A644D] mb-1">
                                         SEO Description (max 160 chars)
                                       </label>
                                       <textarea
@@ -772,10 +758,10 @@ function AdminPanelContent() {
                                           )
                                         }
                                         rows={2}
-                                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-olive-500"
+                                        className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] focus:outline-none focus:border-olive-500 shadow-xs"
                                       />
                                       <p
-                                        className={`mt-1 text-xs ${inlineSeoDescription.length > 160 ? "text-red-400" : "text-brand-white-50"}`}
+                                        className={`mt-1 text-xs ${inlineSeoDescription.length > 160 ? "text-red-500 font-bold" : "text-[#859177]"}`}
                                       >
                                         {inlineSeoDescription.length}/160
                                       </p>
@@ -791,11 +777,11 @@ function AdminPanelContent() {
                                       if (suggestions.length === 0) return null;
                                       return (
                                         <div className="mt-4 p-4 bg-olive-500/10 border border-olive-500/20 rounded-xl">
-                                          <h4 className="text-olive-400 font-medium mb-2 text-sm flex items-center gap-2">
+                                          <h4 className="text-olive-500 font-bold mb-2 text-sm flex items-center gap-2">
                                             <Link size={14} /> SEO Opportunity:
                                             Internal Cross-Linking
                                           </h4>
-                                          <p className="text-xs text-brand-white-70 mb-3">
+                                          <p className="text-xs text-[#5A644D] mb-3">
                                             We noticed you mentioned topics
                                             covered in your other posts. Edit
                                             the post content to add these links
@@ -807,16 +793,16 @@ function AdminPanelContent() {
                                                 key={idx}
                                                 className="flex flex-wrap items-center gap-2 text-xs"
                                               >
-                                                <span className="text-white">
+                                                <span className="text-[#182012] font-medium">
                                                   Mentioned:{" "}
-                                                  <span className="font-medium px-2 py-0.5 bg-black/40 rounded border border-white/5">
+                                                  <span className="font-semibold px-2 py-0.5 bg-white rounded border border-[#E4E4E4]">
                                                     "{s.foundKeyword}"
                                                   </span>
                                                 </span>
-                                                <span className="text-brand-white-50">
+                                                <span className="text-[#182012]/50">
                                                   →
                                                 </span>
-                                                <code className="bg-black/60 px-2 py-1 rounded text-olive-300 font-mono border border-olive-500/20">
+                                                <code className="bg-white px-2 py-1 rounded text-olive-500 font-mono border border-olive-500/20 font-bold">
                                                   [{s.title}](/blog/{s.slug})
                                                 </code>
                                               </li>
@@ -835,7 +821,7 @@ function AdminPanelContent() {
                                           )
                                         }
                                         disabled={inlineSeoSaving}
-                                        className="bg-olive-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-olive-400 disabled:opacity-50 focus:outline-none"
+                                        className="bg-olive-500 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-olive-400 disabled:opacity-50 focus:outline-none shadow-sm"
                                       >
                                         {inlineSeoSaving
                                           ? "Saving..."
@@ -844,7 +830,7 @@ function AdminPanelContent() {
                                       <button
                                         onClick={() => setEditingSeoId(null)}
                                         disabled={inlineSeoSaving}
-                                        className="bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-white/20 disabled:opacity-50 focus:outline-none"
+                                        className="bg-[#F0F0F0] hover:bg-[#DDD7C8] text-[#182012] px-4 py-2 rounded-full text-sm font-semibold disabled:opacity-50 focus:outline-none transition-colors"
                                       >
                                         Cancel
                                       </button>
@@ -862,13 +848,13 @@ function AdminPanelContent() {
               )}
 
               <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 shadow-sm">
                   <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-2xl font-light text-white">
+                    <h2 className="text-2xl font-light text-[#182012]">
                       {editingPostId ? "Edit Post" : "Create New Post"}
                     </h2>
                     {!editingPostId && (
-                      <span className="text-xs text-brand-white-50">
+                      <span className="text-xs text-[#859177]">
                         {isAutoSaving
                           ? "Saving..."
                           : lastSaved
@@ -879,37 +865,37 @@ function AdminPanelContent() {
                   </div>
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-sm text-brand-white-70 mb-2">
+                      <label className="block text-sm font-medium text-[#5A644D] mb-2">
                         Title
                       </label>
                       <input
                         type="text"
                         value={title}
                         onChange={handleTitleChange}
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-olive-500"
+                        className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] focus:outline-none focus:border-olive-500 shadow-xs"
                         required
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-brand-white-70 mb-2">
+                      <label className="block text-sm font-medium text-[#5A644D] mb-2">
                         URL Slug
                       </label>
                       <input
                         type="text"
                         value={slug}
                         onChange={handleSlugChange}
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-olive-500"
+                        className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] focus:outline-none focus:border-olive-500 shadow-xs"
                         placeholder="auto-generated-from-title"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-brand-white-70 mb-2">
+                      <label className="block text-sm font-medium text-[#5A644D] mb-2">
                         Category
                       </label>
                       <select
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-olive-500"
+                        className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] focus:outline-none focus:border-olive-500 shadow-xs"
                       >
                         <option value="DIGITAL MARKETING">
                           DIGITAL MARKETING
@@ -926,14 +912,14 @@ function AdminPanelContent() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm text-brand-white-70 mb-2">
+                      <label className="block text-sm font-medium text-[#5A644D] mb-2">
                         Tags
                       </label>
                       <div className="flex flex-wrap gap-2 mb-2">
                         {tags.map((tag, index) => (
                           <span
                             key={index}
-                            className="flex items-center gap-1 bg-white/10 text-white px-2 py-1 rounded text-sm"
+                            className="flex items-center gap-1 bg-olive-500/10 text-olive-600 border border-olive-500/20 px-2.5 py-1 rounded-full text-xs font-semibold"
                           >
                             {tag}
                             <button
@@ -942,7 +928,7 @@ function AdminPanelContent() {
                                 setTags(tags.filter((_, i) => i !== index));
                                 setTagError("");
                               }}
-                              className="text-brand-white-70 hover:text-white"
+                              className="text-olive-600/70 hover:text-olive-600"
                             >
                               <X size={14} />
                             </button>
@@ -961,27 +947,27 @@ function AdminPanelContent() {
                             }
                           }}
                           placeholder="add-a-tag"
-                          className={`flex-1 bg-black/40 border ${tagError ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-olive-500"} rounded-xl px-4 py-2 text-white focus:outline-none transition-colors`}
+                          className={`flex-1 bg-white border ${tagError ? "border-red-500/50 focus:border-red-500" : "border-[#E4E4E4] focus:border-olive-500"} rounded-xl px-4 py-2 text-[#182012] focus:outline-none transition-colors shadow-xs`}
                         />
                         <button
                           type="button"
                           onClick={() => handleAddTag(tagInput)}
-                          className="px-4 py-2 bg-white/10 rounded-xl text-white hover:bg-white/20 transition-colors"
+                          className="px-4 py-2 bg-[#182012] rounded-xl text-white hover:bg-olive-500 transition-colors font-medium text-sm shadow-xs"
                         >
                           Add
                         </button>
                       </div>
                       {tagError && (
-                        <p className="text-red-400 text-xs">{tagError}</p>
+                        <p className="text-red-500 text-xs font-semibold">{tagError}</p>
                       )}
                     </div>
                     <div>
                       <div className="flex justify-between items-center mb-2">
-                        <label className="text-sm text-brand-white-70">
+                        <label className="text-sm font-medium text-[#5A644D]">
                           SEO Meta Title (Optional)
                         </label>
                         <span
-                          className={`text-xs ${seoTitle.length > 60 ? "text-red-400 font-medium" : "text-brand-white-50"}`}
+                          className={`text-xs ${seoTitle.length > 60 ? "text-red-500 font-bold" : "text-[#859177]"}`}
                         >
                           {seoTitle.length > 60 && (
                             <span className="mr-1">⚠</span>
@@ -993,16 +979,16 @@ function AdminPanelContent() {
                         type="text"
                         value={seoTitle}
                         onChange={(e) => setSeoTitle(e.target.value)}
-                        className={`w-full bg-black/40 border ${seoTitle.length > 60 ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-olive-500"} rounded-xl px-4 py-2 text-white focus:outline-none transition-colors`}
+                        className={`w-full bg-white border ${seoTitle.length > 60 ? "border-red-500/50 focus:border-red-500" : "border-[#E4E4E4] focus:border-olive-500"} rounded-xl px-4 py-2 text-[#182012] focus:outline-none transition-colors shadow-xs`}
                       />
                     </div>
                     <div>
                       <div className="flex justify-between items-center mb-2">
-                        <label className="text-sm text-brand-white-70">
+                        <label className="text-sm font-medium text-[#5A644D]">
                           SEO Meta Description (Optional)
                         </label>
                         <span
-                          className={`text-xs ${seoDescription.length > 160 ? "text-red-400 font-medium" : "text-brand-white-50"}`}
+                          className={`text-xs ${seoDescription.length > 160 ? "text-red-500 font-bold" : "text-[#859177]"}`}
                         >
                           {seoDescription.length > 160 && (
                             <span className="mr-1">⚠</span>
@@ -1014,13 +1000,13 @@ function AdminPanelContent() {
                         value={seoDescription}
                         onChange={(e) => setSeoDescription(e.target.value)}
                         rows={2}
-                        className={`w-full bg-black/40 border ${seoDescription.length > 160 ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-olive-500"} rounded-xl px-4 py-2 text-white focus:outline-none transition-colors`}
+                        className={`w-full bg-white border ${seoDescription.length > 160 ? "border-red-500/50 focus:border-red-500" : "border-[#E4E4E4] focus:border-olive-500"} rounded-xl px-4 py-2 text-[#182012] focus:outline-none transition-colors shadow-xs`}
                       />
                     </div>
 
                     {/* Google Search Result Preview */}
                     <div
-                      className={`mt-4 p-5 bg-[#202124] border ${(seoTitle || title || "").length > 60 || (seoDescription || excerpt || "").length > 160 ? "border-red-500/30" : "border-white/10"} rounded-xl font-sans transition-colors`}
+                      className={`mt-4 p-5 bg-[#202124] border ${(seoTitle || title || "").length > 60 || (seoDescription || excerpt || "").length > 160 ? "border-red-500/30" : "border-[#E4E4E4]"} rounded-xl font-sans transition-colors`}
                     >
                       <div className="flex justify-between items-center mb-3">
                         <span className="block text-xs font-semibold text-brand-white-50 uppercase tracking-wider">
@@ -1054,7 +1040,7 @@ function AdminPanelContent() {
                         </div>
                       </div>
                       <div className="flex items-center gap-3 mb-1">
-                        <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-xs text-white">
+                        <div className="w-7 h-7 rounded-full bg-olive-500 flex items-center justify-center text-xs text-white font-bold">
                           M
                         </div>
                         <div>
@@ -1077,26 +1063,26 @@ function AdminPanelContent() {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm text-brand-white-70 mb-2">
+                      <label className="block text-sm font-medium text-[#5A644D] mb-2">
                         Excerpt (Optional)
                       </label>
                       <textarea
                         value={excerpt}
                         onChange={(e) => setExcerpt(e.target.value)}
                         rows={2}
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-olive-500"
+                        className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] focus:outline-none focus:border-olive-500 shadow-xs"
                       />
                     </div>
                     <div>
                       <div className="flex justify-between items-end mb-2">
-                        <label className="block text-sm text-brand-white-70">
+                        <label className="block text-sm font-medium text-[#5A644D]">
                           Content (Markdown)
                         </label>
-                        <div className="flex gap-1 bg-white/5 border border-white/10 rounded-lg p-1">
+                        <div className="flex gap-1 bg-[#F0F0F0] border border-[#E4E4E4] rounded-lg p-1">
                           <button
                             type="button"
                             onClick={() => insertFormatting("**", "**")}
-                            className="p-1.5 hover:bg-white/10 rounded text-brand-white-70 hover:text-white transition-colors"
+                            className="p-1.5 hover:bg-white rounded text-[#5A644D] hover:text-olive-500 transition-colors"
                             title="Bold"
                           >
                             <Bold size={16} />
@@ -1104,16 +1090,16 @@ function AdminPanelContent() {
                           <button
                             type="button"
                             onClick={() => insertFormatting("*", "*")}
-                            className="p-1.5 hover:bg-white/10 rounded text-brand-white-70 hover:text-white transition-colors"
+                            className="p-1.5 hover:bg-white rounded text-[#5A644D] hover:text-olive-500 transition-colors"
                             title="Italic"
                           >
                             <Italic size={16} />
                           </button>
-                          <div className="w-[1px] bg-white/10 mx-1 my-0.5"></div>
+                          <div className="w-[1px] bg-[#182012]/10 mx-1 my-0.5"></div>
                           <button
                             type="button"
                             onClick={() => insertFormatting("# ", "")}
-                            className="p-1.5 hover:bg-white/10 rounded text-brand-white-70 hover:text-white transition-colors"
+                            className="p-1.5 hover:bg-white rounded text-[#5A644D] hover:text-olive-500 transition-colors"
                             title="Heading"
                           >
                             <Heading size={16} />
@@ -1121,7 +1107,7 @@ function AdminPanelContent() {
                           <button
                             type="button"
                             onClick={() => insertFormatting("\n- ", "")}
-                            className="p-1.5 hover:bg-white/10 rounded text-brand-white-70 hover:text-white transition-colors"
+                            className="p-1.5 hover:bg-white rounded text-[#5A644D] hover:text-olive-500 transition-colors"
                             title="Bullet List"
                           >
                             <List size={16} />
@@ -1129,16 +1115,16 @@ function AdminPanelContent() {
                           <button
                             type="button"
                             onClick={() => insertFormatting("\n1. ", "")}
-                            className="p-1.5 hover:bg-white/10 rounded text-brand-white-70 hover:text-white transition-colors"
+                            className="p-1.5 hover:bg-white rounded text-[#5A644D] hover:text-olive-500 transition-colors"
                             title="Numbered List"
                           >
                             <ListOrdered size={16} />
                           </button>
-                          <div className="w-[1px] bg-white/10 mx-1 my-0.5"></div>
+                          <div className="w-[1px] bg-[#182012]/10 mx-1 my-0.5"></div>
                           <button
                             type="button"
                             onClick={() => insertFormatting("[", "](url)")}
-                            className="p-1.5 hover:bg-white/10 rounded text-brand-white-70 hover:text-white transition-colors"
+                            className="p-1.5 hover:bg-white rounded text-[#5A644D] hover:text-olive-500 transition-colors"
                             title="Link"
                           >
                             <Link size={16} />
@@ -1146,7 +1132,7 @@ function AdminPanelContent() {
                           <button
                             type="button"
                             onClick={() => insertFormatting("\n> ", "")}
-                            className="p-1.5 hover:bg-white/10 rounded text-brand-white-70 hover:text-white transition-colors"
+                            className="p-1.5 hover:bg-white rounded text-[#5A644D] hover:text-olive-500 transition-colors"
                             title="Quote"
                           >
                             <Quote size={16} />
@@ -1158,7 +1144,7 @@ function AdminPanelContent() {
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                         rows={10}
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-olive-500 font-mono text-sm"
+                        className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] focus:outline-none focus:border-olive-500 font-mono text-sm shadow-xs"
                         required
                       />
 
@@ -1171,11 +1157,11 @@ function AdminPanelContent() {
                         if (suggestions.length === 0) return null;
                         return (
                           <div className="mt-4 p-4 bg-olive-500/10 border border-olive-500/20 rounded-xl">
-                            <h4 className="text-olive-400 font-medium mb-2 text-sm flex items-center gap-2">
+                            <h4 className="text-olive-500 font-bold mb-2 text-sm flex items-center gap-2">
                               <Link size={14} /> SEO Opportunity: Internal
                               Cross-Linking
                             </h4>
-                            <p className="text-xs text-brand-white-70 mb-3">
+                            <p className="text-xs text-[#5A644D] mb-3">
                               We noticed you mentioned topics covered in your
                               other posts. Linking to them improves SEO
                               authority:
@@ -1186,14 +1172,14 @@ function AdminPanelContent() {
                                   key={idx}
                                   className="flex flex-wrap items-center gap-2 text-xs"
                                 >
-                                  <span className="text-white">
+                                  <span className="text-[#182012] font-medium">
                                     Mentioned:{" "}
-                                    <span className="font-medium px-2 py-0.5 bg-black/40 rounded border border-white/5">
+                                    <span className="font-semibold px-2 py-0.5 bg-white rounded border border-[#E4E4E4]">
                                       "{s.foundKeyword}"
                                     </span>
                                   </span>
-                                  <span className="text-brand-white-50">→</span>
-                                  <code className="bg-black/60 px-2 py-1 rounded text-olive-300 font-mono border border-olive-500/20">
+                                  <span className="text-[#182012]/50">→</span>
+                                  <code className="bg-white px-2 py-1 rounded text-olive-500 font-mono border border-olive-500/20 font-bold">
                                     [{s.title}](/blog/{s.slug})
                                   </code>
                                 </li>
@@ -1204,7 +1190,7 @@ function AdminPanelContent() {
                       })()}
                     </div>
                     <div>
-                      <label className="block text-sm text-brand-white-70 mb-2">
+                      <label className="block text-sm font-medium text-[#5A644D] mb-2">
                         Featured Image URL
                       </label>
                       <input
@@ -1215,10 +1201,10 @@ function AdminPanelContent() {
                           setImagePreview(e.target.value);
                           setImageFile(null);
                         }}
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-olive-500 mb-2"
+                        className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] focus:outline-none focus:border-olive-500 mb-2 shadow-xs"
                       />
                       {imagePreview && (
-                        <div className="mt-4 rounded-xl overflow-hidden border border-white/10">
+                        <div className="mt-4 rounded-xl overflow-hidden border border-[#E4E4E4] shadow-sm">
                           <img
                             src={imagePreview}
                             alt={imageAlt || "Preview"}
@@ -1228,7 +1214,7 @@ function AdminPanelContent() {
                       )}
                     </div>
                     <div className="mt-4">
-                      <label className="block text-sm text-brand-white-70 mb-2">
+                      <label className="block text-sm font-medium text-[#5A644D] mb-2">
                         Featured Image Alt Text (for SEO & Accessibility)
                       </label>
                       <input
@@ -1236,14 +1222,14 @@ function AdminPanelContent() {
                         value={imageAlt}
                         onChange={(e) => setImageAlt(e.target.value)}
                         placeholder="e.g. A digital marketing campaign dashboard"
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-olive-500"
+                        className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] focus:outline-none focus:border-olive-500 shadow-xs"
                       />
                     </div>
                     <div className="flex gap-4 mt-6">
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="flex-1 bg-olive-500 text-white px-6 py-3 rounded-full hover:bg-olive-400 transition-colors disabled:opacity-50"
+                        className="flex-1 bg-olive-500 text-white px-6 py-3 rounded-full hover:bg-olive-400 font-bold transition-colors disabled:opacity-50 shadow-sm"
                       >
                         {submitting
                           ? editingPostId
@@ -1257,7 +1243,7 @@ function AdminPanelContent() {
                         <button
                           type="button"
                           onClick={handleCancelEdit}
-                          className="px-6 py-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors disabled:opacity-50"
+                          className="px-6 py-3 rounded-full bg-[#F0F0F0] hover:bg-[#DDD7C8] text-[#182012] font-semibold transition-colors disabled:opacity-50"
                           disabled={submitting}
                         >
                           Cancel
@@ -1269,20 +1255,20 @@ function AdminPanelContent() {
 
                 <div className="space-y-4">
                   <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-2xl font-light text-white">
+                    <h2 className="text-2xl font-light text-[#182012]">
                       Manage Posts
                     </h2>
                     {selectedPosts.length > 0 && (
                       <div className="flex gap-3">
                         <button
                           onClick={() => setShowBulkSeoForm(!showBulkSeoForm)}
-                          className="text-olive-400 hover:text-olive-300 text-sm px-4 py-2 bg-olive-400/10 rounded-full transition-colors font-medium"
+                          className="text-olive-500 hover:text-olive-400 font-semibold text-sm px-4 py-2 bg-olive-500/10 rounded-full transition-colors"
                         >
                           Bulk Edit SEO ({selectedPosts.length})
                         </button>
                         <button
                           onClick={handleDeleteSelected}
-                          className="text-red-400 hover:text-red-300 text-sm px-4 py-2 bg-red-400/10 rounded-full transition-colors font-medium"
+                          className="text-red-600 hover:text-red-700 font-semibold text-sm px-4 py-2 bg-red-500/10 rounded-full transition-colors"
                         >
                           Delete Selected ({selectedPosts.length})
                         </button>
@@ -1291,8 +1277,8 @@ function AdminPanelContent() {
                   </div>
 
                   {showBulkSeoForm && selectedPosts.length > 0 && (
-                    <div className="bg-olive-900/40 border border-olive-500/20 rounded-xl p-6 mb-6">
-                      <h3 className="text-lg font-medium text-white mb-4">
+                    <div className="bg-white border border-[#E4E4E4] rounded-xl p-6 mb-6 shadow-sm">
+                      <h3 className="text-lg font-bold text-[#182012] mb-4">
                         Bulk Update SEO Description for {selectedPosts.length}{" "}
                         posts
                       </h3>
@@ -1305,10 +1291,10 @@ function AdminPanelContent() {
                             }
                             placeholder="Enter the common SEO description to apply to all selected posts..."
                             rows={3}
-                            className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-olive-500"
+                            className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-3 text-[#182012] focus:outline-none focus:border-olive-500 shadow-xs"
                           />
                           <p
-                            className={`mt-1 text-xs ${bulkSeoDescription.length > 160 ? "text-red-400" : "text-brand-white-50"}`}
+                            className={`mt-1 text-xs ${bulkSeoDescription.length > 160 ? "text-red-500 font-bold" : "text-[#859177]"}`}
                           >
                             {bulkSeoDescription.length}/160 characters
                           </p>
@@ -1317,7 +1303,7 @@ function AdminPanelContent() {
                           <button
                             onClick={handleBulkSeoUpdate}
                             disabled={bulkSeoSaving || !bulkSeoDescription}
-                            className="bg-olive-500 text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-olive-400 disabled:opacity-50 transition-colors"
+                            className="bg-olive-500 text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-olive-400 disabled:opacity-50 transition-colors shadow-sm"
                           >
                             {bulkSeoSaving
                               ? "Applying..."
@@ -1326,7 +1312,7 @@ function AdminPanelContent() {
                           <button
                             onClick={() => setShowBulkSeoForm(false)}
                             disabled={bulkSeoSaving}
-                            className="bg-white/10 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-white/20 transition-colors"
+                            className="bg-[#F0F0F0] hover:bg-[#DDD7C8] text-[#182012] px-6 py-2 rounded-full text-sm font-semibold transition-colors"
                           >
                             Cancel
                           </button>
@@ -1348,9 +1334,9 @@ function AdminPanelContent() {
                               setSelectedPosts([]);
                             }
                           }}
-                          className="form-checkbox h-4 w-4 bg-black/40 border-white/10 rounded text-olive-500 focus:ring-olive-500 focus:ring-offset-black"
+                          className="form-checkbox h-4 w-4 bg-white border-[#DBE4C7] rounded text-olive-500 focus:ring-olive-500"
                         />
-                        <span className="text-brand-white-70 text-sm">
+                        <span className="text-[#5A644D] font-medium text-sm">
                           Select All
                         </span>
                       </label>
@@ -1359,7 +1345,7 @@ function AdminPanelContent() {
                   {posts.map((post) => (
                     <div
                       key={post.id}
-                      className="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col gap-4"
+                      className="bg-white border border-[#E4E4E4] rounded-xl p-4 flex flex-col gap-4 shadow-xs"
                     >
                       <div className="flex justify-between items-start">
                         <div className="flex items-start gap-4">
@@ -1378,22 +1364,22 @@ function AdminPanelContent() {
                                   );
                                 }
                               }}
-                              className="form-checkbox h-4 w-4 bg-black/40 border-white/10 rounded text-olive-500 focus:ring-olive-500 focus:ring-offset-black"
+                              className="form-checkbox h-4 w-4 bg-white border-[#DBE4C7] rounded text-olive-500 focus:ring-olive-500"
                             />
                           </div>
                           <div>
-                            <h3 className="text-lg text-white font-medium mb-1">
+                            <h3 className="text-lg text-[#182012] font-bold mb-1">
                               {post.title}
                             </h3>
                             <div className="flex items-center gap-3">
-                              <p className="text-sm text-brand-white-70">
+                              <p className="text-sm text-[#5A644D]">
                                 {post.createdAt
                                   ? (typeof post.createdAt.toDate === "function"
                                       ? post.createdAt.toDate().toLocaleDateString()
                                       : new Date(post.createdAt).toLocaleDateString())
                                   : post.date || "Just now"}
                               </p>
-                              <div className="flex items-center gap-1.5 text-xs font-medium px-2 py-0.5 rounded-md bg-olive-500/20 text-olive-400">
+                              <div className="flex items-center gap-1.5 text-xs font-semibold px-2 py-0.5 rounded-md bg-olive-500/10 text-olive-600">
                                 <svg
                                   className="w-3.5 h-3.5"
                                   fill="none"
@@ -1427,13 +1413,13 @@ function AdminPanelContent() {
                         <div className="flex gap-2 ml-4">
                           <button
                             onClick={() => handleEdit(post)}
-                            className="text-olive-400 hover:text-olive-300 text-sm px-3 py-1 bg-olive-400/10 rounded-full whitespace-nowrap"
+                            className="text-olive-500 hover:text-olive-400 font-semibold text-sm px-3.5 py-1 bg-olive-500/10 rounded-full whitespace-nowrap transition-colors"
                           >
                             Edit
                           </button>
                           <button
                             onClick={() => handleDelete(post.id)}
-                            className="text-red-400 hover:text-red-300 text-sm px-3 py-1 bg-red-400/10 rounded-full whitespace-nowrap"
+                            className="text-red-600 hover:text-red-700 font-semibold text-sm px-3.5 py-1 bg-red-500/10 rounded-full whitespace-nowrap transition-colors"
                           >
                             Delete
                           </button>
@@ -1442,11 +1428,11 @@ function AdminPanelContent() {
 
                       {/* Search Engine Result Preview */}
                       <div
-                        className={`px-4 py-3 bg-[#202124] border ${(post.seoTitle || post.title || "").length > 60 || (post.seoDescription || post.excerpt || "").length > 160 ? "border-red-500/30" : "border-white/10"} rounded-xl font-sans opacity-80 hover:opacity-100 transition-all`}
+                        className={`px-4 py-3 bg-[#202124] border ${(post.seoTitle || post.title || "").length > 60 || (post.seoDescription || post.excerpt || "").length > 160 ? "border-red-500/30" : "border-[#E4E4E4]"} rounded-xl font-sans opacity-80 hover:opacity-100 transition-all`}
                       >
                         <div className="flex justify-between items-start mb-2">
                           <div className="flex items-center gap-2">
-                            <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-white">
+                            <div className="w-5 h-5 rounded-full bg-olive-500 flex items-center justify-center text-[10px] text-white font-bold">
                               M
                             </div>
                             <div>

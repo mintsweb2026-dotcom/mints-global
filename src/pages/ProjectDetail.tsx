@@ -6,21 +6,23 @@ import { projects as staticProjects } from '../data/projects';
 import { SEO } from '../components/SEO';
 import { JsonLd } from '../components/JsonLd';
 import { getOptimizedUrl, getSrcSet } from './Portfolio';
+import { slugify } from '../lib/utils';
 
 export function ProjectDetail() {
   const { id } = useParams();
   const { works: dynamicWorks, loading } = useWorks();
   
   // Resolve synchronously against dynamic works + static fallback for instant SSR & SEO indexing
+  const normalizedId = id?.toLowerCase();
   const allProjects = dynamicWorks.length > 0 ? dynamicWorks : staticProjects;
   const project = allProjects.find(p => 
     p._id === id || 
-    p.title.toLowerCase().replace(/\s+/g, '-') === id?.toLowerCase() ||
-    p.title.toLowerCase() === id?.toLowerCase()
+    slugify(p.title) === normalizedId ||
+    p.title.toLowerCase() === normalizedId
   ) || staticProjects.find(p => 
     p._id === id || 
-    p.title.toLowerCase().replace(/\s+/g, '-') === id?.toLowerCase() ||
-    p.title.toLowerCase() === id?.toLowerCase()
+    slugify(p.title) === normalizedId ||
+    p.title.toLowerCase() === normalizedId
   );
 
   if (!project) {
@@ -29,8 +31,8 @@ export function ProjectDetail() {
     }
     return (
       <div className="w-full flex flex-col items-center justify-center min-h-[60vh] pt-32">
-        <h2 className="text-4xl font-black text-white mb-6 uppercase">Project Not Found</h2>
-        <Link to="/work" className="text-olive-500 hover:text-white transition-colors flex items-center gap-2 font-bold tracking-wider uppercase text-sm">
+        <h2 className="text-4xl font-black text-[#182012] mb-6 uppercase">Project Not Found</h2>
+        <Link to="/work" className="text-olive-500 hover:text-olive-500 transition-colors flex items-center gap-2 font-bold tracking-wider uppercase text-sm">
           <ArrowLeft size={16} /> Back to Work
         </Link>
       </div>
@@ -90,7 +92,7 @@ export function ProjectDetail() {
       
       {/* Header & Meta Overview */}
       <section className="relative w-full px-6 lg:px-8 pt-32 pb-12 max-w-7xl mx-auto">
-        <Link to="/work" className="text-brand-white-70 hover:text-white transition-colors flex items-center gap-2 text-sm font-bold uppercase tracking-widest mb-10 w-fit">
+        <Link to="/work" className="text-brand-white-70 hover:text-olive-500 transition-colors flex items-center gap-2 text-sm font-bold uppercase tracking-widest mb-10 w-fit">
           <ArrowLeft size={16} /> Back to All Work
         </Link>
 
@@ -100,13 +102,13 @@ export function ProjectDetail() {
               {project.category.name}
             </span>
             {project.kpi && (
-              <span className="text-white text-xs font-bold tracking-wider uppercase bg-olive-950 border border-white/10 px-4 py-1.5 rounded-full flex items-center gap-1.5">
+              <span className="text-[#182012] text-xs font-bold tracking-wider uppercase bg-white border border-[#E4E4E4] px-4 py-1.5 rounded-full flex items-center gap-1.5">
                 <TrendingUp size={13} className="text-olive-500" /> {project.kpi}
               </span>
             )}
           </div>
 
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-8 uppercase leading-[0.92] text-white">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-8 uppercase leading-[0.92] text-[#182012]">
             {project.title}
           </h1>
 
@@ -115,12 +117,12 @@ export function ProjectDetail() {
           </p>
 
           {/* Project Details Matrix */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 md:p-8 bg-olive-900/40 border border-white/10 rounded-3xl backdrop-blur-xl mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 md:p-8 bg-white border border-[#E4E4E4] rounded-3xl shadow-sm mb-12">
             <div>
               <div className="flex items-center gap-2 text-xs font-bold text-brand-white-40 uppercase tracking-widest mb-1.5">
                 <Building2 size={14} className="text-olive-500" /> Client
               </div>
-              <div className="text-white font-display font-bold text-base md:text-lg">
+              <div className="text-[#182012] font-display font-bold text-base md:text-lg">
                 {project.client || project.title}
               </div>
             </div>
@@ -129,7 +131,7 @@ export function ProjectDetail() {
               <div className="flex items-center gap-2 text-xs font-bold text-brand-white-40 uppercase tracking-widest mb-1.5">
                 <Layers size={14} className="text-olive-500" /> Vertical
               </div>
-              <div className="text-white font-display font-bold text-base md:text-lg">
+              <div className="text-[#182012] font-display font-bold text-base md:text-lg">
                 {project.category.name}
               </div>
             </div>
@@ -138,7 +140,7 @@ export function ProjectDetail() {
               <div className="flex items-center gap-2 text-xs font-bold text-brand-white-40 uppercase tracking-widest mb-1.5">
                 <Calendar size={14} className="text-olive-500" /> Timeline
               </div>
-              <div className="text-white font-display font-bold text-base md:text-lg">
+              <div className="text-[#182012] font-display font-bold text-base md:text-lg">
                 {project.duration || 'Completed'}
               </div>
             </div>
@@ -147,7 +149,7 @@ export function ProjectDetail() {
               <div className="flex items-center gap-2 text-xs font-bold text-brand-white-40 uppercase tracking-widest mb-1.5">
                 <TrendingUp size={14} className="text-olive-500" /> Primary Impact
               </div>
-              <div className="text-olive-400 font-display font-black text-base md:text-lg">
+              <div className="text-olive-500 font-display font-black text-base md:text-lg">
                 {project.kpi || 'High Impact'}
               </div>
             </div>
@@ -161,7 +163,7 @@ export function ProjectDetail() {
            initial={{ opacity: 0, y: 30 }} 
            animate={{ opacity: 1, y: 0 }} 
            transition={{ duration: 0.8, delay: 0.2 }}
-           className="w-full rounded-[2.5rem] overflow-hidden bg-olive-900 border border-white/10 shadow-2xl aspect-video relative group"
+           className="w-full rounded-[2.5rem] overflow-hidden bg-[#F0F0F0] border border-[#E4E4E4] shadow-2xl aspect-video relative group"
         >
           <img 
             src={getOptimizedUrl(project.titleImage, 1400)} 
@@ -176,12 +178,12 @@ export function ProjectDetail() {
 
       {/* Narrative Section: Challenge, Approach & Results */}
       {(project.challenge || project.approach || project.results) && (
-        <section className="px-6 lg:px-8 py-16 max-w-7xl mx-auto border-t border-white/10">
+        <section className="px-6 lg:px-8 py-16 max-w-7xl mx-auto border-t border-[#E4E4E4]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {project.challenge && (
-              <div className="bg-olive-900/50 border border-white/5 p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
+              <div className="bg-white border border-[#E4E4E4] p-8 rounded-3xl hover:border-olive-500/30 transition-colors shadow-sm">
                 <div className="text-xs font-black text-olive-500 uppercase tracking-widest mb-3">01 / The Challenge</div>
-                <h2 className="font-display font-black text-2xl uppercase mb-4 text-white">The Challenge</h2>
+                <h2 className="font-display font-black text-2xl uppercase mb-4 text-[#182012]">The Challenge</h2>
                 <p className="text-brand-white-70 leading-relaxed text-sm md:text-base">
                   {project.challenge}
                 </p>
@@ -189,9 +191,9 @@ export function ProjectDetail() {
             )}
 
             {project.approach && (
-              <div className="bg-olive-900/50 border border-white/5 p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
+              <div className="bg-white border border-[#E4E4E4] p-8 rounded-3xl hover:border-olive-500/30 transition-colors shadow-sm">
                 <div className="text-xs font-black text-olive-500 uppercase tracking-widest mb-3">02 / The Strategy</div>
-                <h2 className="font-display font-black text-2xl uppercase mb-4 text-white">Strategic Approach</h2>
+                <h2 className="font-display font-black text-2xl uppercase mb-4 text-[#182012]">Strategic Approach</h2>
                 <p className="text-brand-white-70 leading-relaxed text-sm md:text-base">
                   {project.approach}
                 </p>
@@ -199,9 +201,9 @@ export function ProjectDetail() {
             )}
 
             {project.results && (
-              <div className="bg-olive-900/50 border border-white/5 p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
+              <div className="bg-white border border-[#E4E4E4] p-8 rounded-3xl hover:border-olive-500/30 transition-colors shadow-sm">
                 <div className="text-xs font-black text-olive-500 uppercase tracking-widest mb-3">03 / The Outcome</div>
-                <h2 className="font-display font-black text-2xl uppercase mb-4 text-white">Results & Impact</h2>
+                <h2 className="font-display font-black text-2xl uppercase mb-4 text-[#182012]">Results & Impact</h2>
                 <p className="text-brand-white-70 leading-relaxed text-sm md:text-base">
                   {project.results}
                 </p>
@@ -215,7 +217,7 @@ export function ProjectDetail() {
       {project.mediaUrls && project.mediaUrls.length > 0 && (
         <section className="px-6 lg:px-8 py-16 max-w-7xl mx-auto">
           <div className="mb-10">
-            <h2 className="font-display text-3xl md:text-4xl font-black uppercase text-white">
+            <h2 className="font-display text-3xl md:text-4xl font-black uppercase text-[#182012]">
               Project <span className="text-olive-500">Deliverables</span>
             </h2>
           </div>
@@ -227,7 +229,7 @@ export function ProjectDetail() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 key={idx} 
-                className="rounded-3xl overflow-hidden bg-olive-900 border border-white/5 aspect-square"
+                className="rounded-3xl overflow-hidden bg-[#F0F0F0] border border-[#E4E4E4] aspect-square"
               >
                 <img 
                   src={getOptimizedUrl(url, 800)} 
@@ -249,7 +251,7 @@ export function ProjectDetail() {
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-bold text-brand-white-40 uppercase tracking-widest mr-2">Expertise Areas:</span>
             {project.tags.map((tag) => (
-              <span key={tag} className="text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-white-70">
+              <span key={tag} className="text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-white border border-[#E4E4E4] text-brand-white-70">
                 {tag}
               </span>
             ))}
@@ -258,8 +260,8 @@ export function ProjectDetail() {
       )}
 
       {/* Related Projects Section */}
-      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-8 border-t border-white/10">
-        <h2 className="font-display text-4xl font-black mb-12 uppercase text-white">Related <span className="text-olive-500">Projects</span></h2>
+      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-8 border-t border-[#E4E4E4]">
+        <h2 className="font-display text-4xl font-black mb-12 uppercase text-[#182012]">Related <span className="text-olive-500">Projects</span></h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {(() => {
             const otherProjects = allProjects.filter(p => p._id !== project._id);
@@ -274,7 +276,7 @@ export function ProjectDetail() {
               .slice(0, 3)
               .map(p => (
                 <Link to={`/work/${p._id}`} key={p._id} className="group block focus:outline-none">
-                  <div className="rounded-3xl overflow-hidden bg-olive-900 border border-white/5 aspect-video mb-6 relative">
+                  <div className="rounded-3xl overflow-hidden bg-[#F0F0F0] border border-[#E4E4E4] aspect-video mb-6 relative">
                      <div className="absolute inset-0 bg-brand-black/0 group-hover:bg-brand-black/40 transition-colors z-10 duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
                        <span className="bg-olive-500 text-white w-14 h-14 rounded-full flex items-center justify-center translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                          <ArrowLeft size={24} className="rotate-180" />
@@ -282,7 +284,7 @@ export function ProjectDetail() {
                      </div>
                      <img src={getOptimizedUrl(p.titleImage, 800)} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                   </div>
-                  <h3 className="font-display font-bold text-xl uppercase text-white group-hover:text-olive-500 transition-colors mb-2 line-clamp-1">{p.title}</h3>
+                  <h3 className="font-display font-bold text-xl uppercase text-[#182012] group-hover:text-olive-500 transition-colors mb-2 line-clamp-1">{p.title}</h3>
                   <p className="text-brand-white-70 text-sm">{p.category.name}</p>
                 </Link>
               ));
@@ -291,8 +293,8 @@ export function ProjectDetail() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/10 text-center">
-         <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">Ready to Elevate Your Brand?</h2>
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4] text-center">
+         <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">Ready to Elevate Your Brand?</h2>
          <p className="text-brand-white-70 text-lg max-w-2xl mx-auto mb-10">
            Partner with Mints Global in Dubai for bespoke brand strategy, enterprise engineering, and cyber protection.
          </p>

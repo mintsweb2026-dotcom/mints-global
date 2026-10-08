@@ -2,6 +2,7 @@ import { ArrowRight, Search, TrendingUp, Share2, Target, Video, Image as ImageIc
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { SEO } from '../components/SEO';
+import { buildFaqSchema, organizationSchema } from '../lib/schema-helpers';
 import { SEO_DATA } from '../lib/seo-data';
 import { JsonLd } from '../components/JsonLd';
 import { ServicesAccordion } from '../components/ServicesAccordion';
@@ -25,197 +26,35 @@ const faqs = [
 const digitalMarketingSchema = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://www.mintsglobal.ae/digital-marketing#webpage",
-      "url": "https://www.mintsglobal.ae/digital-marketing",
-      "name": "Digital Marketing Services in Dubai, UAE | Mints Global",
-      "description": "ROI-driven digital marketing services in Dubai — SEO, PPC, social media, content marketing and email campaigns for UAE and global brands.",
-      "inLanguage": "en",
-      "isPartOf": {
-        "@id": "https://www.mintsglobal.ae/#website"
-      },
-      "breadcrumb": {
-        "@id": "https://www.mintsglobal.ae/digital-marketing#breadcrumb"
-      },
-      "primaryImageOfPage": {
-        "@id": "https://www.mintsglobal.ae/digital-marketing#primaryimage"
-      },
-      "datePublished": "2024-01-01",
-      "dateModified": "2025-06-01"
-    },
-    {
-      "@type": "ImageObject",
-      "@id": "https://www.mintsglobal.ae/digital-marketing#primaryimage",
-      "url": "https://www.mintsglobal.ae/images/digital-marketing-og.jpg",
-      "width": 1200,
-      "height": 630,
-      "caption": "Digital marketing services Dubai — Mints Global"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://www.mintsglobal.ae/digital-marketing#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.mintsglobal.ae/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Digital Marketing",
-          "item": "https://www.mintsglobal.ae/digital-marketing"
-        }
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://www.mintsglobal.ae/#website",
-      "url": "https://www.mintsglobal.ae/",
-      "name": "Mints Global",
-      "description": "Premium digital agency in Dubai bridging Middle Eastern and European markets.",
-      "publisher": {
-        "@id": "https://www.mintsglobal.ae/#organization"
-      }
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://www.mintsglobal.ae/#organization",
-      "name": "Mints Global",
-      "url": "https://www.mintsglobal.ae/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.mintsglobal.ae/images/mints-global-logo.png",
-        "width": 300,
-        "height": 60
-      },
-      "description": "Premium digital agency in Dubai offering digital marketing, SEO, PPC, social media, content marketing, software development, branding and cybersecurity.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Office #315, 3rd Floor, Bank Street Building",
-        "addressLocality": "Bur Dubai",
-        "addressRegion": "Dubai",
-        "addressCountry": "AE"
-      },
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "telephone": "+971502943916",
-          "contactType": "customer service",
-          "areaServed": "AE",
-          "availableLanguage": ["English", "Arabic"]
-        },
-        {
-          "@type": "ContactPoint",
-          "telephone": "+447899727950",
-          "contactType": "customer service",
-          "areaServed": "GB",
-          "availableLanguage": "English"
-        }
-      ],
-      "email": "info@mintsglobal.ae",
-      "sameAs": [
-        "https://twitter.com/mintsglobal"
-      ]
-    },
+    organizationSchema,
     {
       "@type": "Service",
       "@id": "https://www.mintsglobal.ae/digital-marketing#service",
-      "name": "Digital Marketing Services",
-      "description": "Comprehensive digital marketing services in Dubai including SEO, PPC advertising, social media marketing, content marketing and email marketing campaigns.",
-      "provider": {
-        "@id": "https://www.mintsglobal.ae/#organization"
-      },
+      "name": "Digital Marketing Services Dubai",
+      "provider": { "@id": "https://www.mintsglobal.ae/#organization" },
       "serviceType": "Digital Marketing",
+      "description": "Full-suite digital marketing agency in Dubai: SEO, PPC, social media marketing, brand strategy, video production, and content marketing for UAE and global brands.",
       "areaServed": [
-        {
-          "@type": "Country",
-          "name": "United Arab Emirates"
-        },
-        {
-          "@type": "Country",
-          "name": "United Kingdom"
-        }
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Country", "name": "European Union" }
       ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Digital Marketing Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Search Engine Optimisation (SEO)",
-              "description": "Technical SEO, on-page SEO, link building and local SEO for UAE businesses."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Pay-Per-Click Advertising (PPC)",
-              "description": "Google Ads, Meta Ads and paid media management for maximum ROI."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Social Media Marketing",
-              "description": "Brand-building and community management across Instagram, LinkedIn and Facebook."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Content Marketing",
-              "description": "Blog posts, video scripts and brand storytelling that drive organic growth."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Email Marketing",
-              "description": "Targeted email sequences and drip campaigns for lead nurturing and retention."
-            }
-          }
-        ]
-      }
+      "url": "https://www.mintsglobal.ae/digital-marketing"
     },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.mintsglobal.ae/digital-marketing#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What digital marketing services does Mints Global offer in Dubai?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Mints Global offers a full suite of digital marketing services in Dubai including SEO, PPC advertising (Google Ads & Meta Ads), social media marketing, content marketing, and email marketing — all tailored to UAE and global brands."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where is Mints Global located?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Mints Global is located at Office #315, 3rd Floor, Bank Street Building, Bur Dubai, UAE. We also serve UK-based clients via our London contact."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How can I contact Mints Global for digital marketing services?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can reach Mints Global by phone at +971 50 294 3916 (UAE) or +44 7899 727950 (UK), or by email at info@mintsglobal.ae."
-          }
-        }
-      ]
-    }
+    buildFaqSchema([
+      {
+        q: "What digital marketing services does Mints Global offer in Dubai?",
+        a: "Mints Global offers a full suite of digital marketing services in Dubai including SEO, PPC advertising (Google Ads & Meta Ads), social media marketing, content marketing, and email marketing — all tailored to UAE and global brands."
+      },
+      {
+        q: "Where is Mints Global located?",
+        a: "Mints Global is located at Office #315, 3rd Floor, Bank Street Building, Bur Dubai, UAE. We also serve UK-based clients via our London contact."
+      },
+      {
+        q: "How can I contact Mints Global for digital marketing services?",
+        a: "You can reach Mints Global by phone at +971 50 294 3916 (UAE) or +44 7899 727950 (UK), or by email at info@mintsglobal.ae."
+      }
+    ])
   ]
 };
 
@@ -254,16 +93,16 @@ export function DigitalMarketing() {
       </section>
 
       {/* Grid Section */}
-      <section className="bg-olive-900 border-y border-white/5 py-24">
+      <section className="bg-[#F0F0F0] border-y border-[#E4E4E4] py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="font-display text-4xl font-black mb-16 uppercase">Core <span className="text-olive-500">Capabilities</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {subServices.map((srv, i) => (
-              <div key={i} className="bg-olive-950/50 border border-white/5 rounded-2xl p-8 hover:border-olive-500/50 transition-colors group">
+              <div key={i} className="bg-white border border-[#E4E4E4] rounded-2xl p-8 hover:border-olive-500/40 transition-all shadow-sm hover:shadow-md group">
                 <srv.icon className="text-olive-500 mb-6" size={36} strokeWidth={1.5} />
                 <h3 className="text-xl font-display font-bold mb-3 group-hover:text-olive-500 transition-colors">{srv.name}</h3>
                 <p className="text-brand-white-70 text-sm leading-relaxed mb-8">{srv.desc}</p>
-                <Link to={srv.link} aria-label={`Learn more about ${srv.name}`} className="text-sm font-bold flex items-center gap-2 hover:text-white transition-colors uppercase tracking-wider">
+                <Link to={srv.link} aria-label={`Learn more about ${srv.name}`} className="text-sm font-bold flex items-center gap-2 hover:text-olive-500 transition-colors uppercase tracking-wider">
                   Learn More <ArrowRight size={16} />
                 </Link>
               </div>
@@ -281,7 +120,7 @@ export function DigitalMarketing() {
       />
 
       {/* FAQ */}
-      <section className="bg-olive-900 border-t border-white/5 py-24">
+      <section className="bg-[#F0F0F0] border-t border-[#E4E4E4] py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <h2 className="font-display text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tight">Frequently Asked <span className="text-olive-500">Questions</span></h2>
           <ServicesAccordion items={faqs.map(f => ({ title: f.q, content: f.a }))} />
@@ -291,7 +130,7 @@ export function DigitalMarketing() {
       {/* CTA Bottom */}
       <section className="max-w-4xl mx-auto px-6 text-center py-20 md:py-32">
         <h2 className="font-display text-4xl md:text-5xl font-black mb-8 leading-tight">DOMINATE YOUR<br />DIGITAL LANDSCAPE.</h2>
-        <Link to="/contact" className="inline-flex items-center gap-3 bg-brand-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all hover:scale-105">
+        <Link to="/contact" className="inline-flex items-center gap-3 bg-[#182012] text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all hover:scale-105 shadow-xl">
           Get a Proposal <ArrowRight size={20} />
         </Link>
       </section>

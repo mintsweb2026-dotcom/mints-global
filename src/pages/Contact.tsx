@@ -197,7 +197,7 @@ export function Contact() {
 
           <div className="space-y-8">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-olive-900 border border-white/10 flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-full bg-olive-900 border border-[#E4E4E4] flex items-center justify-center shrink-0">
                 <Mail className="text-olive-500" size={20} />
               </div>
               <div>
@@ -207,7 +207,7 @@ export function Contact() {
             </div>
             
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-olive-900 border border-white/10 flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-full bg-olive-900 border border-[#E4E4E4] flex items-center justify-center shrink-0">
                 <Phone className="text-olive-500" size={20} />
               </div>
               <div>
@@ -220,7 +220,7 @@ export function Contact() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-full bg-olive-900 border border-white/10 flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-full bg-olive-900 border border-[#E4E4E4] flex items-center justify-center shrink-0">
                 <MapPin className="text-olive-500" size={20} />
               </div>
               <div>
@@ -232,7 +232,7 @@ export function Contact() {
         </div>
 
         {/* Right Form */}
-        <div className="bg-olive-900/50 border border-white/10 rounded-3xl p-8 lg:p-12 relative overflow-hidden">
+        <div className="bg-white border border-[#E4E4E4] shadow-lg rounded-3xl p-8 lg:p-12 relative overflow-hidden">
           
           {/* Progress Bar */}
           {!isSubmitted && (
@@ -253,7 +253,7 @@ export function Contact() {
                       className={`h-2 flex-1 rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-olive-500/50 ${
                         step === s ? 'bg-olive-500 shadow-[0_0_15px_rgba(58,93,45,0.5)]' 
                         : step > s ? 'bg-olive-600/80 hover:bg-olive-400 cursor-pointer' 
-                        : 'bg-white/10'
+                        : 'bg-[#182012]/10'
                       }`}
                       aria-label={s === 1 ? 'Go to Services step' : s === 2 ? 'Go to Project Details step' : 'Go to Contact Info step'}
                     />
@@ -276,7 +276,7 @@ export function Contact() {
               <div className="w-20 h-20 bg-olive-500 rounded-full flex items-center justify-center mb-6">
                 <CheckCircle2 size={40} className="text-white" />
               </div>
-              <h3 className="font-display text-3xl font-black mb-4">Enquiry Received!</h3>
+              <h3 className="font-display text-3xl font-black mb-4 text-[#182012]">Enquiry Received!</h3>
               <p className="text-brand-white-70 mb-8 max-w-sm">We've received your details and our team will get back to you within 24 hours.</p>
               
               <a 
@@ -299,16 +299,16 @@ export function Contact() {
                     exit={{ opacity: 0, x: -20 }}
                     className="flex-1"
                   >
-                    <h3 className="text-2xl font-bold mb-6">What services are you interested in?</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-[#182012]">What services are you interested in?</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                       {['Digital Marketing', 'Software Development', 'Cyber Security', 'SEO Strategy', 'Brand Design', 'Consultancy'].map((srv) => (
                         <button
                           key={srv}
                           type="button"
                           onClick={() => toggleService(srv)}
-                          className={`text-left p-6 rounded-2xl border transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-olive-500/50 ${selectedServices.includes(srv) ? 'bg-olive-500/20 border-olive-500 text-white shadow-[0_0_20px_rgba(58,93,45,0.25)] ring-4 ring-olive-500/20' : 'bg-transparent border-white/10 text-brand-white-70 hover:border-white/30 hover:bg-white/5'}`}
+                          className={`text-left p-6 rounded-2xl border transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-olive-500/50 ${selectedServices.includes(srv) ? 'bg-olive-500 border-olive-500 text-white shadow-md ring-4 ring-olive-500/20' : 'bg-white/80 border-[#E4E4E4] text-[#182012] hover:border-olive-500/40 hover:bg-white'}`}
                         >
-                          <div className={`w-5 h-5 rounded-full border mb-4 flex items-center justify-center transition-colors ${selectedServices.includes(srv) ? 'border-olive-500' : 'border-white/30'}`}>
+                          <div className={`w-5 h-5 rounded-full border mb-4 flex items-center justify-center transition-colors ${selectedServices.includes(srv) ? 'border-white bg-white' : 'border-[#182012]/30'}`}>
                              {selectedServices.includes(srv) ? <div className="w-2.5 h-2.5 bg-olive-500 rounded-full" /> : null}
                           </div>
                           <span className="font-bold text-lg">{srv}</span>
@@ -328,10 +328,10 @@ export function Contact() {
                     className="flex-1"
                   >
                     <div className="mb-10">
-                       <h3 className="text-xl font-bold mb-5 text-white">When do you want to start?</h3>
+                       <h3 className="text-xl font-bold mb-5 text-[#182012]">When do you want to start?</h3>
                        <div className="flex flex-wrap gap-3">
                          {['ASAP', '1–3 Months', '3–6 Months', '6–12 Months', 'Just Exploring'].map((tl) => (
-                           <label key={tl} className={`px-6 py-3.5 rounded-full border cursor-pointer transition-all text-sm font-bold flex items-center justify-center text-center has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-olive-500/50 ${watch('timeline') === tl ? 'bg-olive-500/20 border-olive-500 text-white shadow-[0_0_15px_rgba(58,93,45,0.25)] ring-4 ring-olive-500/20' : 'border-white/10 text-brand-white-70 hover:border-white/30 hover:bg-white/5 mx-0'}`}>
+                           <label key={tl} className={`px-6 py-3.5 rounded-full border cursor-pointer transition-all text-sm font-bold flex items-center justify-center text-center has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-olive-500/50 ${watch('timeline') === tl ? 'bg-olive-500 border-olive-500 text-white shadow-md ring-4 ring-olive-500/20' : 'bg-white/80 border-[#E4E4E4] text-[#182012] hover:border-olive-500/40 hover:bg-white mx-0'}`}>
                              <input type="radio" value={tl} {...register('timeline')} className="sr-only" />
                              {tl}
                            </label>
@@ -339,12 +339,12 @@ export function Contact() {
                        </div>
                     </div>
 
-                    <h3 className="text-xl font-bold mb-5 text-white">What is your estimated budget?</h3>
+                    <h3 className="text-xl font-bold mb-5 text-[#182012]">What is your estimated budget?</h3>
                     <div className="grid grid-cols-1 gap-3.5">
                       {['Under AED 10,000', 'AED 10,000 – 30,000', 'AED 30,000 – 100,000', 'AED 100,000+', 'Not Sure Yet'].map((bdg) => (
-                        <label key={bdg} className={`flex items-center gap-4 px-6 py-5 rounded-2xl border cursor-pointer transition-all has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-olive-500/50 ${watch('budget') === bdg ? 'bg-olive-500/20 border-olive-500 text-white shadow-[0_0_15px_rgba(58,93,45,0.2)] ring-4 ring-olive-500/20' : 'border-white/10 text-brand-white-70 hover:border-white/30 hover:bg-white/5'}`}>
+                        <label key={bdg} className={`flex items-center gap-4 px-6 py-5 rounded-2xl border cursor-pointer transition-all has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-olive-500/50 ${watch('budget') === bdg ? 'bg-olive-500 border-olive-500 text-white shadow-md ring-4 ring-olive-500/20' : 'bg-white/80 border-[#E4E4E4] text-[#182012] hover:border-olive-500/40 hover:bg-white'}`}>
                           <input type="radio" value={bdg} {...register('budget')} className="sr-only" />
-                          <div className={`w-5 h-5 rounded-full border flex-shrink-0 flex items-center justify-center transition-colors ${watch('budget') === bdg ? 'border-olive-500' : 'border-white/30'}`}>
+                          <div className={`w-5 h-5 rounded-full border flex-shrink-0 flex items-center justify-center transition-colors ${watch('budget') === bdg ? 'border-white bg-white' : 'border-[#182012]/30'}`}>
                             {watch('budget') === bdg && <div className="w-2.5 h-2.5 bg-olive-500 rounded-full" />}
                           </div>
                           <span className="font-bold text-base">{bdg}</span>
@@ -369,13 +369,13 @@ export function Contact() {
                       const messageError = errors.message && (touchedFields.message || submitAttempted);
                       return (
                         <>
-                          <h3 className="text-2xl font-bold mb-8">Tell us about yourself</h3>
+                          <h3 className="text-2xl font-bold mb-8 text-[#182012]">Tell us about yourself</h3>
                           <div className="space-y-5">
                             <div>
                               <input 
                                 {...register('name')} 
                                 placeholder="Your Name *" 
-                                className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 text-white ${nameError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
+                                className={`w-full bg-white border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-[#859177] text-[#182012] ${nameError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-[#E4E4E4] focus:border-olive-500 focus:ring-olive-500/20 hover:border-[#182012]/30'}`}
                               />
                               {nameError && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.name.message}</p>}
                             </div>
@@ -383,7 +383,7 @@ export function Contact() {
                               <input 
                                 {...register('email')} 
                                 placeholder="Work Email *" 
-                                className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 text-white ${emailError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
+                                className={`w-full bg-white border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-[#859177] text-[#182012] ${emailError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-[#E4E4E4] focus:border-olive-500 focus:ring-olive-500/20 hover:border-[#182012]/30'}`}
                               />
                               {emailError && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.email.message}</p>}
                             </div>
@@ -391,7 +391,7 @@ export function Contact() {
                               <input 
                                 {...register('company')} 
                                 placeholder="Company Name (Optional)" 
-                                className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 text-white ${companyError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
+                                className={`w-full bg-white border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-[#859177] text-[#182012] ${companyError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-[#E4E4E4] focus:border-olive-500 focus:ring-olive-500/20 hover:border-[#182012]/30'}`}
                               />
                               {companyError && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.company.message}</p>}
                             </div>
@@ -400,7 +400,7 @@ export function Contact() {
                                 {...register('message')} 
                                 placeholder="Project Details *" 
                                 rows={4}
-                                className={`w-full bg-olive-950/30 border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-white/30 resize-none text-white ${messageError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-white/10 focus:border-olive-500 focus:ring-olive-500/20 hover:border-white/20'}`}
+                                className={`w-full bg-white border rounded-2xl px-6 py-5 focus:outline-none focus:ring-4 transition-all placeholder:text-[#859177] resize-none text-[#182012] ${messageError ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : 'border-[#E4E4E4] focus:border-olive-500 focus:ring-olive-500/20 hover:border-[#182012]/30'}`}
                               />
                               {messageError && <p className="text-red-400 mt-2 text-sm ml-2 font-medium">{errors.message.message}</p>}
                             </div>
@@ -413,9 +413,9 @@ export function Contact() {
               </AnimatePresence>
 
               {/* Navigation Buttons */}
-              <div className="mt-12 flex items-center justify-between pt-8 border-t border-white/10">
+              <div className="mt-12 flex items-center justify-between pt-8 border-t border-[#E4E4E4]">
                  {step > 1 ? (
-                   <button type="button" onClick={prevStep} className="flex items-center gap-2 text-brand-white-70 hover:text-white font-bold p-2 -ml-2 rounded-lg hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-white/10">
+                   <button type="button" onClick={prevStep} className="flex items-center gap-2 text-brand-white-70 hover:text-olive-500 font-bold p-2 -ml-2 rounded-lg hover:bg-[#182012]/5 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-olive-500/20">
                      <ArrowLeft size={18} /> Back
                    </button>
                  ) : (
@@ -430,7 +430,7 @@ export function Contact() {
                       nextStep();
                     }} 
                     disabled={step === 1 && selectedServices.length === 0}
-                    className="bg-brand-white text-olive-950 px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-black flex items-center gap-2 hover:bg-olive-500 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-olive-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-olive-900 text-base sm:text-lg shadow-lg hover:shadow-olive-500/20 hover:-translate-y-0.5 active:translate-y-0"
+                    className="bg-[#182012] text-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-black flex items-center gap-2 hover:bg-olive-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-olive-500/50 text-base sm:text-lg shadow-lg hover:shadow-olive-500/20 hover:-translate-y-0.5 active:translate-y-0"
                    >
                      Continue <ArrowRight size={18} />
                    </button>
@@ -439,7 +439,7 @@ export function Contact() {
                     type="submit" 
                     disabled={isSubmitting}
                     onClick={() => setSubmitAttempted(true)}
-                    className="bg-olive-500 text-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-black flex items-center gap-2 hover:bg-olive-400 transition-all disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-olive-900 text-base sm:text-lg shadow-lg hover:shadow-olive-500/30 hover:-translate-y-0.5 active:translate-y-0"
+                    className="bg-olive-500 text-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-black flex items-center gap-2 hover:bg-olive-400 transition-all disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-white/50 text-base sm:text-lg shadow-lg hover:shadow-olive-500/30 hover:-translate-y-0.5 active:translate-y-0"
                    >
                      {isSubmitting ? (
                        <>

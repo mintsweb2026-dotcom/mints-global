@@ -9,6 +9,7 @@ import { getPostBySlug, getStaticPostBySlug, getPosts, BlogPost as BlogPostType 
 import { SEO } from '../components/SEO';
 import { JsonLd } from '../components/JsonLd';
 import { NewsletterForm } from '../components/NewsletterForm';
+import { slugify } from '../lib/utils';
 
 const flattenText = (children: React.ReactNode): string => {
   if (typeof children === 'string') return children;
@@ -19,9 +20,7 @@ const flattenText = (children: React.ReactNode): string => {
   return '';
 };
 
-const generateId = (text: string) => {
-  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-};
+const generateId = (text: string) => slugify(text);
 
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -169,7 +168,7 @@ export function BlogPost() {
   if (!post) {
     return (
       <div className="w-full min-h-[60vh] flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-display font-black text-white mb-4">Post Not Found</h1>
+        <h1 className="text-4xl font-display font-black text-[#182012] mb-4">Post Not Found</h1>
         <Link to="/blog" className="text-olive-500 hover:text-olive-400 flex items-center gap-2">
           <ArrowLeft size={20} /> Back to Blog
         </Link>
@@ -236,20 +235,20 @@ export function BlogPost() {
         {/* Post Header */}
         <header className="w-full pt-24 pb-16 lg:pt-32 lg:pb-20 bg-olive-950">
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
-            <div className="flex flex-wrap items-center gap-4 text-xs font-bold uppercase tracking-wider mb-6">
-              <span className="px-3 py-1.5 rounded-lg bg-olive-900 border border-olive-800/50 text-olive-300">
+            <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-wider mb-6">
+              <span className="px-3 py-1.5 rounded-full bg-olive-500/10 border border-olive-500/25 text-olive-500">
                 {post.category}
               </span>
               {post.tags && post.tags.map(tag => (
-                <span key={tag} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-brand-white-50">
+                <span key={tag} className="px-3 py-1.5 rounded-full bg-[#F5F7F4] border border-[#E4E4E4] text-[#5A644D]">
                   {tag}
                 </span>
               ))}
             </div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black mb-8 leading-[1.1] text-white">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black mb-8 leading-[1.1] text-[#182012]">
               {post.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-6 text-sm text-brand-white-40 font-medium mb-12">
+            <div className="flex flex-wrap items-center gap-6 text-sm text-[#5A644D] font-medium mb-12">
               <div className="flex items-center gap-2">
                 <Calendar size={18} className="text-olive-500" />
                 <span>{post.date}</span>
@@ -260,15 +259,15 @@ export function BlogPost() {
               </div>
               {post.author && (
                 <div className="flex items-center gap-2">
-                  <span className="text-olive-700">•</span>
-                  <span className="text-brand-white-70">{post.author}</span>
+                  <span className="text-olive-500 font-bold">•</span>
+                  <span className="text-[#182012]/85 font-semibold">{post.author}</span>
                 </div>
               )}
             </div>
           </div>
           {post.image && (
             <div className="max-w-5xl mx-auto px-6 lg:px-8 mt-8">
-              <div className="w-full h-[350px] sm:h-[450px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl relative border border-white/10 group">
+              <div className="w-full h-[350px] sm:h-[450px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl relative border border-[#E4E4E4] group">
                 <div className="absolute inset-0 bg-olive-900 animate-pulse -z-10"></div>
                 <img src={post.image} fetchPriority="high" alt={post.imageAlt || post.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               </div>
@@ -285,8 +284,8 @@ export function BlogPost() {
               
               {/* Mobile TOC */}
               {toc.length > 0 && (
-                <div className="mb-12 p-6 rounded-2xl bg-white/5 border border-white/10 lg:hidden">
-                  <h3 className="text-xl font-display font-bold text-white mb-6 flex items-center gap-2">
+                <div className="mb-12 p-6 rounded-2xl bg-white/5 border border-[#E4E4E4] lg:hidden">
+                  <h3 className="text-xl font-display font-bold text-[#182012] mb-6 flex items-center gap-2">
                     <List size={20} className="text-olive-500" />
                     Table of Contents
                   </h3>
@@ -313,25 +312,25 @@ export function BlogPost() {
                 </div>
               )}
 
-              <div className="prose prose-invert max-w-none prose-lg
-                prose-headings:font-display prose-headings:font-black prose-headings:text-white prose-headings:mt-16 prose-headings:mb-6
-                prose-h2:text-3xl md:prose-h2:text-4xl prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4 prose-h2:text-olive-100
-                prose-h3:text-2xl md:prose-h3:text-3xl prose-h3:text-olive-200
-                prose-h4:text-xl md:prose-h4:text-2xl prose-h4:text-olive-300
-                prose-p:text-brand-white-70 prose-p:leading-relaxed prose-p:mb-8
+              <div className="prose max-w-none prose-lg
+                prose-headings:font-display prose-headings:font-black prose-headings:text-[#182012] prose-headings:mt-16 prose-headings:mb-6
+                prose-h2:text-3xl md:prose-h2:text-4xl prose-h2:border-b prose-h2:border-[#E4E4E4] prose-h2:pb-4 prose-h2:text-[#182012]
+                prose-h3:text-2xl md:prose-h3:text-3xl prose-h3:text-[#18311B]
+                prose-h4:text-xl md:prose-h4:text-2xl prose-h4:text-olive-500
+                prose-p:text-[#1A2E1C] prose-p:leading-relaxed prose-p:mb-8 text-base md:text-lg
                 prose-a:text-olive-500 hover:prose-a:text-olive-400 prose-a:underline prose-a:underline-offset-4 prose-a:transition-colors
-                prose-strong:text-white prose-strong:font-bold
+                prose-strong:text-[#182012] prose-strong:font-bold
                 prose-ul:list-disc prose-ul:ml-6 prose-ul:mb-8 prose-ul:space-y-3
                 prose-ol:list-decimal prose-ol:ml-6 prose-ol:mb-8 prose-ol:space-y-3
-                prose-li:text-brand-white-70 prose-li:marker:text-olive-500
-                prose-blockquote:border-l-4 prose-blockquote:border-olive-500 prose-blockquote:bg-olive-900/30 prose-blockquote:px-8 prose-blockquote:py-6 prose-blockquote:my-10 prose-blockquote:text-white prose-blockquote:text-xl prose-blockquote:italic  prose-blockquote:rounded-r-2xl
-                prose-pre:bg-[#0a0a0a] prose-pre:border prose-pre:border-white/10 prose-pre:rounded-2xl prose-pre:shadow-2xl prose-pre:p-6 prose-pre:my-10 prose-pre:overflow-x-auto
-                prose-code:text-olive-300 prose-code:bg-olive-900/50 prose-code:px-2 prose-code:py-1.5 prose-code:rounded-md prose-code:font-mono prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
-                prose-img:rounded-2xl prose-img:border prose-img:border-white/10 prose-img:shadow-2xl prose-img:my-12 prose-img:w-full prose-img:object-cover
-                prose-hr:border-white/10 prose-hr:my-12
+                prose-li:text-[#1A2E1C] prose-li:marker:text-olive-500
+                prose-blockquote:border-l-4 prose-blockquote:border-olive-500 prose-blockquote:bg-olive-950/50 prose-blockquote:px-8 prose-blockquote:py-6 prose-blockquote:my-10 prose-blockquote:text-[#182012] prose-blockquote:text-xl prose-blockquote:italic prose-blockquote:rounded-r-2xl
+                prose-pre:bg-[#182012] prose-pre:border prose-pre:border-[#DBE4C7] prose-pre:rounded-2xl prose-pre:shadow-2xl prose-pre:p-6 prose-pre:my-10 prose-pre:overflow-x-auto prose-pre:text-white
+                prose-code:text-olive-500 prose-code:bg-olive-950/80 prose-code:px-2 prose-code:py-1 prose-code:rounded-md prose-code:font-mono prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
+                prose-img:rounded-2xl prose-img:border prose-img:border-[#E4E4E4] prose-img:shadow-2xl prose-img:my-12 prose-img:w-full prose-img:object-cover
+                prose-hr:border-[#E4E4E4] prose-hr:my-12
                 prose-table:w-full prose-table:my-10 prose-table:border-collapse
-                prose-th:border prose-th:border-white/10 prose-th:px-4 prose-th:py-3 prose-th:bg-olive-900/50 prose-th:text-left
-                prose-td:border prose-td:border-white/10 prose-td:px-4 prose-td:py-3 text-brand-white-70">
+                prose-th:border prose-th:border-[#E4E4E4] prose-th:px-4 prose-th:py-3 prose-th:bg-olive-950/80 prose-th:text-left prose-th:text-[#182012]
+                prose-td:border prose-td:border-[#E4E4E4] prose-td:px-4 prose-td:py-3 text-[#1A2E1C]">
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm]}
                   components={{
@@ -360,7 +359,7 @@ export function BlogPost() {
                         <img 
                           {...props} 
                           loading="lazy" 
-                          className="w-full h-auto rounded-2xl border border-white/10 shadow-2xl my-12 object-cover"
+                          className="w-full h-auto rounded-2xl border border-[#E4E4E4] shadow-2xl my-12 object-cover"
                         />
                       </span>
                     )
@@ -375,11 +374,11 @@ export function BlogPost() {
             {toc.length > 0 && (
               <div className="hidden lg:block lg:w-[35%] xl:w-[30%] lg:order-2">
                 <div className="sticky top-32 max-h-[calc(100vh-8rem)] overflow-y-auto pr-4 custom-scrollbar">
-                  <h3 className="text-xl font-display font-bold text-white mb-6 flex items-center gap-2">
+                  <h3 className="text-xl font-display font-bold text-[#182012] mb-6 flex items-center gap-2">
                     <List size={20} className="text-olive-500" />
                     Table of Contents
                   </h3>
-                  <div className="border-l border-white/10 ml-3">
+                  <div className="border-l border-[#E4E4E4] ml-3">
                     <nav className="space-y-1 relative">
                       {toc.map((heading, i) => (
                         <div key={`${heading.id}-${i}`} className="relative">
@@ -395,8 +394,8 @@ export function BlogPost() {
                                 element.scrollIntoView({ behavior: 'smooth' });
                               }
                             }}
-                            className={`block py-1.5 transition-colors text-sm
-                              ${activeId === heading.id ? 'text-olive-500 font-bold' : 'text-brand-white-70 hover:text-white'}
+                            className={`block py-1.5 transition-colors text-sm font-medium
+                              ${activeId === heading.id ? 'text-olive-500 font-bold' : 'text-[#5A644D] hover:text-olive-500'}
                               ${heading.level === 3 ? 'pl-8' : heading.level === 4 ? 'pl-12' : 'pl-4'}
                             `}
                           >
@@ -420,13 +419,13 @@ export function BlogPost() {
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
-          <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 border-t border-white/5">
+          <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 border-t border-[#E4E4E4]">
             <h2 className="font-display text-4xl font-black mb-12 uppercase text-center">Related <span className="text-olive-500">Posts</span></h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedPosts.map((relatedPost) => (
-                <Link key={relatedPost.slug} to={`/blog/${relatedPost.slug}`} className="group cursor-pointer flex flex-col pt-8 border-t border-white/10">
+                <Link key={relatedPost.slug} to={`/blog/${relatedPost.slug}`} className="group cursor-pointer flex flex-col pt-8 border-t border-[#E4E4E4]">
                   {relatedPost.image && (
-                    <div className="w-full h-32 sm:h-48 mb-6 overflow-hidden rounded-xl bg-olive-900 border border-white/10 relative">
+                    <div className="w-full h-32 sm:h-48 mb-6 overflow-hidden rounded-xl bg-olive-900 border border-[#E4E4E4] relative">
                       <img src={relatedPost.image} loading="lazy" alt={relatedPost.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     </div>
                   )}

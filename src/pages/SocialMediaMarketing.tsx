@@ -212,7 +212,7 @@ export function SocialMediaMarketing() {
       <section className="relative w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
               Social Media<br/>
               <span className="text-olive-500">Marketing.</span>
             </h1>
@@ -226,7 +226,7 @@ export function SocialMediaMarketing() {
              </div>
           </motion.div>
 
-          <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-square rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+          <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-square rounded-[2rem] overflow-hidden border border-[#E4E4E4] shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/assets/images/social-media-marketing-agency-dubai.webp"
@@ -244,27 +244,27 @@ export function SocialMediaMarketing() {
         </div>
       </section>
       
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-3xl font-black uppercase mb-12 text-white">What We Do</h2>
+            <h2 className="font-display text-3xl font-black uppercase mb-12 text-[#182012]">What We Do</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  <div key={0} className="bg-brand-black-light border border-white/5 p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
+                  <div key={0} className="bg-brand-black-light border border-[#E4E4E4] p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
                      <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Platform-Specific Strategy</h3>
+                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Platform-Specific Strategy</h3>
                      <p className="text-brand-white-70 text-sm leading-relaxed">
                         Tailored content plans for LinkedIn, Instagram, TikTok, and more, ensuring your message aligns perfectly with the platform’s culture and algorithm.
                      </p>
                   </div>
-                  <div key={1} className="bg-brand-black-light border border-white/5 p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
+                  <div key={1} className="bg-brand-black-light border border-[#E4E4E4] p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
                      <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Community Management</h3>
+                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Community Management</h3>
                      <p className="text-brand-white-70 text-sm leading-relaxed">
                         Proactive engagement, fast response times, and sentiment tracking to build a loyal community and protect your brand reputation online.
                      </p>
                   </div>
-                  <div key={2} className="bg-brand-black-light border border-white/5 p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
+                  <div key={2} className="bg-brand-black-light border border-[#E4E4E4] p-8 rounded-3xl hover:border-olive-500/30 transition-colors">
                      <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Influencer & Creator Partnerships</h3>
+                     <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Influencer & Creator Partnerships</h3>
                      <p className="text-brand-white-70 text-sm leading-relaxed">
                         Identify, vet, and collaborate with industry creators and influencers to amplify your reach and drive authentic engagement.
                      </p>
@@ -273,10 +273,10 @@ export function SocialMediaMarketing() {
          </div>
       </section>
 
-      <section className="py-24 bg-brand-black-light border-t border-white/5">
+      <section className="py-24 bg-brand-black-light border-t border-[#E4E4E4]">
          <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="flex-1">
-               <h2 className="font-display text-4xl font-black uppercase mb-6 text-white">Why Choose Mints?</h2>
+               <h2 className="font-display text-4xl font-black uppercase mb-6 text-[#182012]">Why Choose Mints?</h2>
                <p className="text-brand-white-70 text-lg leading-relaxed mb-8">
                  We take a bespoke approach to every project, ensuring that our deliverables match your unique operational requirements. 
                  By combining deep expertise with a focus on sustainable growth, we build frameworks that scale.
@@ -287,13 +287,13 @@ export function SocialMediaMarketing() {
                   <li key={2} className="flex items-center gap-3"><span className="w-6 h-6 flex items-center justify-center rounded-full bg-olive-500/20"><ArrowRight size={14} className="text-olive-500" /></span> Comprehensive Social Listening and Sentiment Analysis</li>
                </ul>
             </div>
-            <div className="flex-1 bg-olive-900 border border-white/10 p-10 lg:p-14 rounded-[3rem] relative overflow-hidden min-w-[300px]">
+            <div className="flex-1 bg-white border border-[#E4E4E4] p-10 lg:p-14 rounded-[3rem] shadow-sm relative overflow-hidden min-w-[300px]">
                <div className="absolute top-0 right-0 w-48 h-48 bg-olive-500/20 blur-[60px] -translate-y-1/2 translate-x-1/2" />
-               <h3 className="font-display font-bold text-3xl uppercase mb-4 text-white relative z-10">Ready to start?</h3>
+               <h3 className="font-display font-bold text-3xl uppercase mb-4 text-[#182012] relative z-10">Ready to start?</h3>
                <p className="text-brand-white-70 text-base mb-10 relative z-10 max-w-sm">
                  Our team is ready to analyze your needs and propose a strategic roadmap.
                </p>
-               <Link to="/contact" className="bg-white text-olive-950 px-8 py-4 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit relative z-10">
+               <Link to="/contact" className="bg-[#182012] text-white px-8 py-4 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit relative z-10">
                   Contact Us
                </Link>
             </div>
@@ -301,10 +301,10 @@ export function SocialMediaMarketing() {
       </section>
 
       {/* FAQ Accordion Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-[#182012]">Frequently Asked Questions</h2>
             <p className="text-brand-white-70 text-lg">Everything you need to know about our social media marketing services.</p>
           </div>
           <div className="space-y-4">
@@ -314,13 +314,13 @@ export function SocialMediaMarketing() {
       </section>
      
       {/* Related Services */}
-      <section className="py-16 border-t border-white/5 bg-olive-950">
+      <section className="py-16 border-t border-[#E4E4E4] bg-olive-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h3 className="font-display text-2xl font-black uppercase mb-8 text-white">Related Services</h3>
+          <h3 className="font-display text-2xl font-black uppercase mb-8 text-[#182012]">Related Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link to="/digital-marketing/seo" className="text-olive-500 hover:text-white font-bold transition-colors">SEO Optimization &rarr;</Link>
-            <Link to="/digital-marketing/branding" className="text-olive-500 hover:text-white font-bold transition-colors">Brand Strategy &rarr;</Link>
-            <Link to="/digital-marketing/performance-marketing" className="text-olive-500 hover:text-white font-bold transition-colors">Performance Marketing &rarr;</Link>
+            <Link to="/digital-marketing/seo" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">SEO Optimization &rarr;</Link>
+            <Link to="/digital-marketing/branding" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Brand Strategy &rarr;</Link>
+            <Link to="/digital-marketing/performance-marketing" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Performance Marketing &rarr;</Link>
           </div>
         </div>
       </section>

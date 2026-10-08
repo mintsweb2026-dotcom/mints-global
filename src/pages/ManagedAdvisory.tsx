@@ -55,11 +55,11 @@ export function ManagedAdvisory() {
         
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+            <span className="px-4 py-1.5 rounded-full border border-[#E4E4E4] bg-white text-xs font-bold uppercase tracking-widest text-[#5A644D] shadow-sm">
               Strategic Guidance
             </span>
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
             Managed &<br/>
             <span className="text-olive-500">Advisory.</span>
           </h1>
@@ -76,42 +76,42 @@ export function ManagedAdvisory() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white">Advisory & Managed Services</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012]">Advisory & Managed Services</h2>
             <p className="text-brand-white-70 text-lg max-w-3xl">Bridge the talent gap with our scalable security operations and virtual executive leadership.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Virtual CISO (vCISO)</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Virtual CISO (vCISO)</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Fractional Chief Information Security Officer services providing strategic leadership, board reporting, and budget definition without the full-time cost.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Managed SOC (MDR)</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Managed SOC (MDR)</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">24/7/365 monitoring, detection, and real-time response to threats across your endpoints, network, and cloud environment.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Security Architecture Review</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Security Architecture Review</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Expert, vendor-agnostic review of your IT infrastructure to ensure your security controls are properly designed to mitigate modern risks.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Third-Party Risk Management</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Third-Party Risk Management</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Assessing and auditing the security posture of your vendors and supply chain partners to prevent catastrophic third-party breaches.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Security Awareness Training</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Security Awareness Training</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Interactive, engaging training platforms and simulated phishing campaigns to build a resilient 'human firewall'.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">M&A Cyber Diligence</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">M&A Cyber Diligence</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Conducting deep technical and strategic cyber risk assessments prior to mergers and acquisitions to uncover hidden liabilities.</p>
             </div>
           </div>
@@ -119,10 +119,10 @@ export function ManagedAdvisory() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-[#182012]">Frequently Asked Questions</h2>
             <p className="text-brand-white-70 text-lg">Everything you need to know about our managed advisory services.</p>
           </div>
           <div className="space-y-4">
@@ -132,28 +132,28 @@ export function ManagedAdvisory() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-olive-900 border-t border-white/5 text-center">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4] text-center">
          <div className="max-w-3xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
               Ready To Get Started?
             </h2>
             <p className="text-brand-white-70 text-lg leading-relaxed mb-10">
               Need a strategic security partner? Let our vCISOs guide your cyber maturity.
             </p>
-            <Link to="/contact" className="bg-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit mx-auto">
+            <Link to="/contact" className="bg-[#687838] hover:bg-[#515E2C] text-white px-10 py-4 rounded-xl font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg block w-fit mx-auto">
               Contact Us Today
             </Link>
          </div>
       </section>
     
       {/* Related Services */}
-      <section className="py-16 border-t border-white/5 bg-olive-950">
+      <section className="py-16 border-t border-[#E4E4E4] bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h3 className="font-display text-2xl font-black uppercase mb-8 text-white">Related Services</h3>
+          <h3 className="font-display text-2xl font-black uppercase mb-8 text-[#182012]">Related Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link to="/cyber-security/offensive-security" className="text-olive-500 hover:text-white font-bold transition-colors">Offensive Security &rarr;</Link>
-            <Link to="/cyber-security/incident-response" className="text-olive-500 hover:text-white font-bold transition-colors">Incident Response &rarr;</Link>
-            <Link to="/cyber-security/cloud-security" className="text-olive-500 hover:text-white font-bold transition-colors">Cloud Security &rarr;</Link>
+            <Link to="/cyber-security/offensive-security" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Offensive Security &rarr;</Link>
+            <Link to="/cyber-security/incident-response" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Incident Response &rarr;</Link>
+            <Link to="/cyber-security/cloud-security" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Cloud Security &rarr;</Link>
           </div>
         </div>
       </section>

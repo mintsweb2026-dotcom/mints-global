@@ -53,11 +53,11 @@ export function IncidentResponse() {
         
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+            <span className="px-4 py-1.5 rounded-full border border-[#E4E4E4] bg-white text-xs font-bold uppercase tracking-widest text-[#5A644D] shadow-sm">
               Crisis Management
             </span>
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
             Incident<br/>
             <span className="text-olive-500">Response.</span>
           </h1>
@@ -74,42 +74,42 @@ export function IncidentResponse() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white">DFIR Capabilities</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012]">DFIR Capabilities</h2>
             <p className="text-brand-white-70 text-lg max-w-3xl">Rapid mobilization, expert investigation, and strategic recovery to minimize business impact during a cyber crisis.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Emergency Breach Response</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Emergency Breach Response</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Immediate remote or on-site deployment to stop the bleeding, isolate infected systems, and secure your network against active attackers.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Ransomware Negotiation & Recovery</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Ransomware Negotiation & Recovery</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Expert guidance during ransomware incidents, including secure communication with threat actors, decryption assistance, and complete systems rebuild.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Digital Forensics</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Digital Forensics</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Deep forensic imaging and analysis of memory, disk, and network logs to determine patient zero, lateral movement, and data exfiltration.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Malware Reverse Engineering</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Malware Reverse Engineering</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Dissecting custom or evasive malware strains found in your environment to understand their capabilities and generate exact Indicators of Compromise (IoCs).</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Post-Incident Reporting</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Post-Incident Reporting</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Providing legally sound, highly detailed reports that can be used for regulatory compliance, law enforcement collaboration, and insurance claims.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Compromise Assessments</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Compromise Assessments</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Proactive, specialized hunting across your environment to find stealthy threat actors that have bypassed your existing security controls.</p>
             </div>
           </div>
@@ -117,10 +117,10 @@ export function IncidentResponse() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-[#182012]">Frequently Asked Questions</h2>
             <p className="text-brand-white-70 text-lg">Everything you need to know about our incident response services.</p>
           </div>
           <div className="space-y-4">
@@ -130,28 +130,28 @@ export function IncidentResponse() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-olive-900 border-t border-white/5 text-center">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4] text-center">
          <div className="max-w-3xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
               Ready To Get Started?
             </h2>
             <p className="text-brand-white-70 text-lg leading-relaxed mb-10">
               Under attack? Our rapid response team is ready to contain and recover.
             </p>
-            <Link to="/contact" className="bg-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit mx-auto">
+            <Link to="/contact" className="bg-[#687838] hover:bg-[#515E2C] text-white px-10 py-4 rounded-xl font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg block w-fit mx-auto">
               Contact Us Today
             </Link>
          </div>
       </section>
     
       {/* Related Services */}
-      <section className="py-16 border-t border-white/5 bg-olive-950">
+      <section className="py-16 border-t border-[#E4E4E4] bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h3 className="font-display text-2xl font-black uppercase mb-8 text-white">Related Services</h3>
+          <h3 className="font-display text-2xl font-black uppercase mb-8 text-[#182012]">Related Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link to="/cyber-security/offensive-security" className="text-olive-500 hover:text-white font-bold transition-colors">Offensive Security &rarr;</Link>
-            <Link to="/cyber-security/cloud-security" className="text-olive-500 hover:text-white font-bold transition-colors">Cloud Security &rarr;</Link>
-            <Link to="/cyber-security/ot-iot-security" className="text-olive-500 hover:text-white font-bold transition-colors">OT/IoT Security &rarr;</Link>
+            <Link to="/cyber-security/offensive-security" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Offensive Security &rarr;</Link>
+            <Link to="/cyber-security/cloud-security" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Cloud Security &rarr;</Link>
+            <Link to="/cyber-security/ot-iot-security" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">OT/IoT Security &rarr;</Link>
           </div>
         </div>
       </section>

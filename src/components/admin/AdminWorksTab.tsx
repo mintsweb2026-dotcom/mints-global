@@ -224,48 +224,48 @@ export function AdminWorksTab() {
     <>
     <div className="grid md:grid-cols-2 gap-8">
        {/* Form Section */}
-       <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm h-fit">
-         <h2 className="text-2xl font-light text-white mb-6">{editingId ? 'Edit Work' : 'Add New Work'}</h2>
+       <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 shadow-sm h-fit">
+         <h2 className="text-2xl font-light text-[#182012] mb-6">{editingId ? 'Edit Work' : 'Add New Work'}</h2>
          
          <form onSubmit={handleSubmit} className="space-y-4">
-           {errorMsg && <div className="text-red-400 bg-red-400/10 p-3 rounded-lg text-sm">{errorMsg}</div>}
+           {errorMsg && <div className="text-red-600 bg-red-50 border border-red-200 p-3 rounded-lg text-sm">{errorMsg}</div>}
            {missingSeoFields.length > 0 && (
-             <div className="text-yellow-400 bg-yellow-400/10 border border-yellow-500/20 p-3 rounded-lg text-sm">
+             <div className="text-amber-800 bg-amber-50 border border-amber-200 p-3 rounded-lg text-sm">
                <strong>Missing SEO Fields:</strong> {missingSeoFields.join(', ')}. Complete these to improve search visibility.
              </div>
            )}
            
            <div>
-             <label className={`block text-sm mb-1 ${missingSeoFields.includes('Project Title') ? 'text-yellow-400' : 'text-brand-white-70'}`}>Project Title</label>
-             <input type="text" value={title} onChange={e => setTitle(e.target.value)} required className={`w-full bg-black/40 border rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500 ${missingSeoFields.includes('Project Title') ? 'border-yellow-500/50' : 'border-white/10'}`} />
+             <label className={`block text-sm font-medium mb-1 ${missingSeoFields.includes('Project Title') ? 'text-amber-800 font-bold' : 'text-[#5A644D]'}`}>Project Title</label>
+             <input type="text" value={title} onChange={e => setTitle(e.target.value)} required className={`w-full bg-white border rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 shadow-xs ${missingSeoFields.includes('Project Title') ? 'border-amber-400' : 'border-[#E4E4E4]'}`} />
            </div>
 
            <div>
-             <label className={`block text-sm mb-1 ${missingSeoFields.includes('Description') ? 'text-yellow-400' : 'text-brand-white-70'}`}>Description</label>
-             <textarea value={description} onChange={e => setDescription(e.target.value)} rows={3} className={`w-full bg-black/40 border rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500 ${missingSeoFields.includes('Description') ? 'border-yellow-500/50' : 'border-white/10'}`} />
+             <label className={`block text-sm font-medium mb-1 ${missingSeoFields.includes('Description') ? 'text-amber-800 font-bold' : 'text-[#5A644D]'}`}>Description</label>
+             <textarea value={description} onChange={e => setDescription(e.target.value)} rows={3} className={`w-full bg-white border rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 shadow-xs ${missingSeoFields.includes('Description') ? 'border-amber-400' : 'border-[#E4E4E4]'}`} />
            </div>
 
            <div>
-             <label className={`block text-sm mb-1 ${missingSeoFields.includes('Title Image URL') ? 'text-yellow-400' : 'text-brand-white-70'}`}>Title Image URL (Cloudinary / external link)</label>
-             <input type="url" value={titleImage} onChange={e => setTitleImage(e.target.value)} required className={`w-full bg-black/40 border rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500 ${missingSeoFields.includes('Title Image URL') ? 'border-yellow-500/50' : 'border-white/10'}`} />
+             <label className={`block text-sm font-medium mb-1 ${missingSeoFields.includes('Title Image URL') ? 'text-amber-800 font-bold' : 'text-[#5A644D]'}`}>Title Image URL (Cloudinary / external link)</label>
+             <input type="url" value={titleImage} onChange={e => setTitleImage(e.target.value)} required className={`w-full bg-white border rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 shadow-xs ${missingSeoFields.includes('Title Image URL') ? 'border-amber-400' : 'border-[#E4E4E4]'}`} />
              {titleImage && (
                <div className="mt-3">
-                 <p className="text-xs text-brand-white-50 mb-1">Preview:</p>
-                 <img src={titleImage} alt={titleImageAlt || "Title Image Preview"} className="w-full h-32 object-cover rounded-lg border border-white/10 bg-black/40" onError={(e) => (e.currentTarget.style.display = 'none')} onLoad={(e) => (e.currentTarget.style.display = 'block')} />
+                 <p className="text-xs text-[#859177] mb-1">Preview:</p>
+                 <img src={titleImage} alt={titleImageAlt || "Title Image Preview"} className="w-full h-32 object-cover rounded-lg border border-[#E4E4E4] bg-white" onError={(e) => (e.currentTarget.style.display = 'none')} onLoad={(e) => (e.currentTarget.style.display = 'block')} />
                </div>
              )}
            </div>
 
            <div>
-             <label className={`block text-sm mb-1 ${missingSeoFields.includes('Title Image Alt Text') ? 'text-yellow-400' : 'text-brand-white-70'}`}>Title Image Alt Text (for SEO & Accessibility)</label>
-             <input type="text" value={titleImageAlt} onChange={e => setTitleImageAlt(e.target.value)} placeholder="e.g. A sleek dark mode dashboard" required className={`w-full bg-black/40 border rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500 ${missingSeoFields.includes('Title Image Alt Text') ? 'border-yellow-500/50' : 'border-white/10'}`} />
+             <label className={`block text-sm font-medium mb-1 ${missingSeoFields.includes('Title Image Alt Text') ? 'text-amber-800 font-bold' : 'text-[#5A644D]'}`}>Title Image Alt Text (for SEO & Accessibility)</label>
+             <input type="text" value={titleImageAlt} onChange={e => setTitleImageAlt(e.target.value)} placeholder="e.g. A sleek dark mode dashboard" required className={`w-full bg-white border rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 shadow-xs ${missingSeoFields.includes('Title Image Alt Text') ? 'border-amber-400' : 'border-[#E4E4E4]'}`} />
            </div>
            
            <div>
-             <label className="block text-sm text-brand-white-70 mb-1">Gallery Images</label>
-             <input type="file" multiple accept="image/*" onChange={handleMediaFileChange} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-olive-500 file:text-black hover:file:bg-olive-400" />
+             <label className="block text-sm font-medium text-[#5A644D] mb-1">Gallery Images</label>
+             <input type="file" multiple accept="image/*" onChange={handleMediaFileChange} className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-olive-500 file:text-white hover:file:bg-olive-400 shadow-xs" />
              {isOverBudget && (
-               <div className="mt-2 text-yellow-400 bg-yellow-400/10 border border-yellow-500/20 p-2 rounded text-xs flex items-start gap-2">
+               <div className="mt-2 text-amber-800 bg-amber-50 border border-amber-200 p-2 rounded text-xs flex items-start gap-2">
                  <span>⚠️</span>
                  <span><strong>Performance Warning:</strong> Total media size exceeds 5MB ({(totalMediaSize / (1024 * 1024)).toFixed(2)}MB). Compressing large images may increase upload time or impact frontend performance. Consider optimizing images before upload.</span>
                </div>
@@ -276,7 +276,7 @@ export function AdminWorksTab() {
                <div className="mt-3 grid grid-cols-4 gap-2">
                  {mediaUrls.map((url) => (
                    <div key={url} className="relative group">
-                     <img src={url} alt="Gallery item" className="w-full h-16 object-cover rounded-lg border border-white/10" />
+                     <img src={url} alt="Gallery item" className="w-full h-16 object-cover rounded-lg border border-[#E4E4E4]" />
                      <button type="button" onClick={() => removeMediaUrl(url)} className="absolute top-1 right-1 bg-black/70 hover:bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
                        <X size={12} />
                      </button>
@@ -302,8 +302,8 @@ export function AdminWorksTab() {
 
            <div className="grid grid-cols-2 gap-4">
              <div>
-               <label className="block text-sm text-brand-white-70 mb-1">Category</label>
-               <select value={category} onChange={e => setCategory(e.target.value)} required className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500 appearance-none">
+               <label className="block text-sm font-medium text-[#5A644D] mb-1">Category</label>
+               <select value={category} onChange={e => setCategory(e.target.value)} required className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 appearance-none shadow-xs">
                  <option value="" disabled>Select a Category...</option>
                  <option value="Digital Marketing">Digital Marketing</option>
                  <option value="Bespoke Software">Bespoke Software</option>
@@ -314,70 +314,70 @@ export function AdminWorksTab() {
                </select>
              </div>
              <div>
-               <label className="block text-sm text-brand-white-70 mb-1">Type</label>
-               <input type="text" value={type} onChange={e => setType(e.target.value)} placeholder="e.g. Graphic Design" required className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500" />
+               <label className="block text-sm font-medium text-[#5A644D] mb-1">Type</label>
+               <input type="text" value={type} onChange={e => setType(e.target.value)} placeholder="e.g. Graphic Design" required className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 shadow-xs" />
              </div>
            </div>
 
            <div>
-             <label className={`block text-sm mb-1 ${missingSeoFields.includes('Tags') ? 'text-yellow-400' : 'text-brand-white-70'}`}>Tags (comma separated)</label>
-             <input type="text" value={tags} onChange={e => setTags(e.target.value)} placeholder="React, UI/UX, Marketing" className={`w-full bg-black/40 border rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500 ${missingSeoFields.includes('Tags') ? 'border-yellow-500/50' : 'border-white/10'}`} />
+             <label className={`block text-sm font-medium mb-1 ${missingSeoFields.includes('Tags') ? 'text-amber-800 font-bold' : 'text-[#5A644D]'}`}>Tags (comma separated)</label>
+             <input type="text" value={tags} onChange={e => setTags(e.target.value)} placeholder="React, UI/UX, Marketing" className={`w-full bg-white border rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 shadow-xs ${missingSeoFields.includes('Tags') ? 'border-amber-400' : 'border-[#E4E4E4]'}`} />
            </div>
 
            <div className="grid grid-cols-2 gap-4">
              <div>
-               <label className="block text-sm text-brand-white-70 mb-1">KPI Achieved</label>
-               <input type="text" value={kpi} onChange={e => setKpi(e.target.value)} placeholder="e.g. +200% Conversions" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500" />
+               <label className="block text-sm font-medium text-[#5A644D] mb-1">KPI Achieved</label>
+               <input type="text" value={kpi} onChange={e => setKpi(e.target.value)} placeholder="e.g. +200% Conversions" className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 shadow-xs" />
              </div>
              <div>
-               <label className="block text-sm text-brand-white-70 mb-1">Project Duration</label>
-               <input type="text" value={duration} onChange={e => setDuration(e.target.value)} placeholder="e.g. 3 Months" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-olive-500" />
+               <label className="block text-sm font-medium text-[#5A644D] mb-1">Project Duration</label>
+               <input type="text" value={duration} onChange={e => setDuration(e.target.value)} placeholder="e.g. 3 Months" className="w-full bg-white border border-[#E4E4E4] rounded-xl px-4 py-2 text-[#182012] outline-none focus:border-olive-500 shadow-xs" />
              </div>
            </div>
 
            <div className="flex items-center gap-2">
-             <input type="checkbox" id="featuredWork" checked={featured} onChange={e => setFeatured(e.target.checked)} className="w-4 h-4 rounded bg-black/40 border-white/10 accent-olive-500" />
-             <label htmlFor="featuredWork" className="text-sm text-white">Feature on Home Screen</label>
+             <input type="checkbox" id="featuredWork" checked={featured} onChange={e => setFeatured(e.target.checked)} className="w-4 h-4 rounded bg-white border-[#DBE4C7] accent-olive-500" />
+             <label htmlFor="featuredWork" className="text-sm text-[#182012] font-medium">Feature on Home Screen</label>
            </div>
 
            <div className="pt-4 flex gap-3 flex-wrap">
-             <button type="submit" disabled={submitting} className="flex-1 bg-olive-500 text-white px-4 py-3 rounded-xl font-bold hover:bg-olive-400 disabled:opacity-50 transition-colors">
+             <button type="submit" disabled={submitting} className="flex-1 bg-olive-500 text-white px-4 py-3 rounded-xl font-bold hover:bg-olive-400 disabled:opacity-50 transition-colors shadow-sm">
                {submitting ? 'Saving...' : editingId ? 'Update Work' : 'Add Work'}
              </button>
-             <button type="button" onClick={() => setShowPreview(true)} className="px-4 py-3 bg-white/10 text-olive-400 rounded-xl hover:bg-white/20 transition-colors font-medium flex items-center justify-center gap-2">
+             <button type="button" onClick={() => setShowPreview(true)} className="px-4 py-3 bg-[#F0F0F0] hover:bg-[#DDD7C8] text-[#182012] rounded-xl transition-colors font-semibold flex items-center justify-center gap-2">
                <Eye size={18} /> Preview
              </button>
              {editingId && (
-               <button type="button" onClick={resetForm} className="px-4 py-3 bg-white/10 text-white rounded-xl hover:bg-white/20 transition-colors font-medium">Cancel</button>
+               <button type="button" onClick={resetForm} className="px-4 py-3 bg-[#F0F0F0] hover:bg-[#DDD7C8] text-[#182012] rounded-xl transition-colors font-semibold">Cancel</button>
              )}
            </div>
          </form>
        </div>
 
        {/* List Section */}
-       <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm h-fit">
-         <h2 className="text-2xl font-light text-white mb-6">Manage Works</h2>
+       <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 shadow-sm h-fit">
+         <h2 className="text-2xl font-light text-[#182012] mb-6">Manage Works</h2>
          {loading ? (
-             <p className="text-brand-white-70">Loading works...</p>
+             <p className="text-[#5A644D]">Loading works...</p>
          ) : works.length === 0 ? (
-             <p className="text-brand-white-70">No custom works added yet. (Static works are hidden from here)</p>
+             <p className="text-[#5A644D]">No custom works added yet. (Static works are hidden from here)</p>
          ) : (
              <div className="space-y-4">
                  {works.map((work) => (
-                     <div key={work.id} className="flex items-center gap-4 p-4 border border-white/5 bg-black/20 rounded-xl hover:border-olive-500/30 transition-colors">
+                     <div key={work.id} className="flex items-center gap-4 p-4 border border-[#E4E4E4] bg-white rounded-xl hover:border-olive-500/40 transition-colors shadow-xs">
                          {work.titleImage && (
-                             <img src={work.titleImage} alt={work.title} className="w-16 h-16 rounded-lg object-cover bg-white/5" />
+                             <img src={work.titleImage} alt={work.title} className="w-16 h-16 rounded-lg object-cover bg-white" />
                          )}
                          <div className="flex-1 min-w-0">
-                             <h3 className="text-white font-medium truncate">
+                             <h3 className="text-[#182012] font-bold truncate">
                                {work.title}
-                               {work.featured && <span className="ml-2 inline-flex items-center text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-olive-500/20 text-olive-400 border border-olive-500/30 align-middle">Featured</span>}
+                               {work.featured && <span className="ml-2 inline-flex items-center text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-olive-500/10 text-olive-600 border border-olive-500/20 align-middle">Featured</span>}
                              </h3>
-                             <p className="text-xs text-brand-white-50 truncate">{work.category} • {work.type}</p>
+                             <p className="text-xs text-[#859177] truncate">{work.category} • {work.type}</p>
                          </div>
                          <div className="flex flex-col gap-2">
-                             <button onClick={() => handleEdit(work)} className="text-xs px-3 py-1 bg-olive-500/10 text-olive-400 rounded-full hover:bg-olive-500/20">Edit</button>
-                             <button onClick={() => handleDelete(work.id, work.title)} className="text-xs px-3 py-1 bg-red-500/10 text-red-400 rounded-full hover:bg-red-500/20">Delete</button>
+                             <button onClick={() => handleEdit(work)} className="text-xs px-3 py-1 bg-olive-500/10 text-olive-600 font-semibold rounded-full hover:bg-olive-500/20">Edit</button>
+                             <button onClick={() => handleDelete(work.id, work.title)} className="text-xs px-3 py-1 bg-red-500/10 text-red-600 font-semibold rounded-full hover:bg-red-500/20">Delete</button>
                          </div>
                      </div>
                  ))}

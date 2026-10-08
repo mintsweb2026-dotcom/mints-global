@@ -111,24 +111,24 @@ export function About() {
               {t('about.desc2')}
             </p>
           </div>
-          <div className="bg-olive-900 border border-white/5 p-8 rounded-3xl">
+          <div className="bg-white border border-[#E4E4E4] p-8 rounded-3xl shadow-sm">
              <h3 className="font-display text-2xl font-bold mb-6">{t('about.pillarsTitle')}</h3>
              <ul className="space-y-4">
-                <li className="flex gap-4 border-b border-white/5 pb-4">
+                <li className="flex gap-4 border-b border-[#E4E4E4] pb-4">
                   <div className="font-black text-olive-500">01</div>
                   <div>
                     <h4 className="font-bold">{t('about.pillars.p1.title')}</h4>
                     <p className="text-sm text-brand-white-70">{t('about.pillars.p1.desc')}</p>
                   </div>
                 </li>
-                <li className="flex gap-4 border-b border-white/5 pb-4">
+                <li className="flex gap-4 border-b border-[#E4E4E4] pb-4">
                   <div className="font-black text-olive-500">02</div>
                   <div>
                     <h4 className="font-bold">{t('about.pillars.p2.title')}</h4>
                     <p className="text-sm text-brand-white-70">{t('about.pillars.p2.desc')}</p>
                   </div>
                 </li>
-                <li className="flex gap-4 border-b border-white/5 pb-4">
+                <li className="flex gap-4 border-b border-[#E4E4E4] pb-4">
                   <div className="font-black text-olive-500">03</div>
                   <div>
                     <h4 className="font-bold">{t('about.pillars.p3.title')}</h4>
@@ -188,7 +188,7 @@ export function About() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {team.map((member, i) => (
             <div key={i} className="group cursor-pointer">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl mb-4 bg-olive-900 border border-white/10">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl mb-4 bg-olive-900 border border-[#E4E4E4]">
                 <img src={member.img} alt={member.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0" />
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-olive-950 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex justify-end">
                   <a 
@@ -210,7 +210,7 @@ export function About() {
       </section>
 
       {/* Global Regions Section */}
-      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-8 w-full border-b border-white/5">
+      <section className="py-24 max-w-7xl mx-auto px-6 lg:px-8 w-full border-b border-[#E4E4E4]">
         <div className="text-center mb-16">
           <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">{t('about.presence.badge')}</span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black uppercase">
@@ -218,17 +218,17 @@ export function About() {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-brand-black-light border border-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
+          <div className="bg-white border border-[#E4E4E4] p-8 rounded-2xl flex flex-col items-center text-center shadow-sm">
             <Globe2 className="text-olive-500 mb-6" size={48} />
             <h3 className="font-display font-bold text-2xl uppercase mb-4">{t('about.presence.r1.title')}</h3>
             <p className="text-brand-white-70 text-sm leading-relaxed mb-6">{t('about.presence.r1.desc')}</p>
           </div>
-          <div className="bg-brand-black-light border border-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
+          <div className="bg-white border border-[#E4E4E4] p-8 rounded-2xl flex flex-col items-center text-center shadow-sm">
             <Map className="text-olive-500 mb-6" size={48} />
             <h3 className="font-display font-bold text-2xl uppercase mb-4">{t('about.presence.r2.title')}</h3>
             <p className="text-brand-white-70 text-sm leading-relaxed mb-6">{t('about.presence.r2.desc')}</p>
           </div>
-          <div className="bg-brand-black-light border border-white/5 p-8 rounded-2xl flex flex-col items-center text-center">
+          <div className="bg-white border border-[#E4E4E4] p-8 rounded-2xl flex flex-col items-center text-center shadow-sm">
             <Rocket className="text-olive-500 mb-6" size={48} />
             <h3 className="font-display font-bold text-2xl uppercase mb-4">{t('about.presence.r3.title')}</h3>
             <p className="text-brand-white-70 text-sm leading-relaxed mb-6">{t('about.presence.r3.desc')}</p>

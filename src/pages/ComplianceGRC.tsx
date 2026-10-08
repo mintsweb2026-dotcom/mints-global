@@ -41,11 +41,11 @@ export function ComplianceGRC() {
         
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+            <span className="px-4 py-1.5 rounded-full border border-[#E4E4E4] bg-white text-xs font-bold uppercase tracking-widest text-[#5A644D] shadow-sm">
               Framework Alignment
             </span>
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
             Compliance<br/>
             <span className="text-olive-500">& GRC.</span>
           </h1>
@@ -62,42 +62,42 @@ export function ComplianceGRC() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white">Governance, Risk & Compliance</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012]">Governance, Risk & Compliance</h2>
             <p className="text-brand-white-70 text-lg max-w-3xl">We simplify the path to certification and ensure you meet stringent legal requirements across all jurisdictions.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">ISO/IEC 27001 readiness</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">ISO/IEC 27001 readiness</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">End-to-end guidance to establish, implement, and operate an Information Security Management System (ISMS) ready for certification.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">GDPR & Data Privacy</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">GDPR & Data Privacy</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Comprehensive data mapping, privacy impact assessments (DPIA), and implementation of controls to meet European data protection laws.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">UAE Regulations (NESA / ISR)</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">UAE Regulations (NESA / ISR)</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Tailored alignment and gap analyses for critical UAE national frameworks, ensuring government entities and contractors remain compliant.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">NIS2 Directive Alignment</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">NIS2 Directive Alignment</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Assisting European critical infrastructure and essential entities in meeting the strict cybersecurity and reporting requirements of NIS2.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Risk Assessments</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Risk Assessments</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Formal methodology-driven identification, quantification, and treatment planning for cyber risks facing your operational capabilities.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Policy & Procedure Drafting</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Policy & Procedure Drafting</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Developing clear, comprehensive, and legally sound security policies, acceptable use guidelines, and incident response plans.</p>
             </div>
           </div>
@@ -105,10 +105,10 @@ export function ComplianceGRC() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-[#182012]">Frequently Asked Questions</h2>
             <p className="text-brand-white-70 text-lg">Everything you need to know about our compliance services.</p>
           </div>
           <div className="space-y-4">
@@ -118,28 +118,28 @@ export function ComplianceGRC() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-olive-900 border-t border-white/5 text-center">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4] text-center">
          <div className="max-w-3xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
               Ready To Get Started?
             </h2>
             <p className="text-brand-white-70 text-lg leading-relaxed mb-10">
               Compliance doesn't have to be complex. Let's simplify your path to certification.
             </p>
-            <Link to="/contact" className="bg-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit mx-auto">
+            <Link to="/contact" className="bg-[#687838] hover:bg-[#515E2C] text-white px-10 py-4 rounded-xl font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg block w-fit mx-auto">
               Contact Us Today
             </Link>
          </div>
       </section>
     
       {/* Related Services */}
-      <section className="py-16 border-t border-white/5 bg-olive-950">
+      <section className="py-16 border-t border-[#E4E4E4] bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h3 className="font-display text-2xl font-black uppercase mb-8 text-white">Related Services</h3>
+          <h3 className="font-display text-2xl font-black uppercase mb-8 text-[#182012]">Related Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link to="/cyber-security/offensive-security" className="text-olive-500 hover:text-white font-bold transition-colors">Offensive Security &rarr;</Link>
-            <Link to="/cyber-security/incident-response" className="text-olive-500 hover:text-white font-bold transition-colors">Incident Response &rarr;</Link>
-            <Link to="/cyber-security/cloud-security" className="text-olive-500 hover:text-white font-bold transition-colors">Cloud Security &rarr;</Link>
+            <Link to="/cyber-security/offensive-security" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Offensive Security &rarr;</Link>
+            <Link to="/cyber-security/incident-response" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Incident Response &rarr;</Link>
+            <Link to="/cyber-security/cloud-security" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Cloud Security &rarr;</Link>
           </div>
         </div>
       </section>

@@ -41,7 +41,7 @@ const blogListingSchema = {
 // ── Shimmer skeleton card ─────────────────────────────────────────────────────
 function SkeletonCard() {
   return (
-    <div className="flex flex-col pt-8 border-t border-white/10">
+    <div className="flex flex-col pt-8 border-t border-[#E4E4E4]">
       <div className="w-full h-48 sm:h-64 mb-6 rounded-2xl skeleton" />
       <div className="flex items-center gap-4 mb-4">
         <div className="h-4 w-20 skeleton rounded" />
@@ -63,10 +63,10 @@ function FeaturedPost({ post }: { post: BlogPost }) {
   return (
     <Link
       to={`/blog/${post.slug}`}
-      className="group relative block rounded-3xl overflow-hidden border border-white/10 hover:border-olive-500/30 transition-all duration-500 mb-16"
+      className="group relative block rounded-3xl overflow-hidden border border-[#E4E4E4] hover:border-olive-500/50 shadow-xl transition-all duration-500 mb-16 bg-[#182012] text-white"
     >
       {post.image && (
-        <div className="w-full aspect-[21/9] overflow-hidden relative">
+        <div className="w-full aspect-[21/9] min-h-[360px] overflow-hidden relative">
           <img
             src={post.image}
             alt={post.title}
@@ -75,24 +75,24 @@ function FeaturedPost({ post }: { post: BlogPost }) {
             height="600"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-olive-950/95 via-olive-950/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#182012]/95 via-[#182012]/65 to-black/20" />
         </div>
       )}
-      <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+      <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-10">
         <div className="flex flex-wrap items-center gap-3 mb-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-olive-400 bg-olive-500/10 border border-olive-500/20 px-3 py-1 rounded-full">
+          <span className="text-xs font-bold uppercase tracking-widest text-white bg-olive-500 px-3.5 py-1 rounded-full shadow-sm">
             {post.category}
           </span>
-          <span className="flex items-center gap-1.5 text-xs text-brand-white-40 font-medium">
-            <Clock size={12} />
+          <span className="flex items-center gap-1.5 text-xs text-white/85 font-medium">
+            <Clock size={13} className="text-white" />
             {post.readTime}
           </span>
         </div>
-        <h2 className="font-display font-black text-2xl md:text-4xl lg:text-5xl text-white group-hover:text-olive-400 transition-colors leading-tight mb-4 max-w-4xl">
+        <h2 className="font-display font-black text-2xl md:text-4xl lg:text-5xl text-white group-hover:text-olive-400 transition-colors leading-tight mb-4 max-w-4xl drop-shadow-sm">
           {post.title}
         </h2>
-        <div className="flex items-center gap-2 text-olive-400 font-bold text-sm uppercase tracking-widest">
-          Read Article <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+        <div className="flex items-center gap-2 text-white font-bold text-sm uppercase tracking-widest group-hover:translate-x-1 transition-all">
+          Read Article <ArrowRight size={16} className="text-olive-400 group-hover:translate-x-2 transition-transform" />
         </div>
       </div>
     </Link>
@@ -107,9 +107,9 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
     >
-      <Link to={`/blog/${post.slug}`} className="group cursor-pointer flex flex-col pt-8 border-t border-white/10 h-full">
+      <Link to={`/blog/${post.slug}`} className="group cursor-pointer flex flex-col p-6 rounded-3xl bg-white border border-[#E4E4E4] hover:border-olive-500/40 hover:shadow-lg transition-all duration-300 h-full">
         {post.image && (
-          <div className="w-full h-48 sm:h-56 mb-6 overflow-hidden rounded-2xl bg-olive-900 border border-white/10 relative">
+          <div className="w-full h-48 sm:h-56 mb-6 overflow-hidden rounded-2xl bg-olive-900 border border-[#E4E4E4] relative">
             <img
               src={post.image}
               loading="lazy"
@@ -121,31 +121,31 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
           </div>
         )}
         <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-wider mb-4">
-          <span className="text-olive-500 bg-olive-500/10 border border-olive-500/20 px-3 py-1 rounded-full">{post.category}</span>
-          <span className="flex items-center gap-1.5 text-brand-white-40">
-            <Clock size={11} />{post.readTime}
+          <span className="text-olive-500 bg-olive-500/10 border border-olive-500/25 px-3 py-1 rounded-full">{post.category}</span>
+          <span className="flex items-center gap-1.5 text-[#5A644D] font-medium">
+            <Clock size={12} />{post.readTime}
           </span>
         </div>
-        <h3 className="text-xl font-display font-bold mb-4 group-hover:text-olive-500 transition-colors flex-1 leading-snug">
+        <h3 className="text-xl font-display font-black text-[#182012] mb-4 group-hover:text-olive-500 transition-colors flex-1 leading-snug">
           {post.title}
         </h3>
         {post.tags && post.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-5 mt-auto">
-            <Tag size={11} className="text-brand-white-40 mt-0.5" />
+            <Tag size={12} className="text-[#182012]/50 mt-1" />
             {post.tags.slice(0, 3).map(tag => (
-              <span key={tag} className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-white/5 text-brand-white-40">
+              <span key={tag} className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md bg-[#F0F0F0] text-[#5A644D] border border-[#E4E4E4]">
                 {tag}
               </span>
             ))}
             {post.tags.length > 3 && (
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-white/5 text-brand-white-40">
+              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded-md bg-[#F0F0F0] text-[#5A644D] border border-[#E4E4E4]">
                 +{post.tags.length - 3}
               </span>
             )}
           </div>
         )}
-        <div className="flex items-center justify-between text-sm mt-auto pb-4">
-          <span className="text-brand-white-40">{post.date}</span>
+        <div className="flex items-center justify-between text-sm mt-auto pt-4 border-t border-[#E4E4E4]">
+          <span className="text-[#5A644D] font-medium">{post.date}</span>
           <ArrowRight className="text-olive-500 group-hover:translate-x-2 transition-transform" size={18} />
         </div>
       </Link>
@@ -233,7 +233,7 @@ export function Blog() {
           </div>
           {/* Search */}
           <div className="relative w-full md:w-auto min-w-[300px]">
-            <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-white-40" />
+            <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#182012]/50" />
             <input
               type="text"
               placeholder="Search articles..."
@@ -241,7 +241,7 @@ export function Blog() {
               onChange={(e) => setQuery(e.target.value)}
               disabled={isLoading}
               aria-label="Search blog articles"
-              className="w-full bg-olive-900 border border-white/10 rounded-full py-3 pl-12 pr-6 text-sm focus:outline-none focus:border-olive-500 transition-colors placeholder:text-white/30 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-white border border-[#E4E4E4] rounded-full py-3 pl-11 pr-6 text-sm text-[#182012] focus:outline-none focus:border-olive-500 focus:ring-2 focus:ring-olive-500/20 transition-all placeholder:text-[#859177] disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
             />
           </div>
         </div>
@@ -251,10 +251,10 @@ export function Blog() {
           <div className="flex flex-wrap gap-2 mb-12">
             <button
               onClick={() => setSelectedTag(null)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors border ${
+              className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all border ${
                 selectedTag === null
-                  ? 'bg-olive-500 text-white border-olive-500'
-                  : 'bg-white/5 text-brand-white-70 border-white/10 hover:bg-white/10 hover:text-white'
+                  ? 'bg-olive-500 text-white border-olive-500 shadow-sm'
+                  : 'bg-white text-[#5A644D] border-[#E4E4E4] hover:bg-[#F0F0F0] hover:text-[#182012]'
               }`}
             >
               All
@@ -263,10 +263,10 @@ export function Blog() {
               <button
                 key={tag}
                 onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors border ${
+                className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all border ${
                   tag === selectedTag
-                    ? 'bg-olive-500 text-white border-olive-500'
-                    : 'bg-white/5 text-brand-white-70 border-white/10 hover:bg-white/10 hover:text-white'
+                    ? 'bg-olive-500 text-white border-olive-500 shadow-sm'
+                    : 'bg-white text-[#5A644D] border-[#E4E4E4] hover:bg-[#F0F0F0] hover:text-[#182012]'
                 }`}
               >
                 {tag}
@@ -277,7 +277,7 @@ export function Blog() {
 
         {/* Post count */}
         {!isLoading && filteredPosts.length > 0 && (
-          <p className="text-brand-white-40 text-xs font-bold uppercase tracking-widest mb-8">
+          <p className="text-[#5A644D] text-xs font-bold uppercase tracking-widest mb-8">
             Showing {startIndex + 1}–{Math.min(startIndex + postsPerPage, filteredPosts.length)} of {filteredPosts.length} articles
           </p>
         )}
@@ -314,7 +314,7 @@ export function Blog() {
                 <button
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="w-10 h-10 flex flex-shrink-0 items-center justify-center rounded-full border border-white/20 hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="w-10 h-10 flex flex-shrink-0 items-center justify-center rounded-full border border-[#E4E4E4] bg-white text-[#182012] hover:bg-olive-500 hover:text-white hover:border-olive-500 disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-[#182012] disabled:cursor-not-allowed transition-colors shadow-sm"
                   aria-label="Previous page"
                 >
                   <ArrowLeft size={18} />
@@ -326,10 +326,10 @@ export function Blog() {
                       onClick={() => setCurrentPage(page)}
                       aria-label={`Go to page ${page}`}
                       aria-current={currentPage === page ? 'page' : undefined}
-                      className={`w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full text-sm font-bold transition-colors ${
+                      className={`w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full text-sm font-bold transition-colors shadow-sm ${
                         currentPage === page
                           ? 'bg-olive-500 text-white border border-olive-500'
-                          : 'border border-white/20 hover:bg-white/10'
+                          : 'border border-[#E4E4E4] bg-white text-[#182012] hover:bg-olive-500 hover:text-white hover:border-olive-500'
                       }`}
                     >
                       {page}
@@ -339,7 +339,7 @@ export function Blog() {
                 <button
                   onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="w-10 h-10 flex flex-shrink-0 items-center justify-center rounded-full border border-white/20 hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="w-10 h-10 flex flex-shrink-0 items-center justify-center rounded-full border border-[#E4E4E4] bg-white text-[#182012] hover:bg-olive-500 hover:text-white hover:border-olive-500 disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-[#182012] disabled:cursor-not-allowed transition-colors shadow-sm"
                   aria-label="Next page"
                 >
                   <ArrowRight size={18} />

@@ -50,11 +50,11 @@ export function CyberSecurityEurope() {
         
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+            <span className="px-4 py-1.5 rounded-full border border-[#E4E4E4] bg-white text-xs font-bold uppercase tracking-widest text-[#5A644D] shadow-sm">
               European Market Focus
             </span>
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
             CYBER SECURITY<br/>
             <span className="text-olive-500">IN EUROPE.</span>
           </h1>
@@ -71,42 +71,42 @@ export function CyberSecurityEurope() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white">Our Cyber Security In Europe</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012]">Our Cyber Security In Europe</h2>
             <p className="text-brand-white-70 text-lg max-w-3xl">From proactively testing your defences to responding to live incidents, managing compliance, and training your people — we cover every layer of your security posture.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Offensive Security</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Offensive Security</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Simulating real-world cyberattacks against your systems to expose weaknesses before threat actors exploit them. Delivered with detailed remediation maps.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Incident Response / DFIR</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Incident Response / DFIR</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">When a breach happens, every hour matters. We mobilize quickly to contain the threat and conduct deep digital forensics.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Cloud Security</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Cloud Security</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Assessing and hardening your AWS, Azure, and Google Cloud environments against misconfigurations and advanced persistence.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Compliance / GRC</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Compliance / GRC</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Navigating European regulatory requirements effortlessly. We help you achieve and maintain compliance with GDPR, NIS2, and ISO 27001.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Managed Security</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Managed Security</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Providing access to senior cyber security expertise on a flexible basis, including Virtual CISO services and continuous monitoring architectures.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">OT / IoT Security</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">OT / IoT Security</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Specialized evaluations of Operational Technology environments to prevent cyber-kinetic attacks against European manufacturing and utilities.</p>
             </div>
           </div>
@@ -114,10 +114,10 @@ export function CyberSecurityEurope() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-[#182012]">Frequently Asked Questions</h2>
             <p className="text-brand-white-70 text-lg">Everything you need to know about our cyber security services.</p>
           </div>
           <div className="space-y-4">
@@ -127,15 +127,15 @@ export function CyberSecurityEurope() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-olive-900 border-t border-white/5 text-center">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4] text-center">
          <div className="max-w-3xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
               Ready To Get Started?
             </h2>
             <p className="text-brand-white-70 text-lg leading-relaxed mb-10">
               Protect your European enterprise against sophisticated threats with proactive, intelligence-led defense strategies.
             </p>
-            <Link to="/contact" className="bg-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit mx-auto">
+            <Link to="/contact" className="bg-[#687838] hover:bg-[#515E2C] text-white px-10 py-4 rounded-xl font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg block w-fit mx-auto">
               Contact Us Today
             </Link>
          </div>

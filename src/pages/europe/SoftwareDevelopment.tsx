@@ -44,11 +44,11 @@ export function SoftwareDevelopmentEurope() {
         
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="flex items-center gap-4 mb-6">
-            <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+            <span className="px-4 py-1.5 rounded-full border border-[#E4E4E4] bg-white text-xs font-bold uppercase tracking-widest text-[#5A644D] shadow-sm">
               European Market Focus
             </span>
           </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
             SOFTWARE DEVELOPMENT<br/>
             <span className="text-olive-500">IN EUROPE.</span>
           </h1>
@@ -65,42 +65,42 @@ export function SoftwareDevelopmentEurope() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white">Our Services In Europe</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012]">Our Services In Europe</h2>
             <p className="text-brand-white-70 text-lg max-w-3xl">We offer a complete range of software development services. Each service below is available as a standalone engagement or as part of a broader digital transformation project.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Mobile Application Development</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Mobile Application Development</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Your customers live on their phones. We build fast, intuitive, and reliable mobile applications for iOS and Android that deliver outstanding user experiences and drive real business results.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Web Application Development</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Web Application Development</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">A web application is more than a website — it is a digital product that your users log into, interact with, and rely on daily. We build scalable, secure, and high-performing web applications tailored to your business logic.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Website Development</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Website Development</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Your website is your most important marketing asset. We build websites that look exceptional, load fast, rank on Google, and convert visitors into customers.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">ERP Development</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">ERP Development</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Running your business on disconnected spreadsheets and siloed software is costly. We implement solutions that unify your operations — finance, HR, inventory, procurement — into a single platform.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">CRM Development</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">CRM Development</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Your relationships with customers are your most valuable business asset. We develop and customise CRM systems that help your sales, marketing, and support teams manage every customer interaction.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">E-Commerce Solutions</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">E-Commerce Solutions</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">E-commerce in Europe is a competitive, high-stakes arena. Your online store needs to be fast, secure, localised for European buyers, and built to convert.</p>
             </div>
           </div>
@@ -108,10 +108,10 @@ export function SoftwareDevelopmentEurope() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-[#182012]">Frequently Asked Questions</h2>
             <p className="text-brand-white-70 text-lg">Everything you need to know about our software development services.</p>
           </div>
           <div className="space-y-4">
@@ -121,15 +121,15 @@ export function SoftwareDevelopmentEurope() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-olive-900 border-t border-white/5 text-center">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4] text-center">
          <div className="max-w-3xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
               Ready To Get Started?
             </h2>
             <p className="text-brand-white-70 text-lg leading-relaxed mb-10">
               Architect resilient, scalable software systems that accelerate your European digital transformation.
             </p>
-            <Link to="/contact" className="bg-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit mx-auto">
+            <Link to="/contact" className="bg-[#687838] hover:bg-[#515E2C] text-white px-10 py-4 rounded-xl font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg block w-fit mx-auto">
               Contact Us Today
             </Link>
          </div>

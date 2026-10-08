@@ -52,7 +52,10 @@ service cloud.firestore {
 
     match /admins/{userId} {
       allow read: if isAdmin() || (isSignedIn() && request.auth.uid == userId);
-      allow create: if isSignedIn() && request.auth.uid == userId && (request.auth.token.admin == true || request.auth.token.email == 'binuarjunanand@gmail.com' || request.auth.token.email == 'anandbhari123@gmail.com' || request.auth.token.email == 'shynim90@gmail.com');
+      allow create: if isSignedIn() && request.auth.uid == userId && (
+        request.auth.token.admin == true ||
+        request.auth.token.email in ['binuarjunanand@gmail.com', 'anandbhari123@gmail.com', 'shynim90@gmail.com']
+      );
       allow write: if false;
     }
 

@@ -256,7 +256,7 @@ export function SoftwareDevelopment() {
               Discuss Your Specs <ArrowRight size={18} />
             </Link>
           </div>
-          <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-square rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+          <div className="relative w-full aspect-[16/9] md:aspect-[16/10] lg:aspect-square rounded-[2rem] overflow-hidden border border-[#E4E4E4] shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/images/software-development-company-dubai.webp"
@@ -273,16 +273,16 @@ export function SoftwareDevelopment() {
         </div>
       </section>
 
-      <section className="bg-olive-900 border-y border-white/5 py-24">
+      <section className="bg-[#F0F0F0] border-y border-[#E4E4E4] py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="font-display text-4xl font-black mb-16 uppercase">Core <span className="text-olive-500">Capabilities</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {subServices.map((srv, i) => (
-              <div key={i} className="bg-olive-950/50 border border-white/5 rounded-2xl p-8 hover:border-olive-500/50 transition-colors group">
+              <div key={i} className="bg-white border border-[#E4E4E4] rounded-2xl p-8 hover:border-olive-500/40 transition-all shadow-sm hover:shadow-md group">
                 <srv.icon className="text-olive-500 mb-6" size={36} strokeWidth={1.5} />
                 <h3 className="text-xl font-display font-bold mb-3 group-hover:text-olive-500 transition-colors">{srv.name}</h3>
                 <p className="text-brand-white-70 text-sm leading-relaxed mb-8">{srv.desc}</p>
-                <Link to={srv.href} aria-label={`Learn more about ${srv.name}`} className="text-sm font-bold flex items-center gap-2 hover:text-white transition-colors uppercase tracking-wider">
+                <Link to={srv.href} aria-label={`Learn more about ${srv.name}`} className="text-sm font-bold flex items-center gap-2 hover:text-olive-500 transition-colors uppercase tracking-wider">
                   Learn More <ArrowRight size={16} />
                 </Link>
               </div>
@@ -300,7 +300,7 @@ export function SoftwareDevelopment() {
         statLabel="Uptime & Reliability"
       />
 
-      <section className="bg-olive-900 border-t border-white/5 py-24">
+      <section className="bg-[#F0F0F0] border-t border-[#E4E4E4] py-24">
          <div className="max-w-3xl mx-auto px-6 lg:px-8">
             <h2 className="font-display text-4xl md:text-5xl font-black mb-16 text-center uppercase tracking-tight">Frequently Asked <span className="text-olive-500">Questions</span></h2>
             <ServicesAccordion items={faqs.map(f => ({ title: f.q, content: f.a }))} />
@@ -309,7 +309,7 @@ export function SoftwareDevelopment() {
 
       <section className="max-w-4xl mx-auto px-6 text-center py-20 md:py-32">
          <h2 className="font-display text-4xl md:text-5xl font-black mb-8 leading-tight">BUILD YOUR NEXT<br />BIG IDEA.</h2>
-         <Link to="/contact" className="inline-flex items-center gap-3 bg-brand-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all hover:scale-105">
+         <Link to="/contact" className="inline-flex items-center gap-3 bg-[#182012] text-white px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all hover:scale-105 shadow-xl">
            Talk to an Architect <ArrowRight size={20} />
          </Link>
       </section>

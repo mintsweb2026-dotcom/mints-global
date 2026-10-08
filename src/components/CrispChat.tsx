@@ -5,7 +5,7 @@ export default function CrispChat() {
     if (document.getElementById('crisp-chat-script')) return;
 
     (window as any).$crisp = [];
-    const crispId = import.meta.env.VITE_CRISP_WEBSITE_ID || "3590cc65-c43f-4ce9-98cf-ddd1f75f853c";
+    const crispId = import.meta.env.VITE_CRISP_WEBSITE_ID;
     if (!crispId) return;
     (window as any).CRISP_WEBSITE_ID = crispId;
     (window as any).$crisp.push(["config", "color:theme", ["green"]]);

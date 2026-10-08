@@ -1,56 +1,40 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@font-face {
-  font-family: 'Neue Montreal';
-  src: url('/fonts/NeueMontreal-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Neue Montreal';
-  src: url('/fonts/NeueMontreal-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Neue Montreal';
-  src: url('/fonts/NeueMontreal-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Neue Montreal';
-  src: url('/fonts/NeueMontreal-Bold.woff2') format('woff2');
-  font-weight: 700 900;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme {
-  --color-olive-950: #0d1a0f;
-  --color-olive-900: #111f13;
-  --color-olive-800: #162019;
-  --color-olive-700: #1d2e1f;
-  --color-olive-500: #3a5d2d;
-  --color-olive-400: #4d7a3c;
-  --color-olive-300: #6e9c56;
-  --color-brand-white: #f0fdf4;
-  --color-brand-white-70: rgba(240,253,244,0.7);
-  --color-brand-white-40: rgba(240,253,244,0.4);
-  --color-brand-black: #050a06;
-  --color-brand-black-light: #0a140b;
+  /* Signature Mints ERP Color Palette from https://erp.mintsglobal.ae */
+  --color-olive-950: #0a0e0b;
+  --color-olive-900: #182012;
+  --color-olive-800: #252F18;
+  --color-olive-700: #353E20;
+  --color-olive-600: #515E2C;
+  --color-olive-500: #687838;
+  --color-olive-400: #8FA363;
+  --color-olive-300: #A5BD79;
+  --color-olive-200: #C3D2A3;
+  --color-olive-100: #DBE4C7;
+  --color-olive-50:  #EDF2E2;
+
+  /* Semantic Brand Tokens */
+  --color-brand-white: #182012;
+  --color-brand-white-70: #5A644D;
+  --color-brand-white-60: #5A644D;
+  --color-brand-white-40: #859177;
+  --color-brand-black: #FFFFFF;
+  --color-brand-black-light: #F5F7F4;
+  --color-dark-green: #182012;
+  --color-dark-green-muted: #353E20;
+  --color-brand-beige: #FFFFFF;
+  --color-brand-beige-dark: #F0F0F0;
   
-  --font-display: 'Neue Montreal', 'Outfit', sans-serif;
-  --font-body: 'Neue Montreal', 'Inter', sans-serif;
+  /* Modern Typography from https://erp.mintsglobal.ae */
+  --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --font-arabic: 'Cairo', sans-serif;
-  --font-german: 'Neue Montreal', 'Outfit', sans-serif;
+  --font-german: 'Plus Jakarta Sans', 'Inter', sans-serif;
 
   --animate-bob: bob 2s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -64,15 +48,20 @@
     @apply overflow-x-hidden max-w-full;
   }
   body {
-    @apply text-brand-white font-body antialiased;
-    background-color: #0d1a0f;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 10% 0%, rgba(58,93,45,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 90% 100%, rgba(14,40,16,0.4) 0%, transparent 60%);
+    @apply font-body antialiased;
+    background-color: #FFFFFF;
+    color: #182012;
+    selection-background-color: #EDF2E2;
+    selection-color: #515E2C;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display text-brand-white;
+    @apply font-display text-[#182012];
+    letter-spacing: -0.025em;
+  }
+
+  p {
+    color: #5A644D;
   }
 }
 
@@ -87,8 +76,8 @@
   /* Thin scrollbar for TOC sidebar */
   .custom-scrollbar::-webkit-scrollbar { width: 3px; }
   .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-  .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(58,93,45,0.5); border-radius: 3px; }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #4d7a3c; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(104,120,56,0.5); border-radius: 3px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #515E2C; }
 
   /* Line clamp utilities */
   .line-clamp-2 {
@@ -110,17 +99,17 @@
   .skeleton {
     background: linear-gradient(
       90deg,
-      rgba(255,255,255,0.03) 25%,
-      rgba(255,255,255,0.08) 50%,
-      rgba(255,255,255,0.03) 75%
+      rgba(24,32,18,0.03) 25%,
+      rgba(24,32,18,0.07) 50%,
+      rgba(24,32,18,0.03) 75%
     );
     background-size: 200% 100%;
     animation: shimmer 1.8s ease-in-out infinite;
   }
 
-  /* Gradient text utility */
+  /* Gradient text utility using Mints ERP colors */
   .gradient-text {
-    background: linear-gradient(135deg, #4d7a3c 0%, #6e9c56 50%, #3a5d2d 100%);
+    background: linear-gradient(135deg, #182012 0%, #687838 50%, #A5BD79 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -136,17 +125,169 @@
     transform: translateZ(0);
     will-change: transform;
   }
+
+  /* ── Mints ERP Signature Components & Accents ── */
+  .light-dot-grid {
+    background-image: radial-gradient(rgba(104, 120, 56, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .gold-hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #DBE4C7 20%, #DBE4C7 80%, transparent);
+  }
+
+  /* Card styling from erp.mintsglobal.ae */
+  .erp-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.25s ease;
+  }
+  .erp-card:hover {
+    border-color: #687838;
+    box-shadow: 0 12px 24px -6px rgba(104, 120, 56, 0.12);
+  }
+
+  /* Signature pill badge from erp.mintsglobal.ae */
+  .erp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid #DBE4C7;
+    background-color: #EDF2E2;
+    color: #353E20;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  /* Buttons matching Mints ERP */
+  .btn-erp-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #687838;
+    color: #FFFFFF !important;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.75rem;
+    transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    cursor: pointer;
+  }
+  .btn-erp-primary:hover {
+    background-color: #515E2C;
+    box-shadow: 0 4px 12px rgba(104, 120, 56, 0.25);
+    transform: translateY(-1px);
+  }
+  .btn-erp-primary:active {
+    transform: scale(0.98);
+  }
+
+  .btn-erp-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #FFFFFF;
+    color: #182012;
+    border: 1px solid #E4E4E4;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.75rem;
+    transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    cursor: pointer;
+  }
+  .btn-erp-secondary:hover {
+    background-color: #F0F0F0;
+    border-color: #C3D2A3;
+    transform: translateY(-1px);
+  }
+  .btn-erp-secondary:active {
+    transform: scale(0.98);
+  }
+
+  /* Window frame preview elements */
+  .window-frame {
+    border-radius: 1rem;
+    border: 1px solid #E4E4E4;
+    background-color: #FFFFFF;
+    box-shadow: 0 20px 25px -5px rgba(104, 120, 56, 0.08);
+    overflow: hidden;
+  }
+  .window-frame-bar {
+    background-color: #F0F0F0;
+    border-bottom: 1px solid #E4E4E4;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Form inputs & controls on light canvas */
+  input, textarea, select {
+    color: #182012 !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #859177 !important;
+    opacity: 1 !important;
+  }
+
+  /* Prose typography with erp.mintsglobal.ae colors */
+  .prose,
+  .prose-invert {
+    --tw-prose-body: #5A644D;
+    --tw-prose-headings: #182012;
+    --tw-prose-lead: #353E20;
+    --tw-prose-links: #687838;
+    --tw-prose-bold: #182012;
+    --tw-prose-counters: #687838;
+    --tw-prose-bullets: #687838;
+    --tw-prose-hr: #E4E4E4;
+    --tw-prose-quotes: #182012;
+    --tw-prose-quote-borders: #687838;
+    --tw-prose-captions: #859177;
+    --tw-prose-code: #687838;
+    --tw-prose-pre-code: #FFFFFF;
+    --tw-prose-pre-bg: #182012;
+    --tw-prose-th-borders: #E4E4E4;
+    --tw-prose-td-borders: #F0F0F0;
+    color: #5A644D;
+  }
+
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6,
+  .prose-invert h1, .prose-invert h2, .prose-invert h3, .prose-invert h4, .prose-invert h5, .prose-invert h6 {
+    color: #182012 !important;
+  }
+
+  .prose strong, .prose b,
+  .prose-invert strong, .prose-invert b {
+    color: #182012 !important;
+    font-weight: 700;
+  }
 }
 
 /* ── Global styles ────────────────────────────────────────────────────────────── */
 ::selection {
-  background-color: #3a5d2d;
-  color: #fff;
+  background-color: #EDF2E2;
+  color: #515E2C;
+}
+::-moz-selection {
+  background-color: #EDF2E2;
+  color: #515E2C;
 }
 
-::-webkit-scrollbar { width: 3px; height: 3px; }
-::-webkit-scrollbar-track { background: #0d1a0f; }
-::-webkit-scrollbar-thumb { background: #3a5d2d; border-radius: 3px; }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #F0F0F0; }
+::-webkit-scrollbar-thumb { background: #687838; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #515E2C; }
 
 .noise::after {
   content: "";
@@ -159,12 +300,13 @@
 }
 
 .card-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   contain: paint;
 }
 .card-lift:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(58, 93, 45, 0.25);
+  transform: translateY(-4px);
+  border-color: #687838;
+  box-shadow: 0 16px 32px -8px rgba(104, 120, 56, 0.12);
 }
 
 /* ── Keyframe animations ───────────────────────────────────────────────────────── */
@@ -174,7 +316,7 @@
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -201,8 +343,8 @@
   to   { transform: rotate(360deg); }
 }
 @keyframes pulseBorder {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(58, 93, 45, 0.4); }
-  50%       { box-shadow: 0 0 0 8px rgba(58, 93, 45, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(104, 120, 56, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(104, 120, 56, 0); }
 }
 
 .animate-marquee { animation: marquee 30s linear infinite; }
@@ -224,14 +366,19 @@ html.lenis, html.lenis body { height: auto; }
   left: 24px;
   z-index: 999;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  transition: transform 0.2s ease;
+  box-shadow: 0 4px 16px rgba(104, 120, 56, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #25D366;
+  color: #FFFFFF !important;
 }
-.whatsapp-float:hover { transform: scale(1.08); }
+.whatsapp-float:hover { 
+  transform: scale(1.08); 
+  box-shadow: 0 6px 20px rgba(104, 120, 56, 0.4);
+}
 
 @media (max-width: 640px) {
   .whatsapp-float {
-    bottom: 80px; /* raised to avoid overlapping card LEARN MORE links */
+    bottom: 80px;
     left: 16px;
     width: 46px !important;
     height: 46px !important;

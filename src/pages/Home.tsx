@@ -12,39 +12,23 @@ import { Magnetic } from '../components/Magnetic';
 import { useWorks } from '../hooks/useWorks';
 import { getPosts, BlogPost, STATIC_POSTS } from '../data/posts';
 import { SafeImage } from '../components/SafeImage';
-import { organizationSchema, professionalServiceSchema, localBusinessSchema } from '../lib/schema-helpers';
+import { organizationSchema, professionalServiceSchema, localBusinessSchema, buildFaqSchema } from '../lib/schema-helpers';
 
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What services does Mints Global offer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Mints Global offers digital marketing, SEO, social media marketing, PPC advertising, enterprise software development, mobile app development, and cybersecurity solutions in Dubai."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Mints Global the best digital marketing agency in Dubai?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Mints Global is a premium Dubai-based digital agency delivering ROI-driven marketing and tech solutions that bridge Middle Eastern and European markets for global brands."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can I get started with Mints Global?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can contact Mints Global through the website at mintsglobal.ae to book a free consultation with our Dubai marketing experts."
-      }
-    }
-  ]
-};
+const faqSchema = buildFaqSchema([
+  {
+    q: "What services does Mints Global offer?",
+    a: "Mints Global offers digital marketing, SEO, social media marketing, PPC advertising, enterprise software development, mobile app development, and cybersecurity solutions in Dubai."
+  },
+  {
+    q: "Is Mints Global the best digital marketing agency in Dubai?",
+    a: "Mints Global is a premium Dubai-based digital agency delivering ROI-driven marketing and tech solutions that bridge Middle Eastern and European markets for global brands."
+  },
+  {
+    q: "How can I get started with Mints Global?",
+    a: "You can contact Mints Global through the website at mintsglobal.ae to book a free consultation with our Dubai marketing experts."
+  }
+]);
 
 const Marquee = () => {
   const { t } = useTranslation();
@@ -59,15 +43,15 @@ const Marquee = () => {
   ];
 
   return (
-  <div className="w-full overflow-hidden border-y border-white/5 py-10 my-0 relative z-20 bg-olive-900">
-    <div className="whitespace-nowrap animate-marquee inline-flex items-center gap-12 opacity-80">
+  <div className="w-full overflow-hidden border-y border-[#E4E4E4] py-8 my-0 relative z-20 bg-[#F0F0F0]">
+    <div className="whitespace-nowrap animate-marquee inline-flex items-center gap-12 opacity-90">
       {[...Array(4)].map((_, i) => (
         <div key={i} className="flex items-center gap-12">
           {TICKER.map((item, idx) => (
             <div key={idx} className="flex items-center gap-12">
              <span className={idx % 2 === 0 
-               ? "text-white font-black text-4xl md:text-6xl uppercase tracking-widest cursor-default"
-               : "text-transparent [-webkit-text-stroke:1.5px_white] font-black text-4xl md:text-6xl uppercase tracking-widest cursor-default"
+               ? "text-[#182012] font-black text-4xl md:text-6xl uppercase tracking-widest cursor-default"
+               : "text-transparent [-webkit-text-stroke:1.5px_#182012] font-black text-4xl md:text-6xl uppercase tracking-widest cursor-default"
              }>
                {item}
              </span>
@@ -131,7 +115,7 @@ export function Home() {
   }, []);
 
   return (
-    <div className="relative flex flex-col w-full overflow-x-hidden pt-[116px]">
+    <div className="relative flex flex-col w-full overflow-x-hidden">
       <SEO 
         title={meta.title}
         description={meta.description}
@@ -149,7 +133,7 @@ export function Home() {
       <JsonLd data={professionalServiceSchema} />
       
       {/* Hero Section */}
-      <section ref={heroRef} className="relative w-full min-h-[100svh] -mt-[116px] overflow-hidden bg-[#050a06]">
+      <section ref={heroRef} className="relative w-full h-[100svh] min-h-[650px] overflow-hidden bg-[#050a06]">
         {/* Background Parallax Image — full-width centered, no horizontal offset */}
         <motion.div 
           style={{ y: heroY, opacity: heroOpacity }}
@@ -180,8 +164,8 @@ export function Home() {
 
           {/* Top vignette — dark fade at top to blend with navbar */}
           <div className="absolute inset-x-0 top-0 h-[30%] bg-gradient-to-b from-[#050a06]/75 via-[#050a06]/20 to-transparent z-10 pointer-events-none" />
-          {/* Bottom vignette — moderate fade so image shows but content readable */}
-          <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#050a06]/90 via-[#050a06]/40 to-transparent z-10 pointer-events-none" />
+          {/* Bottom vignette — deep dark cinematic fade without any milky/white haze */}
+          <div className="absolute inset-x-0 bottom-0 h-[35%] bg-gradient-to-t from-[#050a06] via-[#050a06]/60 to-transparent z-10 pointer-events-none" />
           {/* Subtle left + right edge darkening */}
           <div className="absolute inset-y-0 left-0 w-[15%] bg-gradient-to-r from-[#050a06]/50 to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-[15%] bg-gradient-to-l from-[#050a06]/50 to-transparent z-10 pointer-events-none" />
@@ -197,7 +181,7 @@ export function Home() {
         </motion.div>
 
         {/* FOREGROUND HERO CONTENT — absolutely pinned to bottom-center, matching reference */}
-        <div className="absolute inset-x-0 bottom-0 z-20 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 pb-20 sm:pb-28">
+        <div className="dark-hero absolute inset-x-0 bottom-0 z-20 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 pb-20 sm:pb-28">
           <h1 className="sr-only">Best Digital Marketing Agency in Dubai</h1>
 
           {/* Giant centered headline */}
@@ -208,10 +192,10 @@ export function Home() {
             className="font-display font-black tracking-tight flex flex-col items-center gap-0 leading-none mb-4 sm:mb-5"
             aria-hidden="true"
           >
-            <span className="text-white text-[clamp(1.8rem,4.5vw,5rem)] leading-[0.9] tracking-[-0.02em] uppercase block drop-shadow-[0_2px_24px_rgba(0,0,0,0.7)]">
+            <span className="text-white text-[clamp(1.8rem,4.5vw,5rem)] leading-[0.9] tracking-[-0.02em] uppercase block drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">
               {t('hero.line1')}
             </span>
-            <span className="text-white text-[clamp(1.8rem,4.5vw,5rem)] leading-[0.9] tracking-[-0.02em] uppercase block drop-shadow-[0_2px_24px_rgba(0,0,0,0.7)]">
+            <span className="text-white text-[clamp(1.8rem,4.5vw,5rem)] leading-[0.9] tracking-[-0.02em] uppercase block drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">
               {t('hero.line2')}
             </span>
           </motion.div>
@@ -221,7 +205,7 @@ export function Home() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-white/60 max-w-[400px] text-sm sm:text-[15px] font-normal leading-relaxed mb-8 sm:mb-10 text-center"
+            className="text-white/80 max-w-[400px] text-sm sm:text-[15px] font-normal leading-relaxed mb-8 sm:mb-10 text-center drop-shadow-md"
           >
             {t('hero.desc')}
           </motion.p>
@@ -237,7 +221,7 @@ export function Home() {
               <div className="inline-block">
                 <Link
                   to="/contact"
-                  className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-3.5 rounded-full font-bold uppercase tracking-[0.12em] text-xs hover:bg-white/20 hover:border-white/40 transition-all duration-300 flex items-center gap-2"
+                  className="bg-[#687838] border border-[#687838] text-white px-8 py-3.5 rounded-full font-bold uppercase tracking-[0.12em] text-xs hover:bg-[#515E2C] transition-all duration-300 flex items-center gap-2 shadow-lg"
                 >
                   {t('hero.startProject')}
                 </Link>
@@ -247,7 +231,7 @@ export function Home() {
               <div className="inline-block">
                 <Link
                   to="/work"
-                  className="bg-transparent border border-white/20 text-white px-8 py-3.5 rounded-full font-bold uppercase tracking-[0.12em] text-xs hover:border-white/40 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm block"
+                  className="bg-white/15 border border-[#F5F2EB]/30 text-white px-8 py-3.5 rounded-full font-bold uppercase tracking-[0.12em] text-xs hover:bg-white/25 transition-all duration-300 backdrop-blur-sm block shadow-sm"
                 >
                   {t('hero.viewWork')}
                 </Link>
@@ -263,7 +247,7 @@ export function Home() {
           transition={{ delay: 2 }}
           style={{ opacity: useTransform(scrollYProgress, [0, 0.55, 0.75], [1, 0.4, 0]) }}
           onClick={() => window.scrollTo({ top: window.innerHeight - 100, behavior: 'smooth' })}
-          className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-white/40 z-20 hover:text-white/70 transition-colors cursor-pointer pointer-events-auto"
+          className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-white/50 z-20 hover:text-white transition-colors cursor-pointer pointer-events-auto"
         >
           <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}>
             ↓
@@ -275,7 +259,8 @@ export function Home() {
       <Marquee />
 
       {/* Services Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 w-full relative z-10 bg-olive-950">
+      <section className="w-full py-16 sm:py-24 lg:py-32 bg-[#F0F0F0] relative z-10 border-t border-[#E4E4E4]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-20 gap-8">
            <div>
              <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">{t('capabilities.badge')}</span>
@@ -297,15 +282,15 @@ export function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
+            className="group bg-white border border-[#E4E4E4] hover:border-olive-500/40 shadow-sm rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
           >
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
              <div>
-               <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
+               <div className="w-16 h-16 bg-white rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-sm border border-[#E4E4E4] group-hover:scale-110 transition-all duration-500">
                  <span className="group-hover:animate-bob inline-block">01</span>
                </div>
                
-               <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
+               <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-[#E4E4E4]">
                   <SafeImage 
                     src="/images/data-driven-marketing-dubai.webp" 
                     fallbackSrc="/images/photography-graphics-services-dubai.webp"
@@ -318,7 +303,7 @@ export function Home() {
                   />
                </div>
 
-               <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-white">{t('capabilities.s1.title', {defaultValue: 'Digital Marketing Services That Drive Real ROI'})}</h2>
+               <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-[#182012]">{t('capabilities.s1.title', {defaultValue: 'Digital Marketing Services That Drive Real ROI'})}</h2>
                <p className="text-brand-white-70 mb-8 text-sm leading-loose tracking-wide">
                  {t('capabilities.s1.desc')}
                </p>
@@ -332,10 +317,10 @@ export function Home() {
                      height="600" 
                      loading="lazy" 
                      decoding="async"
-                     className="w-16 h-12 object-cover rounded-lg border border-white/10 shrink-0"
+                     className="w-16 h-12 object-cover rounded-lg border border-[#E4E4E4] shrink-0"
                    />
                    <div>
-                     <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">SEO & Search Marketing for UAE Businesses</h3>
+                     <h3 className="text-sm font-bold text-[#182012] uppercase tracking-wider leading-snug">SEO & Search Marketing for UAE Businesses</h3>
                      <h4 className="text-[10px] text-olive-500 font-bold uppercase tracking-widest mt-1">Local SEO for Dubai & GCC Markets</h4>
                    </div>
                  </div>
@@ -348,18 +333,18 @@ export function Home() {
                      height="600" 
                      loading="lazy" 
                      decoding="async"
-                     className="w-16 h-12 object-cover rounded-lg border border-white/10 shrink-0"
+                     className="w-16 h-12 object-cover rounded-lg border border-[#E4E4E4] shrink-0"
                    />
                    <div>
-                     <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Social Media Marketing & Paid Advertising</h3>
+                     <h3 className="text-sm font-bold text-[#182012] uppercase tracking-wider leading-snug">Social Media Marketing & Paid Advertising</h3>
                      <h4 className="text-[10px] text-olive-500 font-bold uppercase tracking-widest mt-1">Meta Ads, Google Ads & LinkedIn Campaigns</h4>
                    </div>
                  </div>
 
                  <div className="flex gap-4 items-start">
-                   <div className="w-16 h-12 rounded-lg border border-dashed border-white/10 flex items-center justify-center shrink-0 text-olive-500">✍️</div>
+                   <div className="w-16 h-12 rounded-lg border border-dashed border-[#E4E4E4] flex items-center justify-center shrink-0 text-olive-500">✍️</div>
                    <div>
-                     <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Content Marketing & Brand Storytelling</h3>
+                     <h3 className="text-sm font-bold text-[#182012] uppercase tracking-wider leading-snug">Content Marketing & Brand Storytelling</h3>
                    </div>
                  </div>
                </div>
@@ -373,15 +358,15 @@ export function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
+            className="group bg-white border border-[#E4E4E4] hover:border-olive-500/40 shadow-sm rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
           >
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
              <div>
-               <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
+               <div className="w-16 h-16 bg-white rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-sm border border-[#E4E4E4] group-hover:scale-110 transition-all duration-500">
                  <span className="group-hover:animate-bob inline-block delay-75">02</span>
                </div>
 
-               <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
+               <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-[#E4E4E4]">
                   <SafeImage 
                     src="/images/business-software-solutions-globe.webp" 
                     fallbackSrc="/images/web-application-development-services-dubai.webp"
@@ -394,23 +379,23 @@ export function Home() {
                   />
                </div>
 
-               <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-white">{t('capabilities.s2.title', {defaultValue: 'Enterprise Software Development Dubai'})}</h2>
+               <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-[#182012]">{t('capabilities.s2.title', {defaultValue: 'Enterprise Software Development Dubai'})}</h2>
                <p className="text-brand-white-70 mb-8 text-sm leading-loose tracking-wide">
                  {t('capabilities.s2.desc')}
                </p>
 
                <div className="space-y-6 mb-10">
                  <div>
-                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Scalable Web & Mobile Architectures</h3>
+                   <h3 className="text-sm font-bold text-[#182012] uppercase tracking-wider leading-snug">Scalable Web & Mobile Architectures</h3>
                    <h4 className="text-[10px] text-olive-500 font-bold uppercase tracking-widest mt-1">Next.js, React Native & Microservices</h4>
                  </div>
 
                  <div>
-                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">ERP & Custom Business Systems</h3>
+                   <h3 className="text-sm font-bold text-[#182012] uppercase tracking-wider leading-snug">ERP & Custom Business Systems</h3>
                  </div>
 
                  <div>
-                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">E-Commerce Solutions for Middle East Markets</h3>
+                   <h3 className="text-sm font-bold text-[#182012] uppercase tracking-wider leading-snug">E-Commerce Solutions for Middle East Markets</h3>
                  </div>
                </div>
              </div>
@@ -423,15 +408,15 @@ export function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="group bg-brand-black-light border border-white/5 hover:border-olive-500/30 rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
+            className="group bg-white border border-[#E4E4E4] hover:border-olive-500/40 shadow-sm rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 lg:p-10 hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col justify-between"
           >
              <div className="absolute top-0 right-0 w-32 h-32 bg-olive-500/10 rounded-full blur-[50px] group-hover:bg-olive-500/20 transition-all duration-500 -translate-y-1/2 translate-x-1/2" />
              <div>
-               <div className="w-16 h-16 bg-olive-950/50 rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-inner border border-white/5 group-hover:scale-110 transition-all duration-500">
+               <div className="w-16 h-16 bg-white rounded-2xl mb-8 flex items-center justify-center text-olive-500 text-2xl font-black shadow-sm border border-[#E4E4E4] group-hover:scale-110 transition-all duration-500">
                  <span className="group-hover:animate-bob inline-block delay-150">03</span>
                </div>
 
-               <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-white/10">
+               <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-[#E4E4E4]">
                   <SafeImage 
                     src="/images/cybersecurity-threat-intelligence-dubai.webp" 
                     fallbackSrc="/images/iso-27001-certification-in-dubai.webp" 
@@ -444,29 +429,30 @@ export function Home() {
                   />
                </div>
 
-               <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-white">{t('capabilities.s3.title', {defaultValue: 'Cybersecurity Solutions for Global Brands'})}</h2>
+               <h2 className="text-3xl font-display font-black mb-6 uppercase leading-tight text-[#182012]">{t('capabilities.s3.title', {defaultValue: 'Cybersecurity Solutions for Global Brands'})}</h2>
                <p className="text-brand-white-70 mb-8 text-sm leading-loose tracking-wide">
                  {t('capabilities.s3.desc')}
                </p>
 
                <div className="space-y-6 mb-10">
                  <div>
-                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Military-Grade Cyber Protection Services</h3>
+                   <h3 className="text-sm font-bold text-[#182012] uppercase tracking-wider leading-snug">Military-Grade Cyber Protection Services</h3>
                    <h4 className="text-[10px] text-olive-500 font-bold uppercase tracking-widest mt-1">Threat Detection & Incident Response</h4>
                  </div>
 
                  <div>
-                   <h3 className="text-sm font-bold text-white uppercase tracking-wider leading-snug">Compliance & Data Privacy Consulting</h3>
+                   <h3 className="text-sm font-bold text-[#182012] uppercase tracking-wider leading-snug">Compliance & Data Privacy Consulting</h3>
                  </div>
                </div>
              </div>
              <Link to="/cyber-security" aria-label="Learn more about Cybersecurity Solutions for Global Brands" className="text-sm font-black uppercase tracking-widest flex items-center gap-2 hover:text-olive-500 transition-colors w-max mt-auto">{t('capabilities.learnMore')} <span className="sr-only">about Cyber Security</span> <ArrowRight size={16} /></Link>
           </motion.div>
         </div>
+        </div>
       </section>
 
       {/* Portfolio Preview Section */}
-      <section className="py-16 sm:py-24 lg:py-32 w-full bg-olive-950 border-t border-white/5 relative z-10">
+      <section className="py-16 sm:py-24 lg:py-32 w-full bg-[#F5F7F4] border-t border-[#E4E4E4] relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-20 gap-8">
             <div>
@@ -480,7 +466,7 @@ export function Home() {
                     href="https://portfolio.mintsglobal.tech/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-olive-500 text-white px-5 sm:px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs sm:text-sm hover:bg-olive-400 transition-colors shrink-0"
+                    className="inline-flex items-center gap-2 bg-olive-500 text-white px-5 sm:px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs sm:text-sm hover:bg-olive-400 transition-colors shrink-0 shadow-sm"
                   >
                     Interactive Demos & Products <ArrowRight size={18} />
                   </a>
@@ -506,7 +492,7 @@ export function Home() {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 className={`group relative ${idx % 2 === 1 ? 'md:mt-24' : ''}`}
               >
-                <Link to={`/work/${project._id}`} className="block overflow-hidden rounded-2xl sm:rounded-[2rem] aspect-[4/3] bg-olive-900 border border-white/5 mb-6">
+                <Link to={`/work/${project._id}`} className="block overflow-hidden rounded-2xl sm:rounded-[2rem] aspect-[4/3] bg-[#F0F0F0] border border-[#E4E4E4] mb-6 shadow-md">
                    <img 
                      src={project.titleImage} 
                      alt={project.title} 
@@ -520,9 +506,9 @@ export function Home() {
                     <h3 className="font-display font-black text-2xl sm:text-3xl md:text-4xl hover:text-olive-500 transition-colors uppercase tracking-tight mb-4">{project.title}</h3>
                   </Link>
                   {(project.duration || project.kpi) && (
-                    <div className="flex flex-wrap items-center gap-3 w-full text-xs font-medium uppercase tracking-wider text-white">
-                      {project.duration && <span className="bg-white/5 px-2 py-1 rounded-md border border-white/10">⏱ {project.duration}</span>}
-                      {project.kpi && <span className="text-olive-400 bg-olive-500/10 px-2 py-1 rounded-md border border-olive-500/20">🚀 {project.kpi}</span>}
+                    <div className="flex flex-wrap items-center gap-3 w-full text-xs font-medium uppercase tracking-wider text-[#182012]">
+                      {project.duration && <span className="bg-white px-2.5 py-1 rounded-md border border-[#E4E4E4] shadow-xs">⏱ {project.duration}</span>}
+                      {project.kpi && <span className="text-olive-500 bg-olive-500/10 px-2.5 py-1 rounded-md border border-olive-500/20 font-bold">🚀 {project.kpi}</span>}
                     </div>
                   )}
                 </div>
@@ -533,7 +519,7 @@ export function Home() {
       </section>
 
       {/* About + Stats Section combined */}
-      <section className="py-16 sm:py-24 lg:py-32 w-full bg-olive-900/60 overflow-hidden relative z-10 border-t border-white/5">
+      <section className="py-16 sm:py-24 lg:py-32 w-full bg-[#F0F0F0] overflow-hidden relative z-10 border-t border-[#E4E4E4]">
         <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-olive-500/10 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -541,7 +527,7 @@ export function Home() {
              {/* Left Column: Narrative & Values */}
              <div className="flex flex-col">
                 <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">Who We Are</span>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight mb-6 leading-tight text-white">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight mb-6 leading-tight text-[#182012]">
                   Why Mints Global is Dubai's Most Trusted Digital Agency
                 </h2>
                 <p className="text-brand-white-70 text-lg leading-relaxed mb-8">
@@ -549,19 +535,19 @@ export function Home() {
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
-                  <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
-                    <h3 className="text-base font-bold text-white uppercase tracking-wider mb-2">Dual-Market Grounding: Dubai & Europe</h3>
+                  <div className="bg-white border border-[#E4E4E4] p-6 rounded-2xl shadow-xs">
+                    <h3 className="text-base font-bold text-[#182012] uppercase tracking-wider mb-2">Dual-Market Grounding: Dubai & Europe</h3>
                     <p className="text-brand-white-70 text-xs leading-relaxed">Cross-border engineering and marketing, adapting international execution standards to GCC regulatory environments like NESA and PDPL.</p>
                   </div>
-                  <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
-                    <h3 className="text-base font-bold text-white uppercase tracking-wider mb-2">Engineers & Marketers, Not Account Managers</h3>
+                  <div className="bg-white border border-[#E4E4E4] p-6 rounded-2xl shadow-xs">
+                    <h3 className="text-base font-bold text-[#182012] uppercase tracking-wider mb-2">Engineers & Marketers, Not Account Managers</h3>
                     <p className="text-brand-white-70 text-xs leading-relaxed">You speak directly to the specialists writing the code and managing your spend. No communication layers, no fluff, just measurable results.</p>
                   </div>
                 </div>
 
                 <Magnetic>
                   <div className="inline-block">
-                    <Link to="/about" className="inline-flex items-center gap-3 border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:border-olive-500 hover:text-olive-500 transition-all block">
+                    <Link to="/about" className="inline-flex items-center gap-3 border border-[#DBE4C7] text-[#182012] bg-transparent px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-olive-500 hover:text-white hover:border-olive-500 transition-all block">
                       About Us <ArrowRight size={18} className="inline ml-1" />
                     </Link>
                   </div>
@@ -571,7 +557,7 @@ export function Home() {
              {/* Right Column: Visual Team & Clean 2x2 Stats */}
              <div className="flex flex-col gap-8 w-full">
                 {/* Team photo */}
-                <div className="w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative">
+                <div className="w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-[#E4E4E4] shadow-2xl relative">
                   <SafeImage 
                     src="/images/mints-global-team-dubai.webp" fallbackSrc="/hero.webp" 
                     alt="The Mints Global team at our Dubai office" 
@@ -585,29 +571,29 @@ export function Home() {
 
                 {/* 2x2 Stats Grid aligned cleanly */}
                 <div className="grid grid-cols-2 gap-4 sm:gap-6 w-full">
-                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center">
+                   <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 flex flex-col justify-center shadow-xs">
                       <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-olive-500 mb-1 leading-none">
                         <CountUp end={250} duration={2.5} enableScrollSpy />+
                       </div>
                       <div className="font-bold text-xs sm:text-sm text-brand-white uppercase tracking-wider mt-2">Projects Delivered</div>
                    </div>
 
-                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center">
+                   <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 flex flex-col justify-center shadow-xs">
                       <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-olive-500 mb-1 leading-none">
                         <CountUp end={35} duration={2.5} enableScrollSpy />+
                       </div>
                       <div className="font-bold text-xs sm:text-sm text-brand-white uppercase tracking-wider mt-2">Enterprise Clients</div>
                    </div>
 
-                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center">
-                      <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-1 leading-none">
+                   <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 flex flex-col justify-center shadow-xs">
+                      <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-[#182012] mb-1 leading-none">
                         <CountUp end={5} duration={2.5} enableScrollSpy />
                       </div>
                       <div className="font-bold text-xs sm:text-sm text-brand-white-70 uppercase tracking-wider mt-2">Years Experience</div>
                    </div>
 
-                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col justify-center">
-                      <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-1 leading-none">
+                   <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 flex flex-col justify-center shadow-xs">
+                      <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-[#182012] mb-1 leading-none">
                         <CountUp end={99} duration={2.5} enableScrollSpy />%
                       </div>
                       <div className="font-bold text-xs sm:text-sm text-brand-white-70 uppercase tracking-wider mt-2">Client Retention</div>
@@ -619,7 +605,7 @@ export function Home() {
       </section>
 
       {/* Client Logos Strip */}
-      <section className="py-24 border-t border-white/5 bg-brand-black overflow-hidden relative z-10">
+      <section className="py-24 border-t border-[#E4E4E4] bg-brand-black overflow-hidden relative z-10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12">
           <p className="text-center text-brand-white-70 text-sm font-bold uppercase tracking-widest">{t('trusted')}</p>
         </div>
@@ -631,14 +617,14 @@ export function Home() {
                <div key={i} className="flex items-center">
                  <div className="px-10 md:px-16 flex items-center justify-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-110">
                     <div className="flex flex-col items-center justify-center font-sans tracking-tighter">
-                      <div className="flex items-center text-5xl font-black leading-none bg-white/5 py-2 px-4 rounded-xl border border-white/10 group-hover:bg-white transition-colors duration-500">
+                      <div className="flex items-center text-5xl font-black leading-none bg-white/5 py-2 px-4 rounded-xl border border-[#E4E4E4] group-hover:bg-white transition-colors duration-500">
                          <span className="text-[#184d28]">H</span>
                          <span className="text-[#4d7a3c] -mt-1 text-6xl">D</span>
                          <span className="text-[#184d28]">F</span>
                       </div>
                       <div className="flex flex-col text-center mt-2 group-hover:opacity-100 opacity-60 transition-opacity">
-                        <span className="text-[0.6rem] font-bold text-white tracking-[0.2em] leading-none">BUSINESS</span>
-                        <span className="text-[0.6rem] font-bold text-white tracking-[0.2em] leading-none mt-1">SERVICES</span>
+                        <span className="text-[0.6rem] font-bold text-[#182012] tracking-[0.2em] leading-none">BUSINESS</span>
+                        <span className="text-[0.6rem] font-bold text-[#182012] tracking-[0.2em] leading-none mt-1">SERVICES</span>
                       </div>
                     </div>
                  </div>
@@ -712,7 +698,7 @@ export function Home() {
                  <div className="px-10 md:px-16 flex items-center justify-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-110 group">
                     <div className="flex flex-col items-center justify-center font-sans">
                       <div className="flex items-center">
-                        <span className="text-4xl font-black text-white tracking-tighter" style={{ fontFamily: 'Impact, sans-serif', transform: 'scale(1, 0.9)' }}>MOSTRADOR</span>
+                        <span className="text-4xl font-black text-[#182012] tracking-tighter" style={{ fontFamily: 'Impact, sans-serif', transform: 'scale(1, 0.9)' }}>MOSTRADOR</span>
                       </div>
                     </div>
                  </div>
@@ -723,7 +709,7 @@ export function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 sm:py-24 lg:py-32 w-full bg-olive-950 border-t border-white/5 relative z-10 overflow-hidden">
+      <section className="py-16 sm:py-24 lg:py-32 w-full bg-[#F5F7F4] border-t border-[#E4E4E4] relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-20 gap-8">
             <div>
@@ -733,17 +719,17 @@ export function Home() {
             <div className="flex items-center gap-4">
               <button 
                 onClick={handlePrevTestimonial}
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-olive-500 hover:border-olive-500 transition-colors"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white border border-[#E4E4E4] flex items-center justify-center text-[#182012] hover:bg-olive-500 hover:text-white hover:border-olive-500 transition-colors shadow-xs cursor-pointer"
                 aria-label="Previous Testimonial"
               >
-                <ChevronLeft className="text-white" />
+                <ChevronLeft className="text-current" />
               </button>
               <button 
                 onClick={handleNextTestimonial}
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-white/10 flex items-center justify-center hover:bg-olive-500 hover:border-olive-500 transition-colors"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white border border-[#E4E4E4] flex items-center justify-center text-[#182012] hover:bg-olive-500 hover:text-white hover:border-olive-500 transition-colors shadow-xs cursor-pointer"
                 aria-label="Next Testimonial"
               >
-                <ChevronRight className="text-white" />
+                <ChevronRight className="text-current" />
               </button>
             </div>
           </div>
@@ -757,7 +743,7 @@ export function Home() {
                    animate={{ opacity: 1, x: 0 }}
                    exit={{ opacity: 0, x: -20 }}
                    transition={{ duration: 0.4 }}
-                   className="bg-brand-black-light border border-white/5 p-6 sm:p-10 md:p-16 rounded-2xl sm:rounded-[3rem]"
+                   className="bg-white border border-[#E4E4E4] p-6 sm:p-10 md:p-16 rounded-2xl sm:rounded-[3rem]"
                  >
                    <div className="flex text-olive-500 mb-6 sm:mb-8">
                      {[...Array(5)].map((_, i) => (
@@ -770,7 +756,7 @@ export function Home() {
                      "{testimonials[activeTestimonial].doc}"
                    </p>
                    <div className="flex items-center gap-4 sm:gap-6">
-                     <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-olive-900 border border-white/10 flex items-center justify-center shrink-0">
+                     <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-olive-900 border border-[#E4E4E4] flex items-center justify-center shrink-0">
                        <User className="text-olive-500" size={24} />
                      </div>
                      <div>
@@ -786,7 +772,7 @@ export function Home() {
       </section>
 
       {/* Blog Preview Section */}
-      <section className="py-16 sm:py-24 lg:py-32 w-full bg-olive-950 border-t border-white/5 relative z-10">
+      <section className="py-16 sm:py-24 lg:py-32 w-full bg-[#F5F7F4] border-t border-[#E4E4E4] relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-20 gap-8">
             <div>
@@ -810,7 +796,7 @@ export function Home() {
                  whileInView={{ opacity: 1, y: 0 }}
                  viewport={{ once: true }}
                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                 className="group flex flex-col bg-brand-black-light border border-white/5 rounded-2xl sm:rounded-3xl overflow-hidden hover:border-olive-500/30 transition-all duration-300"
+                 className="group flex flex-col bg-white border border-[#E4E4E4] rounded-2xl sm:rounded-3xl overflow-hidden hover:border-olive-500/30 transition-all duration-300"
                >
                  <Link to={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden">
                    <img 
@@ -841,35 +827,35 @@ export function Home() {
       </section>
 
       {/* Global Reach Section */}
-      <section className="py-16 sm:py-24 lg:py-32 w-full bg-olive-900 border-t border-white/5 relative z-10">
+      <section className="py-16 sm:py-24 lg:py-32 w-full bg-[#F0F0F0] border-t border-[#E4E4E4] relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-20">
             <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">International Capabilities</span>
             <AnimatedChars text="From Dubai to Europe." className="font-display text-3xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tight" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-brand-black-light border border-white/5 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
+            <div className="bg-white border border-[#E4E4E4] p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
               <h3 className="font-display font-black text-2xl sm:text-3xl uppercase mb-6 flex items-center gap-4">🇦🇪 UAE</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed mb-8">Dubai HQ. Arabic-first strategy, NESA compliance, and deep local market integration for brands scaling across the Middle East.</p>
-              <ul className="space-y-3 text-sm font-bold tracking-wider text-olive-300 uppercase">
+              <ul className="space-y-3 text-sm font-bold tracking-wider text-olive-500 uppercase">
                 <li>✓ NESA & PDPL Compliant</li>
                 <li>✓ Native Arabic Marketing</li>
                 <li>✓ Local Business Integration</li>
               </ul>
             </div>
-            <div className="bg-brand-black-light border border-white/5 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
+            <div className="bg-white border border-[#E4E4E4] p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
               <h3 className="font-display font-black text-2xl sm:text-3xl uppercase mb-6 flex items-center gap-4">🇩🇪 DACH</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed mb-8">GDPR/DSGVO-compliant solutions, precision-engineered software, and B2B localized campaigns for the German market.</p>
-              <ul className="space-y-3 text-sm font-bold tracking-wider text-olive-300 uppercase">
+              <ul className="space-y-3 text-sm font-bold tracking-wider text-olive-500 uppercase">
                 <li>✓ DSGVO & GDPR Strict</li>
                 <li>✓ German Localized SEO</li>
                 <li>✓ B2B Growth Engines</li>
               </ul>
             </div>
-            <div className="bg-brand-black-light border border-white/5 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
+            <div className="bg-white border border-[#E4E4E4] p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:border-olive-500/20 transition-colors hover:-translate-y-2 duration-300">
               <h3 className="font-display font-black text-2xl sm:text-3xl uppercase mb-6 flex items-center gap-4">🇬🇧 UK</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed mb-8">High-performance English-language campaigns, robust platforms, and competitive organic dominance for the UK market.</p>
-              <ul className="space-y-3 text-sm font-bold tracking-wider text-olive-300 uppercase">
+              <ul className="space-y-3 text-sm font-bold tracking-wider text-olive-500 uppercase">
                 <li>✓ High-Competition SEO</li>
                 <li>✓ UK Market Positioning</li>
                 <li>✓ Multi-Currency Processing</li>
@@ -888,10 +874,10 @@ export function Home() {
             <h2 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-none tracking-tighter uppercase text-white">
               Get a Free Consultation With Our Dubai Marketing Experts
             </h2>
-            <p className="text-brand-white/80 text-lg md:text-xl lg:text-2xl font-medium mb-12 max-w-3xl mx-auto">{t('cta.desc')}</p>
+            <p className="text-white/90 text-lg md:text-xl lg:text-2xl font-medium mb-12 max-w-3xl mx-auto">{t('cta.desc')}</p>
             <Magnetic>
               <div className="inline-block">
-                <Link to="/contact" className="inline-flex items-center gap-3 bg-brand-white text-olive-950 px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-brand-black hover:text-white transition-all hover:scale-105 shadow-2xl block">
+                <Link to="/contact" className="inline-flex items-center gap-3 bg-[#F5F7F4] text-[#687838] px-12 py-6 rounded-full font-black uppercase tracking-widest hover:bg-[#182012] hover:text-white transition-all hover:scale-105 shadow-2xl block">
                   {t('cta.btn')} <ArrowRight size={20} className="inline ml-1" />
                 </Link>
               </div>

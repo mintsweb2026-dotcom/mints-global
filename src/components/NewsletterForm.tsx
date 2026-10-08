@@ -70,14 +70,14 @@ export function NewsletterForm() {
   };
 
   return (
-    <div className="bg-olive-900 border border-olive-800/50 rounded-2xl p-6 md:p-8 flex flex-col relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-olive-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div className="bg-white border border-[#E4E4E4] rounded-2xl p-6 md:p-8 flex flex-col relative overflow-hidden shadow-xs hover:border-[#687838] transition-colors">
+      {/* Background decoration matching ERP ambient glows */}
+      <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-[#EDF2E2] rounded-full blur-3xl pointer-events-none opacity-80"></div>
       
       <div className="relative z-10 w-full mb-6">
-        <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-2">Join Our Newsletter</h3>
-        <p className="text-brand-white-70 text-sm max-w-sm">
-          Get the latest insights, case studies, and digital marketing strategies delivered straight to your inbox.
+        <h3 className="text-xl md:text-2xl font-sans font-bold text-[#182012] mb-2">Join Our Engineering & Strategy Insights</h3>
+        <p className="text-[#5A644D] text-sm max-w-sm">
+          Get the latest insights, architecture teardowns, and growth strategies delivered straight to your inbox.
         </p>
       </div>
 
@@ -92,9 +92,9 @@ export function NewsletterForm() {
                 if (status === 'error') setStatus('idle');
               }}
               placeholder="Enter your email address"
-              className={`w-full bg-black/40 border ${
-                status === 'error' ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-olive-500'
-              } rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder:text-brand-white-50 focus:outline-none focus:ring-1 focus:ring-olive-500 transition-all`}
+              className={`w-full bg-[#F0F0F0]/50 border ${
+                status === 'error' ? 'border-red-500/50 focus:border-red-500' : 'border-[#E4E4E4] focus:border-[#687838] focus:bg-white'
+              } rounded-xl px-4 py-3 sm:py-3.5 text-sm text-[#182012] placeholder:text-[#859177] focus:outline-none focus:ring-1 focus:ring-[#687838] transition-all`}
               disabled={status === 'loading' || status === 'success'}
               required
             />
@@ -103,16 +103,16 @@ export function NewsletterForm() {
           <button
             type="submit"
             disabled={status === 'loading' || status === 'success'}
-            className="flex items-center justify-center gap-2 bg-olive-500 hover:bg-olive-400 text-black px-6 py-3 sm:py-3.5 rounded-xl font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed group/btn"
+            className="flex items-center justify-center gap-2 bg-[#687838] hover:bg-[#515E2C] text-white px-6 py-3 sm:py-3.5 rounded-xl font-semibold transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed group/btn shadow-xs cursor-pointer"
           >
             {status === 'loading' ? (
               <Loader2 className="w-5 h-5 animate-spin" />
             ) : status === 'success' ? (
-              <CheckCircle2 className="w-5 h-5 text-black" />
+              <CheckCircle2 className="w-5 h-5 text-white" />
             ) : (
               <>
-                <span className="text-sm font-bold tracking-wider uppercase">Subscribe</span>
-                <Send className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                <span className="text-sm font-semibold tracking-wider text-white">Subscribe</span>
+                <Send className="w-4 h-4 text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
               </>
             )}
           </button>
@@ -128,7 +128,7 @@ export function NewsletterForm() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="flex items-center gap-2 text-olive-400 text-sm"
+                className="flex items-center gap-2 text-[#687838] text-sm font-semibold"
               >
                 <CheckCircle2 className="w-4 h-4" />
                 <span>Thank you for subscribing!</span>

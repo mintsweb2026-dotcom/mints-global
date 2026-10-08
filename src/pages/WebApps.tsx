@@ -106,11 +106,11 @@ export function WebApps() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex items-center gap-4 mb-6">
-              <span className="px-4 py-1 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest text-brand-white-70">
+              <span className="px-4 py-1.5 rounded-full border border-[#E4E4E4] bg-white text-xs font-bold uppercase tracking-widest text-[#5A644D] shadow-sm">
                 Scalable Engineering
               </span>
             </div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-white">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-black mb-8 uppercase leading-[0.9] text-[#182012]">
               Web App<br/>
               <span className="text-olive-500">Engineering.</span>
             </h1>
@@ -125,7 +125,7 @@ export function WebApps() {
             </div>
           </motion.div>
 
-          <div className="relative w-full aspect-[12/6] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+          <div className="relative w-full aspect-[12/6] rounded-[2rem] overflow-hidden border border-[#E4E4E4] shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/images/web-application-development-services-dubai.webp"
@@ -144,42 +144,42 @@ export function WebApps() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white">Engineering Focus</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012]">Engineering Focus</h2>
             <p className="text-brand-white-70 text-lg max-w-3xl">We build digital products that are secure by design, scalable by nature, and optimized for unparalleled user experiences.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Custom Web Apps</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Custom Web Apps</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Tailor-made solutions that solve specific business problems, from complex dashboards to data management tools.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">SaaS Platforms</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">SaaS Platforms</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Architecting multi-tenant Software-as-a-Service platforms complete with subscription billing and advanced tiering.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Progressive Web Apps (PWA)</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Progressive Web Apps (PWA)</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Web applications that feel and behave like native mobile apps, offering offline capabilities and push notifications.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Enterprise Portals</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Enterprise Portals</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Secure internal tools, partner portals, and customer dashboards built to integrate with existing legacy systems.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">API Development</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">API Development</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Designing and building robust REST & GraphQL APIs to power your integrations and front-end applications.</p>
             </div>
-            <div className="bg-brand-black border border-white/5 p-10 rounded-3xl hover:border-olive-500/30 transition-colors">
+            <div className="bg-white border border-[#E4E4E4] p-8 sm:p-10 rounded-3xl hover:border-olive-500/30 transition-all shadow-sm hover:shadow-md">
               <CheckCircle2 className="text-olive-500 mb-6" size={32} />
-              <h3 className="font-display font-bold text-xl uppercase mb-4 text-white">Web Modernization</h3>
+              <h3 className="font-display font-bold text-xl uppercase mb-4 text-[#182012]">Web Modernization</h3>
               <p className="text-brand-white-70 text-sm leading-relaxed">Refactoring and migrating legacy codebases (like old PHP/jQuery apps) to modern stacks like React and Node.js.</p>
             </div>
           </div>
@@ -187,20 +187,20 @@ export function WebApps() {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 bg-brand-black-light border-t border-white/5">
+      <section className="py-24 bg-brand-black-light border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
           <div className="flex-1">
             <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">
               Our Development Team
             </span>
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
               Engineered for Scalability
             </h2>
             <p className="text-brand-white-70 text-lg leading-relaxed mb-8">
               Our certified software engineers design and develop custom solutions optimized for speed, performance, and cross-platform reliability. From robust database schema designs to modern API integrations, we handle the full development life cycle.
             </p>
           </div>
-          <div className="flex-1 relative w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+          <div className="flex-1 relative w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-[#E4E4E4] shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/images/web-application-developers-dubai.webp"
@@ -214,20 +214,20 @@ export function WebApps() {
       </section>
 
       {/* CRM & ERP Solutions Section */}
-      <section className="py-24 bg-olive-950 border-t border-white/5">
+      <section className="py-24 bg-[#F0F0F0] border-t border-[#E4E4E4]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row-reverse items-center justify-between gap-12 lg:gap-16">
           <div className="flex-1">
             <span className="text-olive-500 text-sm font-bold tracking-widest uppercase block mb-4">
               Enterprise Workflows
             </span>
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
               Bespoke CRM & ERP Integrations
             </h2>
             <p className="text-brand-white-70 text-lg leading-relaxed mb-8">
               Consolidate your customer databases, track pipelines, and automate administrative tasks with proprietary portal software. We specialize in building secure, custom CRM and ERP web systems tailored around your operational processes.
             </p>
           </div>
-          <div className="flex-1 relative w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl">
+          <div className="flex-1 relative w-full aspect-[16/10] rounded-[2rem] overflow-hidden border border-[#E4E4E4] shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-t from-olive-950 via-transparent to-transparent z-10 pointer-events-none opacity-40" />
             <SafeImage
               src="/images/crm-erp-web-applications-dubai.webp"
@@ -241,10 +241,10 @@ export function WebApps() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-brand-black border-t border-white/5">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-white">Frequently Asked Questions</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-4 text-[#182012]">Frequently Asked Questions</h2>
             <p className="text-brand-white-70 text-lg">Everything you need to know about our web app services.</p>
           </div>
           <div className="space-y-4">
@@ -254,28 +254,28 @@ export function WebApps() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-olive-900 border-t border-white/5 text-center">
+      <section className="py-24 bg-[#F5F7F4] border-t border-[#E4E4E4] text-center">
          <div className="max-w-3xl mx-auto px-6 lg:px-8">
-            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-white leading-tight">
+            <h2 className="font-display text-4xl lg:text-5xl font-black uppercase mb-6 text-[#182012] leading-tight">
               Ready To Get Started?
             </h2>
             <p className="text-brand-white-70 text-lg leading-relaxed mb-10">
               Ready to build software that scales with your ambition? Let's engineer it.
             </p>
-            <Link to="/contact" className="bg-white text-olive-950 px-10 py-5 rounded-full font-black uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-all shadow-xl block w-fit mx-auto">
+            <Link to="/contact" className="bg-[#687838] hover:bg-[#515E2C] text-white px-10 py-4 rounded-xl font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg block w-fit mx-auto">
               Contact Us Today
             </Link>
          </div>
       </section>
     
       {/* Related Services */}
-      <section className="py-16 border-t border-white/5 bg-olive-950">
+      <section className="py-16 border-t border-[#E4E4E4] bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h3 className="font-display text-2xl font-black uppercase mb-8 text-white">Related Services</h3>
+          <h3 className="font-display text-2xl font-black uppercase mb-8 text-[#182012]">Related Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link to="/software-development/mobile-apps" className="text-olive-500 hover:text-white font-bold transition-colors">Mobile Apps &rarr;</Link>
-            <Link to="/software-development/website-development" className="text-olive-500 hover:text-white font-bold transition-colors">Website Development &rarr;</Link>
-            <Link to="/software-development/erp-solutions" className="text-olive-500 hover:text-white font-bold transition-colors">ERP Solutions &rarr;</Link>
+            <Link to="/software-development/mobile-apps" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Mobile Apps &rarr;</Link>
+            <Link to="/software-development/website-development" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">Website Development &rarr;</Link>
+            <Link to="/software-development/erp-solutions" className="text-olive-500 hover:text-olive-400 font-bold transition-colors">ERP Solutions &rarr;</Link>
           </div>
         </div>
       </section>
